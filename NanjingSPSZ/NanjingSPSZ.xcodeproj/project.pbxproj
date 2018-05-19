@@ -101,15 +101,15 @@
 		6ACB539F20AFFD4500528420 /* NanjingSPSZ */ = {
 			isa = PBXGroup;
 			children = (
-				6ACB53A020AFFD4500528420 /* AppDelegate.h */,
-				6ACB53A120AFFD4500528420 /* AppDelegate.m */,
+				6ACB53DB20B00E6600528420 /* ViewContorllers */,
+				6ACB53DA20B00E6600528420 /* Views */,
+				6ACB53D920B00E6600528420 /* Models */,
+				6ACB53DE20B00E9800528420 /* Resource */,
+				6ACB53DD20B00E9800528420 /* ThirdParts */,
+				6ACB53DC20B00E9800528420 /* Utils */,
+				6ACB53D220B00DEB00528420 /* SupportFiles */,
 				6ACB53A320AFFD4500528420 /* ViewController.h */,
 				6ACB53A420AFFD4500528420 /* ViewController.m */,
-				6ACB53A620AFFD4500528420 /* Main.storyboard */,
-				6ACB53A920AFFD4800528420 /* Assets.xcassets */,
-				6ACB53AB20AFFD4800528420 /* LaunchScreen.storyboard */,
-				6ACB53AE20AFFD4800528420 /* Info.plist */,
-				6ACB53AF20AFFD4800528420 /* main.m */,
 			);
 			path = NanjingSPSZ;
 			sourceTree = "<group>";
@@ -130,6 +130,62 @@
 				6ACB53C620AFFD4800528420 /* Info.plist */,
 			);
 			path = NanjingSPSZUITests;
+			sourceTree = "<group>";
+		};
+		6ACB53D220B00DEB00528420 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6ACB53A020AFFD4500528420 /* AppDelegate.h */,
+				6ACB53A120AFFD4500528420 /* AppDelegate.m */,
+				6ACB53A620AFFD4500528420 /* Main.storyboard */,
+				6ACB53A920AFFD4800528420 /* Assets.xcassets */,
+				6ACB53AB20AFFD4800528420 /* LaunchScreen.storyboard */,
+				6ACB53AE20AFFD4800528420 /* Info.plist */,
+				6ACB53AF20AFFD4800528420 /* main.m */,
+			);
+			name = SupportFiles;
+			sourceTree = "<group>";
+		};
+		6ACB53D920B00E6600528420 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6ACB53DA20B00E6600528420 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6ACB53DB20B00E6600528420 /* ViewContorllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewContorllers;
+			sourceTree = "<group>";
+		};
+		6ACB53DC20B00E9800528420 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		6ACB53DD20B00E9800528420 /* ThirdParts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdParts;
+			sourceTree = "<group>";
+		};
+		6ACB53DE20B00E9800528420 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
