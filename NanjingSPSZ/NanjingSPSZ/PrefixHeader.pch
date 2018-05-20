@@ -97,34 +97,44 @@ _Pragma("clang diagnostic pop") \
 } while (0)
 
 
-// ------------------------------------------------------------------------
+#pragma mark - ==== 三方库配置说明 ====
+/**
+ AFNetworking : 直接拖进来,不用配置
+ */
 
+/**
+ SDWebImage : 直接拖进来,不用配置
+ */
 
+/**
+ YYModel : 直接拖进来,不用配置
+ */
 
+/**
+ YYText : 链接以下 frameworks:
+     UIKit
+     CoreFoundation
+     CoreText
+     QuartzCore
+     Accelerate
+     MobileCoreServices
+ */
 
-// ------------------------------------------------------------------------
-/* 第三方的版本号
- shareSDK                  : (3.6.1)
- RSKImageCropper           : (1.5.1)
- SVStatusHUD               : (0.0.1)
- AFNetworking              : (3.1.0)
- LBXScan                   : (1.1.1)
- LGPhotoBrowser            : (1.1.0)
- Masonry                   : (1.0.1)
- MJRefresh                 : (3.1.1)
- QRCodeGenerator           : (0.0.1)
- SDWebImage                : (3.8.1)
- SWTableViewCell           : (0.3.7)
- MBProgressHUD             : (0.9.2)
- WebViewJavascriptBridge   : (5.0.5)
- YYModel                   : (1.0.3)
- YYText                    : (1.0.5)
- Aliyun                    : (2.6.0)
- AliPaySDK                 : (15.1.6)
- baiduMap                  : (3.2.1)
- Bugly                     : (2.4.6)
- NIMSDK                    : (3.8.0)
- WeixinPay                 : (1.7.6)
-*/
+/**
+ MJRefresh : 直接拖进来,不用配置
+ */
+
+/**
+ FMDB : 依赖: libsqlite3.0
+ */
+
+/**
+ Masonry : 拖进来,不用配置.
+    使用 #define MAS_SHORTHAND_GLOBALS 宏可以省略对数字类型的@包装
+ */
+
+/**
+ MBProgressHUD : 直接拖进来,不用配置
+ */
 
 #endif /* PrefixHeader_pch */

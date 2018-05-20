@@ -129,6 +129,13 @@
 		6ACB555D20B116D400528420 /* ProgramConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555C20B116D400528420 /* ProgramConfig.m */; };
 		6ACB556020B118CD00528420 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555F20B118CD00528420 /* Reachability.m */; };
 		6ACB556320B11B8A00528420 /* SPSZ_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */; };
+		6ACB556620B1203600528420 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556520B1203600528420 /* UIKit.framework */; };
+		6ACB556820B1204200528420 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556720B1204200528420 /* CoreFoundation.framework */; };
+		6ACB556A20B1204E00528420 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556920B1204D00528420 /* CoreText.framework */; };
+		6ACB556C20B1205800528420 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556B20B1205800528420 /* QuartzCore.framework */; };
+		6ACB556E20B1206000528420 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556D20B1206000528420 /* Accelerate.framework */; };
+		6ACB557020B1206900528420 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556F20B1206900528420 /* MobileCoreServices.framework */; };
+		6ACB557220B121A700528420 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB557120B121A700528420 /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -407,6 +414,13 @@
 		6ACB555F20B118CD00528420 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6ACB556120B11B8A00528420 /* SPSZ_LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_LoginViewController.h; sourceTree = "<group>"; };
 		6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_LoginViewController.m; sourceTree = "<group>"; };
+		6ACB556520B1203600528420 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6ACB556720B1204200528420 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		6ACB556920B1204D00528420 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		6ACB556B20B1205800528420 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6ACB556D20B1206000528420 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		6ACB556F20B1206900528420 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6ACB557120B121A700528420 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +428,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ACB557220B121A700528420 /* libsqlite3.0.tbd in Frameworks */,
+				6ACB557020B1206900528420 /* MobileCoreServices.framework in Frameworks */,
+				6ACB556E20B1206000528420 /* Accelerate.framework in Frameworks */,
+				6ACB556C20B1205800528420 /* QuartzCore.framework in Frameworks */,
+				6ACB556A20B1204E00528420 /* CoreText.framework in Frameworks */,
+				6ACB556820B1204200528420 /* CoreFoundation.framework in Frameworks */,
+				6ACB556620B1203600528420 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +462,7 @@
 				6ACB53B820AFFD4800528420 /* NanjingSPSZTests */,
 				6ACB53C320AFFD4800528420 /* NanjingSPSZUITests */,
 				6ACB539E20AFFD4500528420 /* Products */,
+				6ACB556420B1203500528420 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -984,6 +1006,20 @@
 				6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		6ACB556420B1203500528420 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6ACB557120B121A700528420 /* libsqlite3.0.tbd */,
+				6ACB556F20B1206900528420 /* MobileCoreServices.framework */,
+				6ACB556D20B1206000528420 /* Accelerate.framework */,
+				6ACB556B20B1205800528420 /* QuartzCore.framework */,
+				6ACB556920B1204D00528420 /* CoreText.framework */,
+				6ACB556720B1204200528420 /* CoreFoundation.framework */,
+				6ACB556520B1203600528420 /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
