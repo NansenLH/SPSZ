@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class SPSZ_LoginViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic, strong) SPSZ_LoginViewController *loginVC;
 
 + (AppDelegate*)shareInstance;
 

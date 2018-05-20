@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "Reachability.h"
+
+#import "SPSZ_LoginViewController.h"
 
 @interface AppDelegate ()
+
+
 
 @end
 
@@ -19,38 +24,78 @@
     return (id)[[UIApplication sharedApplication] delegate];
 }
 
-
+#pragma mark - ======== lifeCycle ========
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.loginVC = [[SPSZ_LoginViewController alloc] init];
+    self.window.rootViewController = self.loginVC;
+    [self.window makeKeyAndVisible];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    [[UIView appearance] setExclusiveTouch:YES];
+    
+    
     return YES;
 }
 
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDWebImageManager sharedManager] cancelAll];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark ---- 将进入前台 ----
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    for (UIView *tmp in self.window.subviews) {
+        if ([tmp isKindOfClass:[MBProgressHUD class]]) {
+            [tmp removeFromSuperview];
+        }
+    }
+    
+}
+
+#pragma mark ---- 已经进入前台 ----
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+
+}
+
+#pragma mark ---- 程序即将退出 ----
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    
+}
+
+#pragma mark ---- 请求用户允许通知后执行 ----
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    
+}
+
+#pragma mark ---- 程序将要挂起,设置角标 ----
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+
+}
+
+#pragma mark ---- 已经进入后台 ----
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    
 }
 
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-}
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
 
 
 @end

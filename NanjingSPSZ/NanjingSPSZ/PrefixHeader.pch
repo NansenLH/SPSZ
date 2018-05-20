@@ -1,0 +1,130 @@
+//
+//  PrefixHeader.pch
+//
+//  Created by nansen on 16/4/20.
+//  Copyright © 2016年 NansenLu. All rights reserved.
+//
+
+/*
+ Build Settings 中配置:
+    Precompile Prefix Header : YES
+    Prefix Header : $(SRCROOT)/工程名/PrefixHeader.pch
+ */
+
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define MAS_SHORTHAND_GLOBALS
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+
+// 三方库
+#import "UIView+Extension.h"
+#import "Masonry.h"
+#import "MBProgressHUD.h"
+#import "NSNull+LUNullExtention.h"
+#import "SDWebImageManager.h"
+
+// 工具类
+#import "KRAlertTool.h"
+#import "LUAlertTool.h"
+#import "UICreateTool.h"
+
+// 项目中的一些配置选项
+#import "ProgramConfig.h"
+// 颜色设置
+#import "ProgramColor.h"
+// 尺寸设置
+#import "ProgramSize.h"
+// 字体配置
+#import "ProgramFont.h"
+
+
+
+// ------------------------------------------------------------------------
+
+#pragma mark - ======== 系统信息: iOS版本,App 版本 ========
+// BOOL 值, 判断手机ios版本
+#define iOS9  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0 )
+#define iOS8  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 )
+#define iOS7  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 )
+#define iOS10 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0)
+#define iOS11 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0)
+
+// 系统版本 NSString
+#define KRSystemVersion [[UIDevice currentDevice] systemVersion]
+
+// 获得客户端软件版本号
+#define KRVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
+// 获得客户端软件版本号（Build）
+#define KRBundleVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+
+
+#pragma mark - ======== 代码块 ========
+// 安全异步主线程
+#define dispatch_async_main_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
+
+// 弱引用
+#define KRWeakSelf __weak __typeof(& *self)weakSelf = self;
+
+//// 输出 log
+//#ifdef DEBUG
+//#define NSLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+//#else
+//#define NSLog(...)
+//#endif
+
+// iOS 11适配
+#define adjustsScrollViewInsets_NO(scrollView,vc)\
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+if ([UIScrollView instancesRespondToSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:")]) {\
+[scrollView   performSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:") withObject:@(2)];\
+} else {\
+vc.automaticallyAdjustsScrollViewInsets = NO;\
+}\
+_Pragma("clang diagnostic pop") \
+} while (0)
+
+
+// ------------------------------------------------------------------------
+
+
+
+
+// ------------------------------------------------------------------------
+/* 第三方的版本号
+ shareSDK                  : (3.6.1)
+ RSKImageCropper           : (1.5.1)
+ SVStatusHUD               : (0.0.1)
+ AFNetworking              : (3.1.0)
+ LBXScan                   : (1.1.1)
+ LGPhotoBrowser            : (1.1.0)
+ Masonry                   : (1.0.1)
+ MJRefresh                 : (3.1.1)
+ QRCodeGenerator           : (0.0.1)
+ SDWebImage                : (3.8.1)
+ SWTableViewCell           : (0.3.7)
+ MBProgressHUD             : (0.9.2)
+ WebViewJavascriptBridge   : (5.0.5)
+ YYModel                   : (1.0.3)
+ YYText                    : (1.0.5)
+ Aliyun                    : (2.6.0)
+ AliPaySDK                 : (15.1.6)
+ baiduMap                  : (3.2.1)
+ Bugly                     : (2.4.6)
+ NIMSDK                    : (3.8.0)
+ WeixinPay                 : (1.7.6)
+*/
+
+#endif /* PrefixHeader_pch */
