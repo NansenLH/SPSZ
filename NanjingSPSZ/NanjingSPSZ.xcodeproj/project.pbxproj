@@ -141,6 +141,7 @@
 		CC42007C20B2BAE900CEC62B /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006B20B2BAE800CEC62B /* BaseNavigationController.m */; };
 		CC42007D20B2BAE900CEC62B /* KRAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42007220B2BAE900CEC62B /* KRAlertTool.m */; };
 		CC42007E20B2BAE900CEC62B /* UICreateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42007420B2BAE900CEC62B /* UICreateTool.m */; };
+		CC42008120B2BDB700CEC62B /* SPSZ_suo_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42008020B2BDB700CEC62B /* SPSZ_suo_RecordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -436,6 +437,8 @@
 		CC42007220B2BAE900CEC62B /* KRAlertTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAlertTool.m; sourceTree = "<group>"; };
 		CC42007320B2BAE900CEC62B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		CC42007420B2BAE900CEC62B /* UICreateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICreateTool.m; sourceTree = "<group>"; };
+		CC42007F20B2BDB700CEC62B /* SPSZ_suo_RecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_RecordViewController.h; sourceTree = "<group>"; };
+		CC42008020B2BDB700CEC62B /* SPSZ_suo_RecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -980,6 +983,8 @@
 		CC42002220B2509700CEC62B /* Suozheng */ = {
 			isa = PBXGroup;
 			children = (
+				CC42007F20B2BDB700CEC62B /* SPSZ_suo_RecordViewController.h */,
+				CC42008020B2BDB700CEC62B /* SPSZ_suo_RecordViewController.m */,
 			);
 			path = Suozheng;
 			sourceTree = "<group>";
@@ -1183,6 +1188,7 @@
 				6ACB54D020B0110000528420 /* MJRefreshComponent.m in Sources */,
 				6ACB540520B00F8C00528420 /* MASViewConstraint.m in Sources */,
 				CC42007520B2BAE900CEC62B /* ProgramFont.m in Sources */,
+				CC42008120B2BDB700CEC62B /* SPSZ_suo_RecordViewController.m in Sources */,
 				6ACB542D20B00F9A00528420 /* UIImageView+HighlightedWebCache.m in Sources */,
 				CC42003720B2B66E00CEC62B /* SPSZ_chu_RecordModel.m in Sources */,
 				6ACB552420B0121800528420 /* UIImage+Alpha.m in Sources */,

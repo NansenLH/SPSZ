@@ -32,35 +32,35 @@
     _timeLabel.backgroundColor = [UIColor greenColor];
     [bgView addSubview:self.timeLabel];
     
-    _orderNumberlabel = [[UILabel alloc]init];
-    _orderNumberlabel.backgroundColor = [UIColor orangeColor];
-    [bgView addSubview:self.orderNumberlabel];
+    _productNameLabel = [[UILabel alloc]init];
+    _productNameLabel.backgroundColor = [UIColor orangeColor];
+    [bgView addSubview:self.productNameLabel];
     
-    [_orderNumberlabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_productNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.timeLabel.mas_bottom).equalTo(13);
         make.left.equalTo(10);
         make.height.equalTo(26);
-        make.width.equalTo(MainScreenWidth - 180);
+        make.width.equalTo(180);
     }];
     
-    _orderNameLabel = [[UILabel alloc]init];
-    _orderNameLabel.backgroundColor = [UIColor blackColor];
-    [bgView addSubview:self.orderNameLabel];
-    [_orderNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.orderNumberlabel.mas_bottom).equalTo(10);
-        make.left.equalTo(10);
+    _weightLabel = [[UILabel alloc]init];
+    _weightLabel.backgroundColor = [UIColor blackColor];
+    [bgView addSubview:self.weightLabel];
+    [_weightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.timeLabel.mas_bottom).equalTo(13);
+        make.left.mas_equalTo(self.productNameLabel.mas_right).equalTo(10);
         make.height.equalTo(26);
         make.width.equalTo(80);
     }];
     
-    _phoneNumberLabel = [[UILabel alloc]init];
-    _phoneNumberLabel.backgroundColor = [UIColor blueColor];
-    [bgView addSubview:self.phoneNumberLabel];
-    [_phoneNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.orderNumberlabel.mas_bottom).equalTo(10);
-        make.left.mas_equalTo(self.orderNameLabel.mas_right).equalTo(10);
+    _productLocationLabel = [[UILabel alloc]init];
+    _productLocationLabel.backgroundColor = [UIColor blueColor];
+    [bgView addSubview:self.productLocationLabel];
+    [_productLocationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.productNameLabel.mas_bottom).equalTo(10);
+        make.left.equalTo(10);
         make.height.equalTo(26);
-        make.width.equalTo(140);
+        make.width.equalTo(MainScreenWidth - 140);
     }];
     
     _detailButton = [UIButton buttonWithType:UIButtonTypeCustom];

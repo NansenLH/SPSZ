@@ -1,16 +1,15 @@
 //
-//  SPSZ_chu_RecordViewController.m
+//  SPSZ_suo_RecordViewController.m
 //  NanjingSPSZ
 //
 //  Created by Mr.Ling on 2018/5/21.
 //  Copyright © 2018年 nansen. All rights reserved.
 //
 
-#import "SPSZ_chu_RecordViewController.h"
-#import "SPSZ_chu_RecordModel.h"
-#import "SPSZ_chu_RecordTableViewCell.h"
-
-@interface SPSZ_chu_RecordViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "SPSZ_suo_RecordViewController.h"
+#import "SPSZ_suo_RecordModel.h"
+#import "SPSZ_suo_RecordTableViewCell.h"
+@interface SPSZ_suo_RecordViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)UITableView *tableView;
 
@@ -18,8 +17,7 @@
 
 @end
 
-@implementation SPSZ_chu_RecordViewController
-
+@implementation SPSZ_suo_RecordViewController
 
 - (UITableView *)tableView
 {
@@ -27,7 +25,7 @@
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        [_tableView registerClass:[SPSZ_chu_RecordTableViewCell class] forCellReuseIdentifier:@"RecordCell"];
+        [_tableView registerClass:[SPSZ_suo_RecordTableViewCell class] forCellReuseIdentifier:@"RecordCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
     }
@@ -43,9 +41,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPSZ_chu_RecordModel *model = _dataSourceArray[indexPath.row];
+    SPSZ_suo_RecordModel *model = _dataSourceArray[indexPath.row];
     
-    SPSZ_chu_RecordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCell" forIndexPath:indexPath];
+    SPSZ_suo_RecordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCell" forIndexPath:indexPath];
     
     return cell;
 }
@@ -74,5 +72,14 @@
 }
 
 
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

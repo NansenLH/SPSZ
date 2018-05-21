@@ -18,11 +18,11 @@
 
 @property (nonatomic, strong)UILabel *timeLabel;
 
-@property (nonatomic, strong)UILabel *orderNumberlabel;
+@property (nonatomic, strong)UILabel *productNameLabel;
 
-@property (nonatomic, strong)UILabel *orderNameLabel;
+@property (nonatomic, strong)UILabel *weightLabel;
 
-@property (nonatomic, strong)UILabel *phoneNumberLabel;
+@property (nonatomic, strong)UILabel *productLocationLabel;
 
 @property (nonatomic, strong)UIButton *detailButton;
 @end

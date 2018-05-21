@@ -8,19 +8,69 @@
 
 #import "SPSZ_LoginViewController.h"
 
-@interface SPSZ_LoginViewController ()
+@interface SPSZ_LoginViewController ()<UIScrollViewDelegate>
+
+@property (nonatomic, strong)UIScrollView *scrollView;
+
+@property (nonatomic, strong)UIButton *button;
 
 @end
 
 @implementation SPSZ_LoginViewController
 
+- (UIScrollView *)scrollView
+{
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+        _scrollView.pagingEnabled = YES;
+        _scrollView.bounces = YES;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.delegate = self;
+        for (int i = 1 ; i< 4; i++)
+        {
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(MainScreenWidth * (i-1), 0, MainScreenWidth, MainScreenHeight)];
+            imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"guide_0%d",i]];
+            [_scrollView addSubview:imageView];
+            if (i == 3) {
+                UIView *buttonView = [[UIView alloc]initWithFrame:CGRectMake(MainScreenWidth / 4, MainScreenHeight - 150, MainScreenWidth /2, 60)];
+                buttonView.backgroundColor = [UIColor lightGrayColor];
+                buttonView.alpha = 0.3;
+                
+                [imageView addSubview:buttonView];
+
+                self.button = [UIButton buttonWithType:UIButtonTypeSystem];
+                self.button.frame = CGRectMake(0, 0, MainScreenWidth /2, 60);
+                self.button.backgroundColor = [UIColor lightGrayColor];
+                [self.button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+                [self.button setTitle:@"点击体验" forState:UIControlStateNormal];
+                [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                buttonView.userInteractionEnabled = YES;
+                [buttonView addSubview:_button];
+            }
+        }
+        _scrollView.contentSize = CGSizeMake(MainScreenWidth *3, 0);
+        _scrollView.contentOffset = CGPointMake(0, 0);
+    }
+    return _scrollView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor greenColor];
+    self.navigationController.navigationBar.hidden = YES;
+    [self.view addSubview:self.scrollView];
     
 }
 
+- (void)buttonAction:(UIButton *)button{
+    // 变化状态 把状态变成非第一次运行程序  提供给下一次使用
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"firstStart"];
+    
+//    RootViewController *rootView = [[RootViewController alloc]init];
+//    UINavigationController *rootNav = [[UINavigationController alloc]initWithRootViewController:rootView];
+//    [UIApplication sharedApplication].delegate.window.rootViewController = rootNav;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

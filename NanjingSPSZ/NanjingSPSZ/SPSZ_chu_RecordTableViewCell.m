@@ -65,6 +65,7 @@
     
     _detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _detailButton.backgroundColor = [UIColor redColor];
+    [_detailButton setImage:[UIImage imageNamed:@"出证详情"] forState:UIControlStateNormal];
     [bgView addSubview:self.detailButton];
     [_detailButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.timeLabel.mas_bottom).equalTo(13);
