@@ -136,12 +136,7 @@
 		6ACB556E20B1206000528420 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556D20B1206000528420 /* Accelerate.framework */; };
 		6ACB557020B1206900528420 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556F20B1206900528420 /* MobileCoreServices.framework */; };
 		6ACB557220B121A700528420 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB557120B121A700528420 /* libsqlite3.0.tbd */; };
-		6ACB557520B2E95100528420 /* SPSZ_TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB557420B2E95100528420 /* SPSZ_TestViewController.m */; };
-		6ACB557820B2EB1E00528420 /* SPSZ_testView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB557720B2EB1E00528420 /* SPSZ_testView.m */; };
-		6ACB557B20B2EB4200528420 /* SPSZ_TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB557A20B2EB4200528420 /* SPSZ_TestModel.m */; };
 		6ACB557F20B2EB6600528420 /* SPSZ_tesssssss.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB557E20B2EB6600528420 /* SPSZ_tesssssss.m */; };
-		6ACB558220B2EB7500528420 /* SPSZ_sdlfsdjaksdjf.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB558120B2EB7500528420 /* SPSZ_sdlfsdjaksdjf.m */; };
-		6ACB558620B2EB8800528420 /* SPSZ_sdfsd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB558520B2EB8800528420 /* SPSZ_sdfsd.m */; };
 		CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */; };
 		CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */; };
 		CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */; };
@@ -433,18 +428,8 @@
 		6ACB556D20B1206000528420 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		6ACB556F20B1206900528420 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6ACB557120B121A700528420 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		6ACB557320B2E95100528420 /* SPSZ_TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_TestViewController.h; sourceTree = "<group>"; };
-		6ACB557420B2E95100528420 /* SPSZ_TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_TestViewController.m; sourceTree = "<group>"; };
-		6ACB557620B2EB1E00528420 /* SPSZ_testView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_testView.h; sourceTree = "<group>"; };
-		6ACB557720B2EB1E00528420 /* SPSZ_testView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_testView.m; sourceTree = "<group>"; };
-		6ACB557920B2EB4200528420 /* SPSZ_TestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_TestModel.h; sourceTree = "<group>"; };
-		6ACB557A20B2EB4200528420 /* SPSZ_TestModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_TestModel.m; sourceTree = "<group>"; };
 		6ACB557D20B2EB6600528420 /* SPSZ_tesssssss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_tesssssss.h; sourceTree = "<group>"; };
 		6ACB557E20B2EB6600528420 /* SPSZ_tesssssss.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_tesssssss.m; sourceTree = "<group>"; };
-		6ACB558020B2EB7500528420 /* SPSZ_sdlfsdjaksdjf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_sdlfsdjaksdjf.h; sourceTree = "<group>"; };
-		6ACB558120B2EB7500528420 /* SPSZ_sdlfsdjaksdjf.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_sdlfsdjaksdjf.m; sourceTree = "<group>"; };
-		6ACB558420B2EB8800528420 /* SPSZ_sdfsd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_sdfsd.h; sourceTree = "<group>"; };
-		6ACB558520B2EB8800528420 /* SPSZ_sdfsd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_sdfsd.m; sourceTree = "<group>"; };
 		CC79647720B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordViewController.h; sourceTree = "<group>"; };
 		CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordViewController.m; sourceTree = "<group>"; };
 		CC79647A20B2ED9100D695F7 /* SPSZ_chu_RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordModel.h; sourceTree = "<group>"; };
@@ -565,8 +550,6 @@
 				CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */,
 				CC79647B20B2ED9100D695F7 /* SPSZ_suo_RecordModel.h */,
 				CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */,
-				6ACB557920B2EB4200528420 /* SPSZ_TestModel.h */,
-				6ACB557A20B2EB4200528420 /* SPSZ_TestModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -578,8 +561,6 @@
 				CC79648520B2EDBA00D695F7 /* SPSZ_chu_RecordTableViewCell.m */,
 				CC79648620B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.h */,
 				CC79648320B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.m */,
-				6ACB557620B2EB1E00528420 /* SPSZ_testView.h */,
-				6ACB557720B2EB1E00528420 /* SPSZ_testView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1038,10 +1019,8 @@
 		6ACB553F20B0132C00528420 /* Suozheng */ = {
 			isa = PBXGroup;
 			children = (
-				6ACB558420B2EB8800528420 /* SPSZ_sdfsd.h */,
 				CC79648220B2EDA800D695F7 /* SPSZ_suo_RecordViewController.h */,
 				CC79648020B2ED9B00D695F7 /* SPSZ_suo_RecordViewController.m */,
-				6ACB558520B2EB8800528420 /* SPSZ_sdfsd.m */,
 			);
 			path = Suozheng;
 			sourceTree = "<group>";
@@ -1051,8 +1030,6 @@
 			children = (
 				CC79647720B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.h */,
 				CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */,
-				6ACB558020B2EB7500528420 /* SPSZ_sdlfsdjaksdjf.h */,
-				6ACB558120B2EB7500528420 /* SPSZ_sdlfsdjaksdjf.m */,
 			);
 			path = Chuzheng;
 			sourceTree = "<group>";
@@ -1062,8 +1039,6 @@
 			children = (
 				6ACB556120B11B8A00528420 /* SPSZ_LoginViewController.h */,
 				6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */,
-				6ACB557320B2E95100528420 /* SPSZ_TestViewController.h */,
-				6ACB557420B2E95100528420 /* SPSZ_TestViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1231,7 +1206,6 @@
 				6ACB54BD20B0110000528420 /* UIScrollView+MJRefresh.m in Sources */,
 				6ACB54CE20B0110000528420 /* MJRefreshBackFooter.m in Sources */,
 				6ACB542A20B00F9A00528420 /* MKAnnotationView+WebCache.m in Sources */,
-				6ACB558220B2EB7500528420 /* SPSZ_sdlfsdjaksdjf.m in Sources */,
 				6ACB550120B011D500528420 /* AFImageDownloader.m in Sources */,
 				6ACB547B20B00FA500528420 /* YYTextSelectionView.m in Sources */,
 				6ACB548720B00FA500528420 /* UIPasteboard+YYText.m in Sources */,
@@ -1276,7 +1250,6 @@
 				6ACB53FE20B00F8C00528420 /* ViewController+MASAdditions.m in Sources */,
 				6ACB543020B00F9A00528420 /* UIImage+MultiFormat.m in Sources */,
 				6ACB548320B00FA500528420 /* YYTextRubyAnnotation.m in Sources */,
-				6ACB557B20B2EB4200528420 /* SPSZ_TestModel.m in Sources */,
 				6ACB556320B11B8A00528420 /* SPSZ_LoginViewController.m in Sources */,
 				6ACB552620B0121800528420 /* UIImage+Resize.m in Sources */,
 				6ACB548220B00FA500528420 /* YYTextArchiver.m in Sources */,
@@ -1314,7 +1287,6 @@
 				6ACB547420B00FA500528420 /* YYTextView.m in Sources */,
 				6ACB54CF20B0110000528420 /* MJRefreshAutoFooter.m in Sources */,
 				6ACB548C20B00FA500528420 /* NSObject+YYModel.m in Sources */,
-				6ACB558620B2EB8800528420 /* SPSZ_sdfsd.m in Sources */,
 				6ACB540020B00F8C00528420 /* MASConstraintMaker.m in Sources */,
 				6ACB540420B00F8C00528420 /* MASConstraint.m in Sources */,
 				6ACB552520B0121800528420 /* UIImage+RoundedCorner.m in Sources */,
@@ -1325,7 +1297,6 @@
 				6ACB542C20B00F9A00528420 /* SDWebImageDecoder.m in Sources */,
 				6ACB548920B00FA500528420 /* UIView+YYText.m in Sources */,
 				6ACB553420B0124F00528420 /* FMDatabaseAdditions.m in Sources */,
-				6ACB557520B2E95100528420 /* SPSZ_TestViewController.m in Sources */,
 				CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */,
 				6ACB53E220B00F8200528420 /* MBProgressHUD.m in Sources */,
 				6ACB553320B0124F00528420 /* FMDatabaseQueue.m in Sources */,
@@ -1336,7 +1307,6 @@
 				6ACB552120B0121800528420 /* UIImage+Color.m in Sources */,
 				6ACB547A20B00FA500528420 /* YYTextLine.m in Sources */,
 				6ACB54FB20B011D500528420 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				6ACB557820B2EB1E00528420 /* SPSZ_testView.m in Sources */,
 				6ACB550020B011D500528420 /* AFAutoPurgingImageCache.m in Sources */,
 				6ACB543320B00F9A00528420 /* SDImageCache.m in Sources */,
 				6ACB550320B011D500528420 /* AFHTTPSessionManager.m in Sources */,
