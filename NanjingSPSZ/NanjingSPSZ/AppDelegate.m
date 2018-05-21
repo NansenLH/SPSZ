@@ -10,8 +10,8 @@
 #import "Reachability.h"
 
 #import "SPSZ_LoginViewController.h"
-#import "SPSZ_chu_RecordViewController.h"
-#import "SPSZ_suo_RecordViewController.h"
+//#import "SPSZ_chu_RecordViewController.h"
+//#import "SPSZ_suo_RecordViewController.h"
 @interface AppDelegate ()
 
 
@@ -33,17 +33,18 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
 //    self.loginVC = [[SPSZ_chu_RecordViewController alloc] init];
-    self.loginVC = [[SPSZ_suo_RecordViewController alloc] init];
+//    self.loginVC = [[SPSZ_suo_RecordViewController alloc] init];
 
     [self.window makeKeyAndVisible];
     
-    if (![[NSUserDefaults standardUserDefaults]boolForKey:@"firstStart"])
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])
     {
         NSLog(@"第一次运行程序");
         self.loginVC = [[SPSZ_LoginViewController alloc] init];
         self.window.rootViewController = self.loginVC;
     }
     else{
+        self.loginVC = [[SPSZ_LoginViewController alloc] init];
         self.window.rootViewController = self.loginVC;
     }
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
