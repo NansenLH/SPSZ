@@ -539,6 +539,7 @@
 		6ACB53DB20B00E6600528420 /* ViewContorllers */ = {
 			isa = PBXGroup;
 			children = (
+				CC42002020B24F4700CEC62B /* New Group */,
 				6ACB554120B0136B00528420 /* Login */,
 				6ACB554020B0136000528420 /* Chuzheng */,
 				6ACB553F20B0132C00528420 /* Suozheng */,
@@ -1020,6 +1021,13 @@
 				6ACB556520B1203600528420 /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC42002020B24F4700CEC62B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
