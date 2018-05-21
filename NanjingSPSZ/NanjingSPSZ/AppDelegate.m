@@ -33,17 +33,18 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
 //    self.loginVC = [[SPSZ_chu_RecordViewController alloc] init];
-//    self.loginVC = [[SPSZ_suo_RecordViewController alloc] init];
+    self.loginVC = [[SPSZ_suo_RecordViewController alloc] init];
 
-    self.window.rootViewController = self.loginVC;
     [self.window makeKeyAndVisible];
     
     if (![[NSUserDefaults standardUserDefaults]boolForKey:@"firstStart"])
     {
         NSLog(@"第一次运行程序");
         self.loginVC = [[SPSZ_LoginViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:self.loginVC];
-        self.window.rootViewController = nav;
+        self.window.rootViewController = self.loginVC;
+    }
+    else{
+        self.window.rootViewController = self.loginVC;
     }
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
