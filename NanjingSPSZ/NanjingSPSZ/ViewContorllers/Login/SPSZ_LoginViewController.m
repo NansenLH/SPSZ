@@ -35,9 +35,11 @@
             if (i == 3) {
                 self.button = [UIButton buttonWithType:UIButtonTypeSystem];
                 self.button.frame = CGRectMake(MainScreenWidth / 4, MainScreenHeight - 150, MainScreenWidth /2, 60);
-                self.button.backgroundColor = [UIColor lightGrayColor];
+                self.button.backgroundColor = [ProgramColor RGBColorWithRed:255 green:255 blue:255 alpha:0.15];
+                self.button.layer.cornerRadius = 5;
                 [self.button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
                 [self.button setTitle:@"点击体验" forState:UIControlStateNormal];
+                self.button.titleLabel.font = [UIFont systemFontOfSize:20];
                 [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 imageView.userInteractionEnabled = YES;
                 [imageView addSubview:_button];
