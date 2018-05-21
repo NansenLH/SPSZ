@@ -117,17 +117,7 @@
 		6ACB553520B0124F00528420 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB552D20B0124F00528420 /* FMDatabase.m */; };
 		6ACB553620B0124F00528420 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB553120B0124F00528420 /* FMDatabasePool.m */; };
 		6ACB553720B0124F00528420 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB553220B0124F00528420 /* FMResultSet.m */; };
-		6ACB553B20B012D900528420 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB553A20B012D900528420 /* BaseViewController.m */; };
-		6ACB553E20B012F600528420 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB553D20B012F600528420 /* BaseNavigationController.m */; };
 		6ACB554520B0163A00528420 /* NSNull+LUNullExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB554420B0163900528420 /* NSNull+LUNullExtention.m */; };
-		6ACB554820B016A300528420 /* KRAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB554720B016A300528420 /* KRAlertTool.m */; };
-		6ACB554B20B016B400528420 /* LUAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB554A20B016B400528420 /* LUAlertTool.m */; };
-		6ACB554E20B016E700528420 /* UICreateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB554C20B016E700528420 /* UICreateTool.m */; };
-		6ACB555420B018FC00528420 /* ProgramColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555320B018FC00528420 /* ProgramColor.m */; };
-		6ACB555720B0190D00528420 /* ProgramSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555620B0190D00528420 /* ProgramSize.m */; };
-		6ACB555A20B115A000528420 /* ProgramFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555920B115A000528420 /* ProgramFont.m */; };
-		6ACB555D20B116D400528420 /* ProgramConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555C20B116D400528420 /* ProgramConfig.m */; };
-		6ACB556020B118CD00528420 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555F20B118CD00528420 /* Reachability.m */; };
 		6ACB556320B11B8A00528420 /* SPSZ_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */; };
 		6ACB556620B1203600528420 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556520B1203600528420 /* UIKit.framework */; };
 		6ACB556820B1204200528420 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556720B1204200528420 /* CoreFoundation.framework */; };
@@ -136,6 +126,21 @@
 		6ACB556E20B1206000528420 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556D20B1206000528420 /* Accelerate.framework */; };
 		6ACB557020B1206900528420 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556F20B1206900528420 /* MobileCoreServices.framework */; };
 		6ACB557220B121A700528420 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB557120B121A700528420 /* libsqlite3.0.tbd */; };
+		CC42003120B2B5E000CEC62B /* SPSZ_chu_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42003020B2B5E000CEC62B /* SPSZ_chu_RecordTableViewCell.m */; };
+		CC42003420B2B5F900CEC62B /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42003320B2B5F900CEC62B /* SPSZ_suo_RecordTableViewCell.m */; };
+		CC42003720B2B66E00CEC62B /* SPSZ_chu_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42003620B2B66E00CEC62B /* SPSZ_chu_RecordModel.m */; };
+		CC42003A20B2B6B100CEC62B /* SPSZ_suo_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42003920B2B6B100CEC62B /* SPSZ_suo_RecordModel.m */; };
+		CC42003D20B2B71700CEC62B /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42003C20B2B71700CEC62B /* SPSZ_chu_RecordViewController.m */; };
+		CC42007520B2BAE900CEC62B /* ProgramFont.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006120B2BAE800CEC62B /* ProgramFont.m */; };
+		CC42007620B2BAE900CEC62B /* LUAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006320B2BAE800CEC62B /* LUAlertTool.m */; };
+		CC42007720B2BAE900CEC62B /* ProgramColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006420B2BAE800CEC62B /* ProgramColor.m */; };
+		CC42007820B2BAE900CEC62B /* ProgramConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006520B2BAE800CEC62B /* ProgramConfig.m */; };
+		CC42007920B2BAE900CEC62B /* ProgramSize.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006620B2BAE800CEC62B /* ProgramSize.m */; };
+		CC42007A20B2BAE900CEC62B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006720B2BAE800CEC62B /* Reachability.m */; };
+		CC42007B20B2BAE900CEC62B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006A20B2BAE800CEC62B /* BaseViewController.m */; };
+		CC42007C20B2BAE900CEC62B /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42006B20B2BAE800CEC62B /* BaseNavigationController.m */; };
+		CC42007D20B2BAE900CEC62B /* KRAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42007220B2BAE900CEC62B /* KRAlertTool.m */; };
+		CC42007E20B2BAE900CEC62B /* UICreateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC42007420B2BAE900CEC62B /* UICreateTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,29 +394,9 @@
 		6ACB553020B0124F00528420 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
 		6ACB553120B0124F00528420 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		6ACB553220B0124F00528420 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		6ACB553920B012D900528420 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		6ACB553A20B012D900528420 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		6ACB553C20B012F600528420 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
-		6ACB553D20B012F600528420 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		6ACB554220B013CE00528420 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6ACB554320B0163900528420 /* NSNull+LUNullExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+LUNullExtention.h"; sourceTree = "<group>"; };
 		6ACB554420B0163900528420 /* NSNull+LUNullExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+LUNullExtention.m"; sourceTree = "<group>"; };
-		6ACB554620B016A300528420 /* KRAlertTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRAlertTool.h; sourceTree = "<group>"; };
-		6ACB554720B016A300528420 /* KRAlertTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAlertTool.m; sourceTree = "<group>"; };
-		6ACB554920B016B400528420 /* LUAlertTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUAlertTool.h; sourceTree = "<group>"; };
-		6ACB554A20B016B400528420 /* LUAlertTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUAlertTool.m; sourceTree = "<group>"; };
-		6ACB554C20B016E700528420 /* UICreateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICreateTool.m; sourceTree = "<group>"; };
-		6ACB554D20B016E700528420 /* UICreateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICreateTool.h; sourceTree = "<group>"; };
-		6ACB555220B018FC00528420 /* ProgramColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgramColor.h; sourceTree = "<group>"; };
-		6ACB555320B018FC00528420 /* ProgramColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramColor.m; sourceTree = "<group>"; };
-		6ACB555520B0190D00528420 /* ProgramSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgramSize.h; sourceTree = "<group>"; };
-		6ACB555620B0190D00528420 /* ProgramSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramSize.m; sourceTree = "<group>"; };
-		6ACB555820B115A000528420 /* ProgramFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgramFont.h; sourceTree = "<group>"; };
-		6ACB555920B115A000528420 /* ProgramFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramFont.m; sourceTree = "<group>"; };
-		6ACB555B20B116D400528420 /* ProgramConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgramConfig.h; sourceTree = "<group>"; };
-		6ACB555C20B116D400528420 /* ProgramConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramConfig.m; sourceTree = "<group>"; };
-		6ACB555E20B118CD00528420 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		6ACB555F20B118CD00528420 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6ACB556120B11B8A00528420 /* SPSZ_LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_LoginViewController.h; sourceTree = "<group>"; };
 		6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_LoginViewController.m; sourceTree = "<group>"; };
 		6ACB556520B1203600528420 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -421,6 +406,36 @@
 		6ACB556D20B1206000528420 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		6ACB556F20B1206900528420 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6ACB557120B121A700528420 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		CC42002F20B2B5E000CEC62B /* SPSZ_chu_RecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPSZ_chu_RecordTableViewCell.h; path = NanjingSPSZ/SPSZ_chu_RecordTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		CC42003020B2B5E000CEC62B /* SPSZ_chu_RecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPSZ_chu_RecordTableViewCell.m; path = NanjingSPSZ/SPSZ_chu_RecordTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		CC42003220B2B5F900CEC62B /* SPSZ_suo_RecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPSZ_suo_RecordTableViewCell.h; path = NanjingSPSZ/SPSZ_suo_RecordTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		CC42003320B2B5F900CEC62B /* SPSZ_suo_RecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPSZ_suo_RecordTableViewCell.m; path = NanjingSPSZ/SPSZ_suo_RecordTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		CC42003520B2B66E00CEC62B /* SPSZ_chu_RecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPSZ_chu_RecordModel.h; path = NanjingSPSZ/SPSZ_chu_RecordModel.h; sourceTree = SOURCE_ROOT; };
+		CC42003620B2B66E00CEC62B /* SPSZ_chu_RecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPSZ_chu_RecordModel.m; path = NanjingSPSZ/SPSZ_chu_RecordModel.m; sourceTree = SOURCE_ROOT; };
+		CC42003820B2B6B100CEC62B /* SPSZ_suo_RecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPSZ_suo_RecordModel.h; path = NanjingSPSZ/SPSZ_suo_RecordModel.h; sourceTree = SOURCE_ROOT; };
+		CC42003920B2B6B100CEC62B /* SPSZ_suo_RecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPSZ_suo_RecordModel.m; path = NanjingSPSZ/SPSZ_suo_RecordModel.m; sourceTree = SOURCE_ROOT; };
+		CC42003B20B2B71700CEC62B /* SPSZ_chu_RecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordViewController.h; sourceTree = "<group>"; };
+		CC42003C20B2B71700CEC62B /* SPSZ_chu_RecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordViewController.m; sourceTree = "<group>"; };
+		CC42006020B2BAE700CEC62B /* KRAlertTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRAlertTool.h; sourceTree = "<group>"; };
+		CC42006120B2BAE800CEC62B /* ProgramFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramFont.m; sourceTree = "<group>"; };
+		CC42006220B2BAE800CEC62B /* ProgramConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramConfig.h; sourceTree = "<group>"; };
+		CC42006320B2BAE800CEC62B /* LUAlertTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUAlertTool.m; sourceTree = "<group>"; };
+		CC42006420B2BAE800CEC62B /* ProgramColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramColor.m; sourceTree = "<group>"; };
+		CC42006520B2BAE800CEC62B /* ProgramConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramConfig.m; sourceTree = "<group>"; };
+		CC42006620B2BAE800CEC62B /* ProgramSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramSize.m; sourceTree = "<group>"; };
+		CC42006720B2BAE800CEC62B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CC42006820B2BAE800CEC62B /* UICreateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICreateTool.h; sourceTree = "<group>"; };
+		CC42006A20B2BAE800CEC62B /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		CC42006B20B2BAE800CEC62B /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		CC42006C20B2BAE800CEC62B /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		CC42006D20B2BAE800CEC62B /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		CC42006E20B2BAE800CEC62B /* LUAlertTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUAlertTool.h; sourceTree = "<group>"; };
+		CC42006F20B2BAE800CEC62B /* ProgramSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramSize.h; sourceTree = "<group>"; };
+		CC42007020B2BAE800CEC62B /* ProgramColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramColor.h; sourceTree = "<group>"; };
+		CC42007120B2BAE800CEC62B /* ProgramFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramFont.h; sourceTree = "<group>"; };
+		CC42007220B2BAE900CEC62B /* KRAlertTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAlertTool.m; sourceTree = "<group>"; };
+		CC42007320B2BAE900CEC62B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CC42007420B2BAE900CEC62B /* UICreateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICreateTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -479,12 +494,12 @@
 		6ACB539F20AFFD4500528420 /* NanjingSPSZ */ = {
 			isa = PBXGroup;
 			children = (
+				CC42002C20B2B5A300CEC62B /* Models */,
+				CC42002E20B2B5A400CEC62B /* Resource */,
+				CC42002D20B2B5A300CEC62B /* Views */,
 				6ACB53DB20B00E6600528420 /* ViewContorllers */,
-				6ACB53DA20B00E6600528420 /* Views */,
-				6ACB53D920B00E6600528420 /* Models */,
-				6ACB53DE20B00E9800528420 /* Resource */,
+				CC42005E20B2B91A00CEC62B /* Utils */,
 				6ACB53DD20B00E9800528420 /* ThirdParts */,
-				6ACB53DC20B00E9800528420 /* Utils */,
 				6ACB53D220B00DEB00528420 /* SupportFiles */,
 			);
 			path = NanjingSPSZ;
@@ -522,53 +537,14 @@
 			name = SupportFiles;
 			sourceTree = "<group>";
 		};
-		6ACB53D920B00E6600528420 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		6ACB53DA20B00E6600528420 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		6ACB53DB20B00E6600528420 /* ViewContorllers */ = {
 			isa = PBXGroup;
 			children = (
-				CC42002020B24F4700CEC62B /* New Group */,
+				CC42002220B2509700CEC62B /* Suozheng */,
+				CC42002020B24F4700CEC62B /* Chuzheng */,
 				6ACB554120B0136B00528420 /* Login */,
-				6ACB554020B0136000528420 /* Chuzheng */,
-				6ACB553F20B0132C00528420 /* Suozheng */,
 			);
 			path = ViewContorllers;
-			sourceTree = "<group>";
-		};
-		6ACB53DC20B00E9800528420 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				6ACB555E20B118CD00528420 /* Reachability.h */,
-				6ACB555F20B118CD00528420 /* Reachability.m */,
-				6ACB555520B0190D00528420 /* ProgramSize.h */,
-				6ACB555620B0190D00528420 /* ProgramSize.m */,
-				6ACB555220B018FC00528420 /* ProgramColor.h */,
-				6ACB555320B018FC00528420 /* ProgramColor.m */,
-				6ACB555820B115A000528420 /* ProgramFont.h */,
-				6ACB555920B115A000528420 /* ProgramFont.m */,
-				6ACB555B20B116D400528420 /* ProgramConfig.h */,
-				6ACB555C20B116D400528420 /* ProgramConfig.m */,
-				6ACB554D20B016E700528420 /* UICreateTool.h */,
-				6ACB554C20B016E700528420 /* UICreateTool.m */,
-				6ACB554920B016B400528420 /* LUAlertTool.h */,
-				6ACB554A20B016B400528420 /* LUAlertTool.m */,
-				6ACB554620B016A300528420 /* KRAlertTool.h */,
-				6ACB554720B016A300528420 /* KRAlertTool.m */,
-				6ACB553820B012BC00528420 /* BaseViewController */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		6ACB53DD20B00E9800528420 /* ThirdParts */ = {
@@ -585,13 +561,6 @@
 				6ACB54D120B0118100528420 /* Categories */,
 			);
 			path = ThirdParts;
-			sourceTree = "<group>";
-		};
-		6ACB53DE20B00E9800528420 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		6ACB53DF20B00F8200528420 /* MBProgressHUD */ = {
@@ -975,31 +944,6 @@
 			path = fmdb;
 			sourceTree = "<group>";
 		};
-		6ACB553820B012BC00528420 /* BaseViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6ACB553920B012D900528420 /* BaseViewController.h */,
-				6ACB553A20B012D900528420 /* BaseViewController.m */,
-				6ACB553C20B012F600528420 /* BaseNavigationController.h */,
-				6ACB553D20B012F600528420 /* BaseNavigationController.m */,
-			);
-			path = BaseViewController;
-			sourceTree = "<group>";
-		};
-		6ACB553F20B0132C00528420 /* Suozheng */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Suozheng;
-			sourceTree = "<group>";
-		};
-		6ACB554020B0136000528420 /* Chuzheng */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Chuzheng;
-			sourceTree = "<group>";
-		};
 		6ACB554120B0136B00528420 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,11 +967,85 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CC42002020B24F4700CEC62B /* New Group */ = {
+		CC42002020B24F4700CEC62B /* Chuzheng */ = {
+			isa = PBXGroup;
+			children = (
+				CC42003B20B2B71700CEC62B /* SPSZ_chu_RecordViewController.h */,
+				CC42003C20B2B71700CEC62B /* SPSZ_chu_RecordViewController.m */,
+			);
+			name = Chuzheng;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CC42002220B2509700CEC62B /* Suozheng */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "New Group";
+			path = Suozheng;
+			sourceTree = "<group>";
+		};
+		CC42002C20B2B5A300CEC62B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC42003520B2B66E00CEC62B /* SPSZ_chu_RecordModel.h */,
+				CC42003620B2B66E00CEC62B /* SPSZ_chu_RecordModel.m */,
+				CC42003820B2B6B100CEC62B /* SPSZ_suo_RecordModel.h */,
+				CC42003920B2B6B100CEC62B /* SPSZ_suo_RecordModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CC42002D20B2B5A300CEC62B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC42002F20B2B5E000CEC62B /* SPSZ_chu_RecordTableViewCell.h */,
+				CC42003020B2B5E000CEC62B /* SPSZ_chu_RecordTableViewCell.m */,
+				CC42003220B2B5F900CEC62B /* SPSZ_suo_RecordTableViewCell.h */,
+				CC42003320B2B5F900CEC62B /* SPSZ_suo_RecordTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CC42002E20B2B5A400CEC62B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CC42005E20B2B91A00CEC62B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CC42006920B2BAE800CEC62B /* BaseViewController */,
+				CC42006020B2BAE700CEC62B /* KRAlertTool.h */,
+				CC42007220B2BAE900CEC62B /* KRAlertTool.m */,
+				CC42006E20B2BAE800CEC62B /* LUAlertTool.h */,
+				CC42006320B2BAE800CEC62B /* LUAlertTool.m */,
+				CC42007020B2BAE800CEC62B /* ProgramColor.h */,
+				CC42006420B2BAE800CEC62B /* ProgramColor.m */,
+				CC42006220B2BAE800CEC62B /* ProgramConfig.h */,
+				CC42006520B2BAE800CEC62B /* ProgramConfig.m */,
+				CC42007120B2BAE800CEC62B /* ProgramFont.h */,
+				CC42006120B2BAE800CEC62B /* ProgramFont.m */,
+				CC42006F20B2BAE800CEC62B /* ProgramSize.h */,
+				CC42006620B2BAE800CEC62B /* ProgramSize.m */,
+				CC42007320B2BAE900CEC62B /* Reachability.h */,
+				CC42006720B2BAE800CEC62B /* Reachability.m */,
+				CC42006820B2BAE800CEC62B /* UICreateTool.h */,
+				CC42007420B2BAE900CEC62B /* UICreateTool.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CC42006920B2BAE800CEC62B /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CC42006A20B2BAE800CEC62B /* BaseViewController.m */,
+				CC42006B20B2BAE800CEC62B /* BaseNavigationController.m */,
+				CC42006C20B2BAE800CEC62B /* BaseNavigationController.h */,
+				CC42006D20B2BAE800CEC62B /* BaseViewController.h */,
+			);
+			path = BaseViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1164,16 +1182,16 @@
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
 				6ACB54D020B0110000528420 /* MJRefreshComponent.m in Sources */,
 				6ACB540520B00F8C00528420 /* MASViewConstraint.m in Sources */,
+				CC42007520B2BAE900CEC62B /* ProgramFont.m in Sources */,
 				6ACB542D20B00F9A00528420 /* UIImageView+HighlightedWebCache.m in Sources */,
+				CC42003720B2B66E00CEC62B /* SPSZ_chu_RecordModel.m in Sources */,
 				6ACB552420B0121800528420 /* UIImage+Alpha.m in Sources */,
-				6ACB553B20B012D900528420 /* BaseViewController.m in Sources */,
 				6ACB543420B00F9A00528420 /* SDWebImageDownloaderOperation.m in Sources */,
 				6ACB54CB20B0110000528420 /* MJRefreshGifHeader.m in Sources */,
 				6ACB551F20B0121800528420 /* UIImage+FileName.m in Sources */,
 				6ACB54FD20B011D500528420 /* UIButton+AFNetworking.m in Sources */,
 				6ACB553720B0124F00528420 /* FMResultSet.m in Sources */,
 				6ACB550520B011D500528420 /* AFURLRequestSerialization.m in Sources */,
-				6ACB554E20B016E700528420 /* UICreateTool.m in Sources */,
 				6ACB548820B00FA500528420 /* YYTextTransaction.m in Sources */,
 				6ACB54BD20B0110000528420 /* UIScrollView+MJRefresh.m in Sources */,
 				6ACB54CE20B0110000528420 /* MJRefreshBackFooter.m in Sources */,
@@ -1181,11 +1199,10 @@
 				6ACB550120B011D500528420 /* AFImageDownloader.m in Sources */,
 				6ACB547B20B00FA500528420 /* YYTextSelectionView.m in Sources */,
 				6ACB548720B00FA500528420 /* UIPasteboard+YYText.m in Sources */,
+				CC42007A20B2BAE900CEC62B /* Reachability.m in Sources */,
 				6ACB548B20B00FA500528420 /* YYTextWeakProxy.m in Sources */,
 				6ACB547D20B00FA500528420 /* YYTextDebugOption.m in Sources */,
-				6ACB555A20B115A000528420 /* ProgramFont.m in Sources */,
 				6ACB54C920B0110000528420 /* MJRefreshNormalHeader.m in Sources */,
-				6ACB555720B0190D00528420 /* ProgramSize.m in Sources */,
 				6ACB547620B00FA500528420 /* YYTextContainerView.m in Sources */,
 				6ACB54C820B0110000528420 /* MJRefreshAutoNormalFooter.m in Sources */,
 				6ACB54FF20B011D500528420 /* UIWebView+AFNetworking.m in Sources */,
@@ -1195,22 +1212,22 @@
 				6ACB548620B00FA500528420 /* NSAttributedString+YYText.m in Sources */,
 				6ACB54C520B0110000528420 /* MJRefreshBackNormalFooter.m in Sources */,
 				6ACB540620B00F8C00528420 /* MASViewAttribute.m in Sources */,
+				CC42003420B2B5F900CEC62B /* SPSZ_suo_RecordTableViewCell.m in Sources */,
 				6ACB550620B011D500528420 /* AFNetworkReachabilityManager.m in Sources */,
 				6ACB554520B0163A00528420 /* NSNull+LUNullExtention.m in Sources */,
+				CC42007620B2BAE900CEC62B /* LUAlertTool.m in Sources */,
 				6ACB54FE20B011D500528420 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				6ACB555420B018FC00528420 /* ProgramColor.m in Sources */,
 				6ACB551D20B0121800528420 /* UIImage+Blur.m in Sources */,
 				6ACB54C720B0110000528420 /* MJRefreshAutoGifFooter.m in Sources */,
 				6ACB542E20B00F9A00528420 /* SDWebImageDownloader.m in Sources */,
 				6ACB550220B011D500528420 /* AFURLResponseSerialization.m in Sources */,
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
-				6ACB554820B016A300528420 /* KRAlertTool.m in Sources */,
 				6ACB54C320B0110000528420 /* MJRefreshBackGifFooter.m in Sources */,
+				CC42007C20B2BAE900CEC62B /* BaseNavigationController.m in Sources */,
 				6ACB542B20B00F9A00528420 /* SDWebImageManager.m in Sources */,
 				6ACB53B020AFFD4800528420 /* main.m in Sources */,
 				6ACB54FA20B011D500528420 /* UIRefreshControl+AFNetworking.m in Sources */,
 				6ACB548D20B00FA500528420 /* YYClassInfo.m in Sources */,
-				6ACB554B20B016B400528420 /* LUAlertTool.m in Sources */,
 				6ACB54FC20B011D500528420 /* UIImageView+AFNetworking.m in Sources */,
 				6ACB540220B00F8C00528420 /* NSArray+MASAdditions.m in Sources */,
 				6ACB543220B00F9A00528420 /* SDWebImagePrefetcher.m in Sources */,
@@ -1220,6 +1237,7 @@
 				6ACB53FE20B00F8C00528420 /* ViewController+MASAdditions.m in Sources */,
 				6ACB543020B00F9A00528420 /* UIImage+MultiFormat.m in Sources */,
 				6ACB548320B00FA500528420 /* YYTextRubyAnnotation.m in Sources */,
+				CC42007D20B2BAE900CEC62B /* KRAlertTool.m in Sources */,
 				6ACB556320B11B8A00528420 /* SPSZ_LoginViewController.m in Sources */,
 				6ACB552620B0121800528420 /* UIImage+Resize.m in Sources */,
 				6ACB548220B00FA500528420 /* YYTextArchiver.m in Sources */,
@@ -1227,6 +1245,7 @@
 				6ACB54CD20B0110000528420 /* MJRefreshHeader.m in Sources */,
 				6ACB548020B00FA500528420 /* YYTextParser.m in Sources */,
 				6ACB54C020B0110000528420 /* UIScrollView+MJExtension.m in Sources */,
+				CC42007720B2BAE900CEC62B /* ProgramColor.m in Sources */,
 				6ACB53FF20B00F8C00528420 /* MASCompositeConstraint.m in Sources */,
 				6ACB542920B00F9A00528420 /* UIImage+WebP.m in Sources */,
 				6ACB552020B0121800528420 /* UIImage+Tint.m in Sources */,
@@ -1235,19 +1254,22 @@
 				6ACB552320B0121800528420 /* UIImage+FX.m in Sources */,
 				6ACB54C620B0110000528420 /* MJRefreshAutoStateFooter.m in Sources */,
 				6ACB551E20B0121800528420 /* UIImage+CalculatedSize.m in Sources */,
+				CC42007E20B2BAE900CEC62B /* UICreateTool.m in Sources */,
 				6ACB547920B00FA500528420 /* YYTextLayout.m in Sources */,
 				6ACB54D420B0118900528420 /* UIView+Extension.m in Sources */,
-				6ACB555D20B116D400528420 /* ProgramConfig.m in Sources */,
+				CC42007B20B2BAE900CEC62B /* BaseViewController.m in Sources */,
+				CC42007920B2BAE900CEC62B /* ProgramSize.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
+				CC42007820B2BAE900CEC62B /* ProgramConfig.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
 				6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */,
 				6ACB547820B00FA500528420 /* YYTextInput.m in Sources */,
 				6ACB548520B00FA500528420 /* NSParagraphStyle+YYText.m in Sources */,
-				6ACB556020B118CD00528420 /* Reachability.m in Sources */,
 				6ACB543620B00F9A00528420 /* UIImageView+WebCache.m in Sources */,
 				6ACB540320B00F8C00528420 /* View+MASAdditions.m in Sources */,
 				6ACB54CA20B0110000528420 /* MJRefreshStateHeader.m in Sources */,
+				CC42003120B2B5E000CEC62B /* SPSZ_chu_RecordTableViewCell.m in Sources */,
 				6ACB550420B011D500528420 /* AFURLSessionManager.m in Sources */,
 				6ACB547520B00FA500528420 /* YYTextMagnifier.m in Sources */,
 				6ACB547E20B00FA500528420 /* YYLabel.m in Sources */,
@@ -1261,18 +1283,19 @@
 				6ACB53FD20B00F8C00528420 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6ACB543120B00F9A00528420 /* SDWebImageCompat.m in Sources */,
 				6ACB540120B00F8C00528420 /* MASLayoutConstraint.m in Sources */,
-				6ACB553E20B012F600528420 /* BaseNavigationController.m in Sources */,
 				6ACB542C20B00F9A00528420 /* SDWebImageDecoder.m in Sources */,
 				6ACB548920B00FA500528420 /* UIView+YYText.m in Sources */,
 				6ACB553420B0124F00528420 /* FMDatabaseAdditions.m in Sources */,
 				6ACB53E220B00F8200528420 /* MBProgressHUD.m in Sources */,
 				6ACB553320B0124F00528420 /* FMDatabaseQueue.m in Sources */,
 				6ACB553620B0124F00528420 /* FMDatabasePool.m in Sources */,
+				CC42003D20B2B71700CEC62B /* SPSZ_chu_RecordViewController.m in Sources */,
 				6ACB547720B00FA500528420 /* YYTextEffectWindow.m in Sources */,
 				6ACB543720B00F9A00528420 /* UIView+WebCacheOperation.m in Sources */,
 				6ACB552120B0121800528420 /* UIImage+Color.m in Sources */,
 				6ACB547A20B00FA500528420 /* YYTextLine.m in Sources */,
 				6ACB54FB20B011D500528420 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				CC42003A20B2B6B100CEC62B /* SPSZ_suo_RecordModel.m in Sources */,
 				6ACB550020B011D500528420 /* AFAutoPurgingImageCache.m in Sources */,
 				6ACB543320B00F9A00528420 /* SDImageCache.m in Sources */,
 				6ACB550320B011D500528420 /* AFHTTPSessionManager.m in Sources */,
