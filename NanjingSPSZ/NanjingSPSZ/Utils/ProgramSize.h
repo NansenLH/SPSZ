@@ -14,6 +14,12 @@
 
 @interface ProgramSize : NSObject
 
+
+/**
+ 判断是否是 iPhone X
+ */
++ (BOOL)isIPhoneX;
+
 /**
  屏幕Size
  */

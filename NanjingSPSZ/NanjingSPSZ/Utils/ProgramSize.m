@@ -10,6 +10,14 @@
 
 @implementation ProgramSize
 
+/**
+ 判断是否是 iPhone X
+ */
++ (BOOL)isIPhoneX
+{
+    return [UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO;
+}
+
 + (CGSize)mainScreenSize
 {
     return [UIScreen mainScreen].bounds.size;
