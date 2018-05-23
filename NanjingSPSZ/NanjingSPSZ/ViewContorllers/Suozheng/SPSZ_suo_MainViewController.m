@@ -7,10 +7,14 @@
 //
 
 #import "SPSZ_suo_MainViewController.h"
-#import "KRTagBar.h"
 #import "SPSZ_saoMa_ViewController.h"
 #import "SPSZ_shouDongViewController.h"
 #import "SPSZ_paiZhaoViewController.h"
+#import "SPSZ_jinHuo_RecordsViewController.h"
+#import "SPSZ_suo_personalCenterViewController.h"
+
+#import "KRTagBar.h"
+#import "UIButton+ImageTitleSpacing.h"
 
 @interface SPSZ_suo_MainViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
 
@@ -36,7 +40,16 @@
 - (UIView *)bottomView{
     if (!_bottomView) {
         _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0,MainScreenHeight -100 , MainScreenWidth, 100)];
-        [_bottomView addSubview:self.recordsButton];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 30)];
+        imageView.image = [UIImage imageNamed:@"bg_white_radius"];
+        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, 70)];
+        whiteView.backgroundColor = [UIColor whiteColor];
+        
+        [_bottomView addSubview:imageView];
+        [_bottomView addSubview:whiteView];
+
+        [whiteView addSubview:self.recordsButton];
+        [whiteView addSubview:self.personButton];
     }
     return _bottomView;
 }
@@ -44,18 +57,45 @@
 - (UIButton *)recordsButton{
     if (!_recordsButton) {
         _recordsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _recordsButton.frame = CGRectMake(40, 20, 80, 80);
+        _recordsButton.frame = CGRectMake(20, 0, 80, 60);
         [_recordsButton setImage:[UIImage imageNamed:@"record_gray"] forState:UIControlStateNormal];
+        [_recordsButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [_recordsButton setTitle:@"进货记录" forState:UIControlStateNormal];
         [_recordsButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [self setButtonContentCenter:_recordsButton];
+        [_recordsButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
+        [_recordsButton addTarget:self action:@selector(recordButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _recordsButton;
 }
 
+- (UIButton *)personButton{
+    if (!_personButton) {
+        _personButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _personButton.frame = CGRectMake(MainScreenWidth - 60 -20, 0, 60, 60);
+        [_personButton setImage:[UIImage imageNamed:@"user_gray"] forState:UIControlStateNormal];
+        [_personButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+
+        [_personButton setTitle:@"个人中心" forState:UIControlStateNormal];
+        [_personButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [_personButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
+        [_personButton addTarget:self action:@selector(personButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _personButton;
+}
+
+- (UIButton *)centerButton{
+    if (!_centerButton){
+        _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _personButton.frame = CGRectMake(MainScreenWidth - 80 -40, 30, 80, 60);
+        [_personButton setImage:[UIImage imageNamed:@"user_gray"] forState:UIControlStateNormal];
+        [_personButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    }
+    return _centerButton;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.view.backgroundColor = [UIColor blueColor];
     [self setupTagBar];
     
     [self setupDetailScrollView];
@@ -163,21 +203,17 @@
     
 }
 
--(void)setButtonContentCenter:(UIButton *)button
-{
-    CGSize imgViewSize,titleSize,btnSize;  
-    UIEdgeInsets imageViewEdge,titleEdge;
-    CGFloat heightSpace = 10.0f;
-    
-    //设置按钮内边距
-    imgViewSize = button.imageView.bounds.size;
-    titleSize = button.titleLabel.bounds.size;
-    btnSize = button.bounds.size;
-    imageViewEdge = UIEdgeInsetsMake(heightSpace,0.0, btnSize.height -imgViewSize.height - heightSpace, - titleSize.width);
-    [button setImageEdgeInsets:imageViewEdge];
-    titleEdge = UIEdgeInsetsMake(imgViewSize.height +heightSpace, - imgViewSize.width, 0.0, 0.0);
-    [button setTitleEdgeInsets:titleEdge];
-} 
+#pragma mark ---- action -----
+- (void)recordButtonAction:(UIButton *)button{
+    SPSZ_jinHuo_RecordsViewController *vc = [[SPSZ_jinHuo_RecordsViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)personButtonAction:(UIButton *)button{
+    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

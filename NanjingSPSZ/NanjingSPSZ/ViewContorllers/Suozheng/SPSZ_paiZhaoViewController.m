@@ -17,10 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor   = [ UIColor redColor];
+    self.view.backgroundColor   = [ UIColor clearColor];
     
-    UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -204)];
-    yy.backgroundColor = [UIColor greenColor];
+    UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236)];
+//    yy.backgroundColor = [UIColor greenColor];
     
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"retailer_take_phote"]];
     imageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264);

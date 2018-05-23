@@ -28,8 +28,6 @@
         [_tableView registerClass:[SPSZ_suo_RecordTableViewCell class] forCellReuseIdentifier:@"RecordCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        
-        
     }
     return _tableView;
 }

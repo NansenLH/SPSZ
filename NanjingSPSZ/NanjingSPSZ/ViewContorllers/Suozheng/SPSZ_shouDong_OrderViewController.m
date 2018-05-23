@@ -10,13 +10,27 @@
 
 @interface SPSZ_shouDong_OrderViewController ()
 
+@property (nonatomic, strong)UIView *topView;
+
 @end
 
 @implementation SPSZ_shouDong_OrderViewController
 
+- (UIView *)topView{
+    if (!_topView) {
+        _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
+    }
+    return _topView;
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor =[UIColor orangeColor];
+    [self.view addSubview:self.topView];
 }
 
 - (void)didReceiveMemoryWarning {

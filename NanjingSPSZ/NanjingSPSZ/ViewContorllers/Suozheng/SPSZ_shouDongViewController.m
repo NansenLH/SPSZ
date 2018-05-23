@@ -36,8 +36,8 @@
 
 - (UIView *)mainView{
     if (!_mainView) {
-        _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight -204)];
-        _mainView.backgroundColor = [UIColor whiteColor];
+        _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight -264)];
+        _mainView.backgroundColor = [UIColor greenColor];
     }
     return _mainView;
 }
@@ -45,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor   = [ UIColor blueColor];
+    self.view.backgroundColor   = [ UIColor clearColor];
 
     
     [self.view addSubview:self.mainView];
@@ -55,7 +55,7 @@
 
 - (void)setUpView{
     
-    CGFloat height = (MainScreenHeight -204)/8 - 4;
+    CGFloat height = (MainScreenHeight -264)/8;
     CGFloat width = MainScreenWidth - 60;
     
     UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, width, height)];
