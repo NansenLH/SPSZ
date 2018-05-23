@@ -132,4 +132,15 @@
              ];
 }
 
+/**
+ 蓝色渐变色: 上浅下深
+ */
++ (NSArray *)blueMoreGradientColors
+{
+    return @[
+             [self RGBColorWithRed:33 green:211 blue:255 alpha:0.94],
+             [self RGBColorWithRed:67 green:130 blue:255 alpha:0.94],
+             ];
+}
+
 @end
