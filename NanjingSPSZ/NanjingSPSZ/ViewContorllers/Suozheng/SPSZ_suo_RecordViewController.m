@@ -43,7 +43,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPSZ_suo_RecordModel *model = _dataSourceArray[indexPath.row];
+//    SPSZ_suo_RecordModel *model = _dataSourceArray[indexPath.row];
     
     SPSZ_suo_RecordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCell" forIndexPath:indexPath];
     
