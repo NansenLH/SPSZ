@@ -56,4 +56,23 @@
 
 + (UIColor *)VCBackgroundColor;
 
+
+#pragma mark - ==== 出证部分的颜色 ====
+/**
+ 导航栏标题颜色
+ */
++ (UIColor *)navigationTitleColor;
+/**
+ 导航栏上按钮的文字颜色
+ */
++ (UIColor *)navigationButtonTitleColor;
+
+
+/**
+ 蓝色渐变色
+ */
++ (NSArray *)blueGradientColors;
+
+
+
 @end

@@ -103,4 +103,33 @@
     return [UIColor whiteColor];
 }
 
+
+
+#pragma mark - ==== 出证部分的颜色 ====
+/**
+ 导航栏标题颜色
+ */
++ (UIColor *)navigationTitleColor
+{
+    return [UIColor whiteColor];
+}
+/**
+ 导航栏上按钮的文字颜色
+ */
++ (UIColor *)navigationButtonTitleColor
+{
+    return [UIColor whiteColor];
+}
+
+/**
+ 蓝色渐变色
+ */
++ (NSArray *)blueGradientColors
+{
+    return @[
+             [self RGBColorWithRed:67 green:130 blue:255 alpha:0.94],
+             [self RGBColorWithRed:33 green:211 blue:255 alpha:0.94],
+             ];
+}
+
 @end
