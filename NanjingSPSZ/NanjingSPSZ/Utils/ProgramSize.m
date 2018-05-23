@@ -43,4 +43,16 @@
     return [self mainScreenHeight] == 812 ? 34 : 0;
 }
 
+/**
+ 根据屏幕宽度进行等比缩放的尺寸.
+ */
++ (CGFloat)fitSize:(CGFloat)designSize
+{
+    CGFloat screenWidth = [self mainScreenWidth];
+    CGFloat fitSize = (designSize * screenWidth / 375.0);
+    return fitSize;
+}
+
+
+
 @end
