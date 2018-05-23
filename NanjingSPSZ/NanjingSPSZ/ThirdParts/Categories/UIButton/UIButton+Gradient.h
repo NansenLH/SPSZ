@@ -19,7 +19,10 @@
  *  @param percent  渐变颜色的占比数组
  *  @param type     渐变色的类型
  */
-- (UIButton *)gradientButtonWithSize:(CGSize)btnSize colorArray:(NSArray *)clrs percentageArray:(NSArray *)percent gradientType:(GradientType)type;
+- (UIButton *)gradientButtonWithSize:(CGSize)btnSize
+                          colorArray:(NSArray *)clrs
+                     percentageArray:(NSArray *)percent
+                        gradientType:(GradientType)type;
 
 
 @end

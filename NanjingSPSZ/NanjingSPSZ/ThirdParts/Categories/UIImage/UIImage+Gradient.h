@@ -25,6 +25,9 @@ typedef NS_ENUM(NSInteger, GradientType) {
  *  @param percents          渐变颜色的占比数组
  *  @param gradientType     渐变色的类型
  */
-- (UIImage *)createImageWithSize:(CGSize)imageSize gradientColors:(NSArray *)colorArr percentage:(NSArray *)percents gradientType:(GradientType)gradientType;
+- (UIImage *)createImageWithSize:(CGSize)imageSize
+                  gradientColors:(NSArray *)colorArr
+                      percentage:(NSArray *)percents
+                    gradientType:(GradientType)gradientType;
 
 @end

@@ -69,10 +69,13 @@
 
 
 /**
- 蓝色渐变色
+ 蓝色渐变色: 上深下浅
  */
 + (NSArray *)blueGradientColors;
 
-
+/**
+ 蓝色渐变色: 上浅下深
+ */
++ (NSArray *)blueMoreGradientColors;
 
 @end

@@ -22,13 +22,12 @@
     [[UINavigationBar appearance] setTranslucent:NO];
     
     // 设置导航栏字体颜色,大小
-//    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:KRColorTextDark,
-//                                                 NSFontAttributeName : KRNaviTitleFont
-//                                                 }];
+    [self.navigationBar setTitleTextAttributes:@{
+            NSForegroundColorAttributeName : [ProgramColor navigationTitleColor],
+                       NSFontAttributeName : [UIFont systemFontOfSize:15]
+                                                 }];
     
-    
-    
-    
+    self.navigationBar.barTintColor = [UIColor blueColor];
     
 }
 

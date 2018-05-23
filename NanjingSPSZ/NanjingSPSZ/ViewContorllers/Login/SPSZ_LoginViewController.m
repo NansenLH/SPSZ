@@ -8,6 +8,7 @@
 
 #import "SPSZ_LoginViewController.h"
 
+
 @interface SPSZ_LoginViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -60,8 +61,9 @@
 
 - (void)buttonAction:(UIButton *)button{
     // 变化状态 把状态变成非第一次运行程序  提供给下一次使用
-    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"firstStart"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStart"];
     NSLog(@"第一次运行程序");
+
 
 //    RootViewController *rootView = [[RootViewController alloc]init];
 //    UINavigationController *rootNav = [[UINavigationController alloc]initWithRootViewController:rootView];
