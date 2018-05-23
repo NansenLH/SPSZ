@@ -92,18 +92,18 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 64, MainScreenWidth, 60)];
-    view1.backgroundColor = [UIColor redColor];
+    view1.backgroundColor = [ProgramColor huiseColor];
     [view1 addSubview:self.phoneNumberTextField];
     
     UIView *view2 = [[UIView alloc]initWithFrame:CGRectMake(0,64+80, MainScreenWidth *0.6, 60)];
-    view2.backgroundColor = [UIColor redColor];
+    view2.backgroundColor = [ProgramColor huiseColor];
     [view2 addSubview:self.securityTextField];
     
     [self.view addSubview:view1];
     [self.view addSubview:view2];
     [self.view addSubview:self.securityButton];
     UIView *view3 = [[UIView alloc]initWithFrame:CGRectMake(0,64+80 + 80, MainScreenWidth, 60)];
-    view3.backgroundColor = [UIColor redColor];
+    view3.backgroundColor = [ProgramColor huiseColor];
     [view3 addSubview:self.passwordTextField];
     [self.view addSubview:view3];
     [self.view addSubview:self.sureButton];

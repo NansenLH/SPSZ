@@ -76,11 +76,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 64, MainScreenWidth, 60)];
-//    view1.backgroundColor = [ProgramColor huiSeColor];
+    view1.backgroundColor = [ProgramColor huiseColor];
     [view1 addSubview:self.phoneNumberTextField];
     
     UIView *view2 = [[UIView alloc]initWithFrame:CGRectMake(0,64+80, MainScreenWidth, 60)];
-//    view2.backgroundColor = [ProgramColor huiSeColor];
+    view2.backgroundColor = [ProgramColor huiseColor];
     [view2 addSubview:self.passwordTextField];
     
     [self.view addSubview:view1];
