@@ -211,8 +211,8 @@
 }
 
 - (void)personButtonAction:(UIButton *)button{
-//    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
-    SPSZ_chu_personalCenterViewController *vc = [[SPSZ_chu_personalCenterViewController alloc]init];
+    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
+//    SPSZ_chu_personalCenterViewController *vc = [[SPSZ_chu_personalCenterViewController alloc]init];
 
     [self.navigationController pushViewController:vc animated:YES];
 }

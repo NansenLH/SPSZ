@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong)UITextField *productNameTextField;
 
-@property (nonatomic, strong)UITextField *productLocationTextField;
+@property (nonatomic, strong)UIButton *productLocationButton;
 
 @property (nonatomic, strong)UITextField *detailLocationTextField;
 
@@ -26,18 +26,120 @@
 
 @property (nonatomic, strong)UITextField *phoneTextField;
 
-@property (nonatomic, strong)UITextField *timeTextField;
+@property (nonatomic, strong)UIButton *timeButton;
 
+@property (nonatomic, assign)CGFloat width;
+
+@property (nonatomic, assign)CGFloat height;
+
+@property (nonatomic, strong)NSMutableArray *titleArray;
 
 @end
 
 @implementation SPSZ_shouDongViewController
 
 
+- (NSMutableArray *)titleArray{
+    if (!_titleArray) {
+        _titleArray = [NSMutableArray arrayWithObjects:@"产品名称",@"产品产地",@"详细地址",@"进货数量/重量",@"供货单位",@"批发商姓名",@"联系电话",@"发货时间", nil];
+    }
+    return _titleArray;
+}
+
+- (UITextField *)productNameTextField{
+    if (!_productNameTextField) {
+        _productNameTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, _width - 110 -10, _height)];
+        _productNameTextField.delegate = self;
+        _productNameTextField.tintColor = [UIColor redColor];
+        _productNameTextField.textAlignment = NSTextAlignmentRight;
+        _productNameTextField.placeholder = @"请输入";
+    }
+    return _productNameTextField;
+}
+
+
+- (UITextField *)detailLocationTextField{
+    if (!_detailLocationTextField) {
+        _detailLocationTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, _width - 110 -10, _height)];
+        _detailLocationTextField.delegate = self;
+        _detailLocationTextField.tintColor = [UIColor redColor];
+        _detailLocationTextField.textAlignment = NSTextAlignmentRight;
+        _detailLocationTextField.placeholder = @"请输入";
+    }
+    return _detailLocationTextField;
+}
+
+- (UITextField *)numberTextField{
+    if (!_numberTextField) {
+        _numberTextField = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, _width - 140 -10, _height)];
+        _numberTextField.delegate = self;
+        _numberTextField.tintColor = [UIColor redColor];
+        _numberTextField.textAlignment = NSTextAlignmentRight;
+        _numberTextField.placeholder = @"请输入";
+    }
+    return _numberTextField;
+}
+
+- (UITextField *)companyTextField{
+    if (!_companyTextField) {
+        _companyTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, _width - 110 -10, _height)];
+        _companyTextField.delegate = self;
+        _companyTextField.tintColor = [UIColor redColor];
+        _companyTextField.textAlignment = NSTextAlignmentRight;
+        _companyTextField.placeholder = @"请输入";
+    }
+    return _companyTextField;
+}
+
+- (UITextField *)nameTextField{
+    if (!_nameTextField) {
+        _nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(130, 0, _width - 130 -10, _height)];
+        _nameTextField.delegate = self;
+        _nameTextField.tintColor = [UIColor redColor];
+        _nameTextField.textAlignment = NSTextAlignmentRight;
+        _nameTextField.placeholder = @"请输入";
+    }
+    return _nameTextField;
+}
+
+- (UITextField *)phoneTextField{
+    if (!_phoneTextField) {
+        _phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, _width - 110 -10, _height)];
+        _phoneTextField.delegate = self;
+        _phoneTextField.tintColor = [UIColor redColor];
+        _phoneTextField.textAlignment = NSTextAlignmentRight;
+        _phoneTextField.placeholder = @"请输入";
+    }
+    return _phoneTextField;
+}
+
+- (UIButton *)timeButton{
+    if (!_timeButton) {
+        _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _timeButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
+        [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
+        [_timeButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _timeButton;
+}
+
+- (UIButton *)productLocationButton{
+    if (!_productLocationButton) {
+        _productLocationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _productLocationButton.backgroundColor = [UIColor redColor];
+        _productLocationButton.titleLabel.textAlignment = NSTextAlignmentRight;
+        _productLocationButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
+        [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
+        [_productLocationButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _productLocationButton;
+}
+
 - (UIView *)mainView{
     if (!_mainView) {
         _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight -264)];
-        _mainView.backgroundColor = [UIColor greenColor];
+        _mainView.backgroundColor = [UIColor whiteColor];
+        _mainView.userInteractionEnabled = YES;
     }
     return _mainView;
 }
@@ -47,6 +149,8 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor   = [ UIColor clearColor];
 
+    self.height = (MainScreenHeight -264)/8;
+    self.width = MainScreenWidth - 60;
     
     [self.view addSubview:self.mainView];
 
@@ -55,116 +159,50 @@
 
 - (void)setUpView{
     
-    CGFloat height = (MainScreenHeight -264)/8;
-    CGFloat width = MainScreenWidth - 60;
+    [self setUpViewWith:0 textfield:self.productNameTextField button:nil];
+    [self setUpViewWith:1 textfield:nil button:self.productLocationButton];
+    [self setUpViewWith:2 textfield:self.detailLocationTextField button:nil];
+    [self setUpViewWith:3 textfield:self.numberTextField button:nil];
+    [self setUpViewWith:4 textfield:self.companyTextField button:nil];
+    [self setUpViewWith:5 textfield:self.nameTextField button:nil];
+    [self setUpViewWith:6 textfield:self.phoneTextField button:nil];
+    [self setUpViewWith:7 textfield:nil button:self.timeButton];
+}
+
+
+- (void)setUpViewWith:(NSInteger)number textfield:(UITextField *)textfield button:(UIButton *)button{
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, _height*number, _width, _height)];
+    if (number == 1 || number == 7) {
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, _height)];
+        label.textColor = [UIColor redColor];
+        [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"    " string2:self.titleArray[number]]];
+        [view addSubview:label];
+        [view addSubview:button];
+    }else{
+        CGFloat w = 100;
+        if (number == 3 || number == 5) {
+            w = 140;
+        }
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
+        label.textColor = [UIColor redColor];
+        [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:self.titleArray[number]]];
+        [view addSubview:label];
+        [view addSubview:textfield];
+    }
+    if (number != 7) {
+        UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, _height- 1, _width - 20, 1)];
+        lineView.backgroundColor = [ProgramColor huiseColor];
+        [view addSubview:lineView];
+    }
+    [self.mainView addSubview:view];
+}
+
+
+- (void)tapAction:(UIButton *)button{
     
-    UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, width, height)];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, height)];
-    label.textColor = [UIColor redColor];
-    [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:@"产品名称"]];
-    [view1 addSubview:label];
-    _productNameTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, width - 110 -10, height)];
-    _productNameTextField.delegate = self;
-    _productNameTextField.tintColor = [UIColor redColor];
-    _productNameTextField.textAlignment = NSTextAlignmentRight;
-    _productNameTextField.placeholder = @"请输入";
-    [view1 addSubview:_productNameTextField];
-    
-    UIView *view2 = [[UIView alloc]initWithFrame:CGRectMake(0, height, width, height)];
-    UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, height)];
-    label2.textColor = [UIColor redColor];
-    [label2 setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:@"产品产地"]];
-    [view2 addSubview:label2];
-    _productLocationTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, width - 110 -10, height)];
-    _productLocationTextField.delegate = self;
-    _productLocationTextField.tintColor = [UIColor redColor];
-    _productLocationTextField.textAlignment = NSTextAlignmentRight;
-    _productLocationTextField.placeholder = @"请输入";
-    [view2 addSubview:_productLocationTextField];
-    
-    UIView *view3 = [[UIView alloc]initWithFrame:CGRectMake(0, height *2, width, height)];
-    UILabel *label3 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, height)];
-    label3.textColor = [UIColor redColor];
-    [label3 setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"   " string2:@"详细地址"]];
-    [view3 addSubview:label3];
-    _detailLocationTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, width - 110 -10, height)];
-    _detailLocationTextField.delegate = self;
-    _detailLocationTextField.tintColor = [UIColor redColor];
-    _detailLocationTextField.textAlignment = NSTextAlignmentRight;
-    _detailLocationTextField.placeholder = @"请输入";
-    [view3 addSubview:_detailLocationTextField];
-    
-    
-    UIView *view4 = [[UIView alloc]initWithFrame:CGRectMake(0, height*3, width, height)];
-    UILabel *label4 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 130, height)];
-    label4.textColor = [UIColor redColor];
-    [label4 setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:@"进货数量/重量"]];
-    [view4 addSubview:label4];
-    _numberTextField = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, width - 140 -10, height)];
-    _numberTextField.delegate = self;
-    _numberTextField.tintColor = [UIColor redColor];
-    _numberTextField.textAlignment = NSTextAlignmentRight;
-    _numberTextField.placeholder = @"请输入";
-    [view4 addSubview:_numberTextField];
-    
-    UIView *view5 = [[UIView alloc]initWithFrame:CGRectMake(0, height *4, width, height)];
-    UILabel *label5 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, height)];
-    label5.textColor = [UIColor redColor];
-    [label5 setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:@"供货单位"]];
-    [view5 addSubview:label5];
-    _companyTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, width - 110 -10, height)];
-    _companyTextField.delegate = self;
-    _companyTextField.tintColor = [UIColor redColor];
-    _companyTextField.textAlignment = NSTextAlignmentRight;
-    _companyTextField.placeholder = @"请输入";
-    [view5 addSubview:_companyTextField];
-    
-    UIView *view6 = [[UIView alloc]initWithFrame:CGRectMake(0, height *5, width, height)];
-    UILabel *label6 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 120, height)];
-    label6.textColor = [UIColor redColor];
-    [label6 setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:@"批发商姓名"]];
-    [view6 addSubview:label6];
-    _nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(130, 0, width - 130 -10, height)];
-    _nameTextField.delegate = self;
-    _nameTextField.tintColor = [UIColor redColor];
-    _nameTextField.textAlignment = NSTextAlignmentRight;
-    _nameTextField.placeholder = @"请输入";
-    [view6 addSubview:_nameTextField];
-    
-    UIView *view7 = [[UIView alloc]initWithFrame:CGRectMake(0, height *6, width, height)];
-    UILabel *label7 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, height)];
-    label7.textColor = [UIColor redColor];
-    [label7 setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:@"联系电话"]];
-    [view7 addSubview:label7];
-    _phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, width - 110 -10, height)];
-    _phoneTextField.delegate = self;
-    _phoneTextField.tintColor = [UIColor redColor];
-    _phoneTextField.textAlignment = NSTextAlignmentRight;
-    _phoneTextField.placeholder = @"请输入";
-    [view7 addSubview:_phoneTextField];
-    
-    UIView *view8 = [[UIView alloc]initWithFrame:CGRectMake(0, height *7, width, height)];
-    UILabel *label8 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, height)];
-    label8.textColor = [UIColor redColor];
-    [label8 setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:@"联系电话"]];
-    [view8 addSubview:label8];
-    _timeTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, width - 110 -10, height)];
-    _timeTextField.delegate = self;
-    _timeTextField.tintColor = [UIColor redColor];
-    _timeTextField.textAlignment = NSTextAlignmentRight;
-    _timeTextField.placeholder = @"请输入";
-    [view8 addSubview:_timeTextField];
-    
-    [self.mainView addSubview:view1];
-    [self.mainView addSubview:view2];
-    [self.mainView addSubview:view3];
-    [self.mainView addSubview:view4];
-    [self.mainView addSubview:view5];
-    [self.mainView addSubview:view6];
-    [self.mainView addSubview:view7];
-    [self.mainView addSubview:view8];
     
 }
+
 
 
 - (NSMutableAttributedString *)Color:(UIColor *)color

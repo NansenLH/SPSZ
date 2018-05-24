@@ -8,6 +8,8 @@
 
 #import "SPSZ_suo_personalCenterViewController.h"
 
+#import "SPSZ_personalInfoViewController.h"
+
 @interface SPSZ_suo_personalCenterViewController ()
 
 @property (nonatomic, strong)NSMutableArray *itemArray;
@@ -135,6 +137,9 @@
 - (void)tapAction:(UITapGestureRecognizer *)tap{
     if ([tap view].tag == 10002) {
         NSLog(@"个人信息");
+        SPSZ_personalInfoViewController *vc = [[SPSZ_personalInfoViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+
     }else if ([tap view].tag == 10005){
         NSLog(@"检查版本");
     }else if ([tap view].tag == 10007){
