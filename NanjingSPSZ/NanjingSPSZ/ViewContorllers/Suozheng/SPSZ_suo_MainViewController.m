@@ -12,6 +12,7 @@
 #import "SPSZ_paiZhaoViewController.h"
 #import "SPSZ_jinHuo_RecordsViewController.h"
 #import "SPSZ_suo_personalCenterViewController.h"
+#import "SPSZ_chu_personalCenterViewController.h"
 
 #import "KRTagBar.h"
 #import "UIButton+ImageTitleSpacing.h"
@@ -210,7 +211,9 @@
 }
 
 - (void)personButtonAction:(UIButton *)button{
-    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
+//    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
+    SPSZ_chu_personalCenterViewController *vc = [[SPSZ_chu_personalCenterViewController alloc]init];
+
     [self.navigationController pushViewController:vc animated:YES];
 }
 

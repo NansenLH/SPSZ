@@ -1,14 +1,14 @@
 //
-//  SPSZ_suo_personalCenterViewController.m
+//  SPSZ_chu_personalCenterViewController.m
 //  NanjingSPSZ
 //
-//  Created by Mr.Ling on 2018/5/23.
+//  Created by Mr.Ling on 2018/5/24.
 //  Copyright © 2018年 nansen. All rights reserved.
 //
 
-#import "SPSZ_suo_personalCenterViewController.h"
+#import "SPSZ_chu_personalCenterViewController.h"
 
-@interface SPSZ_suo_personalCenterViewController ()
+@interface SPSZ_chu_personalCenterViewController ()
 
 @property (nonatomic, strong)NSMutableArray *itemArray;
 
@@ -19,15 +19,14 @@
 @property (nonatomic, strong)NSMutableArray *titleNumArray;
 
 @property (nonatomic, strong)UILabel        *numLabel;
-
 @end
 
-@implementation SPSZ_suo_personalCenterViewController
+@implementation SPSZ_chu_personalCenterViewController
 
 - (NSMutableArray *)itemArray
 {
     if (!_itemArray) {
-        _itemArray = [NSMutableArray arrayWithObjects:@"零售商",@"版本信息",@"其他信息", nil];
+        _itemArray = [NSMutableArray arrayWithObjects:@"批发商",@"版本信息",@"其他信息", nil];
     }
     return _itemArray;
 }
@@ -35,7 +34,7 @@
 - (NSMutableArray *)numberArray
 {
     if (!_numberArray) {
-        _numberArray = [NSMutableArray arrayWithObjects:@"1",@"3",@"6", nil];
+        _numberArray = [NSMutableArray arrayWithObjects:@"1",@"5",@"8", nil];
     }
     return _numberArray;
 }
@@ -43,7 +42,7 @@
 - (NSMutableArray *)titleArray
 {
     if (!_titleArray) {
-        _titleArray = [NSMutableArray arrayWithObjects:@"个人信息",@"版本号",@"检查版本",@"帮助",@"注销登录", nil];
+        _titleArray = [NSMutableArray arrayWithObjects:@"个人信息",@"进货记录",@"出货记录",@"版本号",@"检查版本",@"帮助",@"注销登录", nil];
     }
     return _titleArray;
 }
@@ -51,7 +50,7 @@
 - (NSMutableArray *)titleNumArray
 {
     if (!_titleNumArray) {
-        _titleNumArray = [NSMutableArray arrayWithObjects:@"2",@"4",@"5",@"7",@"8", nil];
+        _titleNumArray = [NSMutableArray arrayWithObjects:@"2",@"3",@"4",@"6",@"7",@"9",@"10", nil];
     }
     return _titleNumArray;
 }
@@ -62,22 +61,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [ProgramColor huiseColor];
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<self.itemArray.count; i++) {
         [self setUpViewWith:i];
     }
     
-    for (int i=0; i<5; i++) {
+    for (int i=0; i<self.titleArray.count; i++) {
         [self setTitleViewWith:i];
     }
     
 //    UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10,  64+50*(4 -1), MainScreenWidth - 20, 1)];
 //    lineView.backgroundColor = [ProgramColor huiseColor];
-//
+//    
 //    [self.view addSubview:lineView];
-//
+//    
 //    UIView *lineView2 =[[UIView alloc]initWithFrame:CGRectMake(10,  64+50*(4 -1), MainScreenWidth - 20, 1)];
 //    lineView2.backgroundColor = [ProgramColor huiseColor];
-//
+//    
 //    [self.view addSubview:lineView2];
     
 }
@@ -103,7 +102,7 @@
 - (void)setTitleViewWith:(NSInteger)number{
     NSInteger num = [self.titleNumArray[number] integerValue];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 64+50*(num -1), MainScreenWidth, 50)];
-    if (num == 4) {
+    if (num == 6) {
         self.numLabel  = [[UILabel alloc]initWithFrame:CGRectMake(MainScreenWidth -100, 15, 85, 20)];
         self.numLabel.text = @"v1.2";
         self.numLabel.textAlignment = NSTextAlignmentRight;
@@ -119,11 +118,11 @@
         [view addSubview:imageView];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
-        view.tag = 10000 + num;
+        view.tag = 20000 + num;
         [view addGestureRecognizer:tap];
     }
     
-    if (num == 7) {
+    if (num == 9 || num == 2 || num ==3) {
         UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, 49, MainScreenWidth - 20, 1)];
         lineView.backgroundColor = [ProgramColor huiseColor];
         [view addSubview:lineView];
@@ -143,18 +142,21 @@
 
 
 - (void)tapAction:(UITapGestureRecognizer *)tap{
-    if ([tap view].tag == 10002) {
+    if ([tap view].tag == 20002) {
         NSLog(@"个人信息");
-    }else if ([tap view].tag == 10005){
+    }else if ([tap view].tag == 20003){
+        NSLog(@"进货记录");
+    }else if ([tap view].tag == 20004){
+        NSLog(@"出货记录");
+    }else if ([tap view].tag == 20007){
         NSLog(@"检查版本");
-    }else if ([tap view].tag == 10007){
+    }else if ([tap view].tag == 20009){
         NSLog(@"帮助");
-    }else if ([tap view].tag == 10008){
+    }else if ([tap view].tag == 20010){
         NSLog(@"注销登录");
     }
 }
 
-//- (UIView *)setView
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
