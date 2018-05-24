@@ -70,16 +70,6 @@
         [self setTitleViewWith:i];
     }
     
-//    UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10,  64+50*(4 -1), MainScreenWidth - 20, 1)];
-//    lineView.backgroundColor = [ProgramColor huiseColor];
-//
-//    [self.view addSubview:lineView];
-//
-//    UIView *lineView2 =[[UIView alloc]initWithFrame:CGRectMake(10,  64+50*(4 -1), MainScreenWidth - 20, 1)];
-//    lineView2.backgroundColor = [ProgramColor huiseColor];
-//
-//    [self.view addSubview:lineView2];
-    
 }
 
 
