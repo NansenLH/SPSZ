@@ -7,6 +7,7 @@
 //
 
 #import "BaseNavigationController.h"
+#import "UIImage+Gradient.h"
 
 @interface BaseNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 
@@ -27,7 +28,11 @@
                        NSFontAttributeName : [UIFont systemFontOfSize:15]
                                                  }];
     
-    self.navigationBar.barTintColor = [UIColor blueColor];
+    UIImage *naviBackImage = [[UIImage alloc] createImageWithSize:CGSizeMake([ProgramSize mainScreenWidth], [ProgramSize statusBarAndNavigationBarHeight])
+                                                   gradientColors:[ProgramColor blueGradientColors]
+                                                       percentage:@[@(0), @(1)]
+                                                     gradientType:GradientFromLeftToRight];
+    [self.navigationBar setBackgroundImage:naviBackImage forBarMetrics:UIBarMetricsDefault];
     
 }
 
@@ -48,7 +53,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleDefault;
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated

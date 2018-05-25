@@ -10,8 +10,10 @@
 #import "Reachability.h"
 
 #import "SPSZ_LoginViewController.h"
-//#import "SPSZ_chu_RecordViewController.h"
-//#import "SPSZ_suo_RecordViewController.h"
+
+#import "BaseNavigationController.h"
+#import "SPSZ_ChuIndexViewController.h"
+
 @interface AppDelegate ()
 
 
@@ -37,16 +39,22 @@
 
     [self.window makeKeyAndVisible];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])
-    {
-        NSLog(@"第一次运行程序");
-        self.loginVC = [[SPSZ_LoginViewController alloc] init];
-        self.window.rootViewController = self.loginVC;
-    }
-    else{
-        self.loginVC = [[SPSZ_LoginViewController alloc] init];
-        self.window.rootViewController = self.loginVC;
-    }
+    SPSZ_ChuIndexViewController *chuIndexVC = [[SPSZ_ChuIndexViewController alloc] init];
+    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:chuIndexVC];
+    self.window.rootViewController = navi;
+    
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])
+//    {
+//        NSLog(@"第一次运行程序");
+//        self.loginVC = [[SPSZ_LoginViewController alloc] init];
+//        self.window.rootViewController = self.loginVC;
+//    }
+//    else{
+//        self.loginVC = [[SPSZ_LoginViewController alloc] init];
+//        self.window.rootViewController = self.loginVC;
+//    }
+    
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     [[UIView appearance] setExclusiveTouch:YES];
