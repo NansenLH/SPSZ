@@ -48,7 +48,7 @@
     
     [self configTabbar];
     
-    self.isConnect = NO;
+    self.isConnect = YES;
 }
 
 - (void)setIsConnect:(BOOL)isConnect
@@ -197,7 +197,8 @@
 - (void)addGoodsClick:(UIButton *)addGoodsButton
 {
     // 跳转到添加货物页面
-    
+    SPSZ_AddGoodsViewController *addGoodsVC = [[SPSZ_AddGoodsViewController alloc] init];
+    [self.navigationController pushViewController:addGoodsVC animated:YES];
 }
 
 - (void)centerClick

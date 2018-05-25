@@ -7,12 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "Reachability.h"
 
 #import "SPSZ_LoginViewController.h"
 
 #import "BaseNavigationController.h"
 #import "SPSZ_ChuIndexViewController.h"
+
+
+#import "NetworkReachabilityTool.h"
 
 @interface AppDelegate ()
 
@@ -58,6 +60,9 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     [[UIView appearance] setExclusiveTouch:YES];
+    
+    // 监听网络状态
+    [[NetworkReachabilityTool defaultTool] start];
     
     
     return YES;
@@ -115,7 +120,6 @@
 {
     
 }
-
 
 
 

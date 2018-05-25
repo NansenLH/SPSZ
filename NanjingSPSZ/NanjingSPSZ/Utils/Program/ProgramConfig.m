@@ -20,7 +20,7 @@ const BOOL isDev            = YES;
 #ifdef KRTestVersion
 #pragma mark - ======== 测试服务器 ========
 // 服务器地址
-NSString * const BasePath = @"http://192.168.125.246:5556/api/v2";
+NSString * const BasePath = @"http://sy.zrodo.com/nanjing/mobile/";
 
 #else
 #pragma mark - ======== 运营服务器 ========
