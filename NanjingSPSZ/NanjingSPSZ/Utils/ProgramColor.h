@@ -78,4 +78,9 @@
  */
 + (NSArray *)blueMoreGradientColors;
 
+/**
+ 灰色
+ */
++ (UIColor *)huiseColor;
+
 @end

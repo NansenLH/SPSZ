@@ -143,4 +143,11 @@
              ];
 }
 
+/**
+ 灰色
+ */
++ (UIColor *)huiseColor{
+    return [self RGBColorWithRed:226 green:226 blue:226];
+}
+
 @end

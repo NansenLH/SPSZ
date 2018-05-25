@@ -28,8 +28,6 @@
         [_tableView registerClass:[SPSZ_suo_RecordTableViewCell class] forCellReuseIdentifier:@"RecordCell"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        
-        
     }
     return _tableView;
 }
@@ -43,7 +41,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPSZ_suo_RecordModel *model = _dataSourceArray[indexPath.row];
+//    SPSZ_suo_RecordModel *model = _dataSourceArray[indexPath.row];
     
     SPSZ_suo_RecordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCell" forIndexPath:indexPath];
     
