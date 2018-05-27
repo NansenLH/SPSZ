@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ticket_top.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ticket_top.png",
       "scale" : "2x"
     },
     {

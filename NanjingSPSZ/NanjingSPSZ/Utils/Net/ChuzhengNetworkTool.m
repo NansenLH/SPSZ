@@ -26,7 +26,7 @@
 {
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getDishesByUserId"];
-    [requestDic setObject:@(20) forKey:@"pageSize"];
+    [requestDic setObject:@(Pagesize) forKey:@"pageSize"];
     [requestDic setObject:@(pageNumber) forKey:@"pageNo"];
     [requestDic setObject:@"13156" forKey:@"userid"];
     

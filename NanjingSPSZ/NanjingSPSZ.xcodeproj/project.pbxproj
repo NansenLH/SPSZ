@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A143B3620BAB36200D71959 /* SPSZ_InputWeightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */; };
 		6A6BACAB20B84AAA008A428F /* SPSZ_AddGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACAA20B84AAA008A428F /* SPSZ_AddGoodsViewController.m */; };
 		6A6BACB520B84FDD008A428F /* SPSZ_chu_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACB120B84FDC008A428F /* SPSZ_chu_RecordTableViewCell.m */; };
 		6A6BACB620B84FDD008A428F /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACB320B84FDC008A428F /* SPSZ_suo_RecordTableViewCell.m */; };
@@ -30,6 +31,11 @@
 		6A6BACF020B85A38008A428F /* ProgramNotificationName.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACEF20B85A38008A428F /* ProgramNotificationName.m */; };
 		6A6BACF520B85E9D008A428F /* ChuzhengNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACF420B85E9D008A428F /* ChuzhengNetworkTool.m */; };
 		6A6BACF820B86829008A428F /* SPSZ_AddGoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACF720B86829008A428F /* SPSZ_AddGoodsTableViewCell.m */; };
+		6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACFC20BA51BB008A428F /* UIImage+HYBImageCliped.m */; };
+		6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACFD20BA51BB008A428F /* UIButton+HYBImageCliped.m */; };
+		6A6BAD0720BA51BB008A428F /* UIView+HYBImageCliped.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACFE20BA51BB008A428F /* UIView+HYBImageCliped.m */; };
+		6A6BAD0820BA51BB008A428F /* UIImageView+HYBImageCliped.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACFF20BA51BB008A428F /* UIImageView+HYBImageCliped.m */; };
+		6A6BAD0920BA51BB008A428F /* HYBImageClipedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BAD0120BA51BB008A428F /* HYBImageClipedManager.m */; };
 		6AAF972D20B5428C00A6C0E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AAF972C20B5428C00A6C0E8 /* Assets.xcassets */; };
 		6AAF973320B557EE00A6C0E8 /* UIImage+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973220B557EE00A6C0E8 /* UIImage+Gradient.m */; };
 		6AAF973720B5589600A6C0E8 /* UIButton+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973620B5589600A6C0E8 /* UIButton+Gradient.m */; };
@@ -192,6 +198,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A143B3420BAB36200D71959 /* SPSZ_InputWeightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_InputWeightView.h; sourceTree = "<group>"; };
+		6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_InputWeightView.m; sourceTree = "<group>"; };
 		6A6BACA920B84AAA008A428F /* SPSZ_AddGoodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_AddGoodsViewController.h; sourceTree = "<group>"; };
 		6A6BACAA20B84AAA008A428F /* SPSZ_AddGoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_AddGoodsViewController.m; sourceTree = "<group>"; };
 		6A6BACB020B84FDC008A428F /* SPSZ_chu_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordTableViewCell.h; sourceTree = "<group>"; };
@@ -238,6 +246,17 @@
 		6A6BACF420B85E9D008A428F /* ChuzhengNetworkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChuzhengNetworkTool.m; sourceTree = "<group>"; };
 		6A6BACF620B86829008A428F /* SPSZ_AddGoodsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_AddGoodsTableViewCell.h; sourceTree = "<group>"; };
 		6A6BACF720B86829008A428F /* SPSZ_AddGoodsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_AddGoodsTableViewCell.m; sourceTree = "<group>"; };
+		6A6BACFA20BA51BB008A428F /* UIImage+HYBmageCliped.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HYBmageCliped.h"; sourceTree = "<group>"; };
+		6A6BACFB20BA51BB008A428F /* HYBImageClipedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBImageClipedManager.h; sourceTree = "<group>"; };
+		6A6BACFC20BA51BB008A428F /* UIImage+HYBImageCliped.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HYBImageCliped.m"; sourceTree = "<group>"; };
+		6A6BACFD20BA51BB008A428F /* UIButton+HYBImageCliped.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+HYBImageCliped.m"; sourceTree = "<group>"; };
+		6A6BACFE20BA51BB008A428F /* UIView+HYBImageCliped.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HYBImageCliped.m"; sourceTree = "<group>"; };
+		6A6BACFF20BA51BB008A428F /* UIImageView+HYBImageCliped.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HYBImageCliped.m"; sourceTree = "<group>"; };
+		6A6BAD0020BA51BB008A428F /* HYBImageCliped.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBImageCliped.h; sourceTree = "<group>"; };
+		6A6BAD0120BA51BB008A428F /* HYBImageClipedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBImageClipedManager.m; sourceTree = "<group>"; };
+		6A6BAD0220BA51BB008A428F /* UIView+HYBImageCliped.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HYBImageCliped.h"; sourceTree = "<group>"; };
+		6A6BAD0320BA51BB008A428F /* UIButton+HYBImageCliped.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+HYBImageCliped.h"; sourceTree = "<group>"; };
+		6A6BAD0420BA51BB008A428F /* UIImageView+HYBImageCliped.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HYBImageCliped.h"; sourceTree = "<group>"; };
 		6AAF972C20B5428C00A6C0E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AAF973120B557EE00A6C0E8 /* UIImage+Gradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Gradient.h"; sourceTree = "<group>"; };
 		6AAF973220B557EE00A6C0E8 /* UIImage+Gradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Gradient.m"; sourceTree = "<group>"; };
@@ -624,6 +643,24 @@
 			path = AlertTool;
 			sourceTree = "<group>";
 		};
+		6A6BACF920BA51BB008A428F /* HYBImageCliped */ = {
+			isa = PBXGroup;
+			children = (
+				6A6BACFA20BA51BB008A428F /* UIImage+HYBmageCliped.h */,
+				6A6BACFB20BA51BB008A428F /* HYBImageClipedManager.h */,
+				6A6BACFC20BA51BB008A428F /* UIImage+HYBImageCliped.m */,
+				6A6BACFD20BA51BB008A428F /* UIButton+HYBImageCliped.m */,
+				6A6BACFE20BA51BB008A428F /* UIView+HYBImageCliped.m */,
+				6A6BACFF20BA51BB008A428F /* UIImageView+HYBImageCliped.m */,
+				6A6BAD0020BA51BB008A428F /* HYBImageCliped.h */,
+				6A6BAD0120BA51BB008A428F /* HYBImageClipedManager.m */,
+				6A6BAD0220BA51BB008A428F /* UIView+HYBImageCliped.h */,
+				6A6BAD0320BA51BB008A428F /* UIButton+HYBImageCliped.h */,
+				6A6BAD0420BA51BB008A428F /* UIImageView+HYBImageCliped.h */,
+			);
+			path = HYBImageCliped;
+			sourceTree = "<group>";
+		};
 		6AAF973420B5587200A6C0E8 /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,6 +794,7 @@
 		6ACB53DD20B00E9800528420 /* ThirdParts */ = {
 			isa = PBXGroup;
 			children = (
+				6A6BACF920BA51BB008A428F /* HYBImageCliped */,
 				6ACB552720B0124F00528420 /* fmdb */,
 				6ACB54D520B011D400528420 /* AFNetworking */,
 				6ACB548E20B0110000528420 /* MJRefresh */,
@@ -1254,6 +1292,8 @@
 				6ADD761620B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m */,
 				6A6BACF620B86829008A428F /* SPSZ_AddGoodsTableViewCell.h */,
 				6A6BACF720B86829008A428F /* SPSZ_AddGoodsTableViewCell.m */,
+				6A143B3420BAB36200D71959 /* SPSZ_InputWeightView.h */,
+				6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */,
 			);
 			path = Chuzheng;
 			sourceTree = "<group>";
@@ -1391,6 +1431,7 @@
 			files = (
 				6A6BACE620B85383008A428F /* SPSZ_GoodsModel.m in Sources */,
 				6A6BACD020B85013008A428F /* SPSZ_suo_personalCenterViewController.m in Sources */,
+				6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */,
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
 				6ACB54D020B0110000528420 /* MJRefreshComponent.m in Sources */,
 				6ACB540520B00F8C00528420 /* MASViewConstraint.m in Sources */,
@@ -1436,11 +1477,13 @@
 				6ACB54FE20B011D500528420 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				6ACB555420B018FC00528420 /* ProgramColor.m in Sources */,
 				CC79648120B2ED9C00D695F7 /* SPSZ_suo_RecordViewController.m in Sources */,
+				6A6BAD0920BA51BB008A428F /* HYBImageClipedManager.m in Sources */,
 				6ACB551D20B0121800528420 /* UIImage+Blur.m in Sources */,
 				6ACB54C720B0110000528420 /* MJRefreshAutoGifFooter.m in Sources */,
 				6ACB542E20B00F9A00528420 /* SDWebImageDownloader.m in Sources */,
 				6ACB550220B011D500528420 /* AFURLResponseSerialization.m in Sources */,
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
+				6A6BAD0720BA51BB008A428F /* UIView+HYBImageCliped.m in Sources */,
 				6ACB554820B016A300528420 /* KRAlertTool.m in Sources */,
 				6ACB54C320B0110000528420 /* MJRefreshBackGifFooter.m in Sources */,
 				6ACB557F20B2EB6600528420 /* SPSZ_tesssssss.m in Sources */,
@@ -1481,6 +1524,7 @@
 				6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */,
 				6A6BACCB20B85013008A428F /* SPSZ_saoMa_ViewController.m in Sources */,
 				6ACB555D20B116D400528420 /* ProgramConfig.m in Sources */,
+				6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6A6BACCA20B85013008A428F /* SPSZ_jinHuo_RecordsViewController.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
@@ -1517,6 +1561,7 @@
 				6ACB540420B00F8C00528420 /* MASConstraint.m in Sources */,
 				6ACB552520B0121800528420 /* UIImage+RoundedCorner.m in Sources */,
 				6ACB53FD20B00F8C00528420 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				6A6BAD0820BA51BB008A428F /* UIImageView+HYBImageCliped.m in Sources */,
 				6A6BACDA20B85078008A428F /* SPSZ_chu_personalCenterViewController.m in Sources */,
 				6A6BACE020B8509D008A428F /* SPSZ_changePassWordViewController.m in Sources */,
 				6ACB543120B00F9A00528420 /* SDWebImageCompat.m in Sources */,
@@ -1530,6 +1575,7 @@
 				6ACB53E220B00F8200528420 /* MBProgressHUD.m in Sources */,
 				6ACB553320B0124F00528420 /* FMDatabaseQueue.m in Sources */,
 				CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */,
+				6A143B3620BAB36200D71959 /* SPSZ_InputWeightView.m in Sources */,
 				6ACB553620B0124F00528420 /* FMDatabasePool.m in Sources */,
 				6ACB547720B00FA500528420 /* YYTextEffectWindow.m in Sources */,
 				6ACB543720B00F9A00528420 /* UIView+WebCacheOperation.m in Sources */,
