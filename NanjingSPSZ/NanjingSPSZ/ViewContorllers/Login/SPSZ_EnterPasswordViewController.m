@@ -9,8 +9,14 @@
 #import "SPSZ_EnterPasswordViewController.h"
 #import "SPSZ_changePassWordViewController.h"
 
+
+#import "SPSZ_suo_MainViewController.h"
+
+
 #import "SPSZ_LoginNetTool.h"
 
+
+#import "UIButton+Gradient.h"
 @interface SPSZ_EnterPasswordViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong)UITextField *phoneNumberTextField;
@@ -54,8 +60,11 @@
         _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _loginButton.frame = CGRectMake(MainScreenWidth / 6, 88 +69+25, MainScreenWidth/3*2, 60);
         _loginButton.layer.cornerRadius = 30;
-        _loginButton.backgroundColor = [UIColor blueColor];
+        _loginButton.layer.masksToBounds = YES;
         [_loginButton addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
+        [_loginButton gradientButtonWithSize:CGSizeMake(MainScreenWidth/3*2, 60) colorArray:@[[ProgramColor RGBColorWithRed:33 green:211 blue:255 alpha:0.94],[ProgramColor RGBColorWithRed:67 green:130 blue:255 alpha:0.94]] percentageArray:@[@(1),@(0)] gradientType:GradientFromTopToBottom];
     }
     return _loginButton;
 }
@@ -94,18 +103,33 @@
 
 - (void)loginButtonAction:(UIButton *)button
 {
-    [SPSZ_LoginNetTool pifashangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_chuLoginModel *model) {
-        
-    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
-    } failureBlock:^(NSString *failure) {
-        
-    }];
+    // suo
+    if (self.isType) {
+        [SPSZ_LoginNetTool lingshoushangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_suoLoginModel *model) {
+            SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+            
+        } failureBlock:^(NSString *failure) {
+            
+        }];
+    }
+    else{// chu
+        [SPSZ_LoginNetTool pifashangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_chuLoginModel *model) {
+            
+        } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+            
+        } failureBlock:^(NSString *failure) {
+            
+        }];
+    }
+   
 }
 - (void)forgotButtonAction:(UIButton *)button
 {
     SPSZ_changePassWordViewController *changeView = [[SPSZ_changePassWordViewController alloc]init];
-    self.navigationController.navigationBar.hidden = NO;
+    changeView.isType = self.isType;
     
     [self.navigationController pushViewController:changeView animated:YES];
 }

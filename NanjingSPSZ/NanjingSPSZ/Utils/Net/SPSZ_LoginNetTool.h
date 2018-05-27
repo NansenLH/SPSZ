@@ -32,4 +32,36 @@
                    errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
                  failureBlock:(void (^)(NSString *failure))failureBlock;
 
+/**
+ * 发送短信
+ */
+
++ (void)sedMessageWithTel:(NSString *)tel
+             successBlock:(void (^)(NSString *message))successBlcok
+               errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+             failureBlock:(void (^)(NSString *failure))failureBlock;
+
+/**
+ * 批发商验证码登录或重置密码（出证）
+ */
++ (void)pifashangChangePswWithNewPwd:(NSString *)newPwd
+                          tel:(NSString *)tel
+                                code:(NSString *)code
+                 successBlock:(void (^)(NSString *string))successBlcok
+                   errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                 failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
+/**
+ * 零售商验证码登录或重置密码（索证）
+ */
++ (void)lingshoushangChangePswWithNewPwd:(NSString *)newPwd
+                                 tel:(NSString *)tel
+                                code:(NSString *)code
+                        successBlock:(void (^)(NSString *string))successBlcok
+                          errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                        failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
+
 @end

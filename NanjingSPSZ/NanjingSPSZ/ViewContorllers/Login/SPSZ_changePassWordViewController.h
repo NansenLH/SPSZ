@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface SPSZ_changePassWordViewController : BaseViewController
+// yes Suozheng
+// no chuZHeng
+@property (nonatomic, assign)BOOL isType;
 
 @end

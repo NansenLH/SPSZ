@@ -133,15 +133,15 @@
 - (void)chuButtonAction:(UIButton *)button
 {
     SPSZ_EnterPasswordViewController *enterView = [[SPSZ_EnterPasswordViewController alloc]init];
+    enterView.isType = NO;
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController pushViewController:enterView animated:YES];
 }
 
 - (void)suoButtonAction:(UIButton *)button
 {
-//    SPSZ_EnterPasswordViewController *enterView = [[SPSZ_EnterPasswordViewController alloc]init];
-//    self.navigationController.navigationBar.hidden = NO;
-    SPSZ_suo_MainViewController *enterView = [[SPSZ_suo_MainViewController alloc]init];
+    SPSZ_EnterPasswordViewController *enterView = [[SPSZ_EnterPasswordViewController alloc]init];
+    enterView.isType = YES;
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController pushViewController:enterView animated:YES];
 }
