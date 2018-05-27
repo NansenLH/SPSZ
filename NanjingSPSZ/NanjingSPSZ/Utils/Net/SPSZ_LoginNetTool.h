@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "SPSZ_chuLoginModel.h"
+
+#import "SPSZ_suoLoginModel.h"
+
 @interface SPSZ_LoginNetTool : NSObject
 
 
@@ -20,6 +23,13 @@
                    errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
                  failureBlock:(void (^)(NSString *failure))failureBlock;
 
-
+/**
+ *  零售商登录（索证）
+ */
++ (void)lingshoushangLoginWithPwd:(NSString *)pwd
+                          tel:(NSString *)tel
+                 successBlock:(void (^)(SPSZ_suoLoginModel *model))successBlcok
+                   errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                 failureBlock:(void (^)(NSString *failure))failureBlock;
 
 @end

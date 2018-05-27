@@ -55,4 +55,45 @@
 }
 
 
+/**
+ *  零售商登录（索证）
+ */
++ (void)lingshoushangLoginWithPwd:(NSString *)pwd
+                              tel:(NSString *)tel
+                     successBlock:(void (^)(SPSZ_suoLoginModel *model))successBlcok
+                       errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                     failureBlock:(void (^)(NSString *failure))failureBlock
+{
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"doLoginForStallmanByPwd"];
+    [requestDic setObject:pwd forKey:@"pwd"];
+    [requestDic setObject:tel forKey:@"tel"];
+    
+    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+        
+        
+        if (success) {
+            if ([result[@"respCode"] integerValue] == 1000000) {
+                NSDictionary *dic = result[@"result"];
+                SPSZ_suoLoginModel *model = [SPSZ_suoLoginModel yy_modelWithDictionary:dic];
+                
+                if (successBlcok) {
+                    successBlcok(model);
+                }
+            }
+            else {
+                if (errorBlock) {
+                    errorBlock(result[@"respCode"], result[@"respMsg"]);
+                }
+            }
+        }
+        else {
+            if (failureBlock) {
+                failureBlock(result);
+            }
+        }
+    }];
+
+}
+
 @end
