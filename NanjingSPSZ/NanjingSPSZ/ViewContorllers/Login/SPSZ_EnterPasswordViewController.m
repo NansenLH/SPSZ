@@ -9,6 +9,8 @@
 #import "SPSZ_EnterPasswordViewController.h"
 #import "SPSZ_changePassWordViewController.h"
 
+#import "SPSZ_LoginNetTool.h"
+
 @interface SPSZ_EnterPasswordViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong)UITextField *phoneNumberTextField;
@@ -50,7 +52,7 @@
 - (UIButton *)loginButton{
     if (!_loginButton) {
         _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _loginButton.frame = CGRectMake(MainScreenWidth / 6, 64+88 +69+25, MainScreenWidth/3*2, 60);
+        _loginButton.frame = CGRectMake(MainScreenWidth / 6, 88 +69+25, MainScreenWidth/3*2, 60);
         _loginButton.layer.cornerRadius = 30;
         _loginButton.backgroundColor = [UIColor blueColor];
         [_loginButton addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -61,7 +63,7 @@
 - (UIButton *)forgotButton{
     if (!_forgotButton) {
         _forgotButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _forgotButton.frame = CGRectMake((MainScreenWidth -150)/2, 64+88 +69+25 + 60 + 30, 150, 60);
+        _forgotButton.frame = CGRectMake((MainScreenWidth -150)/2, 88 +69+25 + 60 + 30, 150, 60);
         [_forgotButton setTitle:@"忘记密码" forState:UIControlStateNormal];
         [_forgotButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [_forgotButton addTarget:self action:@selector(forgotButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -75,11 +77,11 @@
     self.navigationController.navigationBar.hidden = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 64, MainScreenWidth, 60)];
+    UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
     view1.backgroundColor = [ProgramColor huiseColor];
     [view1 addSubview:self.phoneNumberTextField];
     
-    UIView *view2 = [[UIView alloc]initWithFrame:CGRectMake(0,64+80, MainScreenWidth, 60)];
+    UIView *view2 = [[UIView alloc]initWithFrame:CGRectMake(0,80, MainScreenWidth, 60)];
     view2.backgroundColor = [ProgramColor huiseColor];
     [view2 addSubview:self.passwordTextField];
     
@@ -92,7 +94,13 @@
 
 - (void)loginButtonAction:(UIButton *)button
 {
-    [KRAlertTool alertString:@"啊啊啊啊"];
+    [SPSZ_LoginNetTool pifashangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_chuLoginModel *model) {
+        
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        
+    } failureBlock:^(NSString *failure) {
+        
+    }];
 }
 - (void)forgotButtonAction:(UIButton *)button
 {

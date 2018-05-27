@@ -10,9 +10,14 @@
 
 @interface SPSZ_paiZhaoViewController ()
 
+
+
 @end
 
 @implementation SPSZ_paiZhaoViewController
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

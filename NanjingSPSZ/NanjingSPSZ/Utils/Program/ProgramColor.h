@@ -83,4 +83,9 @@
  */
 + (UIColor *)huiseColor;
 
+/**
+ 蓝色
+ */
++ (UIColor *)mainBluecolor;
+
 @end

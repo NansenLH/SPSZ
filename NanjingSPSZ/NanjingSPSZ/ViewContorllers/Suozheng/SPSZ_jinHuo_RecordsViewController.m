@@ -11,7 +11,10 @@
 #import "SPSZ_paiZhao_OrderViewController.h"
 #import "SPSZ_shouDong_OrderViewController.h"
 
+#import "SPSZ_suo_RecordViewController.h"
+
 #import "KRTagBar.h"
+#import "UIImage+Gradient.h"
 
 @interface SPSZ_jinHuo_RecordsViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
 
@@ -21,16 +24,33 @@
 
 @property (nonatomic, strong) UIScrollView    *detailScrollView;
 
+@property (nonatomic, strong) UIImageView     *imageView;
 @end
 
 @implementation SPSZ_jinHuo_RecordsViewController
 
+- (void)configNavigation
+{
+    self.navigationItem.title = @"进货记录";
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setImage:[UIImage imageNamed:@"calendar_white"] forState:UIControlStateNormal];
+    [rightButton setTitle:@"日期查询" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    rightButton.frame = CGRectMake(0, 0, 80, 44);
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blueColor];
+
     [self setupTagBar];
-    
+    [self configNavigation];
     [self setupDetailScrollView];
     // Do any additional setup after loading the view.
 }
@@ -44,7 +64,7 @@
     self.tagBar.itemArray = itemArray;
     [self.view addSubview:self.tagBar];
     [self.tagBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(64);
+        make.top.equalTo(0);
         make.left.right.equalTo(0);
         make.height.equalTo(40);
     }];
@@ -60,7 +80,7 @@
     
     [self.view addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(104);
+        make.top.equalTo(40);
         make.left.right.bottom.equalTo(0);
     }];
     
@@ -76,7 +96,7 @@
     
     
     
-    SPSZ_saoMa_OrderViewController *vc1 = [[SPSZ_saoMa_OrderViewController alloc]init];
+    SPSZ_suo_RecordViewController *vc1 = [[SPSZ_suo_RecordViewController alloc]init];
     SPSZ_shouDong_OrderViewController *vc2 = [[SPSZ_shouDong_OrderViewController alloc]init];
     SPSZ_paiZhao_OrderViewController *vc3 = [[SPSZ_paiZhao_OrderViewController alloc]init];
     NSArray *vcArray = [NSArray arrayWithObjects:vc1,vc2,vc3, nil];
@@ -85,6 +105,7 @@
         CGFloat x = i * MainScreenWidth;
         CGFloat w = MainScreenWidth;
         BaseViewController *vc = vcArray[i];
+        [self addChildViewController:vc];
         [self.containerView addSubview:vc.view];
         [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(x);
@@ -113,6 +134,7 @@
 #pragma mark ---- UIScrollViewDelegate ----
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    
     if ([scrollView isEqual:self.detailScrollView]) {
         CGFloat pedding = scrollView.contentOffset.x;
         int index = (pedding / MainScreenWidth);
@@ -129,6 +151,8 @@
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
+    
     if ([scrollView isEqual:self.detailScrollView]) {
         [self.tagBar updateContentOffSet:scrollView.contentOffset];
     }
@@ -145,6 +169,10 @@
 }
 
 
+- (void)rightButtonAction:(UIButton *)button{
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

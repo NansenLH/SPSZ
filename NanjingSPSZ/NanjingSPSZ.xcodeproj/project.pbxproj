@@ -8,28 +8,47 @@
 
 /* Begin PBXBuildFile section */
 		6A143B3620BAB36200D71959 /* SPSZ_InputWeightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */; };
-		6A6BACAB20B84AAA008A428F /* SPSZ_AddGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACAA20B84AAA008A428F /* SPSZ_AddGoodsViewController.m */; };
-		6A6BACB520B84FDD008A428F /* SPSZ_chu_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACB120B84FDC008A428F /* SPSZ_chu_RecordTableViewCell.m */; };
-		6A6BACB620B84FDD008A428F /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACB320B84FDC008A428F /* SPSZ_suo_RecordTableViewCell.m */; };
-		6A6BACC920B85013008A428F /* SPSZ_paiZhaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACB820B85011008A428F /* SPSZ_paiZhaoViewController.m */; };
-		6A6BACCA20B85013008A428F /* SPSZ_jinHuo_RecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACBA20B85012008A428F /* SPSZ_jinHuo_RecordsViewController.m */; };
-		6A6BACCB20B85013008A428F /* SPSZ_saoMa_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACBB20B85012008A428F /* SPSZ_saoMa_ViewController.m */; };
-		6A6BACCC20B85013008A428F /* SPSZ_shouDong_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACBC20B85012008A428F /* SPSZ_shouDong_OrderViewController.m */; };
-		6A6BACCD20B85013008A428F /* SPSZ_shouDongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACC220B85012008A428F /* SPSZ_shouDongViewController.m */; };
-		6A6BACCE20B85013008A428F /* SPSZ_suo_MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACC420B85013008A428F /* SPSZ_suo_MainViewController.m */; };
-		6A6BACCF20B85013008A428F /* SPSZ_saoMa_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACC520B85013008A428F /* SPSZ_saoMa_OrderViewController.m */; };
-		6A6BACD020B85013008A428F /* SPSZ_suo_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACC620B85013008A428F /* SPSZ_suo_personalCenterViewController.m */; };
-		6A6BACD120B85013008A428F /* SPSZ_paiZhao_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACC820B85013008A428F /* SPSZ_paiZhao_OrderViewController.m */; };
+		6A143B7420BAE65C00D71959 /* PGDatePicker+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3920BAE65C00D71959 /* PGDatePicker+Date.m */; };
+		6A143B7520BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3B20BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.m */; };
+		6A143B7620BAE65C00D71959 /* PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3C20BAE65C00D71959 /* PGDatePicker.m */; };
+		6A143B7720BAE65C00D71959 /* UIColor+PGHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3D20BAE65C00D71959 /* UIColor+PGHex.m */; };
+		6A143B7820BAE65C00D71959 /* PGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3E20BAE65C00D71959 /* PGDatePickerView.m */; };
+		6A143B7920BAE65C00D71959 /* PGDatePicker+MonthDayHour.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B4220BAE65C00D71959 /* PGDatePicker+MonthDayHour.m */; };
+		6A143B7A20BAE65C00D71959 /* PGDatePicker+YearAndMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B4320BAE65C00D71959 /* PGDatePicker+YearAndMonth.m */; };
+		6A143B7B20BAE65C00D71959 /* NSCalendar+PGCurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B4620BAE65C00D71959 /* NSCalendar+PGCurrent.m */; };
+		6A143B7C20BAE65C00D71959 /* PGDatePicker+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B4820BAE65C00D71959 /* PGDatePicker+Time.m */; };
+		6A143B7D20BAE65C00D71959 /* PGDatePickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B4A20BAE65C00D71959 /* PGDatePickManager.m */; };
+		6A143B7E20BAE65C00D71959 /* PGDatePicker+Logic.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B4E20BAE65C00D71959 /* PGDatePicker+Logic.m */; };
+		6A143B7F20BAE65C00D71959 /* NSBundle+PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B4F20BAE65C00D71959 /* NSBundle+PGDatePicker.m */; };
+		6A143B8020BAE65C00D71959 /* PGDatePicker+MonthDayHourMinute.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B5420BAE65C00D71959 /* PGDatePicker+MonthDayHourMinute.m */; };
+		6A143B8120BAE65C00D71959 /* PGDatePicker+MonthDayHourMinuteSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B5520BAE65C00D71959 /* PGDatePicker+MonthDayHourMinuteSecond.m */; };
+		6A143B8220BAE65C00D71959 /* PGPickerColumnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B5920BAE65C00D71959 /* PGPickerColumnCell.m */; };
+		6A143B8320BAE65C00D71959 /* PGPickerColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B5A20BAE65C00D71959 /* PGPickerColumnView.m */; };
+		6A143B8420BAE65C00D71959 /* PGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B5F20BAE65C00D71959 /* PGPickerView.m */; };
+		6A143B8520BAE65C00D71959 /* PGPickerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B6020BAE65C00D71959 /* PGPickerTableView.m */; };
+		6A143B8620BAE65C00D71959 /* PGDatePicker+DateHourMinute.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B6120BAE65C00D71959 /* PGDatePicker+DateHourMinute.m */; };
+		6A143B8720BAE65C00D71959 /* NSDate+PGCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B6220BAE65C00D71959 /* NSDate+PGCategory.m */; };
+		6A143B8820BAE65C00D71959 /* PGDatePicker+DateHour.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B6420BAE65C00D71959 /* PGDatePicker+DateHour.m */; };
+		6A143B8920BAE65C00D71959 /* PGDatePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A143B6820BAE65C00D71959 /* PGDatePicker.bundle */; };
+		6A143B8A20BAE65C00D71959 /* PGDatePicker+TimeAndSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B6920BAE65C00D71959 /* PGDatePicker+TimeAndSecond.m */; };
+		6A143B8B20BAE65C00D71959 /* PGDatePicker+DateAndTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B6A20BAE65C00D71959 /* PGDatePicker+DateAndTime.m */; };
+		6A143B8C20BAE65C00D71959 /* PGDatePicker+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B6C20BAE65C00D71959 /* PGDatePicker+Common.m */; };
+		6A143B8D20BAE65C00D71959 /* PGDatePicker+MonthDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B6F20BAE65C00D71959 /* PGDatePicker+MonthDay.m */; };
+		6A143B8E20BAE65C00D71959 /* PGDatePickManagerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B7020BAE65C00D71959 /* PGDatePickManagerHeaderView.m */; };
+		6A143B8F20BAE65C00D71959 /* PGDatePicker+Year.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B7120BAE65C00D71959 /* PGDatePicker+Year.m */; };
+		6A143B9020BAE65C00D71959 /* PGDatePicker+DateHourMinuteSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B7320BAE65C00D71959 /* PGDatePicker+DateHourMinuteSecond.m */; };
+		6A143B9420BAE66D00D71959 /* THDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B9220BAE66D00D71959 /* THDatePickerView.m */; };
+		6A143B9E20BAE73300D71959 /* CZHAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B9620BAE73300D71959 /* CZHAddressPickerView.m */; };
+		6A143B9F20BAE73300D71959 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A143B9B20BAE73300D71959 /* city.plist */; };
+		6A143BA020BAE73300D71959 /* UIView+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B9C20BAE73300D71959 /* UIView+CZHExtension.m */; };
+		6A143BA120BAE73300D71959 /* UIButton+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B9D20BAE73300D71959 /* UIButton+CZHExtension.m */; };
+		6A143BA220BAE7F400D71959 /* ChuzhengNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACF420B85E9D008A428F /* ChuzhengNetworkTool.m */; };
+		6A143BA320BAE81B00D71959 /* SPSZ_GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE520B85383008A428F /* SPSZ_GoodsModel.m */; };
+		6A6BACD020B85013008A428F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A6BACD420B85021008A428F /* SPSZ_personalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */; };
-		6A6BACD720B8505F008A428F /* KRTagBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD620B8505F008A428F /* KRTagBar.m */; };
-		6A6BACDA20B85078008A428F /* SPSZ_chu_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */; };
-		6A6BACDF20B8509D008A428F /* SPSZ_EnterPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACDC20B8509C008A428F /* SPSZ_EnterPasswordViewController.m */; };
-		6A6BACE020B8509D008A428F /* SPSZ_changePassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACDE20B8509D008A428F /* SPSZ_changePassWordViewController.m */; };
-		6A6BACE620B85383008A428F /* SPSZ_GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE520B85383008A428F /* SPSZ_GoodsModel.m */; };
 		6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE820B856EE008A428F /* LUNetHelp.m */; };
 		6A6BACED20B858B4008A428F /* NetworkReachabilityTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACEC20B858B4008A428F /* NetworkReachabilityTool.m */; };
 		6A6BACF020B85A38008A428F /* ProgramNotificationName.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACEF20B85A38008A428F /* ProgramNotificationName.m */; };
-		6A6BACF520B85E9D008A428F /* ChuzhengNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACF420B85E9D008A428F /* ChuzhengNetworkTool.m */; };
 		6A6BACF820B86829008A428F /* SPSZ_AddGoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACF720B86829008A428F /* SPSZ_AddGoodsTableViewCell.m */; };
 		6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACFC20BA51BB008A428F /* UIImage+HYBImageCliped.m */; };
 		6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACFD20BA51BB008A428F /* UIButton+HYBImageCliped.m */; };
@@ -157,11 +176,6 @@
 		6ACB554820B016A300528420 /* KRAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB554720B016A300528420 /* KRAlertTool.m */; };
 		6ACB554B20B016B400528420 /* LUAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB554A20B016B400528420 /* LUAlertTool.m */; };
 		6ACB554E20B016E700528420 /* UICreateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB554C20B016E700528420 /* UICreateTool.m */; };
-		6ACB555420B018FC00528420 /* ProgramColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555320B018FC00528420 /* ProgramColor.m */; };
-		6ACB555720B0190D00528420 /* ProgramSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555620B0190D00528420 /* ProgramSize.m */; };
-		6ACB555A20B115A000528420 /* ProgramFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555920B115A000528420 /* ProgramFont.m */; };
-		6ACB555D20B116D400528420 /* ProgramConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555C20B116D400528420 /* ProgramConfig.m */; };
-		6ACB556020B118CD00528420 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB555F20B118CD00528420 /* Reachability.m */; };
 		6ACB556320B11B8A00528420 /* SPSZ_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */; };
 		6ACB556620B1203600528420 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556520B1203600528420 /* UIKit.framework */; };
 		6ACB556820B1204200528420 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556720B1204200528420 /* CoreFoundation.framework */; };
@@ -178,6 +192,33 @@
 		CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */; };
 		CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */; };
 		CC79648120B2ED9C00D695F7 /* SPSZ_suo_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79648020B2ED9B00D695F7 /* SPSZ_suo_RecordViewController.m */; };
+		CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34320B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m */; };
+		CC89F34A20B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */; };
+		CC89F34E20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34D20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m */; };
+		CC89F35820BA839E00FCEBD2 /* ProgramConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F35020BA839D00FCEBD2 /* ProgramConfig.m */; };
+		CC89F35920BA839F00FCEBD2 /* ProgramSize.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F35320BA839E00FCEBD2 /* ProgramSize.m */; };
+		CC89F35A20BA839F00FCEBD2 /* ProgramColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F35420BA839E00FCEBD2 /* ProgramColor.m */; };
+		CC89F35B20BA839F00FCEBD2 /* ProgramFont.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F35620BA839E00FCEBD2 /* ProgramFont.m */; };
+		CC89F35E20BA84B100FCEBD2 /* SPSZ_AddGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F35D20BA84B100FCEBD2 /* SPSZ_AddGoodsViewController.m */; };
+		CC89F36120BA84DC00FCEBD2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F36020BA84DC00FCEBD2 /* Reachability.m */; };
+		CC89F3BE20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3BD20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.m */; };
+		CC89F3C120BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3C020BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.m */; };
+		CC89F3C420BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3C320BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m */; };
+		CC89F3C820BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3C720BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m */; };
+		CC930C2A20B56AE600B99756 /* SPSZ_EnterPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2720B56AE500B99756 /* SPSZ_EnterPasswordViewController.m */; };
+		CC930C2B20B56AE600B99756 /* SPSZ_changePassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2920B56AE600B99756 /* SPSZ_changePassWordViewController.m */; };
+		CC930C3C20B56B0800B99756 /* SPSZ_jinHuo_RecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2E20B56B0600B99756 /* SPSZ_jinHuo_RecordsViewController.m */; };
+		CC930C3D20B56B0800B99756 /* SPSZ_saoMa_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2F20B56B0600B99756 /* SPSZ_saoMa_OrderViewController.m */; };
+		CC930C3E20B56B0800B99756 /* SPSZ_paiZhao_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3020B56B0600B99756 /* SPSZ_paiZhao_OrderViewController.m */; };
+		CC930C3F20B56B0800B99756 /* SPSZ_saoMa_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3120B56B0600B99756 /* SPSZ_saoMa_ViewController.m */; };
+		CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3220B56B0600B99756 /* SPSZ_suo_MainViewController.m */; };
+		CC930C4120B56B0800B99756 /* SPSZ_shouDongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3520B56B0700B99756 /* SPSZ_shouDongViewController.m */; };
+		CC930C4220B56B0800B99756 /* SPSZ_shouDong_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3820B56B0700B99756 /* SPSZ_shouDong_OrderViewController.m */; };
+		CC930C4320B56B0800B99756 /* SPSZ_paiZhaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3B20B56B0800B99756 /* SPSZ_paiZhaoViewController.m */; };
+		CC930C4A20B56B1B00B99756 /* SPSZ_chu_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4620B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.m */; };
+		CC930C4B20B56B1B00B99756 /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */; };
+		CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4D20B56B7300B99756 /* KRTagBar.m */; };
+		CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,40 +241,79 @@
 /* Begin PBXFileReference section */
 		6A143B3420BAB36200D71959 /* SPSZ_InputWeightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_InputWeightView.h; sourceTree = "<group>"; };
 		6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_InputWeightView.m; sourceTree = "<group>"; };
-		6A6BACA920B84AAA008A428F /* SPSZ_AddGoodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_AddGoodsViewController.h; sourceTree = "<group>"; };
-		6A6BACAA20B84AAA008A428F /* SPSZ_AddGoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_AddGoodsViewController.m; sourceTree = "<group>"; };
-		6A6BACB020B84FDC008A428F /* SPSZ_chu_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordTableViewCell.h; sourceTree = "<group>"; };
-		6A6BACB120B84FDC008A428F /* SPSZ_chu_RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordTableViewCell.m; sourceTree = "<group>"; };
-		6A6BACB320B84FDC008A428F /* SPSZ_suo_RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordTableViewCell.m; sourceTree = "<group>"; };
-		6A6BACB420B84FDC008A428F /* SPSZ_suo_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_RecordTableViewCell.h; sourceTree = "<group>"; };
-		6A6BACB720B85011008A428F /* SPSZ_suo_MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_MainViewController.h; sourceTree = "<group>"; };
-		6A6BACB820B85011008A428F /* SPSZ_paiZhaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_paiZhaoViewController.m; sourceTree = "<group>"; };
-		6A6BACB920B85012008A428F /* SPSZ_paiZhao_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_paiZhao_OrderViewController.h; sourceTree = "<group>"; };
-		6A6BACBA20B85012008A428F /* SPSZ_jinHuo_RecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_jinHuo_RecordsViewController.m; sourceTree = "<group>"; };
-		6A6BACBB20B85012008A428F /* SPSZ_saoMa_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_saoMa_ViewController.m; sourceTree = "<group>"; };
-		6A6BACBC20B85012008A428F /* SPSZ_shouDong_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_shouDong_OrderViewController.m; sourceTree = "<group>"; };
-		6A6BACBD20B85012008A428F /* SPSZ_suo_personalCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_personalCenterViewController.h; sourceTree = "<group>"; };
-		6A6BACBE20B85012008A428F /* SPSZ_shouDong_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_shouDong_OrderViewController.h; sourceTree = "<group>"; };
-		6A6BACBF20B85012008A428F /* SPSZ_saoMa_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_saoMa_ViewController.h; sourceTree = "<group>"; };
-		6A6BACC020B85012008A428F /* SPSZ_saoMa_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_saoMa_OrderViewController.h; sourceTree = "<group>"; };
-		6A6BACC120B85012008A428F /* SPSZ_jinHuo_RecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_jinHuo_RecordsViewController.h; sourceTree = "<group>"; };
-		6A6BACC220B85012008A428F /* SPSZ_shouDongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_shouDongViewController.m; sourceTree = "<group>"; };
-		6A6BACC320B85012008A428F /* SPSZ_paiZhaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_paiZhaoViewController.h; sourceTree = "<group>"; };
-		6A6BACC420B85013008A428F /* SPSZ_suo_MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_MainViewController.m; sourceTree = "<group>"; };
-		6A6BACC520B85013008A428F /* SPSZ_saoMa_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_saoMa_OrderViewController.m; sourceTree = "<group>"; };
-		6A6BACC620B85013008A428F /* SPSZ_suo_personalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_personalCenterViewController.m; sourceTree = "<group>"; };
-		6A6BACC720B85013008A428F /* SPSZ_shouDongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_shouDongViewController.h; sourceTree = "<group>"; };
-		6A6BACC820B85013008A428F /* SPSZ_paiZhao_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_paiZhao_OrderViewController.m; sourceTree = "<group>"; };
+		6A143B3820BAE65C00D71959 /* PGDatePicker+MonthDayHourMinuteSecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+MonthDayHourMinuteSecond.h"; sourceTree = "<group>"; };
+		6A143B3920BAE65C00D71959 /* PGDatePicker+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+Date.m"; sourceTree = "<group>"; };
+		6A143B3A20BAE65C00D71959 /* PGDatePicker+MonthDayHourMinute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+MonthDayHourMinute.h"; sourceTree = "<group>"; };
+		6A143B3B20BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+MinuteAndSecond.m"; sourceTree = "<group>"; };
+		6A143B3C20BAE65C00D71959 /* PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePicker.m; sourceTree = "<group>"; };
+		6A143B3D20BAE65C00D71959 /* UIColor+PGHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PGHex.m"; sourceTree = "<group>"; };
+		6A143B3E20BAE65C00D71959 /* PGDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickerView.m; sourceTree = "<group>"; };
+		6A143B3F20BAE65C00D71959 /* PGDatePicker+DateHour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+DateHour.h"; sourceTree = "<group>"; };
+		6A143B4020BAE65C00D71959 /* PGDatePicker+DateHourMinute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+DateHourMinute.h"; sourceTree = "<group>"; };
+		6A143B4120BAE65C00D71959 /* NSDate+PGCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PGCategory.h"; sourceTree = "<group>"; };
+		6A143B4220BAE65C00D71959 /* PGDatePicker+MonthDayHour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+MonthDayHour.m"; sourceTree = "<group>"; };
+		6A143B4320BAE65C00D71959 /* PGDatePicker+YearAndMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+YearAndMonth.m"; sourceTree = "<group>"; };
+		6A143B4420BAE65C00D71959 /* PGDatePicker+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+Common.h"; sourceTree = "<group>"; };
+		6A143B4520BAE65C00D71959 /* PGDatePicker+DateAndTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+DateAndTime.h"; sourceTree = "<group>"; };
+		6A143B4620BAE65C00D71959 /* NSCalendar+PGCurrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+PGCurrent.m"; sourceTree = "<group>"; };
+		6A143B4720BAE65C00D71959 /* PGDatePicker+TimeAndSecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+TimeAndSecond.h"; sourceTree = "<group>"; };
+		6A143B4820BAE65C00D71959 /* PGDatePicker+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+Time.m"; sourceTree = "<group>"; };
+		6A143B4920BAE65C00D71959 /* PGDatePicker+DateHourMinuteSecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+DateHourMinuteSecond.h"; sourceTree = "<group>"; };
+		6A143B4A20BAE65C00D71959 /* PGDatePickManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickManager.m; sourceTree = "<group>"; };
+		6A143B4B20BAE65C00D71959 /* PGDatePicker+Year.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+Year.h"; sourceTree = "<group>"; };
+		6A143B4C20BAE65C00D71959 /* PGDatePicker+MonthDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+MonthDay.h"; sourceTree = "<group>"; };
+		6A143B4D20BAE65C00D71959 /* PGDatePickManagerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickManagerHeaderView.h; sourceTree = "<group>"; };
+		6A143B4E20BAE65C00D71959 /* PGDatePicker+Logic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+Logic.m"; sourceTree = "<group>"; };
+		6A143B4F20BAE65C00D71959 /* NSBundle+PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PGDatePicker.m"; sourceTree = "<group>"; };
+		6A143B5020BAE65C00D71959 /* UIColor+PGHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PGHex.h"; sourceTree = "<group>"; };
+		6A143B5120BAE65C00D71959 /* PGDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePicker.h; sourceTree = "<group>"; };
+		6A143B5220BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+MinuteAndSecond.h"; sourceTree = "<group>"; };
+		6A143B5320BAE65C00D71959 /* PGEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGEnumeration.h; sourceTree = "<group>"; };
+		6A143B5420BAE65C00D71959 /* PGDatePicker+MonthDayHourMinute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+MonthDayHourMinute.m"; sourceTree = "<group>"; };
+		6A143B5520BAE65C00D71959 /* PGDatePicker+MonthDayHourMinuteSecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+MonthDayHourMinuteSecond.m"; sourceTree = "<group>"; };
+		6A143B5620BAE65C00D71959 /* PGDatePicker+Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+Date.h"; sourceTree = "<group>"; };
+		6A143B5720BAE65C00D71959 /* PGDatePicker+YearAndMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+YearAndMonth.h"; sourceTree = "<group>"; };
+		6A143B5920BAE65C00D71959 /* PGPickerColumnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerColumnCell.m; sourceTree = "<group>"; };
+		6A143B5A20BAE65C00D71959 /* PGPickerColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerColumnView.m; sourceTree = "<group>"; };
+		6A143B5B20BAE65C00D71959 /* PGPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerView.h; sourceTree = "<group>"; };
+		6A143B5C20BAE65C00D71959 /* PGPickerTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerTableView.h; sourceTree = "<group>"; };
+		6A143B5D20BAE65C00D71959 /* PGPickerColumnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerColumnCell.h; sourceTree = "<group>"; };
+		6A143B5E20BAE65C00D71959 /* PGPickerColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerColumnView.h; sourceTree = "<group>"; };
+		6A143B5F20BAE65C00D71959 /* PGPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerView.m; sourceTree = "<group>"; };
+		6A143B6020BAE65C00D71959 /* PGPickerTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerTableView.m; sourceTree = "<group>"; };
+		6A143B6120BAE65C00D71959 /* PGDatePicker+DateHourMinute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+DateHourMinute.m"; sourceTree = "<group>"; };
+		6A143B6220BAE65C00D71959 /* NSDate+PGCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PGCategory.m"; sourceTree = "<group>"; };
+		6A143B6320BAE65C00D71959 /* PGDatePicker+MonthDayHour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+MonthDayHour.h"; sourceTree = "<group>"; };
+		6A143B6420BAE65C00D71959 /* PGDatePicker+DateHour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+DateHour.m"; sourceTree = "<group>"; };
+		6A143B6520BAE65C00D71959 /* PGDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickerView.h; sourceTree = "<group>"; };
+		6A143B6620BAE65C00D71959 /* PGDatePickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickerHeader.h; sourceTree = "<group>"; };
+		6A143B6720BAE65C00D71959 /* PGDatePicker+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+Time.h"; sourceTree = "<group>"; };
+		6A143B6820BAE65C00D71959 /* PGDatePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PGDatePicker.bundle; sourceTree = "<group>"; };
+		6A143B6920BAE65C00D71959 /* PGDatePicker+TimeAndSecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+TimeAndSecond.m"; sourceTree = "<group>"; };
+		6A143B6A20BAE65C00D71959 /* PGDatePicker+DateAndTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+DateAndTime.m"; sourceTree = "<group>"; };
+		6A143B6B20BAE65C00D71959 /* NSCalendar+PGCurrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+PGCurrent.h"; sourceTree = "<group>"; };
+		6A143B6C20BAE65C00D71959 /* PGDatePicker+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+Common.m"; sourceTree = "<group>"; };
+		6A143B6D20BAE65C00D71959 /* NSBundle+PGDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PGDatePicker.h"; sourceTree = "<group>"; };
+		6A143B6E20BAE65C00D71959 /* PGDatePicker+Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+Logic.h"; sourceTree = "<group>"; };
+		6A143B6F20BAE65C00D71959 /* PGDatePicker+MonthDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+MonthDay.m"; sourceTree = "<group>"; };
+		6A143B7020BAE65C00D71959 /* PGDatePickManagerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickManagerHeaderView.m; sourceTree = "<group>"; };
+		6A143B7120BAE65C00D71959 /* PGDatePicker+Year.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+Year.m"; sourceTree = "<group>"; };
+		6A143B7220BAE65C00D71959 /* PGDatePickManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickManager.h; sourceTree = "<group>"; };
+		6A143B7320BAE65C00D71959 /* PGDatePicker+DateHourMinuteSecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGDatePicker+DateHourMinuteSecond.m"; sourceTree = "<group>"; };
+		6A143B9220BAE66D00D71959 /* THDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDatePickerView.m; sourceTree = "<group>"; };
+		6A143B9320BAE66D00D71959 /* THDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDatePickerView.h; sourceTree = "<group>"; };
+		6A143B9620BAE73300D71959 /* CZHAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZHAddressPickerView.m; sourceTree = "<group>"; };
+		6A143B9720BAE73300D71959 /* AddressPickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerHeader.h; sourceTree = "<group>"; };
+		6A143B9820BAE73300D71959 /* UIView+CZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CZHExtension.h"; sourceTree = "<group>"; };
+		6A143B9920BAE73300D71959 /* UIButton+CZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CZHExtension.h"; sourceTree = "<group>"; };
+		6A143B9A20BAE73300D71959 /* CZHAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZHAddressPickerView.h; sourceTree = "<group>"; };
+		6A143B9B20BAE73300D71959 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		6A143B9C20BAE73300D71959 /* UIView+CZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CZHExtension.m"; sourceTree = "<group>"; };
+		6A143B9D20BAE73300D71959 /* UIButton+CZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CZHExtension.m"; sourceTree = "<group>"; };
 		6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
 		6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
-		6A6BACD520B8505F008A428F /* KRTagBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRTagBar.h; sourceTree = "<group>"; };
-		6A6BACD620B8505F008A428F /* KRTagBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRTagBar.m; sourceTree = "<group>"; };
 		6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
 		6A6BACD920B85078008A428F /* SPSZ_chu_personalCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_personalCenterViewController.h; sourceTree = "<group>"; };
-		6A6BACDB20B8509C008A428F /* SPSZ_EnterPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_EnterPasswordViewController.h; sourceTree = "<group>"; };
-		6A6BACDC20B8509C008A428F /* SPSZ_EnterPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_EnterPasswordViewController.m; sourceTree = "<group>"; };
-		6A6BACDD20B8509C008A428F /* SPSZ_changePassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_changePassWordViewController.h; sourceTree = "<group>"; };
-		6A6BACDE20B8509D008A428F /* SPSZ_changePassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_changePassWordViewController.m; sourceTree = "<group>"; };
 		6A6BACE420B85383008A428F /* SPSZ_GoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_GoodsModel.h; sourceTree = "<group>"; };
 		6A6BACE520B85383008A428F /* SPSZ_GoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_GoodsModel.m; sourceTree = "<group>"; };
 		6A6BACE820B856EE008A428F /* LUNetHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUNetHelp.m; sourceTree = "<group>"; };
@@ -513,16 +593,6 @@
 		6ACB554A20B016B400528420 /* LUAlertTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUAlertTool.m; sourceTree = "<group>"; };
 		6ACB554C20B016E700528420 /* UICreateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICreateTool.m; sourceTree = "<group>"; };
 		6ACB554D20B016E700528420 /* UICreateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICreateTool.h; sourceTree = "<group>"; };
-		6ACB555220B018FC00528420 /* ProgramColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgramColor.h; sourceTree = "<group>"; };
-		6ACB555320B018FC00528420 /* ProgramColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramColor.m; sourceTree = "<group>"; };
-		6ACB555520B0190D00528420 /* ProgramSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgramSize.h; sourceTree = "<group>"; };
-		6ACB555620B0190D00528420 /* ProgramSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramSize.m; sourceTree = "<group>"; };
-		6ACB555820B115A000528420 /* ProgramFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgramFont.h; sourceTree = "<group>"; };
-		6ACB555920B115A000528420 /* ProgramFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramFont.m; sourceTree = "<group>"; };
-		6ACB555B20B116D400528420 /* ProgramConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgramConfig.h; sourceTree = "<group>"; };
-		6ACB555C20B116D400528420 /* ProgramConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramConfig.m; sourceTree = "<group>"; };
-		6ACB555E20B118CD00528420 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		6ACB555F20B118CD00528420 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6ACB556120B11B8A00528420 /* SPSZ_LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_LoginViewController.h; sourceTree = "<group>"; };
 		6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_LoginViewController.m; sourceTree = "<group>"; };
 		6ACB556520B1203600528420 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -548,6 +618,62 @@
 		CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordModel.m; sourceTree = "<group>"; };
 		CC79648020B2ED9B00D695F7 /* SPSZ_suo_RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordViewController.m; sourceTree = "<group>"; };
 		CC79648220B2EDA800D695F7 /* SPSZ_suo_RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_RecordViewController.h; sourceTree = "<group>"; };
+		CC89F34220B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_personalCenterViewController.h; sourceTree = "<group>"; };
+		CC89F34320B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
+		CC89F34520B6E06500FCEBD2 /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
+		CC89F34620B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
+		CC89F34820B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPSZ_suo_shouDongTableViewCell.h; path = NanjingSPSZ/Views/suoViews/SPSZ_suo_shouDongTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPSZ_suo_shouDongTableViewCell.m; path = NanjingSPSZ/Views/suoViews/SPSZ_suo_shouDongTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		CC89F34C20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_shouDongRecordModel.h; sourceTree = "<group>"; };
+		CC89F34D20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_shouDongRecordModel.m; sourceTree = "<group>"; };
+		CC89F35020BA839D00FCEBD2 /* ProgramConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramConfig.m; sourceTree = "<group>"; };
+		CC89F35120BA839D00FCEBD2 /* ProgramFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramFont.h; sourceTree = "<group>"; };
+		CC89F35220BA839E00FCEBD2 /* ProgramConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramConfig.h; sourceTree = "<group>"; };
+		CC89F35320BA839E00FCEBD2 /* ProgramSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramSize.m; sourceTree = "<group>"; };
+		CC89F35420BA839E00FCEBD2 /* ProgramColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramColor.m; sourceTree = "<group>"; };
+		CC89F35520BA839E00FCEBD2 /* ProgramColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramColor.h; sourceTree = "<group>"; };
+		CC89F35620BA839E00FCEBD2 /* ProgramFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramFont.m; sourceTree = "<group>"; };
+		CC89F35720BA839E00FCEBD2 /* ProgramSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramSize.h; sourceTree = "<group>"; };
+		CC89F35C20BA84B100FCEBD2 /* SPSZ_AddGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_AddGoodsViewController.h; sourceTree = "<group>"; };
+		CC89F35D20BA84B100FCEBD2 /* SPSZ_AddGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_AddGoodsViewController.m; sourceTree = "<group>"; };
+		CC89F35F20BA84DB00FCEBD2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CC89F36020BA84DC00FCEBD2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CC89F3BC20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_paiZhaoCollectionViewCell.h; sourceTree = "<group>"; };
+		CC89F3BD20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_paiZhaoCollectionViewCell.m; sourceTree = "<group>"; };
+		CC89F3BF20BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_paiZhaoOrderModel.h; sourceTree = "<group>"; };
+		CC89F3C020BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_paiZhaoOrderModel.m; sourceTree = "<group>"; };
+		CC89F3C220BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_LoginNetTool.h; sourceTree = "<group>"; };
+		CC89F3C320BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_LoginNetTool.m; sourceTree = "<group>"; };
+		CC89F3C620BADC7C00FCEBD2 /* SPSZ_chuLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chuLoginModel.h; sourceTree = "<group>"; };
+		CC89F3C720BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chuLoginModel.m; sourceTree = "<group>"; };
+		CC930C2620B56AE500B99756 /* SPSZ_EnterPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_EnterPasswordViewController.h; sourceTree = "<group>"; };
+		CC930C2720B56AE500B99756 /* SPSZ_EnterPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_EnterPasswordViewController.m; sourceTree = "<group>"; };
+		CC930C2820B56AE500B99756 /* SPSZ_changePassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_changePassWordViewController.h; sourceTree = "<group>"; };
+		CC930C2920B56AE600B99756 /* SPSZ_changePassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_changePassWordViewController.m; sourceTree = "<group>"; };
+		CC930C2C20B56B0500B99756 /* SPSZ_jinHuo_RecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_jinHuo_RecordsViewController.h; sourceTree = "<group>"; };
+		CC930C2D20B56B0500B99756 /* SPSZ_paiZhao_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_paiZhao_OrderViewController.h; sourceTree = "<group>"; };
+		CC930C2E20B56B0600B99756 /* SPSZ_jinHuo_RecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_jinHuo_RecordsViewController.m; sourceTree = "<group>"; };
+		CC930C2F20B56B0600B99756 /* SPSZ_saoMa_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_saoMa_OrderViewController.m; sourceTree = "<group>"; };
+		CC930C3020B56B0600B99756 /* SPSZ_paiZhao_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_paiZhao_OrderViewController.m; sourceTree = "<group>"; };
+		CC930C3120B56B0600B99756 /* SPSZ_saoMa_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_saoMa_ViewController.m; sourceTree = "<group>"; };
+		CC930C3220B56B0600B99756 /* SPSZ_suo_MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_MainViewController.m; sourceTree = "<group>"; };
+		CC930C3320B56B0600B99756 /* SPSZ_saoMa_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_saoMa_OrderViewController.h; sourceTree = "<group>"; };
+		CC930C3420B56B0600B99756 /* SPSZ_shouDongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_shouDongViewController.h; sourceTree = "<group>"; };
+		CC930C3520B56B0700B99756 /* SPSZ_shouDongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_shouDongViewController.m; sourceTree = "<group>"; };
+		CC930C3620B56B0700B99756 /* SPSZ_shouDong_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_shouDong_OrderViewController.h; sourceTree = "<group>"; };
+		CC930C3720B56B0700B99756 /* SPSZ_suo_MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_MainViewController.h; sourceTree = "<group>"; };
+		CC930C3820B56B0700B99756 /* SPSZ_shouDong_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_shouDong_OrderViewController.m; sourceTree = "<group>"; };
+		CC930C3920B56B0700B99756 /* SPSZ_saoMa_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_saoMa_ViewController.h; sourceTree = "<group>"; };
+		CC930C3A20B56B0700B99756 /* SPSZ_paiZhaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_paiZhaoViewController.h; sourceTree = "<group>"; };
+		CC930C3B20B56B0800B99756 /* SPSZ_paiZhaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_paiZhaoViewController.m; sourceTree = "<group>"; };
+		CC930C4520B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordTableViewCell.h; sourceTree = "<group>"; };
+		CC930C4620B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordTableViewCell.m; sourceTree = "<group>"; };
+		CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordTableViewCell.m; sourceTree = "<group>"; };
+		CC930C4920B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_RecordTableViewCell.h; sourceTree = "<group>"; };
+		CC930C4C20B56B7300B99756 /* KRTagBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRTagBar.h; sourceTree = "<group>"; };
+		CC930C4D20B56B7300B99756 /* KRTagBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRTagBar.m; sourceTree = "<group>"; };
+		CC930C6020B5998200B99756 /* SPSZ_suo_personalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_personalCenterViewController.h; sourceTree = "<group>"; };
+		CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_personalCenterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -582,35 +708,117 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6A6BACAF20B84FDC008A428F /* chuViews */ = {
+		6A143B3720BAE65C00D71959 /* PGDatePicker */ = {
 			isa = PBXGroup;
 			children = (
-				6A6BACB020B84FDC008A428F /* SPSZ_chu_RecordTableViewCell.h */,
-				6A6BACB120B84FDC008A428F /* SPSZ_chu_RecordTableViewCell.m */,
+				6A143B3820BAE65C00D71959 /* PGDatePicker+MonthDayHourMinuteSecond.h */,
+				6A143B3920BAE65C00D71959 /* PGDatePicker+Date.m */,
+				6A143B3A20BAE65C00D71959 /* PGDatePicker+MonthDayHourMinute.h */,
+				6A143B3B20BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.m */,
+				6A143B3C20BAE65C00D71959 /* PGDatePicker.m */,
+				6A143B3D20BAE65C00D71959 /* UIColor+PGHex.m */,
+				6A143B3E20BAE65C00D71959 /* PGDatePickerView.m */,
+				6A143B3F20BAE65C00D71959 /* PGDatePicker+DateHour.h */,
+				6A143B4020BAE65C00D71959 /* PGDatePicker+DateHourMinute.h */,
+				6A143B4120BAE65C00D71959 /* NSDate+PGCategory.h */,
+				6A143B4220BAE65C00D71959 /* PGDatePicker+MonthDayHour.m */,
+				6A143B4320BAE65C00D71959 /* PGDatePicker+YearAndMonth.m */,
+				6A143B4420BAE65C00D71959 /* PGDatePicker+Common.h */,
+				6A143B4520BAE65C00D71959 /* PGDatePicker+DateAndTime.h */,
+				6A143B4620BAE65C00D71959 /* NSCalendar+PGCurrent.m */,
+				6A143B4720BAE65C00D71959 /* PGDatePicker+TimeAndSecond.h */,
+				6A143B4820BAE65C00D71959 /* PGDatePicker+Time.m */,
+				6A143B4920BAE65C00D71959 /* PGDatePicker+DateHourMinuteSecond.h */,
+				6A143B4A20BAE65C00D71959 /* PGDatePickManager.m */,
+				6A143B4B20BAE65C00D71959 /* PGDatePicker+Year.h */,
+				6A143B4C20BAE65C00D71959 /* PGDatePicker+MonthDay.h */,
+				6A143B4D20BAE65C00D71959 /* PGDatePickManagerHeaderView.h */,
+				6A143B4E20BAE65C00D71959 /* PGDatePicker+Logic.m */,
+				6A143B4F20BAE65C00D71959 /* NSBundle+PGDatePicker.m */,
+				6A143B5020BAE65C00D71959 /* UIColor+PGHex.h */,
+				6A143B5120BAE65C00D71959 /* PGDatePicker.h */,
+				6A143B5220BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.h */,
+				6A143B5320BAE65C00D71959 /* PGEnumeration.h */,
+				6A143B5420BAE65C00D71959 /* PGDatePicker+MonthDayHourMinute.m */,
+				6A143B5520BAE65C00D71959 /* PGDatePicker+MonthDayHourMinuteSecond.m */,
+				6A143B5620BAE65C00D71959 /* PGDatePicker+Date.h */,
+				6A143B5720BAE65C00D71959 /* PGDatePicker+YearAndMonth.h */,
+				6A143B5820BAE65C00D71959 /* PGPickerView */,
+				6A143B6120BAE65C00D71959 /* PGDatePicker+DateHourMinute.m */,
+				6A143B6220BAE65C00D71959 /* NSDate+PGCategory.m */,
+				6A143B6320BAE65C00D71959 /* PGDatePicker+MonthDayHour.h */,
+				6A143B6420BAE65C00D71959 /* PGDatePicker+DateHour.m */,
+				6A143B6520BAE65C00D71959 /* PGDatePickerView.h */,
+				6A143B6620BAE65C00D71959 /* PGDatePickerHeader.h */,
+				6A143B6720BAE65C00D71959 /* PGDatePicker+Time.h */,
+				6A143B6820BAE65C00D71959 /* PGDatePicker.bundle */,
+				6A143B6920BAE65C00D71959 /* PGDatePicker+TimeAndSecond.m */,
+				6A143B6A20BAE65C00D71959 /* PGDatePicker+DateAndTime.m */,
+				6A143B6B20BAE65C00D71959 /* NSCalendar+PGCurrent.h */,
+				6A143B6C20BAE65C00D71959 /* PGDatePicker+Common.m */,
+				6A143B6D20BAE65C00D71959 /* NSBundle+PGDatePicker.h */,
+				6A143B6E20BAE65C00D71959 /* PGDatePicker+Logic.h */,
+				6A143B6F20BAE65C00D71959 /* PGDatePicker+MonthDay.m */,
+				6A143B7020BAE65C00D71959 /* PGDatePickManagerHeaderView.m */,
+				6A143B7120BAE65C00D71959 /* PGDatePicker+Year.m */,
+				6A143B7220BAE65C00D71959 /* PGDatePickManager.h */,
+				6A143B7320BAE65C00D71959 /* PGDatePicker+DateHourMinuteSecond.m */,
 			);
-			path = chuViews;
+			path = PGDatePicker;
 			sourceTree = "<group>";
 		};
-		6A6BACB220B84FDC008A428F /* suoViews */ = {
+		6A143B5820BAE65C00D71959 /* PGPickerView */ = {
 			isa = PBXGroup;
 			children = (
-				6A6BACB320B84FDC008A428F /* SPSZ_suo_RecordTableViewCell.m */,
-				6A6BACB420B84FDC008A428F /* SPSZ_suo_RecordTableViewCell.h */,
+				6A143B5920BAE65C00D71959 /* PGPickerColumnCell.m */,
+				6A143B5A20BAE65C00D71959 /* PGPickerColumnView.m */,
+				6A143B5B20BAE65C00D71959 /* PGPickerView.h */,
+				6A143B5C20BAE65C00D71959 /* PGPickerTableView.h */,
+				6A143B5D20BAE65C00D71959 /* PGPickerColumnCell.h */,
+				6A143B5E20BAE65C00D71959 /* PGPickerColumnView.h */,
+				6A143B5F20BAE65C00D71959 /* PGPickerView.m */,
+				6A143B6020BAE65C00D71959 /* PGPickerTableView.m */,
 			);
-			path = suoViews;
+			path = PGPickerView;
+			sourceTree = "<group>";
+		};
+		6A143B9120BAE66D00D71959 /* 时间选择器 */ = {
+			isa = PBXGroup;
+			children = (
+				6A143B9220BAE66D00D71959 /* THDatePickerView.m */,
+				6A143B9320BAE66D00D71959 /* THDatePickerView.h */,
+			);
+			path = "时间选择器";
+			sourceTree = "<group>";
+		};
+		6A143B9520BAE73300D71959 /* AddressPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				6A143B9620BAE73300D71959 /* CZHAddressPickerView.m */,
+				6A143B9720BAE73300D71959 /* AddressPickerHeader.h */,
+				6A143B9820BAE73300D71959 /* UIView+CZHExtension.h */,
+				6A143B9920BAE73300D71959 /* UIButton+CZHExtension.h */,
+				6A143B9A20BAE73300D71959 /* CZHAddressPickerView.h */,
+				6A143B9B20BAE73300D71959 /* city.plist */,
+				6A143B9C20BAE73300D71959 /* UIView+CZHExtension.m */,
+				6A143B9D20BAE73300D71959 /* UIButton+CZHExtension.m */,
+			);
+			path = AddressPickerView;
 			sourceTree = "<group>";
 		};
 		6A6BACE720B856B7008A428F /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				6ACB555E20B118CD00528420 /* Reachability.h */,
-				6ACB555F20B118CD00528420 /* Reachability.m */,
+				CC89F35F20BA84DB00FCEBD2 /* Reachability.h */,
+				CC89F36020BA84DC00FCEBD2 /* Reachability.m */,
 				6A6BACEB20B858B4008A428F /* NetworkReachabilityTool.h */,
 				6A6BACEC20B858B4008A428F /* NetworkReachabilityTool.m */,
 				6A6BACE920B856EE008A428F /* LUNetHelp.h */,
 				6A6BACE820B856EE008A428F /* LUNetHelp.m */,
 				6A6BACF320B85E9D008A428F /* ChuzhengNetworkTool.h */,
 				6A6BACF420B85E9D008A428F /* ChuzhengNetworkTool.m */,
+				CC89F3C220BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.h */,
+				CC89F3C320BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -618,14 +826,14 @@
 		6A6BACF120B85A47008A428F /* Program */ = {
 			isa = PBXGroup;
 			children = (
-				6ACB555520B0190D00528420 /* ProgramSize.h */,
-				6ACB555620B0190D00528420 /* ProgramSize.m */,
-				6ACB555220B018FC00528420 /* ProgramColor.h */,
-				6ACB555320B018FC00528420 /* ProgramColor.m */,
-				6ACB555820B115A000528420 /* ProgramFont.h */,
-				6ACB555920B115A000528420 /* ProgramFont.m */,
-				6ACB555B20B116D400528420 /* ProgramConfig.h */,
-				6ACB555C20B116D400528420 /* ProgramConfig.m */,
+				CC89F35520BA839E00FCEBD2 /* ProgramColor.h */,
+				CC89F35420BA839E00FCEBD2 /* ProgramColor.m */,
+				CC89F35220BA839E00FCEBD2 /* ProgramConfig.h */,
+				CC89F35020BA839D00FCEBD2 /* ProgramConfig.m */,
+				CC89F35120BA839D00FCEBD2 /* ProgramFont.h */,
+				CC89F35620BA839E00FCEBD2 /* ProgramFont.m */,
+				CC89F35720BA839E00FCEBD2 /* ProgramSize.h */,
+				CC89F35320BA839E00FCEBD2 /* ProgramSize.m */,
 				6A6BACEE20B85A38008A428F /* ProgramNotificationName.h */,
 				6A6BACEF20B85A38008A428F /* ProgramNotificationName.m */,
 			);
@@ -742,6 +950,8 @@
 		6ACB53D920B00E6600528420 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CC89F3C520BADC6500FCEBD2 /* chuModels */,
+				CC89F34B20B9276900FCEBD2 /* suoModels */,
 				CC79647A20B2ED9100D695F7 /* SPSZ_chu_RecordModel.h */,
 				CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */,
 				CC79647B20B2ED9100D695F7 /* SPSZ_suo_RecordModel.h */,
@@ -757,8 +967,8 @@
 		6ACB53DA20B00E6600528420 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6A6BACAF20B84FDC008A428F /* chuViews */,
-				6A6BACB220B84FDC008A428F /* suoViews */,
+				CC930C4420B56B1A00B99756 /* chuViews */,
+				CC930C4720B56B1A00B99756 /* suoViews */,
 				6ACB559B20B3286900528420 /* Chuzheng */,
 			);
 			path = Views;
@@ -772,6 +982,8 @@
 				6ACB554120B0136B00528420 /* Login */,
 				6ACB554020B0136000528420 /* Chuzheng */,
 				6ACB553F20B0132C00528420 /* Suozheng */,
+				CC89F34520B6E06500FCEBD2 /* SPSZ_personalInfoViewController.h */,
+				CC89F34620B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m */,
 			);
 			path = ViewContorllers;
 			sourceTree = "<group>";
@@ -779,8 +991,8 @@
 		6ACB53DC20B00E9800528420 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6A6BACD520B8505F008A428F /* KRTagBar.h */,
-				6A6BACD620B8505F008A428F /* KRTagBar.m */,
+				CC930C4C20B56B7300B99756 /* KRTagBar.h */,
+				CC930C4D20B56B7300B99756 /* KRTagBar.m */,
 				6ACB554D20B016E700528420 /* UICreateTool.h */,
 				6ACB554C20B016E700528420 /* UICreateTool.m */,
 				6A6BACF220B85A63008A428F /* AlertTool */,
@@ -794,6 +1006,9 @@
 		6ACB53DD20B00E9800528420 /* ThirdParts */ = {
 			isa = PBXGroup;
 			children = (
+				6A143B9520BAE73300D71959 /* AddressPickerView */,
+				6A143B9120BAE66D00D71959 /* 时间选择器 */,
+				6A143B3720BAE65C00D71959 /* PGDatePicker */,
 				6A6BACF920BA51BB008A428F /* HYBImageCliped */,
 				6ACB552720B0124F00528420 /* fmdb */,
 				6ACB54D520B011D400528420 /* AFNetworking */,
@@ -1215,26 +1430,26 @@
 		6ACB553F20B0132C00528420 /* Suozheng */ = {
 			isa = PBXGroup;
 			children = (
-				6A6BACC120B85012008A428F /* SPSZ_jinHuo_RecordsViewController.h */,
-				6A6BACBA20B85012008A428F /* SPSZ_jinHuo_RecordsViewController.m */,
-				6A6BACB920B85012008A428F /* SPSZ_paiZhao_OrderViewController.h */,
-				6A6BACC820B85013008A428F /* SPSZ_paiZhao_OrderViewController.m */,
-				6A6BACC320B85012008A428F /* SPSZ_paiZhaoViewController.h */,
-				6A6BACB820B85011008A428F /* SPSZ_paiZhaoViewController.m */,
-				6A6BACC020B85012008A428F /* SPSZ_saoMa_OrderViewController.h */,
-				6A6BACC520B85013008A428F /* SPSZ_saoMa_OrderViewController.m */,
-				6A6BACBF20B85012008A428F /* SPSZ_saoMa_ViewController.h */,
-				6A6BACBB20B85012008A428F /* SPSZ_saoMa_ViewController.m */,
-				6A6BACBE20B85012008A428F /* SPSZ_shouDong_OrderViewController.h */,
-				6A6BACBC20B85012008A428F /* SPSZ_shouDong_OrderViewController.m */,
-				6A6BACC720B85013008A428F /* SPSZ_shouDongViewController.h */,
-				6A6BACC220B85012008A428F /* SPSZ_shouDongViewController.m */,
-				6A6BACB720B85011008A428F /* SPSZ_suo_MainViewController.h */,
-				6A6BACC420B85013008A428F /* SPSZ_suo_MainViewController.m */,
-				6A6BACBD20B85012008A428F /* SPSZ_suo_personalCenterViewController.h */,
-				6A6BACC620B85013008A428F /* SPSZ_suo_personalCenterViewController.m */,
+				CC930C2C20B56B0500B99756 /* SPSZ_jinHuo_RecordsViewController.h */,
+				CC930C2E20B56B0600B99756 /* SPSZ_jinHuo_RecordsViewController.m */,
+				CC930C2D20B56B0500B99756 /* SPSZ_paiZhao_OrderViewController.h */,
+				CC930C3020B56B0600B99756 /* SPSZ_paiZhao_OrderViewController.m */,
+				CC930C3A20B56B0700B99756 /* SPSZ_paiZhaoViewController.h */,
+				CC930C3B20B56B0800B99756 /* SPSZ_paiZhaoViewController.m */,
+				CC930C3320B56B0600B99756 /* SPSZ_saoMa_OrderViewController.h */,
+				CC930C2F20B56B0600B99756 /* SPSZ_saoMa_OrderViewController.m */,
+				CC930C3920B56B0700B99756 /* SPSZ_saoMa_ViewController.h */,
+				CC930C3120B56B0600B99756 /* SPSZ_saoMa_ViewController.m */,
+				CC930C3620B56B0700B99756 /* SPSZ_shouDong_OrderViewController.h */,
+				CC930C3820B56B0700B99756 /* SPSZ_shouDong_OrderViewController.m */,
+				CC930C3420B56B0600B99756 /* SPSZ_shouDongViewController.h */,
+				CC930C3520B56B0700B99756 /* SPSZ_shouDongViewController.m */,
+				CC930C3720B56B0700B99756 /* SPSZ_suo_MainViewController.h */,
+				CC930C3220B56B0600B99756 /* SPSZ_suo_MainViewController.m */,
 				CC79648220B2EDA800D695F7 /* SPSZ_suo_RecordViewController.h */,
 				CC79648020B2ED9B00D695F7 /* SPSZ_suo_RecordViewController.m */,
+				CC930C6020B5998200B99756 /* SPSZ_suo_personalCenterViewController.h */,
+				CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */,
 			);
 			path = Suozheng;
 			sourceTree = "<group>";
@@ -1242,14 +1457,16 @@
 		6ACB554020B0136000528420 /* Chuzheng */ = {
 			isa = PBXGroup;
 			children = (
+				CC89F35C20BA84B100FCEBD2 /* SPSZ_AddGoodsViewController.h */,
+				CC89F35D20BA84B100FCEBD2 /* SPSZ_AddGoodsViewController.m */,
 				6A6BACD920B85078008A428F /* SPSZ_chu_personalCenterViewController.h */,
 				6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */,
 				CC79647720B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.h */,
 				CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */,
 				6ACB558720B2F64100528420 /* SPSZ_ChuIndexViewController.h */,
 				6ACB558820B2F64100528420 /* SPSZ_ChuIndexViewController.m */,
-				6A6BACA920B84AAA008A428F /* SPSZ_AddGoodsViewController.h */,
-				6A6BACAA20B84AAA008A428F /* SPSZ_AddGoodsViewController.m */,
+				CC89F34220B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.h */,
+				CC89F34320B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m */,
 			);
 			path = Chuzheng;
 			sourceTree = "<group>";
@@ -1257,10 +1474,10 @@
 		6ACB554120B0136B00528420 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				6A6BACDD20B8509C008A428F /* SPSZ_changePassWordViewController.h */,
-				6A6BACDE20B8509D008A428F /* SPSZ_changePassWordViewController.m */,
-				6A6BACDB20B8509C008A428F /* SPSZ_EnterPasswordViewController.h */,
-				6A6BACDC20B8509C008A428F /* SPSZ_EnterPasswordViewController.m */,
+				CC930C2820B56AE500B99756 /* SPSZ_changePassWordViewController.h */,
+				CC930C2920B56AE600B99756 /* SPSZ_changePassWordViewController.m */,
+				CC930C2620B56AE500B99756 /* SPSZ_EnterPasswordViewController.h */,
+				CC930C2720B56AE500B99756 /* SPSZ_EnterPasswordViewController.m */,
 				6ACB556120B11B8A00528420 /* SPSZ_LoginViewController.h */,
 				6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */,
 			);
@@ -1296,6 +1513,48 @@
 				6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */,
 			);
 			path = Chuzheng;
+			sourceTree = "<group>";
+		};
+		CC89F34B20B9276900FCEBD2 /* suoModels */ = {
+			isa = PBXGroup;
+			children = (
+				CC89F34C20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.h */,
+				CC89F34D20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m */,
+				CC89F3BF20BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.h */,
+				CC89F3C020BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.m */,
+			);
+			path = suoModels;
+			sourceTree = "<group>";
+		};
+		CC89F3C520BADC6500FCEBD2 /* chuModels */ = {
+			isa = PBXGroup;
+			children = (
+				CC89F3C620BADC7C00FCEBD2 /* SPSZ_chuLoginModel.h */,
+				CC89F3C720BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m */,
+			);
+			path = chuModels;
+			sourceTree = "<group>";
+		};
+		CC930C4420B56B1A00B99756 /* chuViews */ = {
+			isa = PBXGroup;
+			children = (
+				CC930C4520B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.h */,
+				CC930C4620B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.m */,
+			);
+			path = chuViews;
+			sourceTree = "<group>";
+		};
+		CC930C4720B56B1A00B99756 /* suoViews */ = {
+			isa = PBXGroup;
+			children = (
+				CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */,
+				CC930C4920B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.h */,
+				CC89F34820B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.h */,
+				CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */,
+				CC89F3BC20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.h */,
+				CC89F3BD20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.m */,
+			);
+			path = suoViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1403,6 +1662,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */,
+				6A143B8920BAE65C00D71959 /* PGDatePicker.bundle in Resources */,
+				6A143B9F20BAE73300D71959 /* city.plist in Resources */,
 				6AAF972D20B5428C00A6C0E8 /* Assets.xcassets in Resources */,
 				6ACB54BF20B0110000528420 /* MJRefresh.bundle in Resources */,
 			);
@@ -1429,25 +1690,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A6BACE620B85383008A428F /* SPSZ_GoodsModel.m in Sources */,
-				6A6BACD020B85013008A428F /* SPSZ_suo_personalCenterViewController.m in Sources */,
+				6A143BA320BAE81B00D71959 /* SPSZ_GoodsModel.m in Sources */,
+				6A143BA220BAE7F400D71959 /* ChuzhengNetworkTool.m in Sources */,
+				6A6BACD020B85013008A428F /* (null) in Sources */,
 				6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */,
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
 				6ACB54D020B0110000528420 /* MJRefreshComponent.m in Sources */,
+				6A143B8120BAE65C00D71959 /* PGDatePicker+MonthDayHourMinuteSecond.m in Sources */,
+				CC930C3D20B56B0800B99756 /* SPSZ_saoMa_OrderViewController.m in Sources */,
+				CC930C4320B56B0800B99756 /* SPSZ_paiZhaoViewController.m in Sources */,
 				6ACB540520B00F8C00528420 /* MASViewConstraint.m in Sources */,
 				6ACB542D20B00F9A00528420 /* UIImageView+HighlightedWebCache.m in Sources */,
 				6ACB552420B0121800528420 /* UIImage+Alpha.m in Sources */,
+				CC89F35B20BA839F00FCEBD2 /* ProgramFont.m in Sources */,
+				6A143B7520BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.m in Sources */,
 				6ACB553B20B012D900528420 /* BaseViewController.m in Sources */,
+				6A143B8820BAE65C00D71959 /* PGDatePicker+DateHour.m in Sources */,
+				CC89F3BE20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.m in Sources */,
 				6ACB543420B00F9A00528420 /* SDWebImageDownloaderOperation.m in Sources */,
 				6ACB54CB20B0110000528420 /* MJRefreshGifHeader.m in Sources */,
 				6ACB551F20B0121800528420 /* UIImage+FileName.m in Sources */,
 				6ACB54FD20B011D500528420 /* UIButton+AFNetworking.m in Sources */,
 				6ACB553720B0124F00528420 /* FMResultSet.m in Sources */,
+				CC89F3C120BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.m in Sources */,
 				6A6BACED20B858B4008A428F /* NetworkReachabilityTool.m in Sources */,
 				6ACB550520B011D500528420 /* AFURLRequestSerialization.m in Sources */,
 				6ACB554E20B016E700528420 /* UICreateTool.m in Sources */,
 				6ACB548820B00FA500528420 /* YYTextTransaction.m in Sources */,
+				CC89F34E20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m in Sources */,
 				6ACB54BD20B0110000528420 /* UIScrollView+MJRefresh.m in Sources */,
+				6A143B7420BAE65C00D71959 /* PGDatePicker+Date.m in Sources */,
+				6A143B8F20BAE65C00D71959 /* PGDatePicker+Year.m in Sources */,
 				6ACB54CE20B0110000528420 /* MJRefreshBackFooter.m in Sources */,
 				6ACB542A20B00F9A00528420 /* MKAnnotationView+WebCache.m in Sources */,
 				6ACB550120B011D500528420 /* AFImageDownloader.m in Sources */,
@@ -1455,33 +1728,44 @@
 				6ACB548720B00FA500528420 /* UIPasteboard+YYText.m in Sources */,
 				6ACB548B20B00FA500528420 /* YYTextWeakProxy.m in Sources */,
 				6ACB547D20B00FA500528420 /* YYTextDebugOption.m in Sources */,
-				6ACB555A20B115A000528420 /* ProgramFont.m in Sources */,
+				6A143B7B20BAE65C00D71959 /* NSCalendar+PGCurrent.m in Sources */,
 				6ACB54C920B0110000528420 /* MJRefreshNormalHeader.m in Sources */,
-				6ACB555720B0190D00528420 /* ProgramSize.m in Sources */,
+				CC930C4120B56B0800B99756 /* SPSZ_shouDongViewController.m in Sources */,
 				6ACB547620B00FA500528420 /* YYTextContainerView.m in Sources */,
 				6ACB54C820B0110000528420 /* MJRefreshAutoNormalFooter.m in Sources */,
 				6AAF973A20B562C800A6C0E8 /* UIButton+ImageTitleSpacing.m in Sources */,
+				6A143B8720BAE65C00D71959 /* NSDate+PGCategory.m in Sources */,
+				CC89F35920BA839F00FCEBD2 /* ProgramSize.m in Sources */,
 				6ACB54FF20B011D500528420 /* UIWebView+AFNetworking.m in Sources */,
-				6A6BACAB20B84AAA008A428F /* SPSZ_AddGoodsViewController.m in Sources */,
+				6A143BA120BAE73300D71959 /* UIButton+CZHExtension.m in Sources */,
 				6ACB547F20B00FA500528420 /* YYTextRunDelegate.m in Sources */,
 				6ACB543520B00F9A00528420 /* NSData+ImageContentType.m in Sources */,
+				6A143B8D20BAE65C00D71959 /* PGDatePicker+MonthDay.m in Sources */,
+				6A143B9020BAE65C00D71959 /* PGDatePicker+DateHourMinuteSecond.m in Sources */,
 				6ACB548A20B00FA500528420 /* YYTextAsyncLayer.m in Sources */,
+				CC930C4A20B56B1B00B99756 /* SPSZ_chu_RecordTableViewCell.m in Sources */,
 				6ACB548620B00FA500528420 /* NSAttributedString+YYText.m in Sources */,
 				6AAF973320B557EE00A6C0E8 /* UIImage+Gradient.m in Sources */,
+				6A143B7820BAE65C00D71959 /* PGDatePickerView.m in Sources */,
+				6A143B8620BAE65C00D71959 /* PGDatePicker+DateHourMinute.m in Sources */,
+				6A143B8020BAE65C00D71959 /* PGDatePicker+MonthDayHourMinute.m in Sources */,
 				6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */,
 				6ACB54C520B0110000528420 /* MJRefreshBackNormalFooter.m in Sources */,
+				6A143B7620BAE65C00D71959 /* PGDatePicker.m in Sources */,
 				6ACB540620B00F8C00528420 /* MASViewAttribute.m in Sources */,
-				6A6BACCD20B85013008A428F /* SPSZ_shouDongViewController.m in Sources */,
 				6ACB550620B011D500528420 /* AFNetworkReachabilityManager.m in Sources */,
 				6ACB554520B0163A00528420 /* NSNull+LUNullExtention.m in Sources */,
 				6ACB54FE20B011D500528420 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				6ACB555420B018FC00528420 /* ProgramColor.m in Sources */,
 				CC79648120B2ED9C00D695F7 /* SPSZ_suo_RecordViewController.m in Sources */,
 				6A6BAD0920BA51BB008A428F /* HYBImageClipedManager.m in Sources */,
 				6ACB551D20B0121800528420 /* UIImage+Blur.m in Sources */,
+				CC89F36120BA84DC00FCEBD2 /* Reachability.m in Sources */,
 				6ACB54C720B0110000528420 /* MJRefreshAutoGifFooter.m in Sources */,
+				CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */,
+				6A143B8320BAE65C00D71959 /* PGPickerColumnView.m in Sources */,
 				6ACB542E20B00F9A00528420 /* SDWebImageDownloader.m in Sources */,
 				6ACB550220B011D500528420 /* AFURLResponseSerialization.m in Sources */,
+				6A143B8A20BAE65C00D71959 /* PGDatePicker+TimeAndSecond.m in Sources */,
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
 				6A6BAD0720BA51BB008A428F /* UIView+HYBImageCliped.m in Sources */,
 				6ACB554820B016A300528420 /* KRAlertTool.m in Sources */,
@@ -1492,101 +1776,117 @@
 				6AAF973D20B5B23A00A6C0E8 /* SPSZ_ChooseConnectView.m in Sources */,
 				6A6BACD420B85021008A428F /* SPSZ_personalInfoViewController.m in Sources */,
 				6ACB54FA20B011D500528420 /* UIRefreshControl+AFNetworking.m in Sources */,
+				CC930C4220B56B0800B99756 /* SPSZ_shouDong_OrderViewController.m in Sources */,
+				CC930C3F20B56B0800B99756 /* SPSZ_saoMa_ViewController.m in Sources */,
 				6ACB548D20B00FA500528420 /* YYClassInfo.m in Sources */,
 				6ACB554B20B016B400528420 /* LUAlertTool.m in Sources */,
 				6ACB54FC20B011D500528420 /* UIImageView+AFNetworking.m in Sources */,
+				CC89F3C820BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m in Sources */,
 				6ACB540220B00F8C00528420 /* NSArray+MASAdditions.m in Sources */,
 				6ACB543220B00F9A00528420 /* SDWebImagePrefetcher.m in Sources */,
 				6ACB54C420B0110000528420 /* MJRefreshBackStateFooter.m in Sources */,
+				CC930C2B20B56AE600B99756 /* SPSZ_changePassWordViewController.m in Sources */,
 				6ACB552220B0121800528420 /* UIImage+Capture.m in Sources */,
 				6ACB553520B0124F00528420 /* FMDatabase.m in Sources */,
 				6ACB53FE20B00F8C00528420 /* ViewController+MASAdditions.m in Sources */,
+				6A143B7D20BAE65C00D71959 /* PGDatePickManager.m in Sources */,
 				6ACB543020B00F9A00528420 /* UIImage+MultiFormat.m in Sources */,
 				6ACB548320B00FA500528420 /* YYTextRubyAnnotation.m in Sources */,
 				6ACB556320B11B8A00528420 /* SPSZ_LoginViewController.m in Sources */,
+				6A143B7720BAE65C00D71959 /* UIColor+PGHex.m in Sources */,
 				6ACB552620B0121800528420 /* UIImage+Resize.m in Sources */,
 				6ACB548220B00FA500528420 /* YYTextArchiver.m in Sources */,
 				6ACB550720B011D500528420 /* AFSecurityPolicy.m in Sources */,
+				6A143B8520BAE65C00D71959 /* PGPickerTableView.m in Sources */,
 				6ACB54CD20B0110000528420 /* MJRefreshHeader.m in Sources */,
 				6ACB548020B00FA500528420 /* YYTextParser.m in Sources */,
 				6ACB54C020B0110000528420 /* UIScrollView+MJExtension.m in Sources */,
 				6ACB53FF20B00F8C00528420 /* MASCompositeConstraint.m in Sources */,
+				6A143BA020BAE73300D71959 /* UIView+CZHExtension.m in Sources */,
+				6A143B7920BAE65C00D71959 /* PGDatePicker+MonthDayHour.m in Sources */,
 				6ACB542920B00F9A00528420 /* UIImage+WebP.m in Sources */,
 				6ACB552020B0121800528420 /* UIImage+Tint.m in Sources */,
+				6A143B7C20BAE65C00D71959 /* PGDatePicker+Time.m in Sources */,
 				6ACB54C220B0110000528420 /* UIView+MJExtension.m in Sources */,
 				6ACB547C20B00FA500528420 /* YYTextKeyboardManager.m in Sources */,
-				6A6BACB520B84FDD008A428F /* SPSZ_chu_RecordTableViewCell.m in Sources */,
+				CC89F35E20BA84B100FCEBD2 /* SPSZ_AddGoodsViewController.m in Sources */,
 				6ACB552320B0121800528420 /* UIImage+FX.m in Sources */,
 				6ACB54C620B0110000528420 /* MJRefreshAutoStateFooter.m in Sources */,
 				6ACB551E20B0121800528420 /* UIImage+CalculatedSize.m in Sources */,
 				6ACB547920B00FA500528420 /* YYTextLayout.m in Sources */,
+				6A143B9420BAE66D00D71959 /* THDatePickerView.m in Sources */,
 				6ACB54D420B0118900528420 /* UIView+Extension.m in Sources */,
 				6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */,
-				6A6BACCB20B85013008A428F /* SPSZ_saoMa_ViewController.m in Sources */,
-				6ACB555D20B116D400528420 /* ProgramConfig.m in Sources */,
 				6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
-				6A6BACCA20B85013008A428F /* SPSZ_jinHuo_RecordsViewController.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
+				CC930C3E20B56B0800B99756 /* SPSZ_paiZhao_OrderViewController.m in Sources */,
 				6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */,
+				6A143B7F20BAE65C00D71959 /* NSBundle+PGDatePicker.m in Sources */,
+				CC89F35820BA839E00FCEBD2 /* ProgramConfig.m in Sources */,
 				6ACB547820B00FA500528420 /* YYTextInput.m in Sources */,
 				6ACB548520B00FA500528420 /* NSParagraphStyle+YYText.m in Sources */,
 				6AAF973720B5589600A6C0E8 /* UIButton+Gradient.m in Sources */,
 				6ACB559E20B3289500528420 /* SPSZ_IndexView.m in Sources */,
-				6ACB556020B118CD00528420 /* Reachability.m in Sources */,
 				6ACB543620B00F9A00528420 /* UIImageView+WebCache.m in Sources */,
-				6A6BACCF20B85013008A428F /* SPSZ_saoMa_OrderViewController.m in Sources */,
 				6ACB558920B2F64100528420 /* SPSZ_ChuIndexViewController.m in Sources */,
+				CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */,
 				6ACB540320B00F8C00528420 /* View+MASAdditions.m in Sources */,
 				6ACB54CA20B0110000528420 /* MJRefreshStateHeader.m in Sources */,
 				6ACB550420B011D500528420 /* AFURLSessionManager.m in Sources */,
-				6A6BACB620B84FDD008A428F /* SPSZ_suo_RecordTableViewCell.m in Sources */,
+				CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */,
 				6ACB547520B00FA500528420 /* YYTextMagnifier.m in Sources */,
-				6A6BACD120B85013008A428F /* SPSZ_paiZhao_OrderViewController.m in Sources */,
-				6A6BACCC20B85013008A428F /* SPSZ_shouDong_OrderViewController.m in Sources */,
-				6A6BACC920B85013008A428F /* SPSZ_paiZhaoViewController.m in Sources */,
 				CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */,
 				6ACB547E20B00FA500528420 /* YYLabel.m in Sources */,
 				6ACB54BE20B0110000528420 /* MJRefreshConst.m in Sources */,
 				6ACB547420B00FA500528420 /* YYTextView.m in Sources */,
 				6AAF974020B5B29300A6C0E8 /* SPSZ_DeviceModel.m in Sources */,
-				6A6BACD720B8505F008A428F /* KRTagBar.m in Sources */,
 				6A6BACF820B86829008A428F /* SPSZ_AddGoodsTableViewCell.m in Sources */,
 				6ACB54CF20B0110000528420 /* MJRefreshAutoFooter.m in Sources */,
 				6ACB548C20B00FA500528420 /* NSObject+YYModel.m in Sources */,
-				6A6BACCE20B85013008A428F /* SPSZ_suo_MainViewController.m in Sources */,
+				6A143B8420BAE65C00D71959 /* PGPickerView.m in Sources */,
 				6A6BACF020B85A38008A428F /* ProgramNotificationName.m in Sources */,
+				6A143B8220BAE65C00D71959 /* PGPickerColumnCell.m in Sources */,
 				6ACB540020B00F8C00528420 /* MASConstraintMaker.m in Sources */,
+				6A143B9E20BAE73300D71959 /* CZHAddressPickerView.m in Sources */,
+				6A143B8C20BAE65C00D71959 /* PGDatePicker+Common.m in Sources */,
+				CC89F35A20BA839F00FCEBD2 /* ProgramColor.m in Sources */,
 				6ACB540420B00F8C00528420 /* MASConstraint.m in Sources */,
 				6ACB552520B0121800528420 /* UIImage+RoundedCorner.m in Sources */,
+				CC89F34A20B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m in Sources */,
 				6ACB53FD20B00F8C00528420 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6A6BAD0820BA51BB008A428F /* UIImageView+HYBImageCliped.m in Sources */,
-				6A6BACDA20B85078008A428F /* SPSZ_chu_personalCenterViewController.m in Sources */,
-				6A6BACE020B8509D008A428F /* SPSZ_changePassWordViewController.m in Sources */,
 				6ACB543120B00F9A00528420 /* SDWebImageCompat.m in Sources */,
 				6ACB540120B00F8C00528420 /* MASLayoutConstraint.m in Sources */,
+				CC930C2A20B56AE600B99756 /* SPSZ_EnterPasswordViewController.m in Sources */,
 				6ACB553E20B012F600528420 /* BaseNavigationController.m in Sources */,
 				6ACB542C20B00F9A00528420 /* SDWebImageDecoder.m in Sources */,
 				6ACB548920B00FA500528420 /* UIView+YYText.m in Sources */,
 				6ACB553420B0124F00528420 /* FMDatabaseAdditions.m in Sources */,
-				6A6BACDF20B8509D008A428F /* SPSZ_EnterPasswordViewController.m in Sources */,
 				CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */,
 				6ACB53E220B00F8200528420 /* MBProgressHUD.m in Sources */,
 				6ACB553320B0124F00528420 /* FMDatabaseQueue.m in Sources */,
 				CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */,
+				6A143B8B20BAE65C00D71959 /* PGDatePicker+DateAndTime.m in Sources */,
 				6A143B3620BAB36200D71959 /* SPSZ_InputWeightView.m in Sources */,
 				6ACB553620B0124F00528420 /* FMDatabasePool.m in Sources */,
+				CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */,
 				6ACB547720B00FA500528420 /* YYTextEffectWindow.m in Sources */,
 				6ACB543720B00F9A00528420 /* UIView+WebCacheOperation.m in Sources */,
+				CC89F3C420BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m in Sources */,
+				6A143B8E20BAE65C00D71959 /* PGDatePickManagerHeaderView.m in Sources */,
+				6A143B7A20BAE65C00D71959 /* PGDatePicker+YearAndMonth.m in Sources */,
 				6ACB552120B0121800528420 /* UIImage+Color.m in Sources */,
 				6ACB547A20B00FA500528420 /* YYTextLine.m in Sources */,
+				6A143B7E20BAE65C00D71959 /* PGDatePicker+Logic.m in Sources */,
 				6ACB54FB20B011D500528420 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6ACB550020B011D500528420 /* AFAutoPurgingImageCache.m in Sources */,
 				6ACB543320B00F9A00528420 /* SDImageCache.m in Sources */,
-				6A6BACF520B85E9D008A428F /* ChuzhengNetworkTool.m in Sources */,
+				CC930C3C20B56B0800B99756 /* SPSZ_jinHuo_RecordsViewController.m in Sources */,
 				6ACB550320B011D500528420 /* AFHTTPSessionManager.m in Sources */,
 				6ACB548120B00FA500528420 /* YYTextAttribute.m in Sources */,
+				CC930C4B20B56B1B00B99756 /* SPSZ_suo_RecordTableViewCell.m in Sources */,
 				6ACB54CC20B0110000528420 /* MJRefreshFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

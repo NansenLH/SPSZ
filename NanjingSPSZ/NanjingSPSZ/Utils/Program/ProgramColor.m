@@ -150,4 +150,11 @@
     return [self RGBColorWithRed:226 green:226 blue:226];
 }
 
+/**
+ 蓝色
+ */
++ (UIColor *)mainBluecolor{
+    return [self RGBColorWithRed:68 green:131 blue:255];
+}
+
 @end

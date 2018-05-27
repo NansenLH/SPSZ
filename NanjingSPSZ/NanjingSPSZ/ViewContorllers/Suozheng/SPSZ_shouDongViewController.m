@@ -8,7 +8,13 @@
 
 #import "SPSZ_shouDongViewController.h"
 
-@interface SPSZ_shouDongViewController ()<UITextFieldDelegate>
+#import "CZHAddressPickerView.h"
+#import "AddressPickerHeader.h"
+
+#import "PGDatePickManager.h"
+
+
+@interface SPSZ_shouDongViewController ()<UITextFieldDelegate,PGDatePickerDelegate>
 
 @property (nonatomic, strong)UIView *mainView;
 
@@ -33,6 +39,13 @@
 @property (nonatomic, assign)CGFloat height;
 
 @property (nonatomic, strong)NSMutableArray *titleArray;
+
+@property (nonatomic, copy) NSString *province;
+
+@property (nonatomic, copy) NSString *city;
+
+@property (nonatomic, copy) NSString *area;
+
 
 @end
 
@@ -118,7 +131,10 @@
         _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _timeButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
         [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
-        [_timeButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_timeButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+        _timeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        _timeButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
+        [_timeButton addTarget:self action:@selector(timeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _timeButton;
 }
@@ -126,11 +142,12 @@
 - (UIButton *)productLocationButton{
     if (!_productLocationButton) {
         _productLocationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _productLocationButton.backgroundColor = [UIColor redColor];
-        _productLocationButton.titleLabel.textAlignment = NSTextAlignmentRight;
         _productLocationButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
         [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
-        [_productLocationButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_productLocationButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+        _productLocationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        _productLocationButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
+        [_productLocationButton addTarget:self action:@selector(productLocationButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _productLocationButton;
 }
@@ -139,7 +156,6 @@
     if (!_mainView) {
         _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight -264)];
         _mainView.backgroundColor = [UIColor whiteColor];
-        _mainView.userInteractionEnabled = YES;
     }
     return _mainView;
 }
@@ -147,14 +163,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor   = [ UIColor clearColor];
-
+    
     self.height = (MainScreenHeight -264)/8;
     self.width = MainScreenWidth - 60;
+    
+
+    [self.view addSubview:self.productLocationButton];
     
     [self.view addSubview:self.mainView];
 
     [self setUpView];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)setUpView{
@@ -198,11 +221,31 @@
 }
 
 
-- (void)tapAction:(UIButton *)button{
-    
-    
+- (void)productLocationButtonAction:(UIButton *)button{
+    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
+        KRWeakSelf;
+        weakSelf.province = province;
+        weakSelf.city = city;
+        weakSelf.area = area;
+        [button setTitle:[NSString stringWithFormat:@"%@%@%@",province,city,area] forState:UIControlStateNormal];
+    }];
 }
 
+- (void)timeButtonAction:(UIButton *)button{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    datePickManager.isShadeBackgroud = true;
+    datePickManager.style = PGDatePickManagerStyle3;
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    datePicker.delegate = self;
+    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.isHiddenMiddleText = false;
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    [self presentViewController:datePickManager animated:false completion:nil];
+}
+
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    [self.timeButton setTitle:[NSString stringWithFormat:@"%ld-%ld-%ld",dateComponents.year,dateComponents.month,dateComponents.day] forState:UIControlStateNormal];
+}
 
 
 - (NSMutableAttributedString *)Color:(UIColor *)color
@@ -218,11 +261,23 @@
     
 }
 
+
+
+- (void)reloadNewData{
+    _productNameTextField.text = @"";
+    _detailLocationTextField.text = @"";
+    _numberTextField.text = @"";
+    _companyTextField.text = @"";
+    _nameTextField.text = @"";
+    _phoneTextField.text = @"";
+    [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
+    [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
 #pragma mark - Navigation
 

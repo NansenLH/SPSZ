@@ -10,4 +10,6 @@
 
 @interface SPSZ_shouDongViewController : BaseViewController
 
+- (void)reloadNewData;
+
 @end

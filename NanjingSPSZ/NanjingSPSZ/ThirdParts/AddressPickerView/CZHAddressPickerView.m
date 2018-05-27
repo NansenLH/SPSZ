@@ -170,11 +170,11 @@ typedef NS_ENUM(NSInteger, CZHAddressPickerViewType) {
     toolBar.backgroundColor = CZHColor(0xf6f6f6);
     [containView addSubview:toolBar];
     
-    UIButton *cancleButton = [UIButton czh_buttonWithTarget:self action:@selector(buttonClick:) frame:CGRectMake(0, 0, TOOLBAR_BUTTON_WIDTH, toolBar.czh_height) titleColor:CZHColor(0x666666) titleFont:CZHGlobelNormalFont(18) title:@"取消"];
+    UIButton *cancleButton = [UIButton czh_buttonWithTarget:self action:@selector(buttonClick:) frame:CGRectMake(0, 0, TOOLBAR_BUTTON_WIDTH, toolBar.czh_height) titleColor:[ProgramColor mainBluecolor] titleFont:CZHGlobelNormalFont(18) title:@"取消"];
     cancleButton.tag = CZHAddressPickerViewButtonTypeCancle;
     [toolBar addSubview:cancleButton];
     
-    UIButton *sureButton = [UIButton czh_buttonWithTarget:self action:@selector(buttonClick:) frame:CGRectMake(toolBar.czh_width - TOOLBAR_BUTTON_WIDTH, 0, TOOLBAR_BUTTON_WIDTH, toolBar.czh_height) titleColor:CZHThemeColor titleFont:CZHGlobelNormalFont(18) title:@"确定"];
+    UIButton *sureButton = [UIButton czh_buttonWithTarget:self action:@selector(buttonClick:) frame:CGRectMake(toolBar.czh_width - TOOLBAR_BUTTON_WIDTH, 0, TOOLBAR_BUTTON_WIDTH, toolBar.czh_height) titleColor:[ProgramColor mainBluecolor] titleFont:CZHGlobelNormalFont(18) title:@"确定"];
     sureButton.tag = CZHAddressPickerViewButtonTypeSure;
     [toolBar addSubview:sureButton];
     
@@ -332,6 +332,8 @@ typedef NS_ENUM(NSInteger, CZHAddressPickerViewType) {
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width / 3, 30)];
     label.adjustsFontSizeToFitWidth = YES;
     label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [ProgramColor mainBluecolor];
+    
     if (component == 0) {
         label.text = self.provinceArray[row];
     }else if (component == 1){
