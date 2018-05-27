@@ -50,4 +50,10 @@
  */
 @property (nonatomic, assign) BOOL isSelected;
 
+/**
+ 手动添加-输入的重量
+ */
+@property (nonatomic, copy) NSString *weight;
+
+
 @end

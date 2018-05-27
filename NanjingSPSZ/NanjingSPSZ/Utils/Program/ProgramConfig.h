@@ -21,8 +21,8 @@ UIKIT_EXTERN const BOOL isDev;
 #pragma mark - ======== 网络接口 ========
 // 运营服务器
 UIKIT_EXTERN NSString * const BasePath;
-
-
+// 分页请求的每页条数
+UIKIT_EXTERN const int Pagesize;
 
 
 @interface ProgramConfig : NSObject

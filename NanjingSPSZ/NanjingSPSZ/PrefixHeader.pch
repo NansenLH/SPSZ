@@ -27,6 +27,7 @@
 #import "MBProgressHUD.h"
 #import "NSNull+LUNullExtention.h"
 #import "SDWebImageManager.h"
+#import "UIImageView+WebCache.h"
 
 // 工具类
 #import "KRAlertTool.h"

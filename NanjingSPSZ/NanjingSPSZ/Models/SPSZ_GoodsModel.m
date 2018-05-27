@@ -15,4 +15,14 @@
     return [self yy_modelDescription];
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    return [self yy_modelCopy];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [self yy_modelEncodeWithCoder:aCoder];
+}
+
 @end

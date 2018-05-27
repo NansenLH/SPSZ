@@ -8,6 +8,10 @@
 
 #import "BaseViewController.h"
 
+@class SPSZ_GoodsModel;
+
 @interface SPSZ_AddGoodsViewController : BaseViewController
+
+@property (nonatomic, copy) void(^addGoodsBlock)(NSMutableArray<SPSZ_GoodsModel *> *addGoodsArray);
 
 @end

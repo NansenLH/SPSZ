@@ -31,11 +31,18 @@
 
 @property (nonatomic, assign) BOOL isConnect;
 
-
+@property (nonatomic, strong) NSMutableArray *selectedArray;
 
 @end
 
 @implementation SPSZ_ChuIndexViewController
+- (NSMutableArray *)selectedArray
+{
+    if (!_selectedArray) {
+        _selectedArray = [NSMutableArray array];
+    }
+    return _selectedArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -198,6 +205,11 @@
 {
     // 跳转到添加货物页面
     SPSZ_AddGoodsViewController *addGoodsVC = [[SPSZ_AddGoodsViewController alloc] init];
+    KRWeakSelf;
+    [addGoodsVC setAddGoodsBlock:^(NSMutableArray<SPSZ_GoodsModel *> *addGoodsArray) {
+        NSLog(@"addGoodsArray");
+    }];
+    
     [self.navigationController pushViewController:addGoodsVC animated:YES];
 }
 

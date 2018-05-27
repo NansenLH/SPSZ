@@ -29,7 +29,7 @@ NSString * const BasePath = @"https://api.house-keeper.cn/api/v2";
 
 #endif
 
-
+const int Pagesize = 20;
 
 @implementation ProgramConfig
 
