@@ -14,9 +14,11 @@
 #import "SPSZ_suo_personalCenterViewController.h"
 #import "SPSZ_chu_personalCenterViewController.h"
 
+#import "SPSZ_chu_RecordViewController.h"
+
 #import "KRTagBar.h"
 #import "UIButton+ImageTitleSpacing.h"
-
+#import "UIButton+Gradient.h"
 @interface SPSZ_suo_MainViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) KRTagBar          *tagBar;
@@ -33,7 +35,9 @@
 
 @property (nonatomic, strong) UIButton        *personButton;
 
+@property (nonatomic, strong) NSString        *centerButtonTitle;
 
+@property (nonatomic, strong) NSString        *centerButtonImageName;
 @end
 
 @implementation SPSZ_suo_MainViewController
@@ -51,6 +55,7 @@
 
         [whiteView addSubview:self.recordsButton];
         [whiteView addSubview:self.personButton];
+        [whiteView addSubview:self.centerButton];
     }
     return _bottomView;
 }
@@ -87,9 +92,18 @@
 - (UIButton *)centerButton{
     if (!_centerButton){
         _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _personButton.frame = CGRectMake(MainScreenWidth - 80 -40, 30, 80, 60);
-        [_personButton setImage:[UIImage imageNamed:@"user_gray"] forState:UIControlStateNormal];
-        [_personButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        _centerButton.frame = CGRectMake((MainScreenWidth - 100)/2, -50, 100, 100);
+        _centerButton.layer.masksToBounds = YES;
+        _centerButton.layer.cornerRadius = 50;
+        [_centerButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+
+        [_centerButton setImage:[UIImage imageNamed:@"scan_qr_white"] forState:UIControlStateNormal];
+        [_centerButton setTitle:@"扫码上传" forState:UIControlStateNormal];
+        [_centerButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [_centerButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
+
+        [_centerButton gradientButtonWithSize:CGSizeMake(120, 120) colorArray:@[[ProgramColor RGBColorWithRed:33 green:211 blue:255 alpha:0.94],[ProgramColor RGBColorWithRed:67 green:130 blue:255 alpha:0.94]] percentageArray:@[@(0),@(1)] gradientType:GradientFromTopToBottom];
+        
     }
     return _centerButton;
 }
@@ -98,7 +112,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blueColor];
     [self setupTagBar];
-    
+
     [self setupDetailScrollView];
     [self.view addSubview:self.bottomView];
     // Do any additional setup after loading the view.
@@ -146,8 +160,9 @@
     
     
     SPSZ_saoMa_ViewController *vc1 = [[SPSZ_saoMa_ViewController alloc]init];
-    SPSZ_shouDongViewController *vc2 = [[SPSZ_shouDongViewController alloc]init];
-    SPSZ_paiZhaoViewController *vc3 = [[SPSZ_paiZhaoViewController alloc]init];
+    SPSZ_paiZhaoViewController *vc2 = [[SPSZ_paiZhaoViewController alloc]init];
+    SPSZ_shouDongViewController *vc3 = [[SPSZ_shouDongViewController alloc]init];
+
     NSArray *vcArray = [NSArray arrayWithObjects:vc1,vc2,vc3, nil];
     
     for (int i = 0; i < count; i ++) {
@@ -176,6 +191,8 @@
 -(void)tagBarDidClickBtn:(UIButton *)btn atIndex:(NSInteger)index
 {
     self.detailScrollView.contentOffset = CGPointMake(index * MainScreenWidth, 0);
+    [self changeCenterButtonTitleWith:index];
+
 }
 
 #pragma mark - ========== Delegate ==========
@@ -193,7 +210,23 @@
         {
             [self.tagBar updateContentOffSet:scrollView.contentOffset];
         }
+        [self changeCenterButtonTitleWith:index];
         
+        
+    }
+}
+
+- (void)changeCenterButtonTitleWith:(NSInteger)index{
+    if (index == 0) {
+        [_centerButton setImage:[UIImage imageNamed:@"scan_qr_white"] forState:UIControlStateNormal];
+        [_centerButton setTitle:@"扫码上传" forState:UIControlStateNormal];            self.centerButtonImageName = @"scan_qr_white";
+    }else if (index == 1){
+        [_centerButton setImage:[UIImage imageNamed:@"take_photo_white"] forState:UIControlStateNormal];
+        [_centerButton setTitle:@"拍照上传" forState:UIControlStateNormal];
+        self.centerButtonImageName = @"scan_qr_white";
+    }else if (index == 2){
+        [_centerButton setImage:[UIImage imageNamed:@"upload_white"] forState:UIControlStateNormal];
+        [_centerButton setTitle:@"手动上传" forState:UIControlStateNormal];
     }
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -211,8 +244,9 @@
 }
 
 - (void)personButtonAction:(UIButton *)button{
-    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
+//    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
 //    SPSZ_chu_personalCenterViewController *vc = [[SPSZ_chu_personalCenterViewController alloc]init];
+    SPSZ_chu_RecordViewController *vc = [[SPSZ_chu_RecordViewController alloc]init];
 
     [self.navigationController pushViewController:vc animated:YES];
 }

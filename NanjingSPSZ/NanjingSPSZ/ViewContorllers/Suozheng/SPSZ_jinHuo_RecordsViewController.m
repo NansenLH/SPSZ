@@ -11,6 +11,8 @@
 #import "SPSZ_paiZhao_OrderViewController.h"
 #import "SPSZ_shouDong_OrderViewController.h"
 
+#import "SPSZ_suo_RecordViewController.h"
+
 #import "KRTagBar.h"
 
 @interface SPSZ_jinHuo_RecordsViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
@@ -28,7 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blueColor];
     [self setupTagBar];
     
     [self setupDetailScrollView];
@@ -76,7 +77,8 @@
     
     
     
-    SPSZ_saoMa_OrderViewController *vc1 = [[SPSZ_saoMa_OrderViewController alloc]init];
+//    SPSZ_saoMa_OrderViewController *vc1 = [[SPSZ_saoMa_OrderViewController alloc]init];
+    SPSZ_suo_RecordViewController *vc1 = [[SPSZ_suo_RecordViewController alloc]init];
     SPSZ_shouDong_OrderViewController *vc2 = [[SPSZ_shouDong_OrderViewController alloc]init];
     SPSZ_paiZhao_OrderViewController *vc3 = [[SPSZ_paiZhao_OrderViewController alloc]init];
     NSArray *vcArray = [NSArray arrayWithObjects:vc1,vc2,vc3, nil];
@@ -113,6 +115,7 @@
 #pragma mark ---- UIScrollViewDelegate ----
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    
     if ([scrollView isEqual:self.detailScrollView]) {
         CGFloat pedding = scrollView.contentOffset.x;
         int index = (pedding / MainScreenWidth);
@@ -129,6 +132,8 @@
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
+    
     if ([scrollView isEqual:self.detailScrollView]) {
         [self.tagBar updateContentOffSet:scrollView.contentOffset];
     }

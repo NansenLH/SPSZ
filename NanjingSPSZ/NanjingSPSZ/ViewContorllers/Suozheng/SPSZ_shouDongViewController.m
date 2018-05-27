@@ -117,6 +117,7 @@
     if (!_timeButton) {
         _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _timeButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
+        _timeButton.backgroundColor = [UIColor redColor];
         [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
         [_timeButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
     }

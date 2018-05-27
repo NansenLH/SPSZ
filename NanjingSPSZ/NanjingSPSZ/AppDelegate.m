@@ -37,16 +37,12 @@
 
     [self.window makeKeyAndVisible];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])
-    {
-        NSLog(@"第一次运行程序");
-        self.loginVC = [[SPSZ_LoginViewController alloc] init];
-        self.window.rootViewController = self.loginVC;
-    }
-    else{
-        self.loginVC = [[SPSZ_LoginViewController alloc] init];
-        self.window.rootViewController = self.loginVC;
-    }
+    
+    self.loginVC = [[SPSZ_LoginViewController alloc] init];
+    
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:self.loginVC];
+    
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     [[UIView appearance] setExclusiveTouch:YES];

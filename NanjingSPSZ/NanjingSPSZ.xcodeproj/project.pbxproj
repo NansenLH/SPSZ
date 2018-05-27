@@ -146,8 +146,29 @@
 		CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */; };
 		CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */; };
 		CC79648120B2ED9C00D695F7 /* SPSZ_suo_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79648020B2ED9B00D695F7 /* SPSZ_suo_RecordViewController.m */; };
-		CC79648720B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79648320B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.m */; };
-		CC79648820B2EDBA00D695F7 /* SPSZ_chu_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79648520B2EDBA00D695F7 /* SPSZ_chu_RecordTableViewCell.m */; };
+		CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34320B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m */; };
+		CC89F34720B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34620B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m */; };
+		CC89F34A20B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */; };
+		CC89F34E20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34D20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m */; };
+		CC930C2A20B56AE600B99756 /* SPSZ_EnterPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2720B56AE500B99756 /* SPSZ_EnterPasswordViewController.m */; };
+		CC930C2B20B56AE600B99756 /* SPSZ_changePassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2920B56AE600B99756 /* SPSZ_changePassWordViewController.m */; };
+		CC930C3C20B56B0800B99756 /* SPSZ_jinHuo_RecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2E20B56B0600B99756 /* SPSZ_jinHuo_RecordsViewController.m */; };
+		CC930C3D20B56B0800B99756 /* SPSZ_saoMa_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2F20B56B0600B99756 /* SPSZ_saoMa_OrderViewController.m */; };
+		CC930C3E20B56B0800B99756 /* SPSZ_paiZhao_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3020B56B0600B99756 /* SPSZ_paiZhao_OrderViewController.m */; };
+		CC930C3F20B56B0800B99756 /* SPSZ_saoMa_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3120B56B0600B99756 /* SPSZ_saoMa_ViewController.m */; };
+		CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3220B56B0600B99756 /* SPSZ_suo_MainViewController.m */; };
+		CC930C4120B56B0800B99756 /* SPSZ_shouDongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3520B56B0700B99756 /* SPSZ_shouDongViewController.m */; };
+		CC930C4220B56B0800B99756 /* SPSZ_shouDong_OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3820B56B0700B99756 /* SPSZ_shouDong_OrderViewController.m */; };
+		CC930C4320B56B0800B99756 /* SPSZ_paiZhaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C3B20B56B0800B99756 /* SPSZ_paiZhaoViewController.m */; };
+		CC930C4A20B56B1B00B99756 /* SPSZ_chu_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4620B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.m */; };
+		CC930C4B20B56B1B00B99756 /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */; };
+		CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4D20B56B7300B99756 /* KRTagBar.m */; };
+		CC930C5220B57E9500B99756 /* THDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C5020B57E9400B99756 /* THDatePickerView.m */; };
+		CC930C5C20B57EAF00B99756 /* CZHAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C5420B57EAF00B99756 /* CZHAddressPickerView.m */; };
+		CC930C5D20B57EAF00B99756 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC930C5920B57EAF00B99756 /* city.plist */; };
+		CC930C5E20B57EAF00B99756 /* UIView+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C5A20B57EAF00B99756 /* UIView+CZHExtension.m */; };
+		CC930C5F20B57EAF00B99756 /* UIButton+CZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C5B20B57EAF00B99756 /* UIButton+CZHExtension.m */; };
+		CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -453,10 +474,52 @@
 		CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordModel.m; sourceTree = "<group>"; };
 		CC79648020B2ED9B00D695F7 /* SPSZ_suo_RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordViewController.m; sourceTree = "<group>"; };
 		CC79648220B2EDA800D695F7 /* SPSZ_suo_RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_RecordViewController.h; sourceTree = "<group>"; };
-		CC79648320B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordTableViewCell.m; sourceTree = "<group>"; };
-		CC79648420B2EDBA00D695F7 /* SPSZ_chu_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordTableViewCell.h; sourceTree = "<group>"; };
-		CC79648520B2EDBA00D695F7 /* SPSZ_chu_RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordTableViewCell.m; sourceTree = "<group>"; };
-		CC79648620B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_RecordTableViewCell.h; sourceTree = "<group>"; };
+		CC89F34220B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_personalCenterViewController.h; sourceTree = "<group>"; };
+		CC89F34320B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
+		CC89F34520B6E06500FCEBD2 /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
+		CC89F34620B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
+		CC89F34820B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPSZ_suo_shouDongTableViewCell.h; path = NanjingSPSZ/Views/suoViews/SPSZ_suo_shouDongTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPSZ_suo_shouDongTableViewCell.m; path = NanjingSPSZ/Views/suoViews/SPSZ_suo_shouDongTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		CC89F34C20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_shouDongRecordModel.h; sourceTree = "<group>"; };
+		CC89F34D20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_shouDongRecordModel.m; sourceTree = "<group>"; };
+		CC930C2620B56AE500B99756 /* SPSZ_EnterPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_EnterPasswordViewController.h; sourceTree = "<group>"; };
+		CC930C2720B56AE500B99756 /* SPSZ_EnterPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_EnterPasswordViewController.m; sourceTree = "<group>"; };
+		CC930C2820B56AE500B99756 /* SPSZ_changePassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_changePassWordViewController.h; sourceTree = "<group>"; };
+		CC930C2920B56AE600B99756 /* SPSZ_changePassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_changePassWordViewController.m; sourceTree = "<group>"; };
+		CC930C2C20B56B0500B99756 /* SPSZ_jinHuo_RecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_jinHuo_RecordsViewController.h; sourceTree = "<group>"; };
+		CC930C2D20B56B0500B99756 /* SPSZ_paiZhao_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_paiZhao_OrderViewController.h; sourceTree = "<group>"; };
+		CC930C2E20B56B0600B99756 /* SPSZ_jinHuo_RecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_jinHuo_RecordsViewController.m; sourceTree = "<group>"; };
+		CC930C2F20B56B0600B99756 /* SPSZ_saoMa_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_saoMa_OrderViewController.m; sourceTree = "<group>"; };
+		CC930C3020B56B0600B99756 /* SPSZ_paiZhao_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_paiZhao_OrderViewController.m; sourceTree = "<group>"; };
+		CC930C3120B56B0600B99756 /* SPSZ_saoMa_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_saoMa_ViewController.m; sourceTree = "<group>"; };
+		CC930C3220B56B0600B99756 /* SPSZ_suo_MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_MainViewController.m; sourceTree = "<group>"; };
+		CC930C3320B56B0600B99756 /* SPSZ_saoMa_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_saoMa_OrderViewController.h; sourceTree = "<group>"; };
+		CC930C3420B56B0600B99756 /* SPSZ_shouDongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_shouDongViewController.h; sourceTree = "<group>"; };
+		CC930C3520B56B0700B99756 /* SPSZ_shouDongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_shouDongViewController.m; sourceTree = "<group>"; };
+		CC930C3620B56B0700B99756 /* SPSZ_shouDong_OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_shouDong_OrderViewController.h; sourceTree = "<group>"; };
+		CC930C3720B56B0700B99756 /* SPSZ_suo_MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_MainViewController.h; sourceTree = "<group>"; };
+		CC930C3820B56B0700B99756 /* SPSZ_shouDong_OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_shouDong_OrderViewController.m; sourceTree = "<group>"; };
+		CC930C3920B56B0700B99756 /* SPSZ_saoMa_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_saoMa_ViewController.h; sourceTree = "<group>"; };
+		CC930C3A20B56B0700B99756 /* SPSZ_paiZhaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_paiZhaoViewController.h; sourceTree = "<group>"; };
+		CC930C3B20B56B0800B99756 /* SPSZ_paiZhaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_paiZhaoViewController.m; sourceTree = "<group>"; };
+		CC930C4520B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordTableViewCell.h; sourceTree = "<group>"; };
+		CC930C4620B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordTableViewCell.m; sourceTree = "<group>"; };
+		CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_RecordTableViewCell.m; sourceTree = "<group>"; };
+		CC930C4920B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_RecordTableViewCell.h; sourceTree = "<group>"; };
+		CC930C4C20B56B7300B99756 /* KRTagBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRTagBar.h; sourceTree = "<group>"; };
+		CC930C4D20B56B7300B99756 /* KRTagBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRTagBar.m; sourceTree = "<group>"; };
+		CC930C5020B57E9400B99756 /* THDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDatePickerView.m; sourceTree = "<group>"; };
+		CC930C5120B57E9400B99756 /* THDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDatePickerView.h; sourceTree = "<group>"; };
+		CC930C5420B57EAF00B99756 /* CZHAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZHAddressPickerView.m; sourceTree = "<group>"; };
+		CC930C5520B57EAF00B99756 /* AddressPickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerHeader.h; sourceTree = "<group>"; };
+		CC930C5620B57EAF00B99756 /* UIView+CZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CZHExtension.h"; sourceTree = "<group>"; };
+		CC930C5720B57EAF00B99756 /* UIButton+CZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CZHExtension.h"; sourceTree = "<group>"; };
+		CC930C5820B57EAF00B99756 /* CZHAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZHAddressPickerView.h; sourceTree = "<group>"; };
+		CC930C5920B57EAF00B99756 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		CC930C5A20B57EAF00B99756 /* UIView+CZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CZHExtension.m"; sourceTree = "<group>"; };
+		CC930C5B20B57EAF00B99756 /* UIButton+CZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CZHExtension.m"; sourceTree = "<group>"; };
+		CC930C6020B5998200B99756 /* SPSZ_suo_personalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_personalCenterViewController.h; sourceTree = "<group>"; };
+		CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_personalCenterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -572,6 +635,7 @@
 		6ACB53D920B00E6600528420 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CC89F34B20B9276900FCEBD2 /* suoModels */,
 				CC79647A20B2ED9100D695F7 /* SPSZ_chu_RecordModel.h */,
 				CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */,
 				CC79647B20B2ED9100D695F7 /* SPSZ_suo_RecordModel.h */,
@@ -583,11 +647,9 @@
 		6ACB53DA20B00E6600528420 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CC930C4420B56B1A00B99756 /* chuViews */,
+				CC930C4720B56B1A00B99756 /* suoViews */,
 				6ACB559B20B3286900528420 /* Chuzheng */,
-				CC79648420B2EDBA00D695F7 /* SPSZ_chu_RecordTableViewCell.h */,
-				CC79648520B2EDBA00D695F7 /* SPSZ_chu_RecordTableViewCell.m */,
-				CC79648620B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.h */,
-				CC79648320B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -598,6 +660,8 @@
 				6ACB554120B0136B00528420 /* Login */,
 				6ACB554020B0136000528420 /* Chuzheng */,
 				6ACB553F20B0132C00528420 /* Suozheng */,
+				CC89F34520B6E06500FCEBD2 /* SPSZ_personalInfoViewController.h */,
+				CC89F34620B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m */,
 			);
 			path = ViewContorllers;
 			sourceTree = "<group>";
@@ -605,6 +669,8 @@
 		6ACB53DC20B00E9800528420 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CC930C4C20B56B7300B99756 /* KRTagBar.h */,
+				CC930C4D20B56B7300B99756 /* KRTagBar.m */,
 				6ACB555E20B118CD00528420 /* Reachability.h */,
 				6ACB555F20B118CD00528420 /* Reachability.m */,
 				6ACB555520B0190D00528420 /* ProgramSize.h */,
@@ -629,6 +695,8 @@
 		6ACB53DD20B00E9800528420 /* ThirdParts */ = {
 			isa = PBXGroup;
 			children = (
+				CC930C5320B57EAF00B99756 /* AddressPickerView */,
+				CC930C4F20B57E9400B99756 /* 时间选择器 */,
 				6ACB552720B0124F00528420 /* fmdb */,
 				6ACB54D520B011D400528420 /* AFNetworking */,
 				6ACB548E20B0110000528420 /* MJRefresh */,
@@ -1049,8 +1117,26 @@
 		6ACB553F20B0132C00528420 /* Suozheng */ = {
 			isa = PBXGroup;
 			children = (
+				CC930C2C20B56B0500B99756 /* SPSZ_jinHuo_RecordsViewController.h */,
+				CC930C2E20B56B0600B99756 /* SPSZ_jinHuo_RecordsViewController.m */,
+				CC930C2D20B56B0500B99756 /* SPSZ_paiZhao_OrderViewController.h */,
+				CC930C3020B56B0600B99756 /* SPSZ_paiZhao_OrderViewController.m */,
+				CC930C3A20B56B0700B99756 /* SPSZ_paiZhaoViewController.h */,
+				CC930C3B20B56B0800B99756 /* SPSZ_paiZhaoViewController.m */,
+				CC930C3320B56B0600B99756 /* SPSZ_saoMa_OrderViewController.h */,
+				CC930C2F20B56B0600B99756 /* SPSZ_saoMa_OrderViewController.m */,
+				CC930C3920B56B0700B99756 /* SPSZ_saoMa_ViewController.h */,
+				CC930C3120B56B0600B99756 /* SPSZ_saoMa_ViewController.m */,
+				CC930C3620B56B0700B99756 /* SPSZ_shouDong_OrderViewController.h */,
+				CC930C3820B56B0700B99756 /* SPSZ_shouDong_OrderViewController.m */,
+				CC930C3420B56B0600B99756 /* SPSZ_shouDongViewController.h */,
+				CC930C3520B56B0700B99756 /* SPSZ_shouDongViewController.m */,
+				CC930C3720B56B0700B99756 /* SPSZ_suo_MainViewController.h */,
+				CC930C3220B56B0600B99756 /* SPSZ_suo_MainViewController.m */,
 				CC79648220B2EDA800D695F7 /* SPSZ_suo_RecordViewController.h */,
 				CC79648020B2ED9B00D695F7 /* SPSZ_suo_RecordViewController.m */,
+				CC930C6020B5998200B99756 /* SPSZ_suo_personalCenterViewController.h */,
+				CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */,
 			);
 			path = Suozheng;
 			sourceTree = "<group>";
@@ -1062,6 +1148,8 @@
 				CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */,
 				6ACB558720B2F64100528420 /* SPSZ_ChuIndexViewController.h */,
 				6ACB558820B2F64100528420 /* SPSZ_ChuIndexViewController.m */,
+				CC89F34220B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.h */,
+				CC89F34320B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m */,
 			);
 			path = Chuzheng;
 			sourceTree = "<group>";
@@ -1069,6 +1157,10 @@
 		6ACB554120B0136B00528420 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CC930C2820B56AE500B99756 /* SPSZ_changePassWordViewController.h */,
+				CC930C2920B56AE600B99756 /* SPSZ_changePassWordViewController.m */,
+				CC930C2620B56AE500B99756 /* SPSZ_EnterPasswordViewController.h */,
+				CC930C2720B56AE500B99756 /* SPSZ_EnterPasswordViewController.m */,
 				6ACB556120B11B8A00528420 /* SPSZ_LoginViewController.h */,
 				6ACB556220B11B8A00528420 /* SPSZ_LoginViewController.m */,
 			);
@@ -1096,6 +1188,59 @@
 				6ACB559D20B3289500528420 /* SPSZ_IndexView.m */,
 			);
 			path = Chuzheng;
+			sourceTree = "<group>";
+		};
+		CC89F34B20B9276900FCEBD2 /* suoModels */ = {
+			isa = PBXGroup;
+			children = (
+				CC89F34C20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.h */,
+				CC89F34D20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m */,
+			);
+			path = suoModels;
+			sourceTree = "<group>";
+		};
+		CC930C4420B56B1A00B99756 /* chuViews */ = {
+			isa = PBXGroup;
+			children = (
+				CC930C4520B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.h */,
+				CC930C4620B56B1A00B99756 /* SPSZ_chu_RecordTableViewCell.m */,
+			);
+			path = chuViews;
+			sourceTree = "<group>";
+		};
+		CC930C4720B56B1A00B99756 /* suoViews */ = {
+			isa = PBXGroup;
+			children = (
+				CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */,
+				CC930C4920B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.h */,
+				CC89F34820B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.h */,
+				CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */,
+			);
+			path = suoViews;
+			sourceTree = "<group>";
+		};
+		CC930C4F20B57E9400B99756 /* 时间选择器 */ = {
+			isa = PBXGroup;
+			children = (
+				CC930C5020B57E9400B99756 /* THDatePickerView.m */,
+				CC930C5120B57E9400B99756 /* THDatePickerView.h */,
+			);
+			path = "时间选择器";
+			sourceTree = "<group>";
+		};
+		CC930C5320B57EAF00B99756 /* AddressPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				CC930C5420B57EAF00B99756 /* CZHAddressPickerView.m */,
+				CC930C5520B57EAF00B99756 /* AddressPickerHeader.h */,
+				CC930C5620B57EAF00B99756 /* UIView+CZHExtension.h */,
+				CC930C5720B57EAF00B99756 /* UIButton+CZHExtension.h */,
+				CC930C5820B57EAF00B99756 /* CZHAddressPickerView.h */,
+				CC930C5920B57EAF00B99756 /* city.plist */,
+				CC930C5A20B57EAF00B99756 /* UIView+CZHExtension.m */,
+				CC930C5B20B57EAF00B99756 /* UIButton+CZHExtension.m */,
+			);
+			path = AddressPickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1203,6 +1348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */,
+				CC930C5D20B57EAF00B99756 /* city.plist in Resources */,
 				6AAF972D20B5428C00A6C0E8 /* Assets.xcassets in Resources */,
 				6ACB54BF20B0110000528420 /* MJRefresh.bundle in Resources */,
 			);
@@ -1229,9 +1375,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC79648720B2EDBA00D695F7 /* SPSZ_suo_RecordTableViewCell.m in Sources */,
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
 				6ACB54D020B0110000528420 /* MJRefreshComponent.m in Sources */,
+				CC930C3D20B56B0800B99756 /* SPSZ_saoMa_OrderViewController.m in Sources */,
+				CC930C4320B56B0800B99756 /* SPSZ_paiZhaoViewController.m in Sources */,
 				6ACB540520B00F8C00528420 /* MASViewConstraint.m in Sources */,
 				6ACB542D20B00F9A00528420 /* UIImageView+HighlightedWebCache.m in Sources */,
 				6ACB552420B0121800528420 /* UIImage+Alpha.m in Sources */,
@@ -1244,6 +1391,7 @@
 				6ACB550520B011D500528420 /* AFURLRequestSerialization.m in Sources */,
 				6ACB554E20B016E700528420 /* UICreateTool.m in Sources */,
 				6ACB548820B00FA500528420 /* YYTextTransaction.m in Sources */,
+				CC89F34E20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m in Sources */,
 				6ACB54BD20B0110000528420 /* UIScrollView+MJRefresh.m in Sources */,
 				6ACB54CE20B0110000528420 /* MJRefreshBackFooter.m in Sources */,
 				6ACB542A20B00F9A00528420 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1254,6 +1402,7 @@
 				6ACB547D20B00FA500528420 /* YYTextDebugOption.m in Sources */,
 				6ACB555A20B115A000528420 /* ProgramFont.m in Sources */,
 				6ACB54C920B0110000528420 /* MJRefreshNormalHeader.m in Sources */,
+				CC930C4120B56B0800B99756 /* SPSZ_shouDongViewController.m in Sources */,
 				6ACB555720B0190D00528420 /* ProgramSize.m in Sources */,
 				6ACB547620B00FA500528420 /* YYTextContainerView.m in Sources */,
 				6ACB54C820B0110000528420 /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -1262,9 +1411,11 @@
 				6ACB547F20B00FA500528420 /* YYTextRunDelegate.m in Sources */,
 				6ACB543520B00F9A00528420 /* NSData+ImageContentType.m in Sources */,
 				6ACB548A20B00FA500528420 /* YYTextAsyncLayer.m in Sources */,
+				CC930C4A20B56B1B00B99756 /* SPSZ_chu_RecordTableViewCell.m in Sources */,
 				6ACB548620B00FA500528420 /* NSAttributedString+YYText.m in Sources */,
 				6AAF973320B557EE00A6C0E8 /* UIImage+Gradient.m in Sources */,
 				6ACB54C520B0110000528420 /* MJRefreshBackNormalFooter.m in Sources */,
+				CC930C5220B57E9500B99756 /* THDatePickerView.m in Sources */,
 				6ACB540620B00F8C00528420 /* MASViewAttribute.m in Sources */,
 				6ACB550620B011D500528420 /* AFNetworkReachabilityManager.m in Sources */,
 				6ACB554520B0163A00528420 /* NSNull+LUNullExtention.m in Sources */,
@@ -1273,6 +1424,7 @@
 				CC79648120B2ED9C00D695F7 /* SPSZ_suo_RecordViewController.m in Sources */,
 				6ACB551D20B0121800528420 /* UIImage+Blur.m in Sources */,
 				6ACB54C720B0110000528420 /* MJRefreshAutoGifFooter.m in Sources */,
+				CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */,
 				6ACB542E20B00F9A00528420 /* SDWebImageDownloader.m in Sources */,
 				6ACB550220B011D500528420 /* AFURLResponseSerialization.m in Sources */,
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
@@ -1282,12 +1434,16 @@
 				6ACB542B20B00F9A00528420 /* SDWebImageManager.m in Sources */,
 				6ACB53B020AFFD4800528420 /* main.m in Sources */,
 				6ACB54FA20B011D500528420 /* UIRefreshControl+AFNetworking.m in Sources */,
+				CC930C4220B56B0800B99756 /* SPSZ_shouDong_OrderViewController.m in Sources */,
+				CC930C3F20B56B0800B99756 /* SPSZ_saoMa_ViewController.m in Sources */,
 				6ACB548D20B00FA500528420 /* YYClassInfo.m in Sources */,
 				6ACB554B20B016B400528420 /* LUAlertTool.m in Sources */,
 				6ACB54FC20B011D500528420 /* UIImageView+AFNetworking.m in Sources */,
 				6ACB540220B00F8C00528420 /* NSArray+MASAdditions.m in Sources */,
 				6ACB543220B00F9A00528420 /* SDWebImagePrefetcher.m in Sources */,
 				6ACB54C420B0110000528420 /* MJRefreshBackStateFooter.m in Sources */,
+				CC930C2B20B56AE600B99756 /* SPSZ_changePassWordViewController.m in Sources */,
+				CC930C5C20B57EAF00B99756 /* CZHAddressPickerView.m in Sources */,
 				6ACB552220B0121800528420 /* UIImage+Capture.m in Sources */,
 				6ACB553520B0124F00528420 /* FMDatabase.m in Sources */,
 				6ACB53FE20B00F8C00528420 /* ViewController+MASAdditions.m in Sources */,
@@ -1300,7 +1456,6 @@
 				6ACB54CD20B0110000528420 /* MJRefreshHeader.m in Sources */,
 				6ACB548020B00FA500528420 /* YYTextParser.m in Sources */,
 				6ACB54C020B0110000528420 /* UIScrollView+MJExtension.m in Sources */,
-				CC79648820B2EDBA00D695F7 /* SPSZ_chu_RecordTableViewCell.m in Sources */,
 				6ACB53FF20B00F8C00528420 /* MASCompositeConstraint.m in Sources */,
 				6ACB542920B00F9A00528420 /* UIImage+WebP.m in Sources */,
 				6ACB552020B0121800528420 /* UIImage+Tint.m in Sources */,
@@ -1310,11 +1465,13 @@
 				6ACB54C620B0110000528420 /* MJRefreshAutoStateFooter.m in Sources */,
 				6ACB551E20B0121800528420 /* UIImage+CalculatedSize.m in Sources */,
 				6ACB547920B00FA500528420 /* YYTextLayout.m in Sources */,
+				CC930C5F20B57EAF00B99756 /* UIButton+CZHExtension.m in Sources */,
 				6ACB54D420B0118900528420 /* UIView+Extension.m in Sources */,
 				6ACB555D20B116D400528420 /* ProgramConfig.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
+				CC930C3E20B56B0800B99756 /* SPSZ_paiZhao_OrderViewController.m in Sources */,
 				6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */,
 				6ACB547820B00FA500528420 /* YYTextInput.m in Sources */,
 				6ACB548520B00FA500528420 /* NSParagraphStyle+YYText.m in Sources */,
@@ -1323,9 +1480,11 @@
 				6ACB556020B118CD00528420 /* Reachability.m in Sources */,
 				6ACB543620B00F9A00528420 /* UIImageView+WebCache.m in Sources */,
 				6ACB558920B2F64100528420 /* SPSZ_ChuIndexViewController.m in Sources */,
+				CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */,
 				6ACB540320B00F8C00528420 /* View+MASAdditions.m in Sources */,
 				6ACB54CA20B0110000528420 /* MJRefreshStateHeader.m in Sources */,
 				6ACB550420B011D500528420 /* AFURLSessionManager.m in Sources */,
+				CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */,
 				6ACB547520B00FA500528420 /* YYTextMagnifier.m in Sources */,
 				CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */,
 				6ACB547E20B00FA500528420 /* YYLabel.m in Sources */,
@@ -1334,12 +1493,16 @@
 				6ACB54CF20B0110000528420 /* MJRefreshAutoFooter.m in Sources */,
 				6ACB548C20B00FA500528420 /* NSObject+YYModel.m in Sources */,
 				6ACB540020B00F8C00528420 /* MASConstraintMaker.m in Sources */,
+				CC89F34720B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m in Sources */,
 				6ACB540420B00F8C00528420 /* MASConstraint.m in Sources */,
 				6ACB552520B0121800528420 /* UIImage+RoundedCorner.m in Sources */,
+				CC89F34A20B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m in Sources */,
 				6ACB53FD20B00F8C00528420 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6ACB543120B00F9A00528420 /* SDWebImageCompat.m in Sources */,
 				6ACB540120B00F8C00528420 /* MASLayoutConstraint.m in Sources */,
+				CC930C2A20B56AE600B99756 /* SPSZ_EnterPasswordViewController.m in Sources */,
 				6ACB553E20B012F600528420 /* BaseNavigationController.m in Sources */,
+				CC930C5E20B57EAF00B99756 /* UIView+CZHExtension.m in Sources */,
 				6ACB542C20B00F9A00528420 /* SDWebImageDecoder.m in Sources */,
 				6ACB548920B00FA500528420 /* UIView+YYText.m in Sources */,
 				6ACB553420B0124F00528420 /* FMDatabaseAdditions.m in Sources */,
@@ -1348,6 +1511,7 @@
 				6ACB553320B0124F00528420 /* FMDatabaseQueue.m in Sources */,
 				CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */,
 				6ACB553620B0124F00528420 /* FMDatabasePool.m in Sources */,
+				CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */,
 				6ACB547720B00FA500528420 /* YYTextEffectWindow.m in Sources */,
 				6ACB543720B00F9A00528420 /* UIView+WebCacheOperation.m in Sources */,
 				6ACB552120B0121800528420 /* UIImage+Color.m in Sources */,
@@ -1355,8 +1519,10 @@
 				6ACB54FB20B011D500528420 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6ACB550020B011D500528420 /* AFAutoPurgingImageCache.m in Sources */,
 				6ACB543320B00F9A00528420 /* SDImageCache.m in Sources */,
+				CC930C3C20B56B0800B99756 /* SPSZ_jinHuo_RecordsViewController.m in Sources */,
 				6ACB550320B011D500528420 /* AFHTTPSessionManager.m in Sources */,
 				6ACB548120B00FA500528420 /* YYTextAttribute.m in Sources */,
+				CC930C4B20B56B1B00B99756 /* SPSZ_suo_RecordTableViewCell.m in Sources */,
 				6ACB54CC20B0110000528420 /* MJRefreshFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
