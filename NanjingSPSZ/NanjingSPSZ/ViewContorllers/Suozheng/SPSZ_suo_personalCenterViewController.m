@@ -58,12 +58,37 @@
     return _titleNumArray;
 }
 
-
+- (void)configNavigation
+{
+    self.navigationItem.title = @"个人中心";
+    
+//            CGFloat naviHeight = self.navigationController.navigationBar.frame.size.height;
+//            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//            button.size = CGSizeMake(80, naviHeight);
+//            [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+//            button.adjustsImageWhenHighlighted = NO;
+//            button.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 40);
+//            viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//            [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+//            viewController.hidesBottomBarWhenPushed = YES;
+//            self.navigationBar.barTintColor = [UIColor whiteColor];
+    
+//    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [leftButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+//    [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    leftButton.titleLabel.font = [UIFont systemFontOfSize:13];
+//    leftButton.frame = CGRectMake(0, 0, 44, 44);
+//    leftButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+//    [leftButton addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [ProgramColor huiseColor];
+    [self configNavigation];
     for (int i=0; i<3; i++) {
         [self setUpViewWith:i];
     }
@@ -147,6 +172,12 @@
     }else if ([tap view].tag == 10008){
         NSLog(@"注销登录");
     }
+}
+
+
+- (void)leftButtonAction:(UIButton *)button
+{
+    [self.navigationController popoverPresentationController];
 }
 
 //- (UIView *)setView

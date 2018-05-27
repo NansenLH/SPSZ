@@ -8,7 +8,9 @@
 
 #import "SPSZ_paiZhao_OrderViewController.h"
 
-@interface SPSZ_paiZhao_OrderViewController ()
+#import "SPSZ_suo_paiZhaoCollectionViewCell.h"
+
+@interface SPSZ_paiZhao_OrderViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)NSString *timeString;
 
@@ -16,12 +18,29 @@
 
 @property (nonatomic, strong)UIView *topView;
 
-@property (nonatomic, strong)UITableView *tableView;
+@property (nonatomic, strong)UICollectionView *collectionView;
 
 @end
 
 @implementation SPSZ_paiZhao_OrderViewController
 
+-(UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64) collectionViewLayout:flowLayout];
+        // 设置代理
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+    
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        // 注册cell
+        [_collectionView registerClass:[SPSZ_suo_paiZhaoCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+
+    }
+    return _collectionView;
+}
 - (UIView *)topView{
     if (!_topView) {
         _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
@@ -47,7 +66,69 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self.view addSubview:self.topView];
+    
+    [self.view addSubview:self.collectionView];
+
 }
+
+
+
+#pragma mark --- delegate、dataSource ---
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 7;
+}
+#pragma mark --- 返回cell ---
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPSZ_suo_paiZhaoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    // cell.backgroundColor = [UIColor yellowColor];
+//    cell.picImageView.image = self.modelArray[indexPath.row];
+    cell.timelabel.text = [NSString stringWithFormat:@"   第%03ld个",indexPath.row + 1];
+    return cell;
+}
+
+#pragma mark --- 返回每个item的 宽和高 ---
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((MainScreenWidth - 50)/2 , (MainScreenWidth - 50)/2 *1.5 +30);
+}
+
+#pragma mark --- 返回集合视图集体的 上 左 下 右 边距 ---
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    // 第一个参数: 上
+    // 第二个参数: 左
+    // 第三个参数: 下
+    // 第四个参数: 右
+    return UIEdgeInsetsMake(15, 15, 10, 10);
+}
+
+
+#pragma mark --- 控制集合视图的行边距 ---
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 20;
+}
+#pragma mark --- 控制集合视图的列边距 ---
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 15;
+}
+
+#pragma mark --- item点击的方法 ---
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NSLog(@"第%ld 分区  第 %ld 个",indexPath.section,indexPath.row);
+//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+//    RootCollectionViewController *secondCollectionView = [[RootCollectionViewController alloc]initWithCollectionViewLayout:flowLayout];
+//    [self.navigationController pushViewController:secondCollectionView animated:YES];
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

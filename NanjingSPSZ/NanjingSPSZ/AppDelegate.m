@@ -7,11 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import "Reachability.h"
 
 #import "SPSZ_LoginViewController.h"
-//#import "SPSZ_chu_RecordViewController.h"
-//#import "SPSZ_suo_RecordViewController.h"
+
+#import "BaseNavigationController.h"
+#import "SPSZ_ChuIndexViewController.h"
+
+
+#import "NetworkReachabilityTool.h"
+
 @interface AppDelegate ()
 
 
@@ -36,16 +40,30 @@
 //    self.loginVC = [[SPSZ_suo_RecordViewController alloc] init];
 
     [self.window makeKeyAndVisible];
+    SPSZ_LoginViewController *login = [[SPSZ_LoginViewController alloc]init];
     
+//    SPSZ_ChuIndexViewController *chuIndexVC = [[SPSZ_ChuIndexViewController alloc] init];
+    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:login];
+    self.window.rootViewController = navi;
     
-    self.loginVC = [[SPSZ_LoginViewController alloc] init];
-    
-    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:self.loginVC];
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])
+//    {
+//        NSLog(@"第一次运行程序");
+//        self.loginVC = [[SPSZ_LoginViewController alloc] init];
+//        self.window.rootViewController = self.loginVC;
+//    }
+//    else{
+//        self.loginVC = [[SPSZ_LoginViewController alloc] init];
+//        self.window.rootViewController = self.loginVC;
+//    }
     
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     [[UIView appearance] setExclusiveTouch:YES];
+    
+    // 监听网络状态
+    [[NetworkReachabilityTool defaultTool] start];
     
     
     return YES;
@@ -103,7 +121,6 @@
 {
     
 }
-
 
 
 

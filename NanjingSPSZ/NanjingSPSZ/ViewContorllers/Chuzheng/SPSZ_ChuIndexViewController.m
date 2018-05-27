@@ -7,15 +7,31 @@
 //
 
 #import "SPSZ_ChuIndexViewController.h"
+#import "SPSZ_AddGoodsViewController.h"
 
 #import "SPSZ_IndexView.h"
+#import "SPSZ_ChooseConnectView.h"
+
+
 #import "UIButton+Gradient.h"
 #import "UIButton+ImageTitleSpacing.h"
 
+#import "SPSZ_DeviceModel.h"
 
-@interface SPSZ_ChuIndexViewController ()
+
+@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate>
 
 @property (nonatomic, strong) SPSZ_IndexView *indexView;
+@property (nonatomic, strong) SPSZ_ChooseConnectView *chooseConnectView;
+
+
+@property (nonatomic, strong) UIButton *centerButton;
+@property (nonatomic, strong) UIButton *editGoodsButton;
+@property (nonatomic, strong) UIButton *personalCenterButton;
+
+@property (nonatomic, assign) BOOL isConnect;
+
+
 
 @end
 
@@ -32,7 +48,25 @@
     
     [self configTabbar];
     
+    self.isConnect = YES;
 }
+
+- (void)setIsConnect:(BOOL)isConnect
+{
+    _isConnect = isConnect;
+    
+    self.indexView.isConnect = isConnect;
+    
+    if (isConnect) {
+        [self.centerButton setImage:[UIImage imageNamed:@"printer_white"] forState:UIControlStateNormal];
+        [self.centerButton setTitle:@"打印票据" forState:UIControlStateNormal];
+    }
+    else {
+        [self.centerButton setImage:[UIImage imageNamed:@"quick_connect"] forState:UIControlStateNormal];
+        [self.centerButton setTitle:@"立即连接" forState:UIControlStateNormal];
+    }
+}
+
 
 - (void)configNavigation
 {
@@ -57,7 +91,9 @@
         make.top.left.bottom.right.equalTo(0);
     }];
     [self.indexView.addGoodsButton addTarget:self action:@selector(addGoodsClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.indexView.isConnect = YES;
+    
+    self.chooseConnectView = [[SPSZ_ChooseConnectView alloc] init];
+    self.chooseConnectView.delegate = self;
 }
 
 - (void)configTabbar
@@ -65,7 +101,7 @@
     // 阴影
     UIView *bottomShadowView = [[UIView alloc] init];
     bottomShadowView.backgroundColor = [UIColor whiteColor];
-    bottomShadowView.layer.shadowColor = [ProgramColor RGBColorWithRed:0 green:0 blue:0 alpha:0.1].CGColor;
+    bottomShadowView.layer.shadowColor = [ProgramColor RGBColorWithRed:0 green:0 blue:0 alpha:0.05].CGColor;
     bottomShadowView.layer.shadowOpacity = 1;
     bottomShadowView.layer.shadowOffset = CGSizeMake(0, -4);
     [self.view addSubview:bottomShadowView];
@@ -78,10 +114,22 @@
     }];
     
     // 中间的 button
+    UIView *shadowView = [[UIView alloc] init];
+    [self.view addSubview:shadowView];
+    shadowView.backgroundColor = [UIColor whiteColor];
+    [shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(0);
+        make.width.height.equalTo(100);
+        make.bottom.equalTo(0).offset(-bottomMargin-12);
+    }];
+    shadowView.layer.cornerRadius = 50;
+    shadowView.layer.shadowColor = [ProgramColor RGBColorWithRed:67 green:130 blue:255 alpha:0.4].CGColor;
+    shadowView.layer.shadowOffset = CGSizeMake(0, -3);
+    shadowView.layer.shadowOpacity = 1;
+    
     UIButton *printButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:printButton];
-    [printButton setImage:[UIImage imageNamed:@"printer_white"] forState:UIControlStateNormal];
-    [printButton setTitle:@"打印票据" forState:UIControlStateNormal];
+    [printButton setImage:[UIImage imageNamed:@"quick_connect"] forState:UIControlStateNormal];
+    [printButton setTitle:@"立即连接" forState:UIControlStateNormal];
     [printButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     printButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [printButton gradientButtonWithSize:CGSizeMake(100, 100)
@@ -97,39 +145,111 @@
         make.bottom.equalTo(0).offset(-bottomMargin-12);
     }];
     [printButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
-    [printButton addTarget:self action:@selector(printClick) forControlEvents:UIControlEventTouchUpInside];
+    [printButton addTarget:self action:@selector(centerClick) forControlEvents:UIControlEventTouchUpInside];
+    self.centerButton = printButton;
     
+    // 货品录入
+    UIButton *editGoodsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [editGoodsButton setImage:[UIImage imageNamed:@"input_blue"] forState:UIControlStateNormal];
+    [editGoodsButton setTitle:@"货品录入" forState:UIControlStateNormal];
+    editGoodsButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    [editGoodsButton setTitleColor:[ProgramColor RGBColorWithRed:65 green:65 blue:65] forState:UIControlStateNormal];
+    [self.view addSubview:editGoodsButton];
+    [editGoodsButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(bottomShadowView.mas_bottom);
+        make.top.equalTo(bottomShadowView.mas_top);
+        make.left.equalTo(0);
+        make.right.equalTo(printButton.mas_left);
+    }];
+    [editGoodsButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:5];
+    [editGoodsButton addTarget:self action:@selector(editGoodsClick) forControlEvents:UIControlEventTouchUpInside];
+    self.editGoodsButton = editGoodsButton;
+    
+    // 个人中心
+    UIButton *personalCenterButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [personalCenterButton setImage:[UIImage imageNamed:@"person_blue"] forState:UIControlStateNormal];
+    [personalCenterButton setTitle:@"个人中心" forState:UIControlStateNormal];
+    personalCenterButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    [personalCenterButton setTitleColor:[ProgramColor RGBColorWithRed:65 green:65 blue:65] forState:UIControlStateNormal];
+    [self.view addSubview:personalCenterButton];
+    [personalCenterButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(bottomShadowView.mas_bottom);
+        make.top.equalTo(bottomShadowView.mas_top);
+        make.right.equalTo(0);
+        make.left.equalTo(printButton.mas_right);
+    }];
+    [personalCenterButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:5];
+    [personalCenterButton addTarget:self action:@selector(personalCenterClick) forControlEvents:UIControlEventTouchUpInside];
+    self.personalCenterButton = personalCenterButton;
 }
 
 
 
 
 #pragma mark - ==== 点击事件 ====
+#pragma mark ---- 注销登录 ----
 - (void)logoutAction
 {
-    // 注销登录
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+#pragma mark ---- 添加货物 ----
 - (void)addGoodsClick:(UIButton *)addGoodsButton
 {
-    
+    // 跳转到添加货物页面
+    SPSZ_AddGoodsViewController *addGoodsVC = [[SPSZ_AddGoodsViewController alloc] init];
+    [self.navigationController pushViewController:addGoodsVC animated:YES];
 }
 
-- (void)printClick
+- (void)centerClick
+{
+    if (self.isConnect) {
+        [self printTicket];
+    }
+    else {
+        [self connectNow];
+    }
+}
+
+#pragma mark ---- 立即连接 ----
+- (void)connectNow
+{
+    NSMutableArray *mutArray = [NSMutableArray array];
+    for (int i = 0; i < 10; i++) {
+        SPSZ_DeviceModel *model = [[SPSZ_DeviceModel alloc] init];
+        model.deviceCode = [NSString stringWithFormat:@"code-%d", i];
+        model.deviceName = [NSString stringWithFormat:@"name-%d", i];
+        [mutArray addObject:model];
+    }
+    
+    self.chooseConnectView.dataArray = mutArray;
+    [self.chooseConnectView showInView:self.navigationController.view];
+}
+
+#pragma mark ---- 打印票据 ----
+- (void)printTicket
 {
     
 }
 
+#pragma mark ---- 货品录入 ----
 - (void)editGoodsClick
 {
     
 }
 
+#pragma mark ---- 个人中心 ----
 - (void)personalCenterClick
 {
     
+}
+
+
+#pragma mark - ======== Delegate ========
+#pragma mark ---- ChooseConnectViewDelegate ----
+- (void)chooseDevice:(SPSZ_DeviceModel *)device
+{
+    [self.chooseConnectView hidden];
 }
 
 

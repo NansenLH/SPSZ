@@ -12,6 +12,7 @@
 
 #import "SPSZ_suo_MainViewController.h"
 
+
 @interface SPSZ_LoginViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -108,7 +109,7 @@
 
     }
     else{
-        self.view.backgroundColor = [UIColor redColor];
+        self.view.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:self.imageView];
         
         [self.imageView addSubview:self.chuButton];

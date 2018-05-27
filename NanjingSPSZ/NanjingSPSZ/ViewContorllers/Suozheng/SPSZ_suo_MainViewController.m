@@ -16,6 +16,10 @@
 
 #import "SPSZ_chu_RecordViewController.h"
 
+
+
+#import "THDatePickerView.h"
+
 #import "KRTagBar.h"
 #import "UIButton+ImageTitleSpacing.h"
 #import "UIButton+Gradient.h"
@@ -38,13 +42,38 @@
 @property (nonatomic, strong) NSString        *centerButtonTitle;
 
 @property (nonatomic, strong) NSString        *centerButtonImageName;
+
+@property (nonatomic, strong) UIImageView     *imageView;
+
+@property (nonatomic, strong) NSMutableArray   *vcArray;
+
+
+
+
+
+
 @end
 
 @implementation SPSZ_suo_MainViewController
 
+- (void)configNavigation
+{
+    self.navigationItem.title = @"进货录入";
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setImage:[UIImage imageNamed:@"refresh_white"] forState:UIControlStateNormal];
+    [rightButton setTitle:@"重新录入" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    rightButton.frame = CGRectMake(0, 0, 80, 44);
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+}
+
 - (UIView *)bottomView{
     if (!_bottomView) {
-        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0,MainScreenHeight -100 , MainScreenWidth, 100)];
+        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0,MainScreenHeight -100 - 64 , MainScreenWidth, 100)];
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 30)];
         imageView.image = [UIImage imageNamed:@"bg_white_radius"];
         UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, 70)];
@@ -96,26 +125,53 @@
         _centerButton.layer.masksToBounds = YES;
         _centerButton.layer.cornerRadius = 50;
         [_centerButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-
         [_centerButton setImage:[UIImage imageNamed:@"scan_qr_white"] forState:UIControlStateNormal];
         [_centerButton setTitle:@"扫码上传" forState:UIControlStateNormal];
-        [_centerButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [_centerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_centerButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
 
-        [_centerButton gradientButtonWithSize:CGSizeMake(120, 120) colorArray:@[[ProgramColor RGBColorWithRed:33 green:211 blue:255 alpha:0.94],[ProgramColor RGBColorWithRed:67 green:130 blue:255 alpha:0.94]] percentageArray:@[@(0),@(1)] gradientType:GradientFromTopToBottom];
+        [_centerButton gradientButtonWithSize:CGSizeMake(120, 120) colorArray:@[[ProgramColor RGBColorWithRed:33 green:211 blue:255 alpha:0.94],[ProgramColor RGBColorWithRed:67 green:130 blue:255 alpha:0.94]] percentageArray:@[@(1),@(0)] gradientType:GradientFromTopToBottom];
         
     }
     return _centerButton;
 }
 
+
+
+
+- (void)viewDidDisappear:(BOOL)animated{
+    
+    [super viewDidDisappear:animated];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blueColor];
-    [self setupTagBar];
+//    self.view.backgroundColor = [UIColor blueColor];
+    
+    UIImage *naviBackImage = [[UIImage alloc] createImageWithSize:CGSizeMake([ProgramSize mainScreenWidth], [ProgramSize mainScreenHeight])
+                                                   gradientColors:[ProgramColor blueGradientColors]
+                                                       percentage:@[@(1), @(0)]
+                                                     gradientType:GradientFromTopToBottom];
 
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight)];
+    [self.view addSubview:self.imageView];
+    [self.imageView setImage:naviBackImage];
+    self.imageView.userInteractionEnabled = YES;
+
+    [self setupTagBar];
+    
+    [self configNavigation];
     [self setupDetailScrollView];
     [self.view addSubview:self.bottomView];
-    // Do any additional setup after loading the view.
 }
 
 //设置按钮标签的scrollview
@@ -127,7 +183,7 @@
     self.tagBar.itemArray = itemArray;
     [self.view addSubview:self.tagBar];
     [self.tagBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(64);
+        make.top.equalTo(0);
         make.left.right.equalTo(0);
         make.height.equalTo(40);
     }];
@@ -143,7 +199,7 @@
     
     [self.view addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(104);
+        make.top.equalTo(40);
         make.left.right.bottom.equalTo(0);
     }];
     
@@ -163,13 +219,15 @@
     SPSZ_paiZhaoViewController *vc2 = [[SPSZ_paiZhaoViewController alloc]init];
     SPSZ_shouDongViewController *vc3 = [[SPSZ_shouDongViewController alloc]init];
 
-    NSArray *vcArray = [NSArray arrayWithObjects:vc1,vc2,vc3, nil];
+    self.vcArray = [NSMutableArray arrayWithObjects:vc1,vc2,vc3, nil];
     
     for (int i = 0; i < count; i ++) {
         CGFloat x = i * MainScreenWidth;
         CGFloat w = MainScreenWidth;
-        BaseViewController *vc = vcArray[i];
+        BaseViewController *vc = self.vcArray[i];
         [self.containerView addSubview:vc.view];
+        // !!!!
+        [self addChildViewController:vc];
         [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(x);
             make.width.equalTo(w);
@@ -251,11 +309,23 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)rightButtonAction:(UIButton *)button
+{
+
+    if (self.tagBar.selectedIndex == 2) {
+        SPSZ_shouDongViewController *vc = self.vcArray[2];
+        [vc reloadNewData];
+    }
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

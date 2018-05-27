@@ -8,6 +8,8 @@
 
 #import "SPSZ_saoMa_OrderViewController.h"
 
+#import "UIImage+Gradient.h"
+
 @interface SPSZ_saoMa_OrderViewController ()
 @property (nonatomic, strong)NSString *timeString;
 
@@ -16,6 +18,8 @@
 @property (nonatomic, strong)UIView *topView;
 
 @property (nonatomic, strong)UITableView *tableView;
+
+@property (nonatomic, strong)UIImageView *imageView;
 @end
 
 @implementation SPSZ_saoMa_OrderViewController
@@ -45,6 +49,14 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImage *naviBackImage = [[UIImage alloc] createImageWithSize:CGSizeMake([ProgramSize mainScreenWidth], [ProgramSize mainScreenHeight])
+                                                   gradientColors:[ProgramColor blueGradientColors]
+                                                       percentage:@[@(1), @(0)]
+                                                     gradientType:GradientFromTopToBottom];
+    
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight)];
+    [self.view addSubview:self.imageView];
+    [self.imageView setImage:naviBackImage];
     // Do any additional setup after loading the view.
 }
 
