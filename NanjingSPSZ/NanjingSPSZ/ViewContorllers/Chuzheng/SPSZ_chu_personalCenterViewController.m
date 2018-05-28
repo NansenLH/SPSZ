@@ -7,9 +7,10 @@
 //
 
 #import "SPSZ_chu_personalCenterViewController.h"
-
+#import "SPSZ_chu_jinHuoRecordsViewController.h"
+#import "SPSZ_chu_chuZhengRecordsViewController.h"
 #import "SPSZ_LoginViewController.h"
-
+#import "SPSZ_personalInfoViewController.h"
 @interface SPSZ_chu_personalCenterViewController ()
 
 @property (nonatomic, strong)NSMutableArray *itemArray;
@@ -136,10 +137,16 @@
 - (void)tapAction:(UITapGestureRecognizer *)tap{
     if ([tap view].tag == 20002) {
         NSLog(@"个人信息");
+        SPSZ_personalInfoViewController *vc  = [[SPSZ_personalInfoViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }else if ([tap view].tag == 20003){
-        NSLog(@"进货记录");
+        SPSZ_chu_jinHuoRecordsViewController *vc =[[SPSZ_chu_jinHuoRecordsViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }else if ([tap view].tag == 20004){
-        NSLog(@"出货记录");
+        SPSZ_chu_chuZhengRecordsViewController *vc = [[SPSZ_chu_chuZhengRecordsViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if ([tap view].tag == 20007){
         NSLog(@"检查版本");
     }else if ([tap view].tag == 20009){

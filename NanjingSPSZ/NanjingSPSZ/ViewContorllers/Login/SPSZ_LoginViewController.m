@@ -110,6 +110,9 @@
     }
     else{
         
+        [self setChooseLoginView];
+
+        
         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
         NSString *isLogin = [ user objectForKey:@"isLogin"];
         
@@ -122,8 +125,6 @@
             SPSZ_ChuIndexViewController *mainVc = [[SPSZ_ChuIndexViewController alloc]init];
             self.navigationController.navigationBar.hidden = NO;
             [self.navigationController pushViewController:mainVc animated:YES];
-        }else{
-            [self setChooseLoginView];
         }
         
 

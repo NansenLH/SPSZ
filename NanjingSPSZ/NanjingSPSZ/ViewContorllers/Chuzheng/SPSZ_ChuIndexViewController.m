@@ -9,6 +9,8 @@
 #import "SPSZ_ChuIndexViewController.h"
 #import "SPSZ_AddGoodsViewController.h"
 #import "SPSZ_chu_personalCenterViewController.h"
+#import "SPSZ_LoginViewController.h"
+#import "SPSZ_chu_jinHuoLuRuViewController.h"
 
 #import "SPSZ_IndexView.h"
 #import "SPSZ_ChooseConnectView.h"
@@ -233,8 +235,16 @@
 #pragma mark ---- 注销登录 ----
 - (void)logoutAction
 {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+    NSString *isLogin = @"login_out";
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    [user setObject:isLogin forKey:@"isLogin"];
+    [user synchronize];
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[SPSZ_LoginViewController class]]) {
+            self.navigationController.navigationBar.hidden = YES;
+            [self.navigationController popToViewController:controller animated:YES];
+        }
+    }}
 
 #pragma mark ---- 添加货物 ----
 - (void)addGoodsClick:(UIButton *)addGoodsButton
@@ -346,7 +356,8 @@
 #pragma mark ---- 货品录入 ----
 - (void)editGoodsClick
 {
-    // TODO: 未实现
+    SPSZ_chu_jinHuoLuRuViewController *vc = [[SPSZ_chu_jinHuoLuRuViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark ---- 个人中心 ----
