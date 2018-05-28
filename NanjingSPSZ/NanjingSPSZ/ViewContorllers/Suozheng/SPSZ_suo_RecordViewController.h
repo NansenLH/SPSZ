@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface SPSZ_suo_RecordViewController : BaseViewController
-
+@property (nonatomic, strong) NSArray *dataArray;
 @end

@@ -34,6 +34,7 @@
                                                      gradientType:GradientFromLeftToRight];
     [self.navigationBar setBackgroundImage:naviBackImage forBarMetrics:UIBarMetricsDefault];
     
+    self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (BOOL)prefersStatusBarHidden

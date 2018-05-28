@@ -16,7 +16,8 @@
 
 #import "SPSZ_chu_RecordViewController.h"
 
-
+#import "AppDelegate.h"
+#import "BaseNavigationController.h"
 
 #import "THDatePickerView.h"
 
@@ -156,6 +157,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.view.backgroundColor = [UIColor blueColor];
+    self.navigationController.navigationBar.hidden = NO;
     
     UIImage *naviBackImage = [[UIImage alloc] createImageWithSize:CGSizeMake([ProgramSize mainScreenWidth], [ProgramSize mainScreenHeight])
                                                    gradientColors:[ProgramColor blueGradientColors]
@@ -299,11 +301,15 @@
 - (void)recordButtonAction:(UIButton *)button{
     SPSZ_jinHuo_RecordsViewController *vc = [[SPSZ_jinHuo_RecordsViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+//    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+//    [[AppDelegate shareInstance].window setRootViewController:nav];
 }
 
 - (void)personButtonAction:(UIButton *)button{
     SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+//    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+//    [[AppDelegate shareInstance].window setRootViewController:nav];
 }
 
 - (void)rightButtonAction:(UIButton *)button

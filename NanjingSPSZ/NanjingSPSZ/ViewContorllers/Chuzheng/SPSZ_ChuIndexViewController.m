@@ -24,7 +24,8 @@
 #import "UIButton+ImageTitleSpacing.h"
 #import "HLBLEManager.h"
 
-
+#import "BaseNavigationController.h"
+#import "SPSZ_LoginViewController.h"
 
 @interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate>
 
@@ -235,16 +236,28 @@
 #pragma mark ---- 注销登录 ----
 - (void)logoutAction
 {
-    NSString *isLogin = @"login_out";
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    [user setObject:isLogin forKey:@"isLogin"];
-    [user synchronize];
-    for (UIViewController *controller in self.navigationController.viewControllers) {
-        if ([controller isKindOfClass:[SPSZ_LoginViewController class]]) {
-            self.navigationController.navigationBar.hidden = YES;
-            [self.navigationController popToViewController:controller animated:YES];
-        }
-    }}
+
+    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *isLogin = @"login_out";
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        [user setObject:isLogin forKey:@"isLogin"];
+        [user synchronize];
+        
+        SPSZ_LoginViewController *login = [[SPSZ_LoginViewController alloc]init];
+        BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:login];
+        [[AppDelegate shareInstance].window setRootViewController:navi];
+    }];
+    
+    [actionSheetController addAction:cancelAction];
+    [actionSheetController addAction:okAction];
+    
+    [self presentViewController:actionSheetController animated:YES completion:nil];
+}
 
 #pragma mark ---- 添加货物 ----
 - (void)addGoodsClick:(UIButton *)addGoodsButton

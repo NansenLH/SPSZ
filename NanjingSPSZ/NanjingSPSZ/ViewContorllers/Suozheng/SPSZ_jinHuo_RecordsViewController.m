@@ -15,9 +15,14 @@
 
 #import "KRTagBar.h"
 #import "UIImage+Gradient.h"
+#import "LUNetHelp.h"
 
 @interface SPSZ_jinHuo_RecordsViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
-
+{
+    SPSZ_suo_RecordViewController *vc1;
+    SPSZ_shouDong_OrderViewController *vc3;
+    SPSZ_paiZhao_OrderViewController *vc2;
+}
 @property (nonatomic, strong) KRTagBar          *tagBar;
 
 @property (nonatomic, strong) UIView          *containerView;
@@ -25,6 +30,8 @@
 @property (nonatomic, strong) UIScrollView    *detailScrollView;
 
 @property (nonatomic, strong) UIImageView     *imageView;
+
+@property (nonatomic, copy) NSString *stall_id;
 @end
 
 @implementation SPSZ_jinHuo_RecordsViewController
@@ -39,7 +46,8 @@
     [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
     rightButton.frame = CGRectMake(0, 0, 80, 44);
-    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(12, 10, 12, 57)];
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
@@ -49,16 +57,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
+    
+    self.stall_id = [[NSUserDefaults standardUserDefaults] objectForKey:@"stallID"];
     [self setupTagBar];
     [self configNavigation];
     [self setupDetailScrollView];
-    // Do any additional setup after loading the view.
+
+    [self getuploadprintinvoicedetaillist:0];
+}
+
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 //设置按钮标签的scrollview
 - (void)setupTagBar
 {
-    NSArray *itemArray = [NSArray arrayWithObjects:@"扫码订单",@"手动订单",@"拍照订单", nil];
+    NSArray *itemArray = [NSArray arrayWithObjects:@"扫码订单",@"拍照订单",@"手动订单", nil];
     // 中间滑动的scrollView
     self.tagBar = [[KRTagBar alloc]init];
     self.tagBar.itemArray = itemArray;
@@ -96,9 +114,10 @@
     
     
     
-    SPSZ_suo_RecordViewController *vc1 = [[SPSZ_suo_RecordViewController alloc]init];
-    SPSZ_shouDong_OrderViewController *vc2 = [[SPSZ_shouDong_OrderViewController alloc]init];
-    SPSZ_paiZhao_OrderViewController *vc3 = [[SPSZ_paiZhao_OrderViewController alloc]init];
+    vc1 = [[SPSZ_suo_RecordViewController alloc]init];
+    vc2 = [[SPSZ_paiZhao_OrderViewController alloc]init];
+    vc3 = [[SPSZ_shouDong_OrderViewController alloc]init];
+    
     NSArray *vcArray = [NSArray arrayWithObjects:vc1,vc2,vc3, nil];
     
     for (int i = 0; i < count; i ++) {
@@ -179,14 +198,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)getuploadprintinvoicedetaillist:(int)tag
+{
+    __weak typeof (self) weakSelf = self;
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getuploadprintinvoicedetaillist"];
+    [requestDic setObject:self.stall_id forKey:@"stall_id"];
+    [requestDic setObject:[NSString stringWithFormat:@"%d",tag] forKey:@"type"];
+    [requestDic setObject:@"" forKey:@"uploaddate"];
+    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+        if ([result[@"respCode"] integerValue] == 1000000) {
+            if (weakSelf.tagBar.selectedIndex == 0) {
+                vc1.dataArray = result[@"resultList"];
+            }
+        }
+    }];
 }
-*/
 
 @end

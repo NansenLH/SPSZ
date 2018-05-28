@@ -13,13 +13,12 @@
 #import "BaseNavigationController.h"
 #import "SPSZ_ChuIndexViewController.h"
 
-
+#import "SPSZ_suo_MainViewController.h"
+#import "SPSZ_ChuIndexViewController.h"
 #import "NetworkReachabilityTool.h"
 
-@interface AppDelegate ()
-
-
-
+@interface AppDelegate ()<UIScrollViewDelegate>
+@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation AppDelegate
@@ -42,14 +41,28 @@
     BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:login];
     self.window.rootViewController = navi;
     
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    
     [[UIView appearance] setExclusiveTouch:YES];
     
     // 监听网络状态
     [[NetworkReachabilityTool defaultTool] start];
     
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"]){
+        [self.window addSubview:self.scrollView];
+    }else{
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        NSString *isLogin = [ user objectForKey:@"isLogin"];
+        
+        if ([isLogin isEqualToString:@"suo_login"]) {
+            SPSZ_suo_MainViewController *mainVc = [[SPSZ_suo_MainViewController alloc]init];
+            BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:mainVc];
+            self.window.rootViewController = navi;
+            
+        }else if ([isLogin isEqualToString:@"chu_login"]){
+            SPSZ_ChuIndexViewController *mainVc = [[SPSZ_ChuIndexViewController alloc]init];
+            BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:mainVc];
+            self.window.rootViewController = navi;
+        }
+    }
     
     return YES;
 }
@@ -107,6 +120,47 @@
     
 }
 
+- (UIScrollView *)scrollView
+{
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+        _scrollView.pagingEnabled = YES;
+        _scrollView.bounces = NO;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.delegate = self;
+        for (int i = 1 ; i< 4; i++)
+        {
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(MainScreenWidth * (i-1), 0, MainScreenWidth, MainScreenHeight)];
+            imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"guide_0%d",i]];
+            [_scrollView addSubview:imageView];
+            if (i == 3) {
+                UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+                btn.frame = CGRectMake(MainScreenWidth / 4, MainScreenHeight - 150, MainScreenWidth /2, 60);
+                btn.backgroundColor = [ProgramColor RGBColorWithRed:255 green:255 blue:255 alpha:0.15];
+                btn.layer.cornerRadius = 5;
+                [btn addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+                [btn setTitle:@"点击体验" forState:UIControlStateNormal];
+                btn.titleLabel.font = [UIFont systemFontOfSize:20];
+                [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                imageView.userInteractionEnabled = YES;
+                [imageView addSubview:btn];
+            }
+        }
+        _scrollView.contentSize = CGSizeMake(MainScreenWidth *3, 0);
+        _scrollView.contentOffset = CGPointMake(0, 0);
+    }
+    return _scrollView;
+}
 
-
+- (void)buttonAction
+{
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"firstStart"];
+    [UIView animateWithDuration:0.3
+                    animations:^{
+                        self.scrollView.alpha = 0;
+                    }completion:^(BOOL finished){
+                        [self.scrollView removeFromSuperview];
+                    }];
+}
 @end
