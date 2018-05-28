@@ -60,10 +60,17 @@
     return _titleNumArray;
 }
 
-
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"个人中心";
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
+    
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [ProgramColor huiseColor];
     for (int i=0; i<self.itemArray.count; i++) {

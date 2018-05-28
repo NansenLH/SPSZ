@@ -94,16 +94,22 @@
     return _scrollView;
 }
 
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"个人信息";
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
+    
     self.height = 50;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.scrollView];
 }
-
-
-
 
 - (void)setUpViewWith:(NSInteger)number text:(NSString *)text{
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, _height*number, MainScreenWidth, _height)];
