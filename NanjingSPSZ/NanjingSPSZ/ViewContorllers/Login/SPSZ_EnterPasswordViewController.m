@@ -9,7 +9,7 @@
 #import "SPSZ_EnterPasswordViewController.h"
 #import "SPSZ_changePassWordViewController.h"
 
-
+#import "BaseNavigationController.h"
 #import "SPSZ_suo_MainViewController.h"
 #import "SPSZ_ChuIndexViewController.h"
 
@@ -82,14 +82,16 @@
 
 - (void)configNavigation
 {
-    self.navigationItem.title = @"个人中心";
+    self.navigationItem.title = @"登录";
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self configNavigation];
@@ -114,39 +116,35 @@
     // suo
     if (self.isType) {
         [SPSZ_LoginNetTool lingshoushangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_suoLoginModel *model) {
-            SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
-            [self.navigationController pushViewController:vc animated:YES];
-            
-            
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
-            
             NSString *isLogin = @"suo_login";
             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
             [user setObject:isLogin forKey:@"isLogin"];
-            [user setObject:data forKey:@"baseInfo"];
+            [user setObject:model.stall_id forKey:@"stallID"];
             [user synchronize];
-
-
-        } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
             
+            SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
+            BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+            [[AppDelegate shareInstance].window setRootViewController:nav];
+        } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+            [MBProgressHUD showWarnMessage:@"用户名或者密码错误"];
         } failureBlock:^(NSString *failure) {
             
         }];
     }
     else{// chu
         [SPSZ_LoginNetTool pifashangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_chuLoginModel *model) {
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
+
             NSString *isLogin = @"chu_login";
             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
             [user setObject:isLogin forKey:@"isLogin"];
-            [user setObject:data forKey:@"baseInfo"];
+            [user setObject:model.stall_no forKey:@"stallID"];
             [user synchronize];
             
-            SPSZ_ChuIndexViewController *chuIndexVC = [[SPSZ_ChuIndexViewController alloc] init];
-            [self.navigationController pushViewController:chuIndexVC animated:YES];
-
+            SPSZ_ChuIndexViewController *vc = [[SPSZ_ChuIndexViewController alloc] init];
+            BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+            [[AppDelegate shareInstance].window setRootViewController:nav];
         } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-            
+            [MBProgressHUD showWarnMessage:@"用户名或者密码错误"];
         } failureBlock:^(NSString *failure) {
             
         }];
@@ -171,14 +169,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
 }
-*/
-
 @end

@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface SPSZ_paiZhao_OrderViewController : BaseViewController
-
+@property (nonatomic, strong) NSArray *dataArray;
 @end

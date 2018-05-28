@@ -58,7 +58,10 @@
     
 }
 
-
+- (void)setDataArray:(NSArray *)dataArray
+{
+    
+}
 
 
 - (void)viewDidLoad {
