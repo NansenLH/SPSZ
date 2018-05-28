@@ -96,7 +96,7 @@
 - (UILabel *)setLabelWith:(NSInteger)number{
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 15, MainScreenWidth - 20, 20)];
     label.text = self.itemArray[number];
-    label.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
+    label.textColor = [ProgramColor RGBColorWithRed:54 green:136 blue:225];
     return label;
 }
 

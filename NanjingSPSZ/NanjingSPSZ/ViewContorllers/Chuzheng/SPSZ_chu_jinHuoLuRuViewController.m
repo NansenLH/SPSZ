@@ -174,15 +174,21 @@
     return _collectionView;
 }
 
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"进货记录";
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
+    
     self.height = 50;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.mainView];
     [self.view addSubview:self.saveButton];
-    
 }
 
 
@@ -199,9 +205,9 @@
         mainLabel.frame = CGRectMake(100, 0, MainScreenWidth -160, _height);
         mainLabel.font = [UIFont systemFontOfSize:11];
         if (number == 0) {
-            [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor blueColor] string:@"      " string2:self.titleArray[number]]];
+            [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:54 green:136 blue:225] string:@"      " string2:self.titleArray[number]]];
         }else{
-            [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor blueColor] string:@"  *  " string2:self.titleArray[number]]];
+            [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:54 green:136 blue:225] string:@"  *  " string2:self.titleArray[number]]];
         }
         mainLabel.text = text;
         [view addSubview:mainLabel];
