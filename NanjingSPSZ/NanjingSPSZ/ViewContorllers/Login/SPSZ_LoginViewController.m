@@ -96,17 +96,19 @@
     }
     return _scrollView;
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationController.navigationBar.hidden = YES;
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])
     {
         NSLog(@"第一次运行程序");
         [self.view addSubview:self.scrollView];
-
     }
     else{
         
@@ -125,10 +127,7 @@
         }else{
             [self setChooseLoginView];
         }
-        
-
     }
-    
 }
 
 - (void)setChooseLoginView{

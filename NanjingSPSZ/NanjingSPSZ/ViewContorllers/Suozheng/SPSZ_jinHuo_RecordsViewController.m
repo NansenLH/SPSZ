@@ -15,6 +15,8 @@
 
 #import "KRTagBar.h"
 #import "UIImage+Gradient.h"
+#import "LUNetHelp.h"
+#import "SPSZ_suoLoginModel.h"
 
 @interface SPSZ_jinHuo_RecordsViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
 
@@ -25,6 +27,10 @@
 @property (nonatomic, strong) UIScrollView    *detailScrollView;
 
 @property (nonatomic, strong) UIImageView     *imageView;
+
+@property (assign) int pageIndex;
+
+@property (nonatomic, copy) NSString *stall_id;
 @end
 
 @implementation SPSZ_jinHuo_RecordsViewController
@@ -49,10 +55,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"baseInfo"];
+    SPSZ_suoLoginModel *suoModel = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    self.stall_id = suoModel.stall_id;
     [self setupTagBar];
     [self configNavigation];
     [self setupDetailScrollView];
     // Do any additional setup after loading the view.
+    [self getuploadprintinvoice];
 }
 
 //设置按钮标签的scrollview
@@ -179,14 +189,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)getuploadprintinvoice
+{
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getuploadprintinvoice"];
+    [requestDic setObject:self.stall_id forKey:@"stall_id"];
+    [requestDic setObject:[NSString stringWithFormat:@"%d",self.pageIndex] forKey:@"pageNo"];
+    [requestDic setObject:@"15" forKey:@"pageSize"];
+    [requestDic setObject:@"" forKey:@"uploaddate"];
+    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+        if ([result[@"respCode"] integerValue] == 1000000) {
+            
+        }
+    }];
 }
-*/
 
 @end
