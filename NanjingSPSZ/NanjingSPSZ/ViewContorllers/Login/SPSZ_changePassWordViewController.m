@@ -83,8 +83,8 @@
 - (UIButton *)sureButton{
     if (!_sureButton) {
         _sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _sureButton.frame = CGRectMake(MainScreenWidth / 6, 80 + 80 + 85, MainScreenWidth/3*2, 60);
-        _sureButton.layer.cornerRadius = 30;
+        _sureButton.frame = CGRectMake(MainScreenWidth / 6, 80 + 80 + 85, MainScreenWidth/3*2, 45);
+        _sureButton.layer.cornerRadius = 22.5;
         _sureButton.layer.masksToBounds = YES;
         [_sureButton setTitle:@"确认修改" forState:UIControlStateNormal];
         [_sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -126,10 +126,14 @@
 // 获取验证码
 - (void)securityButtonAction:(UIButton *)button
 {
+    if (self.phoneNumberTextField.text.length == 0) {
+        [MBProgressHUD showWarnMessage:@"请输入手机号码"];
+        return;
+    }
     [SPSZ_LoginNetTool sedMessageWithTel:self.phoneNumberTextField.text successBlock:^(NSString *message) {
         self.saveYanZhengMa = message;
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
+        [MBProgressHUD showWarnMessage:errorMessage];
     } failureBlock:^(NSString *failure) {
         
     }];
@@ -138,20 +142,39 @@
 - (void)sureButtonAction:(UIButton *)button
 {
     // suo zheng
+    if (self.phoneNumberTextField.text.length == 0) {
+        [MBProgressHUD showWarnMessage:@"请输入手机号码"];
+        return;
+    }
+    
+    if (self.securityTextField.text.length == 0) {
+        [MBProgressHUD showWarnMessage:@"请输入验证码"];
+        return;
+    }
+    
+    if (self.passwordTextField.text.length == 0) {
+        [MBProgressHUD showWarnMessage:@"请输入新密码"];
+        return;
+    }
+    
+    __weak typeof (self) weakSelf = self;
     if (self.isType) {
         [SPSZ_LoginNetTool lingshoushangChangePswWithNewPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text code:self.securityTextField.text successBlock:^(NSString *string) {
-            SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
-            [self.navigationController pushViewController:vc animated:YES];
+//            SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
+//            [self.navigationController pushViewController:vc animated:YES];
+            [MBProgressHUD showSuccessMessage:@"设置成功，请登录"];
+            [weakSelf.navigationController popViewControllerAnimated:true];
         } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-            
+            [MBProgressHUD showWarnMessage:errorMessage];
         } failureBlock:^(NSString *failure) {
             
         }];
     }else{
         [SPSZ_LoginNetTool pifashangChangePswWithNewPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text code:self.securityTextField.text successBlock:^(NSString *string) {
-            
+            [MBProgressHUD showSuccessMessage:@"设置成功，请登录"];
+            [weakSelf.navigationController popViewControllerAnimated:true];
         } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
+            [MBProgressHUD showWarnMessage:errorMessage];
         } failureBlock:^(NSString *failure) {
             
         }];

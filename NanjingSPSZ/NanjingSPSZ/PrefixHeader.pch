@@ -17,6 +17,8 @@
 
 #define MAS_SHORTHAND_GLOBALS
 
+#define ALPHANUM @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
