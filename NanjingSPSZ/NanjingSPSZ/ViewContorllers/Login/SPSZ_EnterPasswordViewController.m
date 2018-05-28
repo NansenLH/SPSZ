@@ -11,7 +11,7 @@
 
 
 #import "SPSZ_suo_MainViewController.h"
-
+#import "SPSZ_ChuIndexViewController.h"
 
 #import "SPSZ_LoginNetTool.h"
 
@@ -80,11 +80,19 @@
     return _forgotButton;
 }
 
+- (void)configNavigation
+{
+    self.navigationItem.title = @"个人中心";
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBar.hidden = NO;
+
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self configNavigation];
     
     UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
     view1.backgroundColor = [ProgramColor huiseColor];
@@ -109,6 +117,12 @@
             SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
             
+            NSString *isLogin = @"suo_login";
+            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+            [user setObject:isLogin forKey:@"isLogin"];
+            [user synchronize];
+
+
         } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
             
         } failureBlock:^(NSString *failure) {
@@ -117,7 +131,14 @@
     }
     else{// chu
         [SPSZ_LoginNetTool pifashangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_chuLoginModel *model) {
+            NSString *isLogin = @"chu_login";
+            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+            [user setObject:isLogin forKey:@"isLogin"];
+            [user synchronize];
             
+            SPSZ_ChuIndexViewController *chuIndexVC = [[SPSZ_ChuIndexViewController alloc] init];
+            [self.navigationController pushViewController:chuIndexVC animated:YES];
+
         } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
             
         } failureBlock:^(NSString *failure) {
@@ -132,6 +153,12 @@
     changeView.isType = self.isType;
     
     [self.navigationController pushViewController:changeView animated:YES];
+}
+
+
+- (void)leftButtonAction:(UIButton *)button
+{
+    [self.navigationController popoverPresentationController];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -8,6 +8,8 @@
 
 #import "SPSZ_chu_personalCenterViewController.h"
 
+#import "SPSZ_LoginViewController.h"
+
 @interface SPSZ_chu_personalCenterViewController ()
 
 @property (nonatomic, strong)NSMutableArray *itemArray;
@@ -74,7 +76,7 @@
 
 - (void)setUpViewWith:(NSInteger)number{
     NSInteger num = [self.numberArray[number] integerValue];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 64+50*(num -1), MainScreenWidth, 50)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50*(num -1), MainScreenWidth, 50)];
     view.backgroundColor = [ProgramColor huiseColor];
     UILabel *label = [self setLabelWith:number];
     [view addSubview:label];
@@ -91,7 +93,7 @@
 
 - (void)setTitleViewWith:(NSInteger)number{
     NSInteger num = [self.titleNumArray[number] integerValue];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 64+50*(num -1), MainScreenWidth, 50)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50*(num -1), MainScreenWidth, 50)];
     if (num == 6) {
         self.numLabel  = [[UILabel alloc]initWithFrame:CGRectMake(MainScreenWidth -100, 15, 85, 20)];
         self.numLabel.text = @"v1.2";
@@ -143,7 +145,16 @@
     }else if ([tap view].tag == 20009){
         NSLog(@"帮助");
     }else if ([tap view].tag == 20010){
-        NSLog(@"注销登录");
+        NSString *isLogin = @"login_out";
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        [user setObject:isLogin forKey:@"isLogin"];
+        [user synchronize];
+        for (UIViewController *controller in self.navigationController.viewControllers) {
+            if ([controller isKindOfClass:[SPSZ_LoginViewController class]]) {
+                self.navigationController.navigationBar.hidden = YES;
+                [self.navigationController popToViewController:controller animated:YES];
+            }
+        }
     }
 }
 

@@ -11,7 +11,7 @@
 #import "SPSZ_EnterPasswordViewController.h"
 
 #import "SPSZ_suo_MainViewController.h"
-
+#import "SPSZ_ChuIndexViewController.h"
 
 @interface SPSZ_LoginViewController ()<UIScrollViewDelegate>
 
@@ -109,24 +109,43 @@
 
     }
     else{
-        self.view.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:self.imageView];
         
-        [self.imageView addSubview:self.chuButton];
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        NSString *isLogin = [ user objectForKey:@"isLogin"];
         
-        [self.imageView addSubview:self.suoButton];
+        if ([isLogin isEqualToString:@"suo_login"]) {
+            SPSZ_suo_MainViewController *mainVc = [[SPSZ_suo_MainViewController alloc]init];
+            self.navigationController.navigationBar.hidden = NO;
+            [self.navigationController pushViewController:mainVc animated:YES];
+
+        }else if ([isLogin isEqualToString:@"chu_login"]){
+            SPSZ_ChuIndexViewController *mainVc = [[SPSZ_ChuIndexViewController alloc]init];
+            self.navigationController.navigationBar.hidden = NO;
+            [self.navigationController pushViewController:mainVc animated:YES];
+        }else{
+            [self setChooseLoginView];
+        }
+        
+
     }
     
+}
+
+- (void)setChooseLoginView{
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.imageView];
+    
+    [self.imageView addSubview:self.chuButton];
+    
+    [self.imageView addSubview:self.suoButton];
 }
 
 - (void)buttonAction:(UIButton *)button{
     // 变化状态 把状态变成非第一次运行程序  提供给下一次使用
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"firstStart"];
-    NSLog(@"第一次运行程序");
+    [self.scrollView removeFromSuperview];
+    [self setChooseLoginView];
 
-//    RootViewController *rootView = [[RootViewController alloc]init];
-//    UINavigationController *rootNav = [[UINavigationController alloc]initWithRootViewController:rootView];
-//    [UIApplication sharedApplication].delegate.window.rootViewController = rootNav;
 }
 
 

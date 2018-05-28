@@ -10,6 +10,8 @@
 
 #import "SPSZ_personalInfoViewController.h"
 
+#import "SPSZ_LoginViewController.h"
+
 @interface SPSZ_suo_personalCenterViewController ()
 
 @property (nonatomic, strong)NSMutableArray *itemArray;
@@ -61,26 +63,7 @@
 - (void)configNavigation
 {
     self.navigationItem.title = @"个人中心";
-    
-//            CGFloat naviHeight = self.navigationController.navigationBar.frame.size.height;
-//            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//            button.size = CGSizeMake(80, naviHeight);
-//            [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-//            button.adjustsImageWhenHighlighted = NO;
-//            button.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 40);
-//            viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-//            [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-//            viewController.hidesBottomBarWhenPushed = YES;
-//            self.navigationBar.barTintColor = [UIColor whiteColor];
-    
-//    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [leftButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-//    [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    leftButton.titleLabel.font = [UIFont systemFontOfSize:13];
-//    leftButton.frame = CGRectMake(0, 0, 44, 44);
-//    leftButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
-//    [leftButton addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+
 }
 
 - (void)viewDidLoad {
@@ -102,7 +85,7 @@
 
 - (void)setUpViewWith:(NSInteger)number{
     NSInteger num = [self.numberArray[number] integerValue];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 64+50*(num -1), MainScreenWidth, 50)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50*(num -1), MainScreenWidth, 50)];
     view.backgroundColor = [ProgramColor huiseColor];
     UILabel *label = [self setLabelWith:number];
     [view addSubview:label];
@@ -119,7 +102,7 @@
 
 - (void)setTitleViewWith:(NSInteger)number{
     NSInteger num = [self.titleNumArray[number] integerValue];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 64+50*(num -1), MainScreenWidth, 50)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50*(num -1), MainScreenWidth, 50)];
     if (num == 4) {
         self.numLabel  = [[UILabel alloc]initWithFrame:CGRectMake(MainScreenWidth -100, 15, 85, 20)];
         self.numLabel.text = @"v1.2";
@@ -170,7 +153,16 @@
     }else if ([tap view].tag == 10007){
         NSLog(@"帮助");
     }else if ([tap view].tag == 10008){
-        NSLog(@"注销登录");
+        NSString *isLogin = @"login_out";
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        [user setObject:isLogin forKey:@"isLogin"];
+        [user synchronize];
+        for (UIViewController *controller in self.navigationController.viewControllers) {
+            if ([controller isKindOfClass:[SPSZ_LoginViewController class]]) {
+                self.navigationController.navigationBar.hidden = YES;
+                [self.navigationController popToViewController:controller animated:YES];
+            }
+        }
     }
 }
 

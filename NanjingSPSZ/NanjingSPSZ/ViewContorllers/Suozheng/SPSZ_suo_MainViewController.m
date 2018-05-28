@@ -302,16 +302,12 @@
 }
 
 - (void)personButtonAction:(UIButton *)button{
-//    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
-//    SPSZ_chu_personalCenterViewController *vc = [[SPSZ_chu_personalCenterViewController alloc]init];
-    SPSZ_chu_RecordViewController *vc = [[SPSZ_chu_RecordViewController alloc]init];
-
+    SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)rightButtonAction:(UIButton *)button
 {
-
     if (self.tagBar.selectedIndex == 2) {
         SPSZ_shouDongViewController *vc = self.vcArray[2];
         [vc reloadNewData];
