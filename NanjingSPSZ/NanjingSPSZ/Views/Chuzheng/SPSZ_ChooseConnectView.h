@@ -9,17 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @class SPSZ_DeviceModel;
+@class CBPeripheral;
 
 @protocol ChooseConnectViewDelegate <NSObject>
 
-- (void)chooseDevice:(SPSZ_DeviceModel *)device;
+- (void)chooseDevice:(CBPeripheral *)device;
 
 @end
 
 
 @interface SPSZ_ChooseConnectView : UIView
 
-@property (nonatomic, strong) NSMutableArray<SPSZ_DeviceModel *> *dataArray;
+@property (nonatomic, strong) NSMutableArray<CBPeripheral *> *dataArray;
 
 @property (nonatomic, weak) id<ChooseConnectViewDelegate> delegate;
 

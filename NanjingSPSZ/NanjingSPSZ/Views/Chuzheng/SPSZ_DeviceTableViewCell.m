@@ -8,6 +8,7 @@
 
 #import "SPSZ_DeviceTableViewCell.h"
 #import "SPSZ_DeviceModel.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface SPSZ_DeviceTableViewCell ()
 
@@ -65,12 +66,12 @@
     }];
 }
 
-- (void)setDevice:(SPSZ_DeviceModel *)device
+- (void)setDevice:(CBPeripheral *)device
 {
     _device = device;
     
-    self.leftLabel.text = device.deviceName;
-    self.rightLabel.text = device.deviceCode;
+    self.leftLabel.text = device.name;
+    self.rightLabel.text = @"";
 }
 
 

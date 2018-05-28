@@ -25,4 +25,12 @@
     [self yy_modelEncodeWithCoder:aCoder];
 }
 
+- (NSString *)weight
+{
+    if (!_weight) {
+        _weight = @"0";
+    }
+    return _weight;
+}
+
 @end

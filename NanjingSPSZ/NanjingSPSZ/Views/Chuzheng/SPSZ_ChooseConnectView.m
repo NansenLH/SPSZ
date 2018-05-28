@@ -110,9 +110,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPSZ_DeviceModel *model = self.dataArray[indexPath.row];
+    CBPeripheral *peripheral = self.dataArray[indexPath.row];
     SPSZ_DeviceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SPSZ_DeviceTableViewCell"];
-    cell.device = model;
+    cell.device = peripheral;
     
     return cell;
 }
@@ -142,7 +142,7 @@
     }
 }
 
-- (void)setDataArray:(NSMutableArray<SPSZ_DeviceModel *> *)dataArray
+- (void)setDataArray:(NSMutableArray<CBPeripheral *> *)dataArray
 {
     _dataArray = dataArray;
     

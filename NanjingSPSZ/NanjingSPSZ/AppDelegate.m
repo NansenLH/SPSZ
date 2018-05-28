@@ -40,10 +40,10 @@
 //    self.loginVC = [[SPSZ_suo_RecordViewController alloc] init];
 
     [self.window makeKeyAndVisible];
-    SPSZ_LoginViewController *login = [[SPSZ_LoginViewController alloc]init];
+//    SPSZ_LoginViewController *login = [[SPSZ_LoginViewController alloc]init];
     
-//    SPSZ_ChuIndexViewController *chuIndexVC = [[SPSZ_ChuIndexViewController alloc] init];
-    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:login];
+    SPSZ_ChuIndexViewController *chuIndexVC = [[SPSZ_ChuIndexViewController alloc] init];
+    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:chuIndexVC];
     self.window.rootViewController = navi;
     
 //    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])

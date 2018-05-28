@@ -8,16 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class CBPeripheral;
+
 @interface SPSZ_DeviceModel : NSObject
 
 /**
- 名称
+ 蓝牙名称
  */
-@property (nonatomic, copy) NSString *deviceName;
-
-/**
- 设备代码
- */
-@property (nonatomic, copy) NSString *deviceCode;
+@property (nonatomic, strong) CBPeripheral *peripheral;
 
 @end

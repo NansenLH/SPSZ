@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class SPSZ_DeviceModel;
+@class CBPeripheral;
 
 @interface SPSZ_DeviceTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) SPSZ_DeviceModel *device;
+@property (nonatomic, strong) CBPeripheral *device;
 
 @end

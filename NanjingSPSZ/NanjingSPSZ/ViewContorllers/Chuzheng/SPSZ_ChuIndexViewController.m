@@ -8,21 +8,27 @@
 
 #import "SPSZ_ChuIndexViewController.h"
 #import "SPSZ_AddGoodsViewController.h"
+#import "SPSZ_chu_personalCenterViewController.h"
 
 #import "SPSZ_IndexView.h"
 #import "SPSZ_ChooseConnectView.h"
+#import "SPSZ_ChuSelectedView.h"
+
+
+#import "SPSZ_DeviceModel.h"
 
 
 #import "UIButton+Gradient.h"
 #import "UIButton+ImageTitleSpacing.h"
+#import "HLBLEManager.h"
 
-#import "SPSZ_DeviceModel.h"
 
 
 @interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate>
 
 @property (nonatomic, strong) SPSZ_IndexView *indexView;
 @property (nonatomic, strong) SPSZ_ChooseConnectView *chooseConnectView;
+@property (nonatomic, strong) SPSZ_ChuSelectedView *selectedView;
 
 
 @property (nonatomic, strong) UIButton *centerButton;
@@ -33,15 +39,28 @@
 
 @property (nonatomic, strong) NSMutableArray *selectedArray;
 
+@property (nonatomic, strong) NSMutableArray *deviceArray;
+
+@property (nonatomic, assign) BOOL hasCreate;
+
 @end
 
 @implementation SPSZ_ChuIndexViewController
+
 - (NSMutableArray *)selectedArray
 {
     if (!_selectedArray) {
         _selectedArray = [NSMutableArray array];
     }
     return _selectedArray;
+}
+
+- (NSMutableArray *)deviceArray
+{
+    if (!_deviceArray) {
+        _deviceArray = [NSMutableArray array];
+    }
+    return _deviceArray;
 }
 
 - (void)viewDidLoad {
@@ -55,7 +74,7 @@
     
     [self configTabbar];
     
-    self.isConnect = YES;
+//    self.isConnect = YES;
 }
 
 - (void)setIsConnect:(BOOL)isConnect
@@ -63,14 +82,20 @@
     _isConnect = isConnect;
     
     self.indexView.isConnect = isConnect;
+    self.selectedView.isConnect = isConnect;
     
     if (isConnect) {
         [self.centerButton setImage:[UIImage imageNamed:@"printer_white"] forState:UIControlStateNormal];
         [self.centerButton setTitle:@"打印票据" forState:UIControlStateNormal];
+        self.indexView.hidden = NO;
+        self.selectedView.hidden = YES;
     }
     else {
         [self.centerButton setImage:[UIImage imageNamed:@"quick_connect"] forState:UIControlStateNormal];
         [self.centerButton setTitle:@"立即连接" forState:UIControlStateNormal];
+        self.selectedView.hidden = YES;
+        self.indexView.hidden = NO;
+        [self.selectedArray removeAllObjects];
     }
 }
 
@@ -98,6 +123,17 @@
         make.top.left.bottom.right.equalTo(0);
     }];
     [self.indexView.addGoodsButton addTarget:self action:@selector(addGoodsClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    self.selectedView = [[SPSZ_ChuSelectedView alloc] init];
+    [self.view addSubview:self.selectedView];
+    [self.selectedView.clearButton addTarget:self action:@selector(clearSelected:) forControlEvents:UIControlEventTouchUpInside];
+    [self.selectedView.addMoreGoodsButton addTarget:self action:@selector(addGoodsClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.selectedView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(0);
+        make.bottom.equalTo(-66-[ProgramSize bottomHeight]);
+    }];
+    self.selectedView.hidden = YES;
     
     self.chooseConnectView = [[SPSZ_ChooseConnectView alloc] init];
     self.chooseConnectView.delegate = self;
@@ -207,11 +243,21 @@
     SPSZ_AddGoodsViewController *addGoodsVC = [[SPSZ_AddGoodsViewController alloc] init];
     KRWeakSelf;
     [addGoodsVC setAddGoodsBlock:^(NSMutableArray<SPSZ_GoodsModel *> *addGoodsArray) {
-        NSLog(@"addGoodsArray");
+        [weakSelf.selectedArray addObjectsFromArray:addGoodsArray];
+        [weakSelf showSelectedView];
     }];
     
     [self.navigationController pushViewController:addGoodsVC animated:YES];
 }
+
+- (void)showSelectedView
+{
+    self.selectedView.selectedArray = self.selectedArray;
+    self.indexView.hidden = YES;
+    self.selectedView.hidden = NO;
+}
+
+
 
 - (void)centerClick
 {
@@ -226,42 +272,107 @@
 #pragma mark ---- 立即连接 ----
 - (void)connectNow
 {
-    NSMutableArray *mutArray = [NSMutableArray array];
-    for (int i = 0; i < 10; i++) {
-        SPSZ_DeviceModel *model = [[SPSZ_DeviceModel alloc] init];
-        model.deviceCode = [NSString stringWithFormat:@"code-%d", i];
-        model.deviceName = [NSString stringWithFormat:@"name-%d", i];
-        [mutArray addObject:model];
-    }
+    self.isConnect = YES;
     
-    self.chooseConnectView.dataArray = mutArray;
-    [self.chooseConnectView showInView:self.navigationController.view];
+    
+//    if (self.hasCreate) {
+//
+//    }
+//    else {
+//        self.hasCreate = YES;
+//
+//        HLBLEManager *manager = [HLBLEManager sharedInstance];
+//        __weak HLBLEManager *weakManager = manager;
+//        manager.stateUpdateBlock = ^(CBCentralManager *central) {
+//            NSString *info = nil;
+//            switch (central.state) {
+//                case CBCentralManagerStatePoweredOn:
+//                    [self.chooseConnectView showInView:self.navigationController.view];
+//                    [weakManager scanForPeripheralsWithServiceUUIDs:nil options:nil];
+//                    break;
+//                case CBCentralManagerStatePoweredOff:
+//                    info = @"请在设置中打开蓝牙开关";
+//                    break;
+//                case CBCentralManagerStateUnsupported:
+//                    info = @"SDK不支持";
+//                    break;
+//                case CBCentralManagerStateUnauthorized:
+//                    info = @"程序未授权";
+//                    break;
+//                case CBCentralManagerStateResetting:
+//                    info = @"CBCentralManagerStateResetting";
+//                    break;
+//                case CBCentralManagerStateUnknown:
+//                    info = @"CBCentralManagerStateUnknown";
+//                    break;
+//            }
+//        };
+//
+//        manager.discoverPeripheralBlcok = ^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
+//            if (peripheral.name.length <= 0) {
+//                return ;
+//            }
+//
+//            if (self.deviceArray.count == 0) {
+//                [self.deviceArray addObject:peripheral];
+//            } else {
+//                BOOL isExist = NO;
+//                for (int i = 0; i < self.deviceArray.count; i++) {
+//                    CBPeripheral *per = [self.deviceArray objectAtIndex:i];
+//                    if ([per.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString]) {
+//                        isExist = YES;
+//                        [self.deviceArray replaceObjectAtIndex:i withObject:peripheral];
+//                    }
+//                }
+//
+//                if (!isExist) {
+//                    [self.deviceArray addObject:peripheral];
+//                }
+//            }
+//
+//            self.chooseConnectView.dataArray = self.deviceArray;
+//        };
+//    }
+//
+    
 }
 
 #pragma mark ---- 打印票据 ----
 - (void)printTicket
 {
-    
+    self.isConnect = NO;
 }
 
 #pragma mark ---- 货品录入 ----
 - (void)editGoodsClick
 {
-    
+    // TODO: 未实现
 }
 
 #pragma mark ---- 个人中心 ----
 - (void)personalCenterClick
 {
-    
+    SPSZ_chu_personalCenterViewController *vc = [[SPSZ_chu_personalCenterViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
+- (void)clearSelected:(UIButton *)button
+{
+    [self.selectedArray removeAllObjects];
+    self.selectedView.hidden = YES;
+    self.indexView.hidden = NO;
+}
+
 
 
 #pragma mark - ======== Delegate ========
 #pragma mark ---- ChooseConnectViewDelegate ----
-- (void)chooseDevice:(SPSZ_DeviceModel *)device
+- (void)chooseDevice:(CBPeripheral *)device
 {
     [self.chooseConnectView hidden];
+    
+    
+    // TODO: 未实现
 }
 
 

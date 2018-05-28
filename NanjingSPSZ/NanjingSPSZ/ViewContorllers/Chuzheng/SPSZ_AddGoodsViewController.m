@@ -324,7 +324,7 @@
         self.totalLabel.text = @"0";
     }
     
-    self.confirmAddButton.enabled = NO;
+    self.confirmAddButton.enabled = button.selected;
 }
 
 - (void)confirmAddClick:(UIButton *)button
