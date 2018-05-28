@@ -105,8 +105,10 @@
     NSInteger num = [self.titleNumArray[number] integerValue];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50*(num -1), MainScreenWidth, 50)];
     if (num == 6) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
         self.numLabel  = [[UILabel alloc]initWithFrame:CGRectMake(MainScreenWidth -100, 15, 85, 20)];
-        self.numLabel.text = @"v1.2";
+        self.numLabel.text = [NSString stringWithFormat:@"v%@",app_Version];
         self.numLabel.textAlignment = NSTextAlignmentRight;
         [view addSubview:self.numLabel];
         

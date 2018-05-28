@@ -40,8 +40,15 @@
     return _dataArray;
 }
 
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.pageNo = 1;
