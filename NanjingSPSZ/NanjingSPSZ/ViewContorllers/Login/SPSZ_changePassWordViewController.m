@@ -160,8 +160,7 @@
     __weak typeof (self) weakSelf = self;
     if (self.isType) {
         [SPSZ_LoginNetTool lingshoushangChangePswWithNewPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text code:self.securityTextField.text successBlock:^(NSString *string) {
-//            SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
-//            [self.navigationController pushViewController:vc animated:YES];
+ 
             [MBProgressHUD showSuccessMessage:@"设置成功，请登录"];
             [weakSelf.navigationController popViewControllerAnimated:true];
         } errorBlock:^(NSString *errorCode, NSString *errorMessage) {

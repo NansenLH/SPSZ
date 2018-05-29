@@ -191,7 +191,6 @@
 		6ACB556E20B1206000528420 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556D20B1206000528420 /* Accelerate.framework */; };
 		6ACB557020B1206900528420 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB556F20B1206900528420 /* MobileCoreServices.framework */; };
 		6ACB557220B121A700528420 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACB557120B121A700528420 /* libsqlite3.0.tbd */; };
-		6ACB557F20B2EB6600528420 /* SPSZ_tesssssss.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB557E20B2EB6600528420 /* SPSZ_tesssssss.m */; };
 		6ACB558920B2F64100528420 /* SPSZ_ChuIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB558820B2F64100528420 /* SPSZ_ChuIndexViewController.m */; };
 		6ACB559E20B3289500528420 /* SPSZ_IndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB559D20B3289500528420 /* SPSZ_IndexView.m */; };
 		6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD761620B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m */; };
@@ -202,6 +201,7 @@
 		CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */; };
 		CC2DA38C20BD52F3002F5256 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = CC2DA38920BD52F2002F5256 /* city.json */; };
 		CC2DA38D20BD52F3002F5256 /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38B20BD52F3002F5256 /* CityView.m */; };
+		CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */; };
 		CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */; };
 		CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */; };
 		CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */; };
@@ -641,8 +641,6 @@
 		6ACB556D20B1206000528420 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		6ACB556F20B1206900528420 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6ACB557120B121A700528420 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		6ACB557D20B2EB6600528420 /* SPSZ_tesssssss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_tesssssss.h; sourceTree = "<group>"; };
-		6ACB557E20B2EB6600528420 /* SPSZ_tesssssss.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_tesssssss.m; sourceTree = "<group>"; };
 		6ACB558720B2F64100528420 /* SPSZ_ChuIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_ChuIndexViewController.h; sourceTree = "<group>"; };
 		6ACB558820B2F64100528420 /* SPSZ_ChuIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_ChuIndexViewController.m; sourceTree = "<group>"; };
 		6ACB559C20B3289500528420 /* SPSZ_IndexView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_IndexView.h; sourceTree = "<group>"; };
@@ -662,6 +660,8 @@
 		CC2DA38920BD52F2002F5256 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		CC2DA38A20BD52F2002F5256 /* CityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityView.h; sourceTree = "<group>"; };
 		CC2DA38B20BD52F3002F5256 /* CityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityView.m; sourceTree = "<group>"; };
+		CC2DA38E20BD841E002F5256 /* SPSZ_FMDBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_FMDBTool.h; sourceTree = "<group>"; };
+		CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_FMDBTool.m; sourceTree = "<group>"; };
 		CC79647720B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordViewController.h; sourceTree = "<group>"; };
 		CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordViewController.m; sourceTree = "<group>"; };
 		CC79647A20B2ED9100D695F7 /* SPSZ_chu_RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordModel.h; sourceTree = "<group>"; };
@@ -1082,6 +1082,8 @@
 		6ACB53DC20B00E9800528420 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CC2DA38E20BD841E002F5256 /* SPSZ_FMDBTool.h */,
+				CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */,
 				CC930C4C20B56B7300B99756 /* KRTagBar.h */,
 				CC930C4D20B56B7300B99756 /* KRTagBar.m */,
 				6ACB554D20B016E700528420 /* UICreateTool.h */,
@@ -1123,8 +1125,6 @@
 				CC2DA38920BD52F2002F5256 /* city.json */,
 				CC2DA38A20BD52F2002F5256 /* CityView.h */,
 				CC2DA38B20BD52F3002F5256 /* CityView.m */,
-				6ACB557D20B2EB6600528420 /* SPSZ_tesssssss.h */,
-				6ACB557E20B2EB6600528420 /* SPSZ_tesssssss.m */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1912,9 +1912,9 @@
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
 				6A143BA920BB105100D71959 /* SPSZ_SelectedTableViewCell.m in Sources */,
 				6A6BAD0720BA51BB008A428F /* UIView+HYBImageCliped.m in Sources */,
+				CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */,
 				6ACB554820B016A300528420 /* KRAlertTool.m in Sources */,
 				6ACB54C320B0110000528420 /* MJRefreshBackGifFooter.m in Sources */,
-				6ACB557F20B2EB6600528420 /* SPSZ_tesssssss.m in Sources */,
 				6ACB542B20B00F9A00528420 /* SDWebImageManager.m in Sources */,
 				CC89F3CE20BBDD8C00FCEBD2 /* SPSZ_chu_jinHuoRecordsViewController.m in Sources */,
 				6ACB53B020AFFD4800528420 /* main.m in Sources */,

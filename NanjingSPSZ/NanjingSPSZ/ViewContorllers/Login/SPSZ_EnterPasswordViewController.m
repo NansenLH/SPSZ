@@ -15,8 +15,13 @@
 
 #import "SPSZ_LoginNetTool.h"
 
-
 #import "UIButton+Gradient.h"
+
+#import "FMDB.h"
+#import "SPSZ_FMDBTool.h"
+
+#define  FMDBManager  [SPSZ_FMDBTool SPSZ_FMDBTool]
+
 @interface SPSZ_EnterPasswordViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong)UITextField *phoneNumberTextField;
@@ -114,6 +119,11 @@
     UITapGestureRecognizer *tapRecognize = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenKeyboard)];
     tapRecognize.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapRecognize];
+    
+    NSString *dataPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    dataPath = [dataPath stringByAppendingPathComponent:@"MyDB.sqlite"];
+    // 创建数据库
+    [FMDBManager createDataBaseWithPath:dataPath];
 }
 
 - (void)hiddenKeyboard
@@ -134,8 +144,34 @@
             NSString *isLogin = @"suo_login";
             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
             [user setObject:isLogin forKey:@"isLogin"];
-            [user setObject:model.stall_id forKey:@"stallID"];
+//            [user setObject:model.stall_id forKey:@"stallID"];
             [user synchronize];
+            
+            
+            
+            Class modelClass = [SPSZ_suoLoginModel class];
+            if ([FMDBManager createTableWithName:@"suologinModel" model:modelClass primaryKey:@"suoModel"]) {
+                NSLog(@"success");
+            } else {
+                NSLog(@"failed");
+            }
+            
+            
+            if (model) {
+
+                if ( [FMDBManager insterModel:model toTable:@"suologinModel"]) {
+                    NSLog(@"ssss");
+                }else{
+                    NSLog(@"nonono");
+                }
+                
+                
+                
+                Class modelClass = [SPSZ_suoLoginModel class];
+
+                NSArray *aaaaa = [FMDBManager searchAllModel:modelClass tableName:@"suologinModel"];
+                
+            }
             
             SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
             BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];

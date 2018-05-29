@@ -13,6 +13,11 @@
 #import "SPSZ_suo_MainViewController.h"
 #import "SPSZ_ChuIndexViewController.h"
 
+#import "FMDB.h"
+#import "SPSZ_FMDBTool.h"
+
+#define  FMDBManager  [SPSZ_FMDBTool SPSZ_FMDBTool]
+
 @interface SPSZ_LoginViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -24,6 +29,8 @@
 @property (nonatomic, strong)UIButton *chuButton;
 
 @property (nonatomic, strong)UIButton *suoButton;
+
+@property (nonatomic, strong) FMDatabase *dataBaseManager;
 
 @end
 
@@ -73,14 +80,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // 一般保存到cache目录里面
+    NSString *dataPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    dataPath = [dataPath stringByAppendingPathComponent:@"MyDB.sqlite"];
+    // 创建数据库
+    [FMDBManager createDataBaseWithPath:dataPath];
     self.navigationController.navigationBar.hidden = YES;
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])
     {
         NSLog(@"第一次运行程序");
         [self.view addSubview:self.scrollView];
-
+        
     }
     else{
         

@@ -235,15 +235,9 @@
 
 - (void)productLocationButtonAction:(UIButton *)button{
     [self.cityView showCityListViewInView:self.navigationController.view];
-//    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
-//        KRWeakSelf;
-//        weakSelf.province = province;
-//        weakSelf.city = city;
-//        weakSelf.area = area;
-//        [button setTitle:[NSString stringWithFormat:@"%@%@%@",province,city,area] forState:UIControlStateNormal];
-//    }];
 
 }
+
 
 - (void)timeButtonAction:(UIButton *)button{
     PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
