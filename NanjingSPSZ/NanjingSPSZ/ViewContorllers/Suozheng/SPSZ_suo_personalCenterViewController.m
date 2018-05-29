@@ -12,6 +12,7 @@
 
 #import "SPSZ_LoginViewController.h"
 #import "BaseNavigationController.h"
+#import "SPSZ_Help_ViewController.h"
 
 @interface SPSZ_suo_personalCenterViewController ()
 
@@ -162,7 +163,8 @@
     }else if ([tap view].tag == 10005){
         NSLog(@"检查版本");
     }else if ([tap view].tag == 10007){
-        NSLog(@"帮助");
+        SPSZ_Help_ViewController *vc = [[SPSZ_Help_ViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:true];
     }else if ([tap view].tag == 10008){
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
         

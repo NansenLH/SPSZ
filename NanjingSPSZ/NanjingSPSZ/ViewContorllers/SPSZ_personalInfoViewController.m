@@ -9,6 +9,8 @@
 #import "SPSZ_personalInfoViewController.h"
 #import "BaseNavigationController.h"
 #import "SPSZ_LoginViewController.h"
+#import "SPSZ_suoLoginModel.h"
+#import "SPSZ_chuLoginModel.h"
 @interface SPSZ_personalInfoViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -119,6 +121,28 @@
     
     self.height = 50;
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    NSString *loginType = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"];
+    if ([loginType isEqualToString:@"suo_login"]) {
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+        SPSZ_suoLoginModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        self.locationString = model.cityname;
+        self.shiChangString = model.deptname;
+        self.detailLocationString = model.address;
+        self.tanWeiString = model.stall_no;
+        self.tanZhuString = model.stall_name;
+//        self.zhuYingXiangMuString =
+    }else{
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+        SPSZ_chuLoginModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        self.locationString = model.cityname;
+        self.shiChangString = model.companyname;
+//        self.detailLocationString = model.address;
+        self.tanWeiString = model.stall_no;
+        self.tanZhuString = model.realname;
+    }
+    
     [self.view addSubview:self.scrollView];
 }
 
@@ -175,6 +199,14 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [ProgramColor huiseColor];
     [imageView addSubview:label];
+    
+    UIButton *photoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    photoBtn.frame = imageView.frame;
+    photoBtn.tag = number;
+    photoBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    photoBtn.clipsToBounds = true;
+    [photoBtn addTarget:self action:@selector(showPhoto:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:photoBtn];
 }
 
 
@@ -228,5 +260,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)showPhoto:(UIButton *)sender
+{
+    
+}
 
 @end

@@ -12,6 +12,7 @@
 #import "SPSZ_LoginViewController.h"
 #import "SPSZ_personalInfoViewController.h"
 #import "BaseNavigationController.h"
+#import "SPSZ_Help_ViewController.h"
 
 @interface SPSZ_chu_personalCenterViewController ()
 
@@ -161,7 +162,8 @@
     }else if ([tap view].tag == 20007){
         NSLog(@"检查版本");
     }else if ([tap view].tag == 20009){
-        NSLog(@"帮助");
+        SPSZ_Help_ViewController *vc = [[SPSZ_Help_ViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:true];
     }else if ([tap view].tag == 20010){
         
         

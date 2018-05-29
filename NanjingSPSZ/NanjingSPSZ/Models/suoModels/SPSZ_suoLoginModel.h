@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "YYModel.h"
-@interface SPSZ_suoLoginModel : NSObject
+@interface SPSZ_suoLoginModel : NSObject<NSCoding>
 /**
  "img_qs": "",
  "img_entry": "",
