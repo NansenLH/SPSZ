@@ -50,6 +50,7 @@
 		6A143BB020BB329D00D71959 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BAF20BB329C00D71959 /* CoreBluetooth.framework */; };
 		6A143BB320BC420900D71959 /* libPrinterSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BB120BC420900D71959 /* libPrinterSDK.a */; };
 		6A143BB520BC422200D71959 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BB420BC422200D71959 /* AVFoundation.framework */; };
+		6A143BB820BD52D400D71959 /* SPSZ_ChuhuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143BB720BD52D400D71959 /* SPSZ_ChuhuoModel.m */; };
 		6A6BACD020B85013008A428F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A6BACD420B85021008A428F /* SPSZ_personalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */; };
 		6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE820B856EE008A428F /* LUNetHelp.m */; };
@@ -341,6 +342,8 @@
 		6A143BB120BC420900D71959 /* libPrinterSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPrinterSDK.a; sourceTree = "<group>"; };
 		6A143BB220BC420900D71959 /* PrinterSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrinterSDK.h; sourceTree = "<group>"; };
 		6A143BB420BC422200D71959 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6A143BB620BD52D400D71959 /* SPSZ_ChuhuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_ChuhuoModel.h; sourceTree = "<group>"; };
+		6A143BB720BD52D400D71959 /* SPSZ_ChuhuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_ChuhuoModel.m; sourceTree = "<group>"; };
 		6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
 		6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
 		6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
@@ -1628,6 +1631,8 @@
 				6AAF973F20B5B29300A6C0E8 /* SPSZ_DeviceModel.m */,
 				6A6BACE420B85383008A428F /* SPSZ_GoodsModel.h */,
 				6A6BACE520B85383008A428F /* SPSZ_GoodsModel.m */,
+				6A143BB620BD52D400D71959 /* SPSZ_ChuhuoModel.h */,
+				6A143BB720BD52D400D71959 /* SPSZ_ChuhuoModel.m */,
 				CC2DA37A20BD244D002F5256 /* SPSZ_chu_recordsModel.h */,
 				CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */,
 				CC2DA37D20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.h */,
@@ -1904,6 +1909,7 @@
 				6ACB543220B00F9A00528420 /* SDWebImagePrefetcher.m in Sources */,
 				6ACB54C420B0110000528420 /* MJRefreshBackStateFooter.m in Sources */,
 				CC930C2B20B56AE600B99756 /* SPSZ_changePassWordViewController.m in Sources */,
+				6A143BB820BD52D400D71959 /* SPSZ_ChuhuoModel.m in Sources */,
 				6ACB552220B0121800528420 /* UIImage+Capture.m in Sources */,
 				6ACB553520B0124F00528420 /* FMDatabase.m in Sources */,
 				6ACB53FE20B00F8C00528420 /* ViewController+MASAdditions.m in Sources */,

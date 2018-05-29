@@ -20,6 +20,19 @@
  */
 + (void)lu_postWithPath:(NSString *)path andParams:(NSDictionary *)params andProgress:(void (^)(NSProgress *))progress andComplete:(void(^)(BOOL success, id result))complete;
 
+
+
+/**
+ 上传图片
+ */
++ (void)uploadImage:(UIImage *)image
+       successBlock:(void (^)(NSString *imageURL))successBlock
+         errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+       failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
+
+
 /**
  *  取消所有的网络请求.
  */

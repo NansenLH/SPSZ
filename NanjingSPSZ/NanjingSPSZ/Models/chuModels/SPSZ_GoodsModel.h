@@ -45,6 +45,12 @@
  */
 @property (nonatomic, copy) NSString *cityname;
 
+
+/**
+ 自己添加-货品录入的时候用来存放图片的地址,用,分割多个
+ */
+@property (nonatomic, copy) NSString *dishimgs;
+
 /**
  自己添加-是否选中
  */

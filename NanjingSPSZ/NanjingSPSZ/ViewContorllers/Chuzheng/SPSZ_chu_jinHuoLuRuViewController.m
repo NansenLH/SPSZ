@@ -15,7 +15,22 @@
 
 #import "UIButton+Gradient.h"
 
-@interface SPSZ_chu_jinHuoLuRuViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate>
+#import <Photos/Photos.h>
+#import "LUNetHelp.h"
+#import "UIImageView+WebCache.h"
+
+#import "SPSZ_ChuhuoModel.h"
+#import "YYModel.h"
+
+@interface SPSZ_chu_jinHuoLuRuViewController ()
+<
+UICollectionViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout,
+UITextFieldDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate
+>
 @property (nonatomic, strong)UIView  *mainView;
 
 @property (nonatomic, assign)CGFloat height;
@@ -44,6 +59,8 @@
 
 @property (nonatomic, strong) NSMutableArray *imagesArray;
 
+@property (nonatomic, strong) SPSZ_ChuhuoModel *addGoods;
+
 @end
 
 @implementation SPSZ_chu_jinHuoLuRuViewController
@@ -63,6 +80,13 @@
     return _imagesArray;
 }
 
+- (SPSZ_ChuhuoModel *)addGoods
+{
+    if (!_addGoods) {
+        _addGoods = [[SPSZ_ChuhuoModel alloc] init];
+    }
+    return _addGoods;
+}
 
 - (UIButton *)productLocationButton
 {
@@ -313,6 +337,47 @@
 
 - (void)saveButtonAction:(UIButton *)button
 {
+    self.addGoods.cityname = @"2222";
+    self.addGoods.cityid = @"33";
+    NSString *jsonString = [self.addGoods yy_modelToJSONString];
+    NSLog(@"%@", jsonString);
+    
+    
+//    if (!self.productNameLabel.text) {
+//        [KRAlertTool alertString:@"请填写货品名称"];
+//        return;
+//    }
+//    self.addGoods.dishname = self.productNameLabel.text;
+//
+//    if (!self.numberLabel.text) {
+//        [KRAlertTool alertString:@"请填写货品重量"];
+//        return;
+//    }
+//    self.addGoods.dishamount = self.numberLabel.text;
+//
+//    // TODO: 未实现
+//    if (!0) {
+//        [KRAlertTool alertString:@"请填写来源产地"];
+//        return;
+//    }
+//    self.addGoods.cityname = @"";
+//    self.addGoods.cityid = @"";
+//
+//    self.addGoods.addresssource = self.detailLocationLabel.text;
+//    self.addGoods.carnumber = self.carLabel.text;
+//
+//    if (self.imagesArray.count == 0) {
+//        [KRAlertTool alertString:@"请拍照留证"];
+//        return;
+//    }
+//    NSMutableString *imgs = [NSMutableString string];
+//    for (NSString *imgUrl in self.imagesArray) {
+//        [imgs appendString:imgUrl];
+//        [imgs appendString:@","];
+//    }
+//    self.addGoods.dishimgs = [imgs substringWithRange:NSMakeRange(0, imgs.length-1)];
+//
+//    NSString *jsonString = [self.addGoods yy_modelToJSONString];
     
 }
 
@@ -331,7 +396,8 @@
         cell.picImageView.image = [UIImage imageNamed:@"icon_takephoto"];
     }
     else {
-        cell.picImageView.image = self.imagesArray[indexPath.row];
+        NSString *imageURL = [NSString stringWithFormat:@"%@%@", BaseImagePath, self.imagesArray[indexPath.row]];
+        [cell.picImageView sd_setImageWithURLString:imageURL];
     }
     return cell;
 }
@@ -353,19 +419,102 @@
 #pragma mark --- item点击的方法 ---
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == self.imagesArray.count) {
+    if (indexPath.row == self.imagesArray.count && self.imagesArray.count < 5) {
         // 拍照
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusAuthorized) {
+            [self takePhoto];
+        }
+        else if (authStatus == AVAuthorizationStatusNotDetermined) {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if (granted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self takePhoto];
+                    });
+                }
+                else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self alertSettingCameraAuth];
+                    });
+                }
+            }];
+        }
+        else {
+            [self alertSettingCameraAuth];
+        }
+    }
+    else if (self.imagesArray.count == 5 && indexPath.row == self.imagesArray.count) {
+        [KRAlertTool alertString:@"最多只能上传5张照片"];
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)takePhoto
+{
+    UIImagePickerController *ctrl = [[UIImagePickerController alloc] init];
+    ctrl.delegate = self;
+    ctrl.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:ctrl animated:YES completion:nil];
 }
-*/
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        // 处理
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        if (image) {
+            [self uploadImage:image];
+        }
+        else {
+            NSLog(@"拍照出错");
+        }
+    }
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)uploadImage:(UIImage *)image
+{
+    [LUNetHelp uploadImage:image successBlock:^(NSString *imageURL) {
+        [self.imagesArray addObject:imageURL];
+        [self.collectionView reloadData];
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [KRAlertTool alertString:errorMessage];
+    } failureBlock:^(NSString *failure) {
+        [KRAlertTool alertString:failure];
+    }];
+}
+
+
+
+
+- (void)alertSettingCameraAuth
+{
+    NSDictionary *mainInfoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appName = [mainInfoDictionary objectForKey:@"CFBundleDisplayName"];
+    if (!appName) {
+        appName = [mainInfoDictionary objectForKey:(NSString *)kCFBundleNameKey];
+    }
+    NSString * tipTitle = [NSString stringWithFormat:@"请允许\"%@\"使用您的相机", appName];
+    NSString * tipMessage = [NSString stringWithFormat:@"您可点击\"去设置\"按钮后将\"相机\"权限打开!"];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:tipTitle message:tipMessage preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *settingURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if ([[UIApplication sharedApplication] canOpenURL:settingURL]) {
+            [[UIApplication sharedApplication] openURL:settingURL options:@{} completionHandler:nil];
+        }
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"稍后设置" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:confirmAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 
 @end

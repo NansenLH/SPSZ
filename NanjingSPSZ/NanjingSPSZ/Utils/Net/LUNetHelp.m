@@ -105,7 +105,67 @@ static LUNetHelp *_shareManager = nil;
 }
 
 
+/**
+ 上传图片
+ */
++ (void)uploadImage:(UIImage *)image
+       successBlock:(void (^)(NSString *imageURL))successBlock
+         errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+       failureBlock:(void (^)(NSString *failure))failureBlock
+{
+    if ([NetworkReachabilityTool defaultTool].isConnectNet == NO) {
+        if (failureBlock) {
+            failureBlock(@"当前无网络");
+        }
+        return;
+    }
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer.timeoutInterval = 30;
+    //设置客户端支持的数据类型(响应者的MIMEType)
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/xml", @"text/plain", nil];
+    
+    
+    
+    NSData *imageData = UIImageJPEGRepresentation(image,0.5);
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:@"nanjing" forKey:@"areaversioncode"];
+    [params setObject:[self imgNameString] forKey:@"imgname"];
+    
+    [manager POST:@"http://www.zrodo.com:8080/njsyDetectList/uploadPic.do" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSString *fileName = [self imgNameString];
+        [formData appendPartWithFileData:imageData name:@"img" fileName:fileName mimeType:@"image/jpeg"];
 
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject[@"code"] intValue] == 1000000) {
+            NSString *imageURL = [responseObject objectForKey:@"result"];
+            if (successBlock) {
+                successBlock(imageURL);
+            }
+        }
+        else {
+            if (errorBlock) {
+                errorBlock(responseObject[@"code"], responseObject[@"message"]);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failureBlock) {
+            failureBlock(error.localizedDescription);
+        }
+    }];
+    
+    
+}
+
+//获取当前时间戳
++ (NSString *)imgNameString{
+    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];//获取当前时间0秒后的时间
+    NSTimeInterval time = [date timeIntervalSince1970];// *1000 是精确到毫秒，不乘就是精确到秒
+    NSString *imgNameString = [NSString stringWithFormat:@"%.0fiosspsz.jpg", time];
+    return imgNameString;
+}
 
 
 @end
