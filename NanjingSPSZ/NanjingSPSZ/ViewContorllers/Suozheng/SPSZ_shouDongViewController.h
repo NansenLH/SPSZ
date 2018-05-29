@@ -10,6 +10,9 @@
 
 @interface SPSZ_shouDongViewController : BaseViewController
 
+
+- (void)sureUpload;
+
 - (void)reloadNewData;
 
 @end

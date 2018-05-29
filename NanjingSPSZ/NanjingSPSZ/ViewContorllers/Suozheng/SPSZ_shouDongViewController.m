@@ -13,6 +13,10 @@
 
 #import "PGDatePickManager.h"
 
+#import "CityView.h"
+
+
+#import "SPSZ_addGoodsNetTool.h"
 
 @interface SPSZ_shouDongViewController ()<UITextFieldDelegate,PGDatePickerDelegate>
 
@@ -46,6 +50,8 @@
 
 @property (nonatomic, copy) NSString *area;
 
+@property (nonatomic, strong)CityView *cityView;
+
 
 @end
 
@@ -59,6 +65,13 @@
     return _titleArray;
 }
 
+- (CityView *)cityView{
+    if (!_cityView) {
+        _cityView = [[CityView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight)];
+        _cityView.cityList = [self readLocalFileWithName:@"city"];
+    }
+    return _cityView;
+}
 - (UITextField *)productNameTextField{
     if (!_productNameTextField) {
         _productNameTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, _width - 110 -10, _height)];
@@ -86,6 +99,7 @@
     if (!_numberTextField) {
         _numberTextField = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, _width - 140 -10, _height)];
         _numberTextField.delegate = self;
+        _nameTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         _numberTextField.tintColor = [UIColor redColor];
         _numberTextField.textAlignment = NSTextAlignmentRight;
         _numberTextField.placeholder = @"请输入";
@@ -120,6 +134,7 @@
         _phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, _width - 110 -10, _height)];
         _phoneTextField.delegate = self;
         _phoneTextField.tintColor = [UIColor redColor];
+        _nameTextField.keyboardType = UIKeyboardTypePhonePad;
         _phoneTextField.textAlignment = NSTextAlignmentRight;
         _phoneTextField.placeholder = @"请输入";
     }
@@ -166,9 +181,6 @@
     
     self.height = (MainScreenHeight -264)/8;
     self.width = MainScreenWidth - 60;
-    
-
-    [self.view addSubview:self.productLocationButton];
     
     [self.view addSubview:self.mainView];
 
@@ -222,13 +234,15 @@
 
 
 - (void)productLocationButtonAction:(UIButton *)button{
-    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
-        KRWeakSelf;
-        weakSelf.province = province;
-        weakSelf.city = city;
-        weakSelf.area = area;
-        [button setTitle:[NSString stringWithFormat:@"%@%@%@",province,city,area] forState:UIControlStateNormal];
-    }];
+    [self.cityView showCityListViewInView:self.navigationController.view];
+//    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
+//        KRWeakSelf;
+//        weakSelf.province = province;
+//        weakSelf.city = city;
+//        weakSelf.area = area;
+//        [button setTitle:[NSString stringWithFormat:@"%@%@%@",province,city,area] forState:UIControlStateNormal];
+//    }];
+
 }
 
 - (void)timeButtonAction:(UIButton *)button{
@@ -262,7 +276,6 @@
 }
 
 
-
 - (void)reloadNewData{
     _productNameTextField.text = @"";
     _detailLocationTextField.text = @"";
@@ -272,6 +285,75 @@
     _phoneTextField.text = @"";
     [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
     [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
+}
+
+- (void)sureUpload{
+    
+    if ([_phoneTextField.text isEqualToString:@""]) {
+        [self tiShiKuangWithString:@"产品名称"];
+    }else if ([_productLocationButton.titleLabel.text isEqualToString:@"请选择"]) {
+        [self tiShiKuangWithString:@"产品产地"];
+    }
+}
+
+
+// 回收键盘
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.productNameTextField resignFirstResponder];
+    [self.detailLocationTextField resignFirstResponder];
+    [self.numberTextField resignFirstResponder];
+    [self.companyTextField resignFirstResponder];
+    [self.nameTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+
+    [self.view endEditing:YES];
+}
+
+//时时获取输入框输入的新内容   return NO：输入内容清空   return YES：输入内容不清空， string 输入内容 ，range输入的范围
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([textField isEqual:self.numberTextField] || [textField isEqual:self.phoneTextField]) {
+        if ([string isEqualToString:@""]) {
+            return YES;
+        }
+        
+        return   [self isPureInt:string];
+    }
+    return YES;
+}
+
+- (BOOL)isPureInt:(NSString *)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return [scan scanInt:&val] && [scan isAtEnd];
+}
+
+
+
+- (void)tiShiKuangWithString:(NSString *)string
+{
+    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"%@不能为空!",string] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [actionSheetController addAction:okAction];
+    
+    [self presentViewController:actionSheetController animated:YES completion:nil];
+}
+
+- (NSArray *)readLocalFileWithName:(NSString *)name {
+    // 获取文件路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
+    // 将文件数据化
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    // 对数据进行JSON格式化并返回字典形式
+    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
 }
 
 - (void)didReceiveMemoryWarning {

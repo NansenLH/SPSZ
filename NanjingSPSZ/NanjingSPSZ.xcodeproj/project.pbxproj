@@ -196,6 +196,11 @@
 		6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD761620B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m */; };
 		CC2DA37C20BD244D002F5256 /* SPSZ_chu_recordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */; };
 		CC2DA37F20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */; };
+		CC2DA38220BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */; };
+		CC2DA38520BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */; };
+		CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */; };
+		CC2DA38C20BD52F3002F5256 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = CC2DA38920BD52F2002F5256 /* city.json */; };
+		CC2DA38D20BD52F3002F5256 /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38B20BD52F3002F5256 /* CityView.m */; };
 		CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */; };
 		CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */; };
 		CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */; };
@@ -645,6 +650,15 @@
 		CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_recordsModel.m; sourceTree = "<group>"; };
 		CC2DA37D20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_jinHuoModel.h; sourceTree = "<group>"; };
 		CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_jinHuoModel.m; sourceTree = "<group>"; };
+		CC2DA38020BD3FA5002F5256 /* SPSZ_addGoodsNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_addGoodsNetTool.h; sourceTree = "<group>"; };
+		CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_addGoodsNetTool.m; sourceTree = "<group>"; };
+		CC2DA38320BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_saoMaDetailModel.h; sourceTree = "<group>"; };
+		CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_saoMaDetailModel.m; sourceTree = "<group>"; };
+		CC2DA38620BD4EDB002F5256 /* SPSZ_PromptBoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_PromptBoxView.h; sourceTree = "<group>"; };
+		CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_PromptBoxView.m; sourceTree = "<group>"; };
+		CC2DA38920BD52F2002F5256 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
+		CC2DA38A20BD52F2002F5256 /* CityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityView.h; sourceTree = "<group>"; };
+		CC2DA38B20BD52F3002F5256 /* CityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityView.m; sourceTree = "<group>"; };
 		CC79647720B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordViewController.h; sourceTree = "<group>"; };
 		CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordViewController.m; sourceTree = "<group>"; };
 		CC79647A20B2ED9100D695F7 /* SPSZ_chu_RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordModel.h; sourceTree = "<group>"; };
@@ -895,6 +909,8 @@
 				CC89F3C320BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m */,
 				CC89F3DE20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.h */,
 				CC89F3DF20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m */,
+				CC2DA38020BD3FA5002F5256 /* SPSZ_addGoodsNetTool.h */,
+				CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -1067,6 +1083,8 @@
 				CC930C4D20B56B7300B99756 /* KRTagBar.m */,
 				6ACB554D20B016E700528420 /* UICreateTool.h */,
 				6ACB554C20B016E700528420 /* UICreateTool.m */,
+				CC2DA38620BD4EDB002F5256 /* SPSZ_PromptBoxView.h */,
+				CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */,
 				6A6BACF220B85A63008A428F /* AlertTool */,
 				6A6BACF120B85A47008A428F /* Program */,
 				6A6BACE720B856B7008A428F /* Net */,
@@ -1099,6 +1117,9 @@
 		6ACB53DE20B00E9800528420 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				CC2DA38920BD52F2002F5256 /* city.json */,
+				CC2DA38A20BD52F2002F5256 /* CityView.h */,
+				CC2DA38B20BD52F3002F5256 /* CityView.m */,
 				6ACB557D20B2EB6600528420 /* SPSZ_tesssssss.h */,
 				6ACB557E20B2EB6600528420 /* SPSZ_tesssssss.m */,
 			);
@@ -1613,6 +1634,8 @@
 				CC89F3C020BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.m */,
 				CC89F3E120BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.h */,
 				CC89F3E220BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.m */,
+				CC2DA38320BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.h */,
+				CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */,
 				CC89F3C920BAE42C00FCEBD2 /* SPSZ_suoLoginModel.h */,
 				CC89F3CA20BAE42C00FCEBD2 /* SPSZ_suoLoginModel.m */,
 			);
@@ -1770,6 +1793,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC2DA38C20BD52F3002F5256 /* city.json in Resources */,
 				6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */,
 				6A143B8920BAE65C00D71959 /* PGDatePicker.bundle in Resources */,
 				6A143B9F20BAE73300D71959 /* city.plist in Resources */,
@@ -1900,6 +1924,7 @@
 				6ACB54FC20B011D500528420 /* UIImageView+AFNetworking.m in Sources */,
 				CC89F3C820BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m in Sources */,
 				E222151220BC4119006D4C5A /* NSObject+TNAHUD.m in Sources */,
+				CC2DA38520BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m in Sources */,
 				6ACB540220B00F8C00528420 /* NSArray+MASAdditions.m in Sources */,
 				6ACB543220B00F9A00528420 /* SDWebImagePrefetcher.m in Sources */,
 				6ACB54C420B0110000528420 /* MJRefreshBackStateFooter.m in Sources */,
@@ -1940,6 +1965,7 @@
 				6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
+				CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
 				CC930C3E20B56B0800B99756 /* SPSZ_paiZhao_OrderViewController.m in Sources */,
 				6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */,
@@ -1953,6 +1979,7 @@
 				6ACB558920B2F64100528420 /* SPSZ_ChuIndexViewController.m in Sources */,
 				CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */,
 				6ACB540320B00F8C00528420 /* View+MASAdditions.m in Sources */,
+				CC2DA38220BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m in Sources */,
 				6ACB54CA20B0110000528420 /* MJRefreshStateHeader.m in Sources */,
 				6ACB550420B011D500528420 /* AFURLSessionManager.m in Sources */,
 				CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */,
@@ -1992,6 +2019,7 @@
 				6ACB53E220B00F8200528420 /* MBProgressHUD.m in Sources */,
 				6ACB553320B0124F00528420 /* FMDatabaseQueue.m in Sources */,
 				CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */,
+				CC2DA38D20BD52F3002F5256 /* CityView.m in Sources */,
 				6A143B8B20BAE65C00D71959 /* PGDatePicker+DateAndTime.m in Sources */,
 				CC89F3DD20BC462A00FCEBD2 /* SPSZ_chu_luRuCollectionViewCell.m in Sources */,
 				6A143B3620BAB36200D71959 /* SPSZ_InputWeightView.m in Sources */,

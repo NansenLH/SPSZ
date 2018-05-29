@@ -10,4 +10,8 @@
 
 @interface SPSZ_saoMa_ViewController : BaseViewController
 
+- (void)reSaoMa;
+
+- (void)sureUpload;
+
 @end
