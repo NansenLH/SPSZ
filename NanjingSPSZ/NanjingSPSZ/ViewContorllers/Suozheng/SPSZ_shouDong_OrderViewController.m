@@ -7,16 +7,25 @@
 //
 
 #import "SPSZ_shouDong_OrderViewController.h"
+
 #import "SPSZ_suo_shouDongTableViewCell.h"
+
+#import "SPSZ_suo_orderNetTool.h"
+
+#import "SPSZ_suo_shouDongRecordModel.h"
+
+
 @interface SPSZ_shouDong_OrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)NSString *timeString;
 
-@property (nonatomic, strong)NSString *numberString;
-
 @property (nonatomic, strong)UIView *topView;
 
 @property (nonatomic, strong)UITableView *tableView;
+
+@property (nonatomic, strong)UILabel *rightLabel;
+
+@property (nonatomic, strong)UILabel *leftLabel;
 
 @end
 
@@ -25,18 +34,18 @@
 - (UIView *)topView{
     if (!_topView) {
         _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
-        UILabel *leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, (MainScreenWidth - 30)/2 +80,60)];
-        leftLabel.font = [UIFont systemFontOfSize:25];
-        leftLabel.textColor = [UIColor blueColor];
-        leftLabel.text = [NSString stringWithFormat:@"%@进货订单",self.timeString];
-        [_topView addSubview:leftLabel];
+        _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, (MainScreenWidth - 30)/2 +80,60)];
+        _leftLabel.font = [UIFont systemFontOfSize:25];
+        _leftLabel.textColor = [UIColor blueColor];
+        _leftLabel.text = [NSString stringWithFormat:@"%@进货订单",self.timeString];
+        [_topView addSubview:self.leftLabel];
         
-        UILabel *rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(15 + (MainScreenWidth - 30)/2 +80, 0, (MainScreenWidth - 30)/2-80,60)];
-        rightLabel.font = [UIFont systemFontOfSize:25];
-        rightLabel.textColor = [UIColor blueColor];
-        rightLabel.textAlignment = NSTextAlignmentRight;
-        rightLabel.text = [NSString stringWithFormat:@"%@条",self.numberString];
-        [_topView addSubview:rightLabel];
+        _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(15 + (MainScreenWidth - 30)/2 +80, 0, (MainScreenWidth - 30)/2-80,60)];
+        _rightLabel.font = [UIFont systemFontOfSize:25];
+        _rightLabel.textColor = [UIColor blueColor];
+        _rightLabel.textAlignment = NSTextAlignmentRight;
+        _rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
+        [_topView addSubview:self.rightLabel];
 
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 59, MainScreenWidth - 30, 1)];
         lineView.backgroundColor = [UIColor blueColor];
@@ -52,9 +61,18 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, MainScreenWidth,MainScreenHeight - 60 -64) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:[SPSZ_suo_shouDongTableViewCell class] forCellReuseIdentifier:@"RecordCell"];
     }
     return _tableView;
+}
+
+- (NSMutableArray *)dataArray
+{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
 }
 
 
@@ -62,27 +80,46 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.timeString = @"5月24日";
-    self.numberString = @"222";
 
     [self.view addSubview:self.topView];
+    
     [self.view addSubview:self.tableView];
+    
+    [self loadData];
 }
 
+
+- (void)loadData
+{
+    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:@"12986" uploaddate:@"2018-05-28" type:@"2" successBlock:^(NSMutableArray *modelArray) {
+        
+        self.dataArray = modelArray;
+        
+        [self.tableView reloadData];
+
+        self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
+
+        
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        
+    } failureBlock:^(NSString *failure) {
+        
+    }];
+}
 
 
 #pragma mark ======== UITableViewDeleate, UITableViewDataSource ========
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 13;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    SPSZ_suo_shouDongRecordModel *model = [[SPSZ_suo_shouDongRecordModel alloc]init];
-
-    SPSZ_suo_shouDongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCell" forIndexPath:indexPath];
+    SPSZ_suo_shouDongRecordModel *model = self.dataArray[indexPath.row];
     
+    SPSZ_suo_shouDongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCell" forIndexPath:indexPath];
     cell.model = model;
     return cell;
 }

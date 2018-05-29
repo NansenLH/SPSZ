@@ -11,19 +11,44 @@
 
 @interface SPSZ_suo_shouDongRecordModel : NSObject
 
-@property (nonatomic, strong) NSString *shopName;
+/**
+ "id": 10741,
+ "address": "detail",
+ "printcode": "",
+ "dishes": [
+ {
+ "amount": "111",
+ "addresssource": "detail",
+ "unit": "公斤",
+ "objectName": "ming",
+ "dishid": "",
+ "cityname": "江苏南京市玄武区"
+ }
+ ],
+ "uploaddate": "2018-05-28 23:27:43",
+ "cityname": "江苏南京市玄武区",
+ "realname": "hahah",
+ "companyname": "gongjin",
+ "imgurl": "",
+ "mobile": "186"
+*/
 
-@property (nonatomic, strong) NSString *timeString;
+@property (nonatomic, strong) NSString *suo_shouDongId;
 
-@property (nonatomic, strong) NSString *productName;
+@property (nonatomic, strong) NSString *address;
 
-@property (nonatomic, strong) NSString *weightNumber;
+@property (nonatomic, strong) NSString *printcode;
 
+@property (nonatomic, strong) NSArray *dishes;
 
-@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *uploaddate;
 
-@property (nonatomic, strong) NSString *pifaName;
+@property (nonatomic, strong) NSString *realname;
 
-@property (nonatomic, strong) NSString *phoneName;
+@property (nonatomic, strong) NSString *companyname;
+
+@property (nonatomic, strong) NSString *imgurl;
+
+@property (nonatomic, strong) NSString *mobile;
 
 @end

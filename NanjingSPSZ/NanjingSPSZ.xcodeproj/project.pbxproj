@@ -218,6 +218,9 @@
 		CC89F3D720BBDE0300FCEBD2 /* SPSZ_chu_chuZhengRecordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3D620BBDE0300FCEBD2 /* SPSZ_chu_chuZhengRecordsTableViewCell.m */; };
 		CC89F3DA20BBF12F00FCEBD2 /* SPSZ_chu_jinHuoLuRuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3D920BBF12F00FCEBD2 /* SPSZ_chu_jinHuoLuRuViewController.m */; };
 		CC89F3DD20BC462A00FCEBD2 /* SPSZ_chu_luRuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3DC20BC462A00FCEBD2 /* SPSZ_chu_luRuCollectionViewCell.m */; };
+		CC89F3E020BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3DF20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m */; };
+		CC89F3E320BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3E220BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.m */; };
+		CC89F3E620BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F3E520BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.m */; };
 		CC930C2A20B56AE600B99756 /* SPSZ_EnterPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2720B56AE500B99756 /* SPSZ_EnterPasswordViewController.m */; };
 		CC930C2B20B56AE600B99756 /* SPSZ_changePassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2920B56AE600B99756 /* SPSZ_changePassWordViewController.m */; };
 		CC930C3C20B56B0800B99756 /* SPSZ_jinHuo_RecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C2E20B56B0600B99756 /* SPSZ_jinHuo_RecordsViewController.m */; };
@@ -686,6 +689,12 @@
 		CC89F3D920BBF12F00FCEBD2 /* SPSZ_chu_jinHuoLuRuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_jinHuoLuRuViewController.m; sourceTree = "<group>"; };
 		CC89F3DB20BC462A00FCEBD2 /* SPSZ_chu_luRuCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_luRuCollectionViewCell.h; sourceTree = "<group>"; };
 		CC89F3DC20BC462A00FCEBD2 /* SPSZ_chu_luRuCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_luRuCollectionViewCell.m; sourceTree = "<group>"; };
+		CC89F3DE20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_orderNetTool.h; sourceTree = "<group>"; };
+		CC89F3DF20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_orderNetTool.m; sourceTree = "<group>"; };
+		CC89F3E120BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_saoMaoOrderModel.h; sourceTree = "<group>"; };
+		CC89F3E220BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_saoMaoOrderModel.m; sourceTree = "<group>"; };
+		CC89F3E420BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_saoMaOrderTableViewCell.h; sourceTree = "<group>"; };
+		CC89F3E520BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_saoMaOrderTableViewCell.m; sourceTree = "<group>"; };
 		CC930C2620B56AE500B99756 /* SPSZ_EnterPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_EnterPasswordViewController.h; sourceTree = "<group>"; };
 		CC930C2720B56AE500B99756 /* SPSZ_EnterPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_EnterPasswordViewController.m; sourceTree = "<group>"; };
 		CC930C2820B56AE500B99756 /* SPSZ_changePassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_changePassWordViewController.h; sourceTree = "<group>"; };
@@ -878,6 +887,8 @@
 				6A6BACF420B85E9D008A428F /* ChuzhengNetworkTool.m */,
 				CC89F3C220BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.h */,
 				CC89F3C320BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m */,
+				CC89F3DE20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.h */,
+				CC89F3DF20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -1594,6 +1605,8 @@
 				CC89F34D20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m */,
 				CC89F3BF20BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.h */,
 				CC89F3C020BAD56500FCEBD2 /* SPSZ_suo_paiZhaoOrderModel.m */,
+				CC89F3E120BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.h */,
+				CC89F3E220BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.m */,
 				CC89F3C920BAE42C00FCEBD2 /* SPSZ_suoLoginModel.h */,
 				CC89F3CA20BAE42C00FCEBD2 /* SPSZ_suoLoginModel.m */,
 			);
@@ -1635,6 +1648,8 @@
 				CC930C4920B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.h */,
 				CC89F34820B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.h */,
 				CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */,
+				CC89F3E420BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.h */,
+				CC89F3E520BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.m */,
 				CC89F3BC20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.h */,
 				CC89F3BD20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.m */,
 			);
@@ -1814,6 +1829,7 @@
 				6ACB548720B00FA500528420 /* UIPasteboard+YYText.m in Sources */,
 				6A143BA620BAF08900D71959 /* SPSZ_ChuSelectedView.m in Sources */,
 				6ACB548B20B00FA500528420 /* YYTextWeakProxy.m in Sources */,
+				CC89F3E620BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.m in Sources */,
 				6ACB547D20B00FA500528420 /* YYTextDebugOption.m in Sources */,
 				6A143B7B20BAE65C00D71959 /* NSCalendar+PGCurrent.m in Sources */,
 				6ACB54C920B0110000528420 /* MJRefreshNormalHeader.m in Sources */,
@@ -1930,7 +1946,9 @@
 				CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */,
 				6ACB547520B00FA500528420 /* YYTextMagnifier.m in Sources */,
 				CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */,
+				CC89F3E320BCE5E700FCEBD2 /* SPSZ_suo_saoMaoOrderModel.m in Sources */,
 				6ACB547E20B00FA500528420 /* YYLabel.m in Sources */,
+				CC89F3E020BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m in Sources */,
 				6ACB54BE20B0110000528420 /* MJRefreshConst.m in Sources */,
 				6ACB547420B00FA500528420 /* YYTextView.m in Sources */,
 				6AAF974020B5B29300A6C0E8 /* SPSZ_DeviceModel.m in Sources */,

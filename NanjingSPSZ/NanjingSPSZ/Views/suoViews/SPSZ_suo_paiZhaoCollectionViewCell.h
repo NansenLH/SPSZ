@@ -12,6 +12,9 @@
 @interface SPSZ_suo_paiZhaoCollectionViewCell : UICollectionViewCell
 
 @property(nonatomic, strong) UIImageView *picImageView;
+
 @property(nonatomic, strong) UILabel *timelabel;
+
 @property(nonatomic, strong) SPSZ_suo_paiZhaoOrderModel *model;
+
 @end
