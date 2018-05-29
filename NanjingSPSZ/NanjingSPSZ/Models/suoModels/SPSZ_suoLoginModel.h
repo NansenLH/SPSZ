@@ -25,19 +25,19 @@
  "bus_img": ""
  */
 
-//@property (nonatomic, strong)NSString *img_qs;
-//@property (nonatomic, strong)NSString *img_entry;
-//@property (nonatomic, strong)NSString *bus_license;
-//@property (nonatomic, strong)NSString *stall_id;
-//@property (nonatomic, strong)NSString *img_save;
-//@property (nonatomic, strong)NSString *create_date;
-//@property (nonatomic, strong)NSString *stall_no;
-//@property (nonatomic, strong)NSString *address;
-//@property (nonatomic, strong)NSString *stall_tel;
-//@property (nonatomic, strong)NSString *cityname;
-//@property (nonatomic, strong)NSString *stall_name;
+@property (nonatomic, strong)NSString *img_qs;
+@property (nonatomic, strong)NSString *img_entry;
+@property (nonatomic, strong)NSString *bus_license;
+@property (nonatomic, strong)NSString *stall_id;
+@property (nonatomic, strong)NSString *img_save;
+@property (nonatomic, strong)NSString *create_date;
+@property (nonatomic, strong)NSString *stall_no;
+@property (nonatomic, strong)NSString *address;
+@property (nonatomic, strong)NSString *stall_tel;
+@property (nonatomic, strong)NSString *cityname;
+@property (nonatomic, strong)NSString *stall_name;
 @property (nonatomic, strong)NSString *deptname;
-//@property (nonatomic, strong)NSString *bus_img;
+@property (nonatomic, strong)NSString *bus_img;
 
 
 

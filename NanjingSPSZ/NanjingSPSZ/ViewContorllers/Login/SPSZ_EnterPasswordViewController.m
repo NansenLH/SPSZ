@@ -17,10 +17,8 @@
 
 #import "UIButton+Gradient.h"
 
-#import "FMDB.h"
-#import "SPSZ_FMDBTool.h"
+#import "KRAccountTool.h"
 
-#define  FMDBManager  [SPSZ_FMDBTool SPSZ_FMDBTool]
 
 @interface SPSZ_EnterPasswordViewController ()<UITextFieldDelegate>
 
@@ -90,7 +88,6 @@
 - (void)configNavigation
 {
     self.navigationItem.title = @"登录";
-    
 }
 
 - (void)viewDidLoad {
@@ -120,10 +117,7 @@
     tapRecognize.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapRecognize];
     
-    NSString *dataPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    dataPath = [dataPath stringByAppendingPathComponent:@"MyDB.sqlite"];
-    // 创建数据库
-    [FMDBManager createDataBaseWithPath:dataPath];
+
 }
 
 - (void)hiddenKeyboard
@@ -147,32 +141,9 @@
 //            [user setObject:model.stall_id forKey:@"stallID"];
             [user synchronize];
             
+            [KRAccountTool saveSuoUserInfo:model];
             
-            
-            Class modelClass = [SPSZ_suoLoginModel class];
-            if ([FMDBManager createTableWithName:@"suologinModel" model:modelClass primaryKey:@"suoModel"]) {
-                NSLog(@"success");
-            } else {
-                NSLog(@"failed");
-            }
-            
-            
-            if (model) {
 
-                if ( [FMDBManager insterModel:model toTable:@"suologinModel"]) {
-                    NSLog(@"ssss");
-                }else{
-                    NSLog(@"nonono");
-                }
-                
-                
-                
-                Class modelClass = [SPSZ_suoLoginModel class];
-
-                NSArray *aaaaa = [FMDBManager searchAllModel:modelClass tableName:@"suologinModel"];
-                
-            }
-            
             SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
             BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
             [[AppDelegate shareInstance].window setRootViewController:nav];
@@ -191,6 +162,9 @@
             [user setObject:model.stall_no forKey:@"stallID"];
             [user synchronize];
             
+            [KRAccountTool saveChuUserInfo:model];
+
+                    
             SPSZ_ChuIndexViewController *vc = [[SPSZ_ChuIndexViewController alloc] init];
             BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
             [[AppDelegate shareInstance].window setRootViewController:nav];
