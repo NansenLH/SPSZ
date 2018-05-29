@@ -7,8 +7,11 @@
 //
 
 #import "SPSZ_chu_personalCenterViewController.h"
-
+#import "SPSZ_chu_jinHuoRecordsViewController.h"
+#import "SPSZ_chu_chuZhengRecordsViewController.h"
 #import "SPSZ_LoginViewController.h"
+#import "SPSZ_personalInfoViewController.h"
+#import "BaseNavigationController.h"
 
 @interface SPSZ_chu_personalCenterViewController ()
 
@@ -57,10 +60,17 @@
     return _titleNumArray;
 }
 
-
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"个人中心";
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
+    
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [ProgramColor huiseColor];
     for (int i=0; i<self.itemArray.count; i++) {
@@ -86,7 +96,7 @@
 - (UILabel *)setLabelWith:(NSInteger)number{
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 15, MainScreenWidth - 20, 20)];
     label.text = self.itemArray[number];
-    label.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
+    label.textColor = [ProgramColor RGBColorWithRed:54 green:136 blue:225];
     return label;
 }
 
@@ -95,8 +105,10 @@
     NSInteger num = [self.titleNumArray[number] integerValue];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50*(num -1), MainScreenWidth, 50)];
     if (num == 6) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
         self.numLabel  = [[UILabel alloc]initWithFrame:CGRectMake(MainScreenWidth -100, 15, 85, 20)];
-        self.numLabel.text = @"v1.2";
+        self.numLabel.text = [NSString stringWithFormat:@"v%@",app_Version];
         self.numLabel.textAlignment = NSTextAlignmentRight;
         [view addSubview:self.numLabel];
         
@@ -136,25 +148,43 @@
 - (void)tapAction:(UITapGestureRecognizer *)tap{
     if ([tap view].tag == 20002) {
         NSLog(@"个人信息");
+        SPSZ_personalInfoViewController *vc  = [[SPSZ_personalInfoViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }else if ([tap view].tag == 20003){
-        NSLog(@"进货记录");
+        SPSZ_chu_jinHuoRecordsViewController *vc =[[SPSZ_chu_jinHuoRecordsViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }else if ([tap view].tag == 20004){
-        NSLog(@"出货记录");
+        SPSZ_chu_chuZhengRecordsViewController *vc = [[SPSZ_chu_chuZhengRecordsViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if ([tap view].tag == 20007){
         NSLog(@"检查版本");
     }else if ([tap view].tag == 20009){
         NSLog(@"帮助");
     }else if ([tap view].tag == 20010){
-        NSString *isLogin = @"login_out";
-        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        [user setObject:isLogin forKey:@"isLogin"];
-        [user synchronize];
-        for (UIViewController *controller in self.navigationController.viewControllers) {
-            if ([controller isKindOfClass:[SPSZ_LoginViewController class]]) {
-                self.navigationController.navigationBar.hidden = YES;
-                [self.navigationController popToViewController:controller animated:YES];
-            }
-        }
+        
+        
+        UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *isLogin = @"login_out";
+            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+            [user setObject:isLogin forKey:@"isLogin"];
+            [user synchronize];
+            
+            SPSZ_LoginViewController *login = [[SPSZ_LoginViewController alloc]init];
+            BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:login];
+            [[AppDelegate shareInstance].window setRootViewController:navi];
+        }];
+        
+        [actionSheetController addAction:cancelAction];
+        [actionSheetController addAction:okAction];
+        
+        [self presentViewController:actionSheetController animated:YES completion:nil];
     }
 }
 

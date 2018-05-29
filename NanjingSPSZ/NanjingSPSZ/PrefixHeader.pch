@@ -17,6 +17,8 @@
 
 #define MAS_SHORTHAND_GLOBALS
 
+#define ALPHANUM @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
@@ -25,6 +27,7 @@
 #import "UIView+Extension.h"
 #import "Masonry.h"
 #import "MBProgressHUD.h"
+#import "MBProgressHUD+JDragon.h"
 #import "NSNull+LUNullExtention.h"
 #import "SDWebImageManager.h"
 #import "UIImageView+WebCache.h"

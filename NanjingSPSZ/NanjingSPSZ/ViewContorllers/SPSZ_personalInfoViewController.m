@@ -7,7 +7,8 @@
 //
 
 #import "SPSZ_personalInfoViewController.h"
-
+#import "BaseNavigationController.h"
+#import "SPSZ_LoginViewController.h"
 @interface SPSZ_personalInfoViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -94,16 +95,32 @@
     return _scrollView;
 }
 
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"个人信息";
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
+    
+    UIButton *logOutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [logOutButton setImage:[UIImage imageNamed:@"outlogin_white"] forState:UIControlStateNormal];
+    [logOutButton setTitle:@"注销登录" forState:UIControlStateNormal];
+    [logOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    logOutButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    logOutButton.frame = CGRectMake(0, 0, 80, 44);
+    logOutButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+    [logOutButton addTarget:self action:@selector(logoutAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logOutButton];
+    
     self.height = 50;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.scrollView];
 }
-
-
-
 
 - (void)setUpViewWith:(NSInteger)number text:(NSString *)text{
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, _height*number, MainScreenWidth, _height)];
@@ -118,9 +135,9 @@
         mainLabel.frame = CGRectMake(100, 0, MainScreenWidth -160, _height);
         mainLabel.font = [UIFont systemFontOfSize:11];
         if (number == 0) {
-            [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor blueColor] string:@"      " string2:self.titleArray[number]]];
+            [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:54 green:136 blue:225] string:@"      " string2:self.titleArray[number]]];
         }else{
-            [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor blueColor] string:@"  *  " string2:self.titleArray[number]]];
+            [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:54 green:136 blue:225] string:@"  *  " string2:self.titleArray[number]]];
         }
 
         [view addSubview:label];
@@ -178,6 +195,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)logoutAction
+{
+    
+    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *isLogin = @"login_out";
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        [user setObject:isLogin forKey:@"isLogin"];
+        [user synchronize];
+        
+        SPSZ_LoginViewController *login = [[SPSZ_LoginViewController alloc]init];
+        BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:login];
+        [[AppDelegate shareInstance].window setRootViewController:navi];
+    }];
+    
+    [actionSheetController addAction:cancelAction];
+    [actionSheetController addAction:okAction];
+    
+    [self presentViewController:actionSheetController animated:YES completion:nil];
+}
 /*
 #pragma mark - Navigation
 

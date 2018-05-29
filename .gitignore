@@ -2,6 +2,11 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
 ## Build generated
 build/
 DerivedData/
@@ -59,9 +64,3 @@ fastlane/test_output
 #
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
-
-iOSInjectionProject/
-NanjingSPSZ/.DS_Store
-NanjingSPSZ/.DS_Store
-NanjingSPSZ/NanjingSPSZ.xcodeproj/project.pbxproj
-NanjingSPSZ/NanjingSPSZ.xcodeproj/project.pbxproj

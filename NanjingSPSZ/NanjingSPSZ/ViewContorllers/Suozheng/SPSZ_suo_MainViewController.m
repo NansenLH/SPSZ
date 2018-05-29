@@ -16,7 +16,8 @@
 
 #import "SPSZ_chu_RecordViewController.h"
 
-
+#import "AppDelegate.h"
+#import "BaseNavigationController.h"
 
 #import "THDatePickerView.h"
 
@@ -93,11 +94,13 @@
     if (!_recordsButton) {
         _recordsButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _recordsButton.frame = CGRectMake(20, 0, 80, 60);
+        [_recordsButton setImageEdgeInsets:UIEdgeInsetsMake(5, 20, 16, 20)];
+        [_recordsButton setTitleEdgeInsets:UIEdgeInsetsMake(48, -35, 0, 0)];
         [_recordsButton setImage:[UIImage imageNamed:@"record_gray"] forState:UIControlStateNormal];
         [_recordsButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [_recordsButton setTitle:@"进货记录" forState:UIControlStateNormal];
         [_recordsButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [_recordsButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
+//        [_recordsButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
         [_recordsButton addTarget:self action:@selector(recordButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _recordsButton;
@@ -106,13 +109,14 @@
 - (UIButton *)personButton{
     if (!_personButton) {
         _personButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _personButton.frame = CGRectMake(MainScreenWidth - 60 -20, 0, 60, 60);
+        _personButton.frame = CGRectMake(MainScreenWidth - 80 -20, 0, 80, 60);
         [_personButton setImage:[UIImage imageNamed:@"user_gray"] forState:UIControlStateNormal];
         [_personButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-
+        [_personButton setImageEdgeInsets:UIEdgeInsetsMake(5, 20, 16, 20)];
+        [_personButton setTitleEdgeInsets:UIEdgeInsetsMake(48, -35, 0, 0)];
         [_personButton setTitle:@"个人中心" forState:UIControlStateNormal];
         [_personButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [_personButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
+
         [_personButton addTarget:self action:@selector(personButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _personButton;
@@ -156,6 +160,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.view.backgroundColor = [UIColor blueColor];
+    self.navigationController.navigationBar.hidden = NO;
     
     UIImage *naviBackImage = [[UIImage alloc] createImageWithSize:CGSizeMake([ProgramSize mainScreenWidth], [ProgramSize mainScreenHeight])
                                                    gradientColors:[ProgramColor blueGradientColors]
@@ -299,11 +304,15 @@
 - (void)recordButtonAction:(UIButton *)button{
     SPSZ_jinHuo_RecordsViewController *vc = [[SPSZ_jinHuo_RecordsViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+//    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+//    [[AppDelegate shareInstance].window setRootViewController:nav];
 }
 
 - (void)personButtonAction:(UIButton *)button{
     SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+//    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+//    [[AppDelegate shareInstance].window setRootViewController:nav];
 }
 
 - (void)rightButtonAction:(UIButton *)button

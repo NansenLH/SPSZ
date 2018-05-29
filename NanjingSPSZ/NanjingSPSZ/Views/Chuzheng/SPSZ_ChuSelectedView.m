@@ -77,10 +77,23 @@
         make.bottom.equalTo(-marginBottom);
     }];
     
+    UIView *backShadowView = [[UIView alloc] init];
+    [self addSubview:backShadowView];
+    [backShadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(32);
+        make.left.equalTo(27);
+        make.right.equalTo(-27);
+        make.bottom.mas_equalTo(self.addMoreGoodsButton.mas_top).offset(-20);
+    }];
+    backShadowView.backgroundColor = [UIColor whiteColor];
+    backShadowView.layer.cornerRadius = 4;
+    backShadowView.layer.shadowColor = [ProgramColor RGBColorWithRed:0 green:0 blue:0 alpha:0.3].CGColor;
+    backShadowView.layer.shadowOpacity = 1;
+    backShadowView.layer.shadowOffset = CGSizeMake(0, 0);
+    
+    
     UIView *backView = [[UIView alloc] init];
     backView.backgroundColor = [UIColor whiteColor];
-    backView.layer.borderColor = [UIColor blackColor].CGColor;
-    backView.layer.borderWidth = 1;
     backView.layer.cornerRadius = 4;
     backView.layer.masksToBounds = YES;
     [self addSubview:backView];
