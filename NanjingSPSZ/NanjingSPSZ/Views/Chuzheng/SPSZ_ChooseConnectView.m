@@ -46,12 +46,17 @@
     [titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(0);
         make.height.equalTo(39);
-        make.bottom.equalTo(-210-[ProgramSize bottomHeight]);
+        make.bottom.equalTo(-300-[ProgramSize bottomHeight]);
     }];
     [titleButton gradientButtonWithSize:CGSizeMake([ProgramSize mainScreenWidth], 39) colorArray:[ProgramColor blueMoreGradientColors] percentageArray:@[@(0), @(1)] gradientType:GradientFromLeftToRight];
     
     UIView *headerView = [[UIView alloc] init];
-    headerView.frame = CGRectMake(0, 0, [ProgramSize mainScreenWidth], 35);
+    [self addSubview:headerView];
+    [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(0);
+        make.top.mas_equalTo(titleButton.mas_bottom).offset(-4);
+        make.height.equalTo(34);
+    }];
     headerView.backgroundColor = [UIColor whiteColor];
     
     UILabel *leftLabel = [[UILabel alloc] init];
@@ -62,7 +67,7 @@
     [headerView addSubview:leftLabel];
     [leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.equalTo(0);
-        make.width.equalTo([ProgramSize mainScreenWidth] * 0.45);
+        make.width.equalTo([ProgramSize mainScreenWidth] * 0.4);
     }];
     
     UILabel *rightLabel = [[UILabel alloc] init];
@@ -73,7 +78,7 @@
     [headerView addSubview:rightLabel];
     [rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.right.bottom.equalTo(0);
-        make.width.equalTo([ProgramSize mainScreenWidth] * 0.55);
+        make.width.equalTo([ProgramSize mainScreenWidth] * 0.6);
     }];
     
     
@@ -82,17 +87,15 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(0);
         make.bottom.equalTo(0);
-        make.height.equalTo(214+[ProgramSize bottomHeight]);
+        make.height.equalTo(270+[ProgramSize bottomHeight]);
     }];
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.tableHeaderView = headerView;
     UIView *tableFooterView = [[UIView alloc] init];
     self.tableView.tableFooterView = tableFooterView;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.rowHeight = 50.0;
-    
+    self.tableView.rowHeight = 44.0;
     
     [self.tableView registerClass:[SPSZ_DeviceTableViewCell class] forCellReuseIdentifier:@"SPSZ_DeviceTableViewCell"];
 }

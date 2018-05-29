@@ -38,6 +38,7 @@
         _phoneNumberTextField.frame = CGRectMake(10, 0, MainScreenWidth-20, 60);
         _phoneNumberTextField.delegate = self;
         _phoneNumberTextField.tintColor = [UIColor redColor];
+        _phoneNumberTextField.keyboardType = UIKeyboardTypeNumberPad;
         _phoneNumberTextField.placeholder = @"请输入手机号码";
     }
     return _phoneNumberTextField;
@@ -50,6 +51,7 @@
         _passwordTextField.frame = CGRectMake(10,0, MainScreenWidth-20, 60);
         _passwordTextField.delegate = self;
         _passwordTextField.tintColor = [UIColor redColor];
+        _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
         _passwordTextField.placeholder = @"请输入密码";
     }
     return _passwordTextField;
@@ -58,8 +60,8 @@
 - (UIButton *)loginButton{
     if (!_loginButton) {
         _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _loginButton.frame = CGRectMake(MainScreenWidth / 6, 88 +69+25, MainScreenWidth/3*2, 60);
-        _loginButton.layer.cornerRadius = 30;
+        _loginButton.frame = CGRectMake(MainScreenWidth / 6, 88 +69+25, MainScreenWidth/3*2, 45);
+        _loginButton.layer.cornerRadius = 22.5;
         _loginButton.layer.masksToBounds = YES;
         [_loginButton addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -72,7 +74,7 @@
 - (UIButton *)forgotButton{
     if (!_forgotButton) {
         _forgotButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _forgotButton.frame = CGRectMake((MainScreenWidth -150)/2, 88 +69+25 + 60 + 30, 150, 60);
+        _forgotButton.frame = CGRectMake((MainScreenWidth -150)/2, 88 +69+25 + 45 + 30, 150, 60);
         [_forgotButton setTitle:@"忘记密码" forState:UIControlStateNormal];
         [_forgotButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [_forgotButton addTarget:self action:@selector(forgotButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -108,11 +110,24 @@
     [self.view addSubview:view2];
     [self.view addSubview:self.loginButton];
     [self.view addSubview:self.forgotButton];
+    
+    UITapGestureRecognizer *tapRecognize = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenKeyboard)];
+    tapRecognize.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapRecognize];
 }
 
+- (void)hiddenKeyboard
+{
+    [_phoneNumberTextField resignFirstResponder];
+    [_passwordTextField resignFirstResponder];
+}
 
 - (void)loginButtonAction:(UIButton *)button
 {
+    if (self.phoneNumberTextField.text.length == 0) {
+        [MBProgressHUD showWarnMessage:@"请输入手机号码"];
+        return;
+    }
     // suo
     if (self.isType) {
         [SPSZ_LoginNetTool lingshoushangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_suoLoginModel *model) {
@@ -172,5 +187,21 @@
 - (void)backToUpView
 {
     [self.navigationController popViewControllerAnimated:true];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.passwordTextField) {
+        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ALPHANUM] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        return [string isEqualToString:filtered];
+    }
+    return true;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return true;
 }
 @end

@@ -27,10 +27,17 @@
     return _tableView;
 }
 
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"进货记录";
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
 }
 

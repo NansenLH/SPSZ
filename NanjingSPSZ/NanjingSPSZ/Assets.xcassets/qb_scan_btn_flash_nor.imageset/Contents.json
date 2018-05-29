@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "qb_scan_btn_flash_nor.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "qb_scan_btn_flash_nor.png",
       "scale" : "2x"
     },
     {

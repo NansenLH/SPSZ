@@ -60,10 +60,17 @@
     return _titleNumArray;
 }
 
-
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"个人中心";
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
+    
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [ProgramColor huiseColor];
     for (int i=0; i<self.itemArray.count; i++) {
@@ -89,7 +96,7 @@
 - (UILabel *)setLabelWith:(NSInteger)number{
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 15, MainScreenWidth - 20, 20)];
     label.text = self.itemArray[number];
-    label.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
+    label.textColor = [ProgramColor RGBColorWithRed:54 green:136 blue:225];
     return label;
 }
 
@@ -98,8 +105,10 @@
     NSInteger num = [self.titleNumArray[number] integerValue];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50*(num -1), MainScreenWidth, 50)];
     if (num == 6) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
         self.numLabel  = [[UILabel alloc]initWithFrame:CGRectMake(MainScreenWidth -100, 15, 85, 20)];
-        self.numLabel.text = @"v1.2";
+        self.numLabel.text = [NSString stringWithFormat:@"v%@",app_Version];
         self.numLabel.textAlignment = NSTextAlignmentRight;
         [view addSubview:self.numLabel];
         
