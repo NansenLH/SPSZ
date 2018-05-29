@@ -51,6 +51,8 @@
 		6A143BB320BC420900D71959 /* libPrinterSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BB120BC420900D71959 /* libPrinterSDK.a */; };
 		6A143BB520BC422200D71959 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BB420BC422200D71959 /* AVFoundation.framework */; };
 		6A143BB820BD52D400D71959 /* SPSZ_ChuhuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143BB720BD52D400D71959 /* SPSZ_ChuhuoModel.m */; };
+		6A494E7020BD836A00D13159 /* SPSZ_ShowTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E6F20BD836A00D13159 /* SPSZ_ShowTicketView.m */; };
+		6A494E7320BD985900D13159 /* UIImage+LXDCreateBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E7120BD985900D13159 /* UIImage+LXDCreateBarcode.m */; };
 		6A6BACD020B85013008A428F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A6BACD420B85021008A428F /* SPSZ_personalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */; };
 		6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE820B856EE008A428F /* LUNetHelp.m */; };
@@ -350,6 +352,10 @@
 		6A143BB420BC422200D71959 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A143BB620BD52D400D71959 /* SPSZ_ChuhuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_ChuhuoModel.h; sourceTree = "<group>"; };
 		6A143BB720BD52D400D71959 /* SPSZ_ChuhuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_ChuhuoModel.m; sourceTree = "<group>"; };
+		6A494E6E20BD836A00D13159 /* SPSZ_ShowTicketView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_ShowTicketView.h; sourceTree = "<group>"; };
+		6A494E6F20BD836A00D13159 /* SPSZ_ShowTicketView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_ShowTicketView.m; sourceTree = "<group>"; };
+		6A494E7120BD985900D13159 /* UIImage+LXDCreateBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LXDCreateBarcode.m"; sourceTree = "<group>"; };
+		6A494E7220BD985900D13159 /* UIImage+LXDCreateBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LXDCreateBarcode.h"; sourceTree = "<group>"; };
 		6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
 		6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
 		6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
@@ -1478,6 +1484,8 @@
 		6ACB550820B0121800528420 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
+				6A494E7220BD985900D13159 /* UIImage+LXDCreateBarcode.h */,
+				6A494E7120BD985900D13159 /* UIImage+LXDCreateBarcode.m */,
 				6ACB550920B0121800528420 /* UIImage+Tint.h */,
 				6ACB551320B0121800528420 /* UIImage+Tint.m */,
 				6ACB551520B0121800528420 /* UIImage+Blur.h */,
@@ -1695,6 +1703,8 @@
 				CC89F3E520BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.m */,
 				CC89F3BC20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.h */,
 				CC89F3BD20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.m */,
+				6A494E6E20BD836A00D13159 /* SPSZ_ShowTicketView.h */,
+				6A494E6F20BD836A00D13159 /* SPSZ_ShowTicketView.m */,
 			);
 			path = suoViews;
 			sourceTree = "<group>";
@@ -1897,6 +1907,7 @@
 				6A143B7820BAE65C00D71959 /* PGDatePickerView.m in Sources */,
 				6A143B8620BAE65C00D71959 /* PGDatePicker+DateHourMinute.m in Sources */,
 				6A143B8020BAE65C00D71959 /* PGDatePicker+MonthDayHourMinute.m in Sources */,
+				6A494E7020BD836A00D13159 /* SPSZ_ShowTicketView.m in Sources */,
 				6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */,
 				6ACB54C520B0110000528420 /* MJRefreshBackNormalFooter.m in Sources */,
 				6A143B7620BAE65C00D71959 /* PGDatePicker.m in Sources */,
@@ -1987,6 +1998,7 @@
 				6AAF973720B5589600A6C0E8 /* UIButton+Gradient.m in Sources */,
 				6ACB559E20B3289500528420 /* SPSZ_IndexView.m in Sources */,
 				6ACB543620B00F9A00528420 /* UIImageView+WebCache.m in Sources */,
+				6A494E7320BD985900D13159 /* UIImage+LXDCreateBarcode.m in Sources */,
 				6ACB558920B2F64100528420 /* SPSZ_ChuIndexViewController.m in Sources */,
 				CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */,
 				6ACB540320B00F8C00528420 /* View+MASAdditions.m in Sources */,

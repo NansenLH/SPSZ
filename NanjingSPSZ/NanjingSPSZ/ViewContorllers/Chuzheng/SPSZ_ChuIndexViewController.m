@@ -30,6 +30,9 @@
 #import "BaseNavigationController.h"
 #import "SPSZ_LoginViewController.h"
 
+#import "SPSZ_ShowTicketView.h"
+#import "SPSZ_suo_saoMaDetailModel.h"
+#import "SPSZ_suo_shouDongRecordModel.h"
 
 @interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate>
 //@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, BluetoothDelegate>
@@ -90,9 +93,71 @@
     [self configNavigation];
     
     [self configSubViews];
-    
+
     [self configTabbar];
+    
+    
+//    [self testCode];
 }
+
+- (void)testCode
+{
+    SPSZ_suo_shouDongRecordModel *model = [[SPSZ_suo_shouDongRecordModel alloc] init];
+    model.suo_shouDongId = @"10741";
+    model.address = @"detail";
+    model.printcode = @"1231231221312";
+    model.uploaddate = @"2018-05-28 23:27:43";
+    model.cityname = @"江苏南京市玄武区";
+    model.realname = @"hahah11";
+    model.imgurl = @"";
+    model.mobile = @"111232312";
+    model.companyname = @"dadadadad";
+    /**
+     "id": 10741,
+     "address": "detail",
+     "printcode": "",
+     "dishes":
+     "uploaddate": "2018-05-28 23:27:43",
+     "cityname": "江苏南京市玄武区",
+     "realname": "hahah",
+     "companyname": "gongjin",
+     "imgurl": "",
+     "mobile": "186"
+     */
+    SPSZ_suo_saoMaDetailModel *d1 = [[SPSZ_suo_saoMaDetailModel alloc] init];
+    d1.amount = @"20";
+    d1.addresssource = @"sfafda";
+    d1.unit = @"haha";
+    d1.objectName = @"water";
+    d1.dishid = @"1";
+    d1.cityname = @"Beijing";
+    
+    SPSZ_suo_saoMaDetailModel *d2 = [[SPSZ_suo_saoMaDetailModel alloc] init];
+    d2.amount = @"230";
+    d2.addresssource = @"s222da";
+    d2.unit = @"h1h1";
+    d2.objectName = @"cake";
+    d2.dishid = @"2";
+    d2.cityname = @"Jiangsu";
+    
+
+    model.dishes = @[d1, d2, d1, d2, d1, d2];
+    
+    self.view.backgroundColor = [UIColor redColor];
+    
+    SPSZ_ShowTicketView *showTicketView = [[SPSZ_ShowTicketView alloc] init];
+    [self.view addSubview:showTicketView];
+    [showTicketView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(100);
+        make.left.equalTo(60);
+        make.right.equalTo(-60);
+        make.bottom.equalTo(-300);
+    }];
+    showTicketView.model = model;
+    showTicketView.hasHuabian = NO;
+    
+}
+
 
 - (void)setIsConnect:(BOOL)isConnect
 {

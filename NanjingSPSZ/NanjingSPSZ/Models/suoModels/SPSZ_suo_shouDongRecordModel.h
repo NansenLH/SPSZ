@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "YYModel.h"
+
+@class SPSZ_suo_saoMaDetailModel;
 
 @interface SPSZ_suo_shouDongRecordModel : NSObject
 
@@ -39,9 +40,11 @@
 
 @property (nonatomic, strong) NSString *printcode;
 
-@property (nonatomic, strong) NSArray *dishes;
+@property (nonatomic, strong) NSArray<SPSZ_suo_saoMaDetailModel *> *dishes;
 
 @property (nonatomic, strong) NSString *uploaddate;
+
+@property (nonatomic, copy) NSString *cityname;
 
 @property (nonatomic, strong) NSString *realname;
 
