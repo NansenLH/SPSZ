@@ -42,6 +42,7 @@
 
 @property (nonatomic, strong)UIButton *saveButton;
 
+@property (nonatomic, strong) NSMutableArray *imagesArray;
 
 @end
 
@@ -54,12 +55,22 @@
     return _titleArray;
 }
 
+- (NSMutableArray *)imagesArray
+{
+    if (!_imagesArray) {
+        _imagesArray = [NSMutableArray array];
+    }
+    return _imagesArray;
+}
 
-- (UIButton *)productLocationButton{
+
+- (UIButton *)productLocationButton
+{
     if (!_productLocationButton) {
         _productLocationButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _productLocationButton.frame = CGRectMake(110, 0, MainScreenWidth - 120, _height);
         [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
+        _productLocationButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_productLocationButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
         _productLocationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         _productLocationButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
@@ -72,12 +83,12 @@
     if (!_saveButton) {
         _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _saveButton.frame = CGRectMake(MainScreenWidth / 6, MainScreenHeight - 80 - 64, MainScreenWidth/3*2, 60);
-        _saveButton.layer.cornerRadius = 30;
+        _saveButton.layer.cornerRadius = 15;
         _saveButton.layer.masksToBounds = YES;
         [_saveButton addTarget:self action:@selector(saveButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_saveButton setTitle:@"保存" forState:UIControlStateNormal];
-        [_saveButton gradientButtonWithSize:CGSizeMake(MainScreenWidth/3*2, 60) colorArray:@[[ProgramColor RGBColorWithRed:33 green:211 blue:255 alpha:0.94],[ProgramColor RGBColorWithRed:67 green:130 blue:255 alpha:0.94]] percentageArray:@[@(1),@(0)] gradientType:GradientFromTopToBottom];
+        [_saveButton gradientButtonWithSize:CGSizeMake(180, 30) colorArray:[ProgramColor blueGradientColors] percentageArray:@[@(0),@(1)] gradientType:GradientFromTopToBottom];
     }
     return _saveButton;
 }
@@ -88,6 +99,7 @@
         _productNameLabel = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, MainScreenWidth - 120, _height)];
         _productNameLabel.placeholder = @"请输入";
         _productNameLabel.delegate = self;
+        _productNameLabel.font = [UIFont systemFontOfSize:14];
         _productNameLabel.tintColor = [UIColor redColor];
         _productNameLabel.textAlignment = NSTextAlignmentRight;
     }
@@ -99,6 +111,7 @@
     if (!_numberLabel) {
         _numberLabel = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, MainScreenWidth - 150, _height)];
         _numberLabel.placeholder = @"请输入";
+        _numberLabel.font = [UIFont systemFontOfSize:14];
         _numberLabel.delegate = self;
         _numberLabel.tintColor = [UIColor redColor];
         _numberLabel.textAlignment = NSTextAlignmentRight;
@@ -113,6 +126,7 @@
         _carLabel = [[UITextField alloc]initWithFrame:CGRectMake(180, 0, MainScreenWidth - 190, _height)];
         _carLabel.placeholder = @"请输入";
         _carLabel.delegate = self;
+        _carLabel.font = [UIFont systemFontOfSize:14];
         _carLabel.tintColor = [UIColor redColor];
         _carLabel.textAlignment = NSTextAlignmentRight;
     }
@@ -124,6 +138,7 @@
     if (!_detailLocationLabel) {
         _detailLocationLabel = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, MainScreenWidth - 120, _height)];
         _detailLocationLabel.placeholder = @"请输入";
+        _detailLocationLabel.font = [UIFont systemFontOfSize:14];
         _detailLocationLabel.delegate = self;
         _detailLocationLabel.tintColor = [UIColor redColor];
         _detailLocationLabel.textAlignment = NSTextAlignmentRight;
@@ -145,14 +160,13 @@
         [self setUpViewWith:5 text:nil];
         [self setUpViewWith:6 text: @"（请上传营业执照和相关证件）"];
         
-        
-        
-//        UIView *bottom = [[UIView alloc]initWithFrame:CGRectMake(0, _height *7, MainScreenWidth, 0.6* (MainScreenWidth - 20) *4 +70)];
-//        bottom.backgroundColor = [UIColor redColor];
-//        [_mainView addSubview:bottom];
-        
         [_mainView addSubview:self.collectionView];
-        
+        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(20);
+            make.right.equalTo(-20);
+            make.top.equalTo(self.height*7);
+            make.bottom.equalTo(0);
+        }];
     }
     return _mainView;
 }
@@ -168,7 +182,7 @@
         _collectionView.dataSource = self;
         _collectionView.backgroundColor = [UIColor greenColor];
         _collectionView.backgroundColor = [UIColor whiteColor];
-        [_collectionView registerClass:[SPSZ_chu_luRuCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+        [_collectionView registerClass:[SPSZ_chu_luRuCollectionViewCell class] forCellWithReuseIdentifier:@"SPSZ_chu_luRuCollectionViewCell"];
         
     }
     return _collectionView;
@@ -185,18 +199,33 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     
-    self.height = 50;
+    
+    self.height = 40;
+    CGFloat margin = [ProgramSize mainScreenHeight] == 480 ? 5 : 15;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.mainView];
+    [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(0);
+        make.bottom.equalTo(-30-margin-margin-[ProgramSize bottomHeight]);
+    }];
+    
     [self.view addSubview:self.saveButton];
+    [self.saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(0);
+        make.height.equalTo(30);
+        make.width.equalTo(180);
+        make.bottom.equalTo(-margin-[ProgramSize bottomHeight]);
+    }];
 }
 
 
-- (void)setUpViewWith:(NSInteger)number text:(NSString *)text{
+- (void)setUpViewWith:(NSInteger)number text:(NSString *)text
+{
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, _height*number, MainScreenWidth, _height)];
    
     CGFloat w = 100;
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
+    label.font = [UIFont systemFontOfSize:14];
     label.textColor = [UIColor redColor];
     if (number == 0 || number == 6) {
         UILabel *mainLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 0, MainScreenWidth - 120, _height)];
@@ -266,6 +295,7 @@
     NSRange redRange = NSMakeRange([[noteStr string] rangeOfString:string2].location, [[noteStr string] rangeOfString:string2].length);
     //需要设置的位置
     [noteStr addAttribute:NSForegroundColorAttributeName value:secondColor range:redRange];
+    [noteStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:redRange];
     return noteStr;
     
 }
@@ -291,16 +321,18 @@
 #pragma mark --- delegate、dataSource ---
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 7;
+    return (self.imagesArray.count + 1);
 }
 #pragma mark --- 返回cell ---
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPSZ_chu_luRuCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    
-    // cell.backgroundColor = [UIColor yellowColor];
-    //    cell.picImageView.image = self.modelArray[indexPath.row];
-//    cell.timelabel.text = [NSString stringWithFormat:@"   第%03ld个",indexPath.row + 1];
+    SPSZ_chu_luRuCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SPSZ_chu_luRuCollectionViewCell" forIndexPath:indexPath];
+    if (indexPath.row == self.imagesArray.count) {
+        cell.picImageView.image = [UIImage imageNamed:@"icon_takephoto"];
+    }
+    else {
+        cell.picImageView.image = self.imagesArray[indexPath.row];
+    }
     return cell;
 }
 
@@ -313,10 +345,6 @@
 #pragma mark --- 返回集合视图集体的 上 左 下 右 边距 ---
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    // 第一个参数: 上
-    // 第二个参数: 左
-    // 第三个参数: 下
-    // 第四个参数: 右
     return UIEdgeInsetsMake(10, 5, 10, 5);
 }
 
@@ -325,11 +353,9 @@
 #pragma mark --- item点击的方法 ---
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    NSLog(@"第%ld 分区  第 %ld 个",indexPath.section,indexPath.row);
-    //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-    //    RootCollectionViewController *secondCollectionView = [[RootCollectionViewController alloc]initWithCollectionViewLayout:flowLayout];
-    //    [self.navigationController pushViewController:secondCollectionView animated:YES];
-    
+    if (indexPath.row == self.imagesArray.count) {
+        // 拍照
+    }
 }
 
 /*
