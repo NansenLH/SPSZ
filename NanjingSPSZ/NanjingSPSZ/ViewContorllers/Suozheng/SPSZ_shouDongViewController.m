@@ -52,7 +52,7 @@
 
 @property (nonatomic, strong)CityView *cityView;
 
-
+@property (nonatomic, strong) UITextField *nowEditTF;
 @end
 
 @implementation SPSZ_shouDongViewController
@@ -99,7 +99,7 @@
     if (!_numberTextField) {
         _numberTextField = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, _width - 140 -10, _height)];
         _numberTextField.delegate = self;
-        _nameTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        _numberTextField.keyboardType = UIKeyboardTypePhonePad;
         _numberTextField.tintColor = [UIColor redColor];
         _numberTextField.textAlignment = NSTextAlignmentRight;
         _numberTextField.placeholder = @"请输入";
@@ -134,7 +134,7 @@
         _phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, _width - 110 -10, _height)];
         _phoneTextField.delegate = self;
         _phoneTextField.tintColor = [UIColor redColor];
-        _nameTextField.keyboardType = UIKeyboardTypePhonePad;
+        _phoneTextField.keyboardType = UIKeyboardTypePhonePad;
         _phoneTextField.textAlignment = NSTextAlignmentRight;
         _phoneTextField.placeholder = @"请输入";
     }
@@ -185,6 +185,15 @@
     [self.view addSubview:self.mainView];
 
     [self setUpView];
+    
+    //注册键盘出现的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    //注册键盘消失的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -235,6 +244,14 @@
 
 - (void)productLocationButtonAction:(UIButton *)button{
     [self.cityView showCityListViewInView:self.navigationController.view];
+    
+    [self.productNameTextField resignFirstResponder];
+    [self.detailLocationTextField resignFirstResponder];
+    [self.numberTextField resignFirstResponder];
+    [self.companyTextField resignFirstResponder];
+    [self.nameTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+    
 //    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
 //        KRWeakSelf;
 //        weakSelf.province = province;
@@ -246,6 +263,13 @@
 }
 
 - (void)timeButtonAction:(UIButton *)button{
+    [self.productNameTextField resignFirstResponder];
+    [self.detailLocationTextField resignFirstResponder];
+    [self.numberTextField resignFirstResponder];
+    [self.companyTextField resignFirstResponder];
+    [self.nameTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+    
     PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
     datePickManager.isShadeBackgroud = true;
     datePickManager.style = PGDatePickManagerStyle3;
@@ -254,7 +278,7 @@
     datePicker.datePickerType = PGDatePickerType2;
     datePicker.isHiddenMiddleText = false;
     datePicker.datePickerMode = PGDatePickerModeDate;
-    [self presentViewController:datePickManager animated:false completion:nil];
+    [self presentViewController:datePickManager animated:false completion:nil];    
 }
 
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
@@ -356,18 +380,42 @@
     return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    self.nowEditTF = textField;
+    return true;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+///键盘显示事件
+- (void) keyboardWillShow:(NSNotification *)notification {
+    //获取键盘高度，在不同设备上，以及中英文下是不同的
+    CGFloat kbHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
+    //计算出键盘顶端到inputTextView panel底端的距离(加上自定义的缓冲距离INTERVAL_KEYBOARD)
+    CGFloat offset = (self.nowEditTF.frame.origin.y+self.nowEditTF.frame.size.height+50) - (self.view.frame.size.height - kbHeight);
+    
+    // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
+    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    //将视图上移计算好的偏移
+    [UIView animateWithDuration:duration animations:^{
+        self.view.frame = CGRectMake(2 * self.view.frame.size.width, offset, self.view.frame.size.width, self.view.frame.size.height);
+    }];
 }
-*/
+
+///键盘消失事件
+- (void) keyboardWillHide:(NSNotification *)notify {
+    // 键盘动画时间
+    double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    //视图下沉恢复原状
+    [UIView animateWithDuration:duration animations:^{
+        self.view.frame = CGRectMake(2*self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
 
 @end
