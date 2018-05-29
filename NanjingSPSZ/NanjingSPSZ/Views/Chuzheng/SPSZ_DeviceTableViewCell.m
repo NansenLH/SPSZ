@@ -43,7 +43,7 @@
     [self.contentView addSubview:self.leftLabel];
     [self.leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.equalTo(0);
-        make.width.equalTo([ProgramSize mainScreenWidth] * 0.45);
+        make.width.equalTo([ProgramSize mainScreenWidth] * 0.4);
     }];
     
     self.rightLabel = [[UILabel alloc] init];
@@ -53,7 +53,7 @@
     [self.contentView addSubview:self.rightLabel];
     [self.rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.right.bottom.equalTo(0);
-        make.width.equalTo([ProgramSize mainScreenWidth] * 0.55);
+        make.width.equalTo([ProgramSize mainScreenWidth] * 0.6);
     }];
     
     UIView *lineView = [[UIView alloc] init];
@@ -70,8 +70,8 @@
 {
     _device = device;
     
-    self.leftLabel.text = device.name;
-    self.rightLabel.text = @"";
+    self.leftLabel.text = device.name.length > 0 ? device.name : @"未知设备";
+    self.rightLabel.text = device.identifier.UUIDString;
 }
 
 

@@ -48,6 +48,8 @@
 		6A143BA920BB105100D71959 /* SPSZ_SelectedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143BA820BB105100D71959 /* SPSZ_SelectedTableViewCell.m */; };
 		6A143BAE20BB25F500D71959 /* HLBLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143BAC20BB25F500D71959 /* HLBLEManager.m */; };
 		6A143BB020BB329D00D71959 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BAF20BB329C00D71959 /* CoreBluetooth.framework */; };
+		6A143BB320BC420900D71959 /* libPrinterSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BB120BC420900D71959 /* libPrinterSDK.a */; };
+		6A143BB520BC422200D71959 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BB420BC422200D71959 /* AVFoundation.framework */; };
 		6A6BACD020B85013008A428F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A6BACD420B85021008A428F /* SPSZ_personalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */; };
 		6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE820B856EE008A428F /* LUNetHelp.m */; };
@@ -323,6 +325,9 @@
 		6A143BAC20BB25F500D71959 /* HLBLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLBLEManager.m; sourceTree = "<group>"; };
 		6A143BAD20BB25F500D71959 /* HLBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLBLEManager.h; sourceTree = "<group>"; };
 		6A143BAF20BB329C00D71959 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		6A143BB120BC420900D71959 /* libPrinterSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPrinterSDK.a; sourceTree = "<group>"; };
+		6A143BB220BC420900D71959 /* PrinterSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrinterSDK.h; sourceTree = "<group>"; };
+		6A143BB420BC422200D71959 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
 		6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
 		6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
@@ -696,11 +701,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A143BB520BC422200D71959 /* AVFoundation.framework in Frameworks */,
 				6A143BB020BB329D00D71959 /* CoreBluetooth.framework in Frameworks */,
 				6ACB557220B121A700528420 /* libsqlite3.0.tbd in Frameworks */,
 				6ACB557020B1206900528420 /* MobileCoreServices.framework in Frameworks */,
 				6ACB556E20B1206000528420 /* Accelerate.framework in Frameworks */,
 				6ACB556C20B1205800528420 /* QuartzCore.framework in Frameworks */,
+				6A143BB320BC420900D71959 /* libPrinterSDK.a in Frameworks */,
 				6ACB556A20B1204E00528420 /* CoreText.framework in Frameworks */,
 				6ACB556820B1204200528420 /* CoreFoundation.framework in Frameworks */,
 				6ACB556620B1203600528420 /* UIKit.framework in Frameworks */,
@@ -825,6 +832,8 @@
 		6A143BAA20BB25F500D71959 /* HLBluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				6A143BB120BC420900D71959 /* libPrinterSDK.a */,
+				6A143BB220BC420900D71959 /* PrinterSDK.h */,
 				6A143BAB20BB25F500D71959 /* HLBLEConst.h */,
 				6A143BAC20BB25F500D71959 /* HLBLEManager.m */,
 				6A143BAD20BB25F500D71959 /* HLBLEManager.h */,
@@ -1510,6 +1519,7 @@
 		6ACB556420B1203500528420 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A143BB420BC422200D71959 /* AVFoundation.framework */,
 				6A143BAF20BB329C00D71959 /* CoreBluetooth.framework */,
 				6ACB557120B121A700528420 /* libsqlite3.0.tbd */,
 				6ACB556F20B1206900528420 /* MobileCoreServices.framework */,
@@ -2091,10 +2101,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2111,10 +2125,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";

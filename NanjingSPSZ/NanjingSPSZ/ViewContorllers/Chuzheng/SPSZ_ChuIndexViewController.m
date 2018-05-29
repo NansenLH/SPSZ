@@ -20,11 +20,16 @@
 
 #import "UIButton+Gradient.h"
 #import "UIButton+ImageTitleSpacing.h"
-#import "HLBLEManager.h"
 
+#import "PrinterSDK.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
-
-@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate>
+@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate>
+//@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, BluetoothDelegate>
+//{
+//    NSTimer* mytimer;
+//    UIActivityIndicatorView *activityView;
+//}
 
 @property (nonatomic, strong) SPSZ_IndexView *indexView;
 @property (nonatomic, strong) SPSZ_ChooseConnectView *chooseConnectView;
@@ -42,6 +47,13 @@
 @property (nonatomic, strong) NSMutableArray *deviceArray;
 
 @property (nonatomic, assign) BOOL hasCreate;
+
+// 蓝牙中心管理器
+@property (nonatomic, strong) CBCentralManager *centralManager;
+// 当前连接的外设
+@property (nonatomic, strong) CBPeripheral *peripheral;
+// 要使用的特征
+@property (nonatomic, strong) CBCharacteristic *characteristic;
 
 @end
 
@@ -73,8 +85,6 @@
     [self configSubViews];
     
     [self configTabbar];
-    
-//    self.isConnect = YES;
 }
 
 - (void)setIsConnect:(BOOL)isConnect
@@ -257,8 +267,6 @@
     self.selectedView.hidden = NO;
 }
 
-
-
 - (void)centerClick
 {
     if (self.isConnect) {
@@ -267,80 +275,6 @@
     else {
         [self connectNow];
     }
-}
-
-#pragma mark ---- 立即连接 ----
-- (void)connectNow
-{
-    self.isConnect = YES;
-    
-    
-//    if (self.hasCreate) {
-//
-//    }
-//    else {
-//        self.hasCreate = YES;
-//
-//        HLBLEManager *manager = [HLBLEManager sharedInstance];
-//        __weak HLBLEManager *weakManager = manager;
-//        manager.stateUpdateBlock = ^(CBCentralManager *central) {
-//            NSString *info = nil;
-//            switch (central.state) {
-//                case CBCentralManagerStatePoweredOn:
-//                    [self.chooseConnectView showInView:self.navigationController.view];
-//                    [weakManager scanForPeripheralsWithServiceUUIDs:nil options:nil];
-//                    break;
-//                case CBCentralManagerStatePoweredOff:
-//                    info = @"请在设置中打开蓝牙开关";
-//                    break;
-//                case CBCentralManagerStateUnsupported:
-//                    info = @"SDK不支持";
-//                    break;
-//                case CBCentralManagerStateUnauthorized:
-//                    info = @"程序未授权";
-//                    break;
-//                case CBCentralManagerStateResetting:
-//                    info = @"CBCentralManagerStateResetting";
-//                    break;
-//                case CBCentralManagerStateUnknown:
-//                    info = @"CBCentralManagerStateUnknown";
-//                    break;
-//            }
-//        };
-//
-//        manager.discoverPeripheralBlcok = ^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
-//            if (peripheral.name.length <= 0) {
-//                return ;
-//            }
-//
-//            if (self.deviceArray.count == 0) {
-//                [self.deviceArray addObject:peripheral];
-//            } else {
-//                BOOL isExist = NO;
-//                for (int i = 0; i < self.deviceArray.count; i++) {
-//                    CBPeripheral *per = [self.deviceArray objectAtIndex:i];
-//                    if ([per.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString]) {
-//                        isExist = YES;
-//                        [self.deviceArray replaceObjectAtIndex:i withObject:peripheral];
-//                    }
-//                }
-//
-//                if (!isExist) {
-//                    [self.deviceArray addObject:peripheral];
-//                }
-//            }
-//
-//            self.chooseConnectView.dataArray = self.deviceArray;
-//        };
-//    }
-//
-    
-}
-
-#pragma mark ---- 打印票据 ----
-- (void)printTicket
-{
-    self.isConnect = NO;
 }
 
 #pragma mark ---- 货品录入 ----
@@ -366,14 +300,320 @@
 
 
 #pragma mark - ======== Delegate ========
+
+
+#pragma mark ---- 立即连接 ----
+//- (void)connectNow
+//{
+//    [PrinterWraper SetBlutoothDelegate:self];
+//    [PrinterWraper StartScanTimeout:10];
+//
+//    mytimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+//    activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//
+//    activityView.center=self.view.center;
+//
+//    [activityView startAnimating];
+//
+//    [self.view addSubview:activityView];
+//}
+
+//- (void)timeout
+//{
+//    [self stopScan];
+//    if (self.deviceArray.count == 0)
+//    {
+//        UIAlertView*alert=[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"没有扫描到打印机",@"") delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", @"") otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
+//}
+
+//-(void)stopScan
+//{
+//    [PrinterWraper StopScan];
+//    [activityView stopAnimating];
+//    [mytimer invalidate];
+//    mytimer=nil;
+//}
+
+- (void)connectNow
+{
+    if (self.centralManager) {
+        self.centralManager = nil;
+    }
+    
+    NSDictionary *options = @{CBCentralManagerOptionShowPowerAlertKey:@(YES)};
+    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:options];
+}
+
+
+#pragma mark ---- 打印票据 ----
+- (void)printTicket
+{
+    if (self.selectedArray.count == 0) {
+        return;
+    }
+    
+    [self startPrint];
+}
+
+//- (void)startPrint
+//{
+//    //设置格式 大字体 行间距28 局中
+//    [PrinterWraper setPrintFormat:3 LineSpace:28 alinment:1 rotation:0];// 3 大字体  ，28默认行间距,1局中对齐
+//    //打印标题
+//    [PrinterWraper addPrintText:@"南京市农产品销售流通凭证\n\n"];//打印文字
+//
+//    // 打印时间戳
+//    NSString *timeString = [NSString stringWithFormat:@"%@\n\n", [self getTime]];
+//    [PrinterWraper setPrintFormat:2 LineSpace:28 alinment:1 rotation:0];
+//    [PrinterWraper addPrintText:timeString];
+//
+//    // 打印分类
+//    NSArray *titleValueArray = @[@"产品名称", @"产品产地", @"进货数量/重量"];
+//    NSArray *titleArray = @[titleValueArray];
+//    [PrinterWraper addItemLines:titleArray];
+//
+//    // 打印---
+//    [PrinterWraper startPrint:nil];
+//}
+
+- (void)startPrint
+{
+    
+}
+
+
+
+//#pragma mark bluetooth delegate
+//-(void)BlueToothOpen:(BOOL)isopen
+//{
+//    if (!isopen) {
+//        [self stopScan];
+//        [self.deviceArray removeAllObjects];
+//    }
+//}
+//
+//- (void)updateBluetoothDevice:(NSMutableArray*)devices;
+//{
+//    self.deviceArray = devices;
+//
+//    self.chooseConnectView.dataArray = devices;
+//    if (!self.isConnect) {
+//        [self.chooseConnectView showInView:self.navigationController.view];
+//    }
+//}
+//
+//- (void)didConnected:(NSString*)deviceUid Result:(BOOL)success
+//{
+//    if (success) {
+//        self.isConnect = YES;
+//    }
+//    else {
+//        NSLog(@"连接失败!");
+//    }
+//}
+//
+//- (void)finishPrint
+//{
+//    NSLog(@"打印完成!");
+//}
+//
+
 #pragma mark ---- ChooseConnectViewDelegate ----
+//- (void)chooseDevice:(CBPeripheral *)device
+//{
+//    [PrinterWraper connectPrinter:device.identifier.UUIDString shouldreset:YES];
+//    [self.chooseConnectView hidden];
+//}
 - (void)chooseDevice:(CBPeripheral *)device
 {
+    [self.centralManager connectPeripheral:device options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey:@(YES)}];
     [self.chooseConnectView hidden];
-    
-    
-    // TODO: 未实现
 }
+
+
+
+#pragma mark - ======== CBCentralManagerDelegate ========
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    // 蓝牙可用，开始扫描外设
+    if (central.state == CBManagerStatePoweredOn) {
+        if (!self.isConnect) {
+            [self.chooseConnectView showInView:self.navigationController.view];
+            [self.centralManager scanForPeripheralsWithServices:nil options:nil];
+        }
+    }
+    if(central.state==CBManagerStateUnsupported) {
+        [[LUAlertTool defaultTool] Lu_alertInViewController:self title:@"提示" message:@"该设备不支持蓝牙" cancelButtonTitle:@"确认"];
+    }
+    if (central.state==CBManagerStatePoweredOff) {
+        NSLog(@"设置中未打开蓝牙");
+    }
+}
+
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI
+{
+    if (self.deviceArray.count == 0) {
+        [self.deviceArray addObject:peripheral];
+    }
+    else {
+        BOOL isExist = NO;
+        for (int i = 0; i < self.deviceArray.count; i++) {
+            CBPeripheral *per = [self.deviceArray objectAtIndex:i];
+            if ([per.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString]) {
+                isExist = YES;
+                [self.deviceArray replaceObjectAtIndex:i withObject:peripheral];
+            }
+        }
+
+        if (!isExist) {
+            [self.deviceArray addObject:peripheral];
+        }
+    }
+
+    self.chooseConnectView.dataArray = self.deviceArray;
+}
+
+
+/** 连接成功 */
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
+{
+    // 可以停止扫描
+    [self.centralManager stopScan];
+    // 设置代理
+    peripheral.delegate = self;
+    self.peripheral = peripheral;
+
+    self.isConnect = YES;
+    NSLog(@"连接成功");
+
+    [self.peripheral discoverServices:nil];
+}
+
+/** 连接失败的回调 */
+-(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    [KRAlertTool alertString:@"连接蓝牙设备失败,请重试"];
+}
+
+/** 断开连接 */
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error
+{
+    self.isConnect = NO;
+}
+
+
+#pragma mark - ======== CBPeripheralDelegate ========
+/** 发现服务 */
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
+{
+    // 遍历出外设中所有的服务
+    for (CBService *service in peripheral.services) {
+        NSLog(@"\n\n%@\n\n", service);
+    }
+    
+    [peripheral discoverCharacteristics:nil forService:peripheral.services.firstObject];
+}
+
+/** 发现特征回调 */
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+{
+    // 遍历出所需要的特征
+    for (CBCharacteristic *characteristic in service.characteristics) {
+        if (characteristic.properties & CBCharacteristicPropertyWrite) {
+            NSLog(@"\n\nperipheral : %@\ncharacteristic：%@\nservice: %@\n\n", peripheral, characteristic, service);
+            self.peripheral = peripheral;
+            self.characteristic = characteristic;
+        }
+    }
+}
+
+
+/** 写入数据回调 */
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error
+{
+    if (error) {
+        NSLog(@"写入失败:%@",error);
+    }
+    else {
+        NSLog(@"写入成功");
+    }
+}
+
+
+
+
+
+
+
+
+
+- (NSString *)getTime
+{
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+    NSString *DateTime = [formatter stringFromDate:date];
+    return DateTime;
+}
+
+
+    //        switch (characteristic.properties) {
+    //            case CBCharacteristicPropertyBroadcast:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyBroadcast");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyRead:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyRead");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyWriteWithoutResponse:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyWriteWithoutResponse");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyWrite:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyWrite");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyNotify:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyNotify");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyIndicate:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyIndicate");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyAuthenticatedSignedWrites:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyAuthenticatedSignedWrites");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyExtendedProperties:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyExtendedProperties");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyNotifyEncryptionRequired:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyNotifyEncryptionRequired");
+    //                break;
+    //            }
+    //            case CBCharacteristicPropertyIndicateEncryptionRequired:
+    //            {
+    //                NSLog(@"CBCharacteristicPropertyIndicateEncryptionRequired");
+    //                break;
+    //            }
+    //            default:
+    //                break;
+    //        }
+
 
 
 @end
