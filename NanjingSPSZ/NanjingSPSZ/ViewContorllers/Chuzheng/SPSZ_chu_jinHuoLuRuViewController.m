@@ -22,6 +22,8 @@
 #import "SPSZ_ChuhuoModel.h"
 #import "YYModel.h"
 
+#import "CityView.h"
+
 @interface SPSZ_chu_jinHuoLuRuViewController ()
 <
 UICollectionViewDataSource,
@@ -61,9 +63,29 @@ UINavigationControllerDelegate
 
 @property (nonatomic, strong) SPSZ_ChuhuoModel *addGoods;
 
+@property (nonatomic, strong) CityView *cityView;
+
 @end
 
 @implementation SPSZ_chu_jinHuoLuRuViewController
+
+- (CityView *)cityView
+{
+    if (!_cityView) {
+        _cityView = [[CityView alloc] initWithFrame:CGRectMake(0, 0, [ProgramSize mainScreenWidth], [ProgramSize mainScreenHeight])];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"json"];
+        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+        NSArray *cityList = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        _cityView.cityList = cityList;
+        KRWeakSelf;
+        [_cityView setGetSelectCityBlock:^(NSDictionary *dic) {
+            weakSelf.addGoods.cityname = [dic objectForKey:@"name"];
+            weakSelf.addGoods.cityid = [dic objectForKey:@"Id"];
+        }];
+    }
+    return _cityView;
+}
+
 
 - (NSMutableArray *)titleArray{
     if (!_titleArray) {
@@ -84,6 +106,8 @@ UINavigationControllerDelegate
 {
     if (!_addGoods) {
         _addGoods = [[SPSZ_ChuhuoModel alloc] init];
+        // TODO: 未实现
+        _addGoods.salerid = @"";
     }
     return _addGoods;
 }
@@ -326,58 +350,44 @@ UINavigationControllerDelegate
 
 - (void)productLocationButtonAction:(UIButton *)button
 {
-    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
-        KRWeakSelf;
-        weakSelf.province = province;
-        weakSelf.city = city;
-        weakSelf.area = area;
-        [button setTitle:[NSString stringWithFormat:@"%@%@%@",province,city,area] forState:UIControlStateNormal];
-    }];
+    [self.cityView showCityListViewInView:self.navigationController.view];
 }
 
 - (void)saveButtonAction:(UIButton *)button
 {
-    self.addGoods.cityname = @"2222";
-    self.addGoods.cityid = @"33";
+    if (!self.productNameLabel.text) {
+        [KRAlertTool alertString:@"请填写货品名称"];
+        return;
+    }
+    self.addGoods.dishname = self.productNameLabel.text;
+
+    if (!self.numberLabel.text) {
+        [KRAlertTool alertString:@"请填写货品重量"];
+        return;
+    }
+    self.addGoods.dishamount = self.numberLabel.text;
+
+    // TODO: 未实现
+    if (!self.addGoods.cityname || !self.addGoods.cityid) {
+        [KRAlertTool alertString:@"请填写来源产地"];
+        return;
+    }
+
+    self.addGoods.addresssource = self.detailLocationLabel.text;
+    self.addGoods.carnumber = self.carLabel.text;
+
+    if (self.imagesArray.count == 0) {
+        [KRAlertTool alertString:@"请拍照留证"];
+        return;
+    }
+    NSMutableString *imgs = [NSMutableString string];
+    for (NSString *imgUrl in self.imagesArray) {
+        [imgs appendString:imgUrl];
+        [imgs appendString:@","];
+    }
+    self.addGoods.dishimgs = [imgs substringWithRange:NSMakeRange(0, imgs.length-1)];
+
     NSString *jsonString = [self.addGoods yy_modelToJSONString];
-    NSLog(@"%@", jsonString);
-    
-    
-//    if (!self.productNameLabel.text) {
-//        [KRAlertTool alertString:@"请填写货品名称"];
-//        return;
-//    }
-//    self.addGoods.dishname = self.productNameLabel.text;
-//
-//    if (!self.numberLabel.text) {
-//        [KRAlertTool alertString:@"请填写货品重量"];
-//        return;
-//    }
-//    self.addGoods.dishamount = self.numberLabel.text;
-//
-//    // TODO: 未实现
-//    if (!0) {
-//        [KRAlertTool alertString:@"请填写来源产地"];
-//        return;
-//    }
-//    self.addGoods.cityname = @"";
-//    self.addGoods.cityid = @"";
-//
-//    self.addGoods.addresssource = self.detailLocationLabel.text;
-//    self.addGoods.carnumber = self.carLabel.text;
-//
-//    if (self.imagesArray.count == 0) {
-//        [KRAlertTool alertString:@"请拍照留证"];
-//        return;
-//    }
-//    NSMutableString *imgs = [NSMutableString string];
-//    for (NSString *imgUrl in self.imagesArray) {
-//        [imgs appendString:imgUrl];
-//        [imgs appendString:@","];
-//    }
-//    self.addGoods.dishimgs = [imgs substringWithRange:NSMakeRange(0, imgs.length-1)];
-//
-//    NSString *jsonString = [self.addGoods yy_modelToJSONString];
     
 }
 
