@@ -205,6 +205,7 @@
 		CC2DA38D20BD52F3002F5256 /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38B20BD52F3002F5256 /* CityView.m */; };
 		CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */; };
 		CC2DA39320BD99E2002F5256 /* KRAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39220BD99E1002F5256 /* KRAccountTool.m */; };
+		CC2DA39620BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39520BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m */; };
 		CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */; };
 		CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */; };
 		CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */; };
@@ -671,6 +672,8 @@
 		CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_FMDBTool.m; sourceTree = "<group>"; };
 		CC2DA39120BD99E1002F5256 /* KRAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRAccountTool.h; sourceTree = "<group>"; };
 		CC2DA39220BD99E1002F5256 /* KRAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAccountTool.m; sourceTree = "<group>"; };
+		CC2DA39420BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_SaoMaOrderCollectionViewCell.h; sourceTree = "<group>"; };
+		CC2DA39520BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_SaoMaOrderCollectionViewCell.m; sourceTree = "<group>"; };
 		CC79647720B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordViewController.h; sourceTree = "<group>"; };
 		CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordViewController.m; sourceTree = "<group>"; };
 		CC79647A20B2ED9100D695F7 /* SPSZ_chu_RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordModel.h; sourceTree = "<group>"; };
@@ -1701,6 +1704,8 @@
 				CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */,
 				CC89F3E420BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.h */,
 				CC89F3E520BCE62D00FCEBD2 /* SPSZ_suo_saoMaOrderTableViewCell.m */,
+				CC2DA39420BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.h */,
+				CC2DA39520BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m */,
 				CC89F3BC20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.h */,
 				CC89F3BD20BAD25F00FCEBD2 /* SPSZ_suo_paiZhaoCollectionViewCell.m */,
 				6A494E6E20BD836A00D13159 /* SPSZ_ShowTicketView.h */,
@@ -2030,6 +2035,7 @@
 				CC89F34A20B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m in Sources */,
 				6ACB53FD20B00F8C00528420 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6A6BAD0820BA51BB008A428F /* UIImageView+HYBImageCliped.m in Sources */,
+				CC2DA39620BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m in Sources */,
 				6ACB543120B00F9A00528420 /* SDWebImageCompat.m in Sources */,
 				6ACB540120B00F8C00528420 /* MASLayoutConstraint.m in Sources */,
 				CC930C2A20B56AE600B99756 /* SPSZ_EnterPasswordViewController.m in Sources */,
