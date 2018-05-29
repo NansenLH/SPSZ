@@ -65,7 +65,7 @@
     [self configNavigation];
     [self setupDetailScrollView];
 
-    [self getuploadprintinvoicedetaillist:0];
+//    [self getuploadprintinvoicedetaillist:0];
 }
 
 - (void)backToUpView

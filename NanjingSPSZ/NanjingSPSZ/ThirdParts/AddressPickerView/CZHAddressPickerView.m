@@ -192,6 +192,7 @@ typedef NS_ENUM(NSInteger, CZHAddressPickerViewType) {
 //获取数据
 - (void)czh_getData {
     NSString * path = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"plist"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"json"];
     self.dataSource = [NSArray arrayWithContentsOfFile:path];
     
     NSMutableArray * tempArray = [NSMutableArray array];

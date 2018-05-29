@@ -7,9 +7,12 @@
 //
 
 #import "SPSZ_suo_orderNetTool.h"
+
 #import "LUNetHelp.h"
+
 #import "SPSZ_suo_paiZhaoOrderModel.h"
 #import "SPSZ_suo_shouDongRecordModel.h"
+#import "SPSZ_suo_saoMaoOrderModel.h"
 @implementation SPSZ_suo_orderNetTool
 
 
@@ -48,7 +51,8 @@
                         [modelArray addObject:model];
                     }else
                     {
-                        
+                        SPSZ_suo_saoMaoOrderModel *model = [SPSZ_suo_saoMaoOrderModel yy_modelWithDictionary:dish];
+                        [modelArray addObject:model];
                     }
          
                 }

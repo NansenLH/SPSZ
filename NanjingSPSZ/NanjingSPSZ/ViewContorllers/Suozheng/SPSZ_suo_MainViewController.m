@@ -24,6 +24,8 @@
 #import "KRTagBar.h"
 #import "UIButton+ImageTitleSpacing.h"
 #import "UIButton+Gradient.h"
+
+
 @interface SPSZ_suo_MainViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) KRTagBar          *tagBar;
@@ -100,7 +102,6 @@
         [_recordsButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [_recordsButton setTitle:@"进货记录" forState:UIControlStateNormal];
         [_recordsButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-//        [_recordsButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
         [_recordsButton addTarget:self action:@selector(recordButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _recordsButton;
@@ -133,7 +134,7 @@
         [_centerButton setTitle:@"扫码上传" forState:UIControlStateNormal];
         [_centerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_centerButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
-
+        [_centerButton addTarget:self action:@selector(sureUpLoadAction:) forControlEvents:UIControlEventTouchUpInside];
         [_centerButton gradientButtonWithSize:CGSizeMake(120, 120) colorArray:@[[ProgramColor RGBColorWithRed:33 green:211 blue:255 alpha:0.94],[ProgramColor RGBColorWithRed:67 green:130 blue:255 alpha:0.94]] percentageArray:@[@(1),@(0)] gradientType:GradientFromTopToBottom];
         
     }
@@ -182,7 +183,7 @@
 //设置按钮标签的scrollview
 - (void)setupTagBar
 {
-    NSArray *itemArray = [NSArray arrayWithObjects:@"扫码上传",@"手动上传",@"拍照上传", nil];
+    NSArray *itemArray = [NSArray arrayWithObjects:@"扫码上传",@"拍照上传",@"手动上传", nil];
     // 中间滑动的scrollView
     self.tagBar = [[KRTagBar alloc]init];
     self.tagBar.itemArray = itemArray;
@@ -304,15 +305,24 @@
 - (void)recordButtonAction:(UIButton *)button{
     SPSZ_jinHuo_RecordsViewController *vc = [[SPSZ_jinHuo_RecordsViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
-//    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
-//    [[AppDelegate shareInstance].window setRootViewController:nav];
 }
 
 - (void)personButtonAction:(UIButton *)button{
     SPSZ_suo_personalCenterViewController *vc = [[SPSZ_suo_personalCenterViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
-//    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
-//    [[AppDelegate shareInstance].window setRootViewController:nav];
+}
+
+- (void)sureUpLoadAction:(UIButton *)button{
+    if (self.tagBar.selectedIndex == 2) {
+        SPSZ_shouDongViewController *vc = self.vcArray[2];
+        [vc sureUpload];
+    }else if (self.tagBar.selectedIndex == 1){
+        SPSZ_paiZhaoViewController *vc = self.vcArray[1];
+        [vc takePhotoAction];
+    }else{
+        SPSZ_saoMa_ViewController *vc = self.vcArray[0];
+        [vc sureUpload];
+    }
 }
 
 - (void)rightButtonAction:(UIButton *)button
@@ -320,6 +330,12 @@
     if (self.tagBar.selectedIndex == 2) {
         SPSZ_shouDongViewController *vc = self.vcArray[2];
         [vc reloadNewData];
+    }else if (self.tagBar.selectedIndex == 1){
+        SPSZ_paiZhaoViewController *vc = self.vcArray[1];
+        [vc reEnterAction];
+    }else{
+        SPSZ_saoMa_ViewController *vc = self.vcArray[0];
+        [vc reSaoMa];
     }
 }
 

@@ -9,10 +9,18 @@
 #import "SPSZ_saoMa_ViewController.h"
 
 @interface SPSZ_saoMa_ViewController ()
-
+@property (nonatomic, strong)UIImageView *mainImageView;
 @end
 
 @implementation SPSZ_saoMa_ViewController
+
+- (UIImageView *)mainImageView{
+    if (!_mainImageView) {
+        _mainImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"retailer_scan"]];
+        _mainImageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264);
+    }
+    return _mainImageView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,16 +28,22 @@
     self.view.backgroundColor   = [ UIColor clearColor];
     
     UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236)];
-    
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"retailer_scan"]];
-    imageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264);
-    [yy addSubview:imageView];
+    [yy addSubview:self.mainImageView];
     [self.view addSubview:yy];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)reSaoMa{
+    _mainImageView.image = [UIImage imageNamed:@"retailer_scan"];
+}
+
+- (void)sureUpload{
+    
 }
 
 /*

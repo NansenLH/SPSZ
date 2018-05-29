@@ -10,4 +10,11 @@
 
 @interface SPSZ_paiZhaoViewController : BaseViewController
 
+
+// 重新录入
+- (void)reEnterAction;
+
+// 拍照
+- (void)takePhotoAction;
+
 @end
