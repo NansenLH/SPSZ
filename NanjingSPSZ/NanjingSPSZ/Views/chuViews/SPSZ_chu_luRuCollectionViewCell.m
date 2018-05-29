@@ -15,12 +15,17 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        self.backgroundColor = [UIColor blueColor];
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        self.contentView.layer.borderWidth = 1;
         self.picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 30)];
         self.picImageView.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:_picImageView];
-        
+        [self.contentView addSubview:self.picImageView];
+        [self.picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.bottom.right.equalTo(0);
+        }];
+        self.picImageView.contentMode = UIViewContentModeScaleAspectFill;
+        self.picImageView.clipsToBounds = YES;
     }
     return self;
 }

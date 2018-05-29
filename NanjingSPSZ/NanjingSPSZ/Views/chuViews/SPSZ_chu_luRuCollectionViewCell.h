@@ -10,6 +10,6 @@
 
 @interface SPSZ_chu_luRuCollectionViewCell : UICollectionViewCell
 
-@property(nonatomic, strong) UIImageView *picImageView;
+@property (nonatomic, strong) UIImageView *picImageView;
 
 @end
