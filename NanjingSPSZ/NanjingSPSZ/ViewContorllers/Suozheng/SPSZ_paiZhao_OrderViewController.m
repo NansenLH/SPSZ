@@ -57,19 +57,19 @@
         _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
         _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, (MainScreenWidth - 30)/2 +80,60)];
         _leftLabel.font = [UIFont systemFontOfSize:25];
-        _leftLabel.textColor = [UIColor blueColor];
+        _leftLabel.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
         _leftLabel.text = [NSString stringWithFormat:@"%@进货订单",self.timeString];
         [_topView addSubview:self.leftLabel];
         
         _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(15 + (MainScreenWidth - 30)/2 +80, 0, (MainScreenWidth - 30)/2-80,60)];
         _rightLabel.font = [UIFont systemFontOfSize:25];
-        _rightLabel.textColor = [UIColor blueColor];
+        _rightLabel.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
         _rightLabel.textAlignment = NSTextAlignmentRight;
         _rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
         [_topView addSubview:self.rightLabel];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 59, MainScreenWidth - 30, 1)];
-        lineView.backgroundColor = [UIColor blueColor];
+        lineView.backgroundColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
         [_topView addSubview:lineView];
     }
     return _topView;
