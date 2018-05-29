@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface SPSZ_shouDong_OrderViewController : BaseViewController
-@property (nonatomic, strong) NSArray *dataArray;
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 @end

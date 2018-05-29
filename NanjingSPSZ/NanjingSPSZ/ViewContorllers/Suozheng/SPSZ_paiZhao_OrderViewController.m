@@ -10,6 +10,12 @@
 
 #import "SPSZ_suo_paiZhaoCollectionViewCell.h"
 
+#import "SPSZ_suo_orderNetTool.h"
+
+#import "SPSZ_suo_paiZhaoOrderModel.h"
+
+
+
 @interface SPSZ_paiZhao_OrderViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)NSString *timeString;
@@ -19,6 +25,11 @@
 @property (nonatomic, strong)UIView *topView;
 
 @property (nonatomic, strong)UICollectionView *collectionView;
+
+@property (nonatomic, strong)UILabel *rightLabel;
+
+@property (nonatomic, strong)UILabel *leftLabel;
+
 
 @end
 
@@ -44,25 +55,34 @@
 - (UIView *)topView{
     if (!_topView) {
         _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
-        UILabel *leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, (MainScreenWidth - 30)/2 +80,60)];
-        leftLabel.font = [UIFont systemFontOfSize:25];
-        leftLabel.textColor = [UIColor blueColor];
-        leftLabel.text = [NSString stringWithFormat:@"%@进货订单",self.timeString];
-        [_topView addSubview:leftLabel];
+        _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, (MainScreenWidth - 30)/2 +80,60)];
+        _leftLabel.font = [UIFont systemFontOfSize:25];
+        _leftLabel.textColor = [UIColor blueColor];
+        _leftLabel.text = [NSString stringWithFormat:@"%@进货订单",self.timeString];
+        [_topView addSubview:self.leftLabel];
         
-        UILabel *rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(15 + (MainScreenWidth - 30)/2 +80, 0, (MainScreenWidth - 30)/2-80,60)];
-        rightLabel.font = [UIFont systemFontOfSize:25];
-        rightLabel.textColor = [UIColor blueColor];
-        rightLabel.textAlignment = NSTextAlignmentRight;
-        rightLabel.text = [NSString stringWithFormat:@"%@条",self.numberString];
-        [_topView addSubview:rightLabel];
+        _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(15 + (MainScreenWidth - 30)/2 +80, 0, (MainScreenWidth - 30)/2-80,60)];
+        _rightLabel.font = [UIFont systemFontOfSize:25];
+        _rightLabel.textColor = [UIColor blueColor];
+        _rightLabel.textAlignment = NSTextAlignmentRight;
+        _rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
+        [_topView addSubview:self.rightLabel];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 59, MainScreenWidth - 30, 1)];
-        lineView.backgroundColor = [UIColor whiteColor];
+        lineView.backgroundColor = [UIColor blueColor];
         [_topView addSubview:lineView];
     }
     return _topView;
 }
+
+- (NSMutableArray *)dataArray
+{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -70,23 +90,42 @@
     [self.view addSubview:self.topView];
     
     [self.view addSubview:self.collectionView];
+    
+    [self loadData];
 
 }
 
+- (void)loadData
+{
+    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:@"12986" uploaddate:@"2018-05-27" type:@"1" successBlock:^(NSMutableArray *modelArray) {
+        
+        self.dataArray = modelArray;
+        
+        [self.collectionView reloadData];
+        
+        self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
+        
+        
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        
+    } failureBlock:^(NSString *failure) {
+        
+    }];
+}
 
 
 #pragma mark --- delegate、dataSource ---
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 7;
+    return self.dataArray.count;
 }
 #pragma mark --- 返回cell ---
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SPSZ_suo_paiZhaoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    // cell.backgroundColor = [UIColor yellowColor];
-//    cell.picImageView.image = self.modelArray[indexPath.row];
-    cell.timelabel.text = [NSString stringWithFormat:@"   第%03ld个",indexPath.row + 1];
+    SPSZ_suo_paiZhaoOrderModel *model = self.dataArray[indexPath.row];
+    cell.model = model;
+    
     return cell;
 }
 

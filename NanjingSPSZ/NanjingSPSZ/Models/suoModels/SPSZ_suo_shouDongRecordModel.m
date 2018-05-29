@@ -11,7 +11,7 @@
 @implementation SPSZ_suo_shouDongRecordModel
 + (NSDictionary *)modelCustomPropertyMapper {
     //前面是model中的名字,后面是json中的名字
-    return @{@"answer_id" : @"id"};
+    return @{@"suo_shouDongId" : @"id"};
 }
 
 - (NSString *)description {

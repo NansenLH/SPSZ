@@ -22,12 +22,15 @@ const BOOL isDev            = YES;
 // 服务器地址
 NSString * const BasePath = @"http://sy.zrodo.com/nanjing/mobile/";
 
+NSString * const BaseImagePath = @"http://www.zrodo.com:8080/njsyDetectList/";
+
 #else
 #pragma mark - ======== 运营服务器 ========
 // 服务器地址
 NSString * const BasePath = @"https://api.house-keeper.cn/api/v2";
 
 #endif
+
 
 const int Pagesize = 20;
 
