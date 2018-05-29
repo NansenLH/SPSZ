@@ -281,6 +281,11 @@
 }
 
 - (void)changeCenterButtonTitleWith:(NSInteger)index{
+    if (index == 0 || index == 1) {
+        SPSZ_shouDongViewController *vc = self.vcArray[2];
+        [vc hiddenKeyboard];
+    }
+    
     if (index == 0) {
         [_centerButton setImage:[UIImage imageNamed:@"scan_qr_white"] forState:UIControlStateNormal];
         [_centerButton setTitle:@"扫码上传" forState:UIControlStateNormal];            self.centerButtonImageName = @"scan_qr_white";

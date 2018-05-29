@@ -245,12 +245,7 @@
 - (void)productLocationButtonAction:(UIButton *)button{
     [self.cityView showCityListViewInView:self.navigationController.view];
     
-    [self.productNameTextField resignFirstResponder];
-    [self.detailLocationTextField resignFirstResponder];
-    [self.numberTextField resignFirstResponder];
-    [self.companyTextField resignFirstResponder];
-    [self.nameTextField resignFirstResponder];
-    [self.phoneTextField resignFirstResponder];
+    [self hiddenKeyboard];
     
 //    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
 //        KRWeakSelf;
@@ -262,13 +257,18 @@
 
 }
 
-- (void)timeButtonAction:(UIButton *)button{
+- (void)hiddenKeyboard
+{
     [self.productNameTextField resignFirstResponder];
     [self.detailLocationTextField resignFirstResponder];
     [self.numberTextField resignFirstResponder];
     [self.companyTextField resignFirstResponder];
     [self.nameTextField resignFirstResponder];
     [self.phoneTextField resignFirstResponder];
+}
+
+- (void)timeButtonAction:(UIButton *)button{
+    [self hiddenKeyboard];
     
     PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
     datePickManager.isShadeBackgroud = true;
@@ -278,7 +278,7 @@
     datePicker.datePickerType = PGDatePickerType2;
     datePicker.isHiddenMiddleText = false;
     datePicker.datePickerMode = PGDatePickerModeDate;
-    [self presentViewController:datePickManager animated:false completion:nil];    
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
 
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
