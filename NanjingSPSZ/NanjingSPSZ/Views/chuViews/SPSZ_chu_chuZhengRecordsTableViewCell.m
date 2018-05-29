@@ -48,48 +48,30 @@
     [bgView addSubview:myImageView];
     
     
-    _timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 10, (width - 20)/2, 26)];
+    _timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 10, width-20, 26)];
     [myImageView addSubview:self.timeLabel];
     _timeLabel.textAlignment = NSTextAlignmentCenter;
     _timeLabel.textColor = [UIColor whiteColor];
+    [bgView addSubview:_timeLabel];
+    
     
     UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, width, 35)];
     whiteView.backgroundColor = [UIColor whiteColor];
     [bgView addSubview:whiteView];
     
-    _danHaoLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 10, (width - 20)/2, 26)];
-    [whiteView addSubview:self.timeLabel];
+    _danHaoLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 10, width - 20, 26)];
+    [whiteView addSubview:self.danHaoLabel];
 }
 
 
-/*
-- (void)setModel:(SPSZ_suo_shouDongRecordModel *)model{
+- (void)setModel:(SPSZ_chu_recordsModel *)model{
     _model = model;
-    model.shopName = @"22";
-    model.timeString = @"22";
-    model.productName = @"22";
-    model.weightNumber = @"22";
-    model.pifaName = @"22";
-    model.phoneName = @"22";
-    model.location = @"22";
-    _shopNameLabel.text = model.shopName;
-    _timeLabel.text = model.timeString;
-    
-    [self.productNameLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"产品名称：" string2:model.productName]];
-    
-    [self.weightLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"数量/重量：" string2:model.weightNumber]];
-    
-    [self.productLocationLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"产品产地：" string2:model.location]];
-    
-    [self.piFaNamelabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"批发商姓名：" string2:model.pifaName]];
+    _timeLabel.text = model.printdate;
     
     
-    [self.phoneLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"联系电话：" string2:model.phoneName]];
-    
-    
+    [self.danHaoLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"出证单号:" string2:model.printcode]];
 }
 
-*/
 
 - (NSMutableAttributedString *)Color:(UIColor *)color
                          secondColor:(UIColor *)secondColor

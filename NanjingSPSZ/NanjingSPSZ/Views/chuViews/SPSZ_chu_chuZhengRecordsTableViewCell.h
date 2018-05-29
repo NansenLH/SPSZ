@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SPSZ_chu_recordsModel.h"
 
 @interface SPSZ_chu_chuZhengRecordsTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *timeLabel;
 
 @property (nonatomic, strong) UILabel  *danHaoLabel;
+
+@property (nonatomic, strong) SPSZ_chu_recordsModel *model;
 
 @end

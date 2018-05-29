@@ -60,48 +60,31 @@
     [bgView addSubview:whiteView];
     
     _productNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 10 , (width - 20)/2, 26)];
-    _productNameLabel.backgroundColor = [UIColor greenColor];
     [whiteView addSubview:self.productNameLabel];
     
     _weightLabel = [[UILabel alloc]initWithFrame:CGRectMake(width / 2, 10, (width - 20)/2, 26)];
-    _weightLabel.backgroundColor = [UIColor redColor];
-   
     [whiteView addSubview:self.weightLabel];
     
     _laiYuanChanDiLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, (10 + 26)*1+ 10,width - 20, 26)];
-    _laiYuanChanDiLabel.backgroundColor = [UIColor greenColor];
     [whiteView addSubview:self.laiYuanChanDiLabel];
 }
 
 
-/*
- - (void)setModel:(SPSZ_suo_shouDongRecordModel *)model{
- _model = model;
- model.shopName = @"22";
- model.timeString = @"22";
- model.productName = @"22";
- model.weightNumber = @"22";
- model.pifaName = @"22";
- model.phoneName = @"22";
- model.location = @"22";
- _shopNameLabel.text = model.shopName;
- _timeLabel.text = model.timeString;
+
+ - (void)setModel:(SPSZ_chu_jinHuoModel *)model{
+     _model = model;
+
+     _timeLabel.text = model.dishdate;
+     
  
- [self.productNameLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"产品名称：" string2:model.productName]];
+     [self.productNameLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"产品名称:" string2:model.dishname]];
  
- [self.weightLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"数量/重量：" string2:model.weightNumber]];
+     [self.weightLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"数量/重量:" string2:[NSString stringWithFormat:@"%@公斤",model.dishamount]]];
  
- [self.productLocationLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"产品产地：" string2:model.location]];
- 
- [self.piFaNamelabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"批发商姓名：" string2:model.pifaName]];
- 
- 
- [self.phoneLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor greenColor] string:@"联系电话：" string2:model.phoneName]];
- 
- 
+     [self.laiYuanChanDiLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"产品产地:" string2:model.cityname]];
  }
  
- */
+ 
 
 - (NSMutableAttributedString *)Color:(UIColor *)color
                          secondColor:(UIColor *)secondColor

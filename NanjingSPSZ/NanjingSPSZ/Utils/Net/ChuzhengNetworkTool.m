@@ -13,7 +13,8 @@
 
 #import "SPSZ_GoodsModel.h"
 
-
+#import "SPSZ_chu_recordsModel.h"
+#import "SPSZ_chu_jinHuoModel.h"
 @implementation ChuzhengNetworkTool
 
 /**
@@ -56,9 +57,99 @@
         }
     }];
     
-    
-    
 }
 
+
+
+/**
+ *  获取出证记录
+ */
++ (void)geChuZhengRecordsPageSize:(NSInteger)pageSize
+                           pageNo:(NSInteger)pageNo
+                           userId:(NSString *)userId
+                        printdate:(NSString *)printdate
+                     successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
+                       errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                     failureBlock:(void (^)(NSString *failure))failureBlock
+{
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getPrintinvoiceByUserId"];
+    [requestDic setObject:@(pageSize) forKey:@"pageSize"];
+    [requestDic setObject:@(pageNo) forKey:@"pageNo"];
+    [requestDic setObject:@"13156" forKey:@"userid"];
+    if (printdate) {
+        [requestDic setObject:printdate forKey:@"printdate"];
+    }
+    
+    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+        if (success) {
+            if ([result[@"respCode"] integerValue] == 1000000) {
+                NSArray *resultList = result[@"resultList"];
+                NSMutableArray *array = [NSMutableArray array];
+                for (NSDictionary *dish in resultList) {
+                    SPSZ_chu_recordsModel *model = [SPSZ_chu_recordsModel yy_modelWithDictionary:dish];
+                    [array addObject:model];
+                }
+                if (successBlcok) {
+                    successBlcok(array);
+                }
+            }
+            else {
+                if (errorBlock) {
+                    errorBlock(result[@"respCode"], result[@"respMsg"]);
+                }
+            }
+        }
+        else {
+            if (failureBlock) {
+                failureBlock(result);
+            }
+        }
+    }];
+}
+
+/**
+ *  获取批发商进货记录
+ */
++ (void)geChuZhengJinHuoRecordsStall_id:(NSString *)stall_id
+                              printdate:(NSString *)printdate
+                           successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
+                             errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                           failureBlock:(void (^)(NSString *failure))failureBlock
+{
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getdishesdetaillist"];
+
+    [requestDic setObject:@"13156" forKey:@"stall_id"];
+//    if (printdate) {
+        [requestDic setObject:printdate forKey:@"uploaddate"];
+//    }
+    
+    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+        if (success) {
+            if ([result[@"respCode"] integerValue] == 1000000) {
+                NSArray *resultList = result[@"resultList"];
+                NSMutableArray *array = [NSMutableArray array];
+                for (NSDictionary *dish in resultList) {
+                    SPSZ_chu_jinHuoModel *model = [SPSZ_chu_jinHuoModel yy_modelWithDictionary:dish];
+                    [array addObject:model];
+                }
+                if (successBlcok) {
+                    successBlcok(array);
+                }
+            }
+            else {
+                if (errorBlock) {
+                    errorBlock(result[@"respCode"], result[@"respMsg"]);
+                }
+            }
+        }
+        else {
+            if (failureBlock) {
+                failureBlock(result);
+            }
+        }
+    }];
+}
 
 @end

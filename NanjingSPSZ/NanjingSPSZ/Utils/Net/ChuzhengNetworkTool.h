@@ -18,4 +18,26 @@
                     errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
                   failureBlock:(void (^)(NSString *failure))failureBlock;
 
+
+/**
+ *  获取出证记录
+ */
++ (void)geChuZhengRecordsPageSize:(NSInteger)pageSize
+                           pageNo:(NSInteger)pageNo
+                           userId:(NSString *)userId
+                        printdate:(NSString *)printdate
+                  successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
+                    errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                  failureBlock:(void (^)(NSString *failure))failureBlock;
+
+/**
+ *  获取批发商进货记录
+ */
++ (void)geChuZhengJinHuoRecordsStall_id:(NSString *)stall_id
+                        printdate:(NSString *)printdate
+                     successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
+                       errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                     failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
 @end

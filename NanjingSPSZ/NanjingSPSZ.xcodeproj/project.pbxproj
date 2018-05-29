@@ -194,6 +194,8 @@
 		6ACB558920B2F64100528420 /* SPSZ_ChuIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB558820B2F64100528420 /* SPSZ_ChuIndexViewController.m */; };
 		6ACB559E20B3289500528420 /* SPSZ_IndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB559D20B3289500528420 /* SPSZ_IndexView.m */; };
 		6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD761620B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m */; };
+		CC2DA37C20BD244D002F5256 /* SPSZ_chu_recordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */; };
+		CC2DA37F20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */; };
 		CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */; };
 		CC79647E20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647C20B2ED9100D695F7 /* SPSZ_chu_RecordModel.m */; };
 		CC79647F20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647D20B2ED9100D695F7 /* SPSZ_suo_RecordModel.m */; };
@@ -639,6 +641,10 @@
 		6ACB559D20B3289500528420 /* SPSZ_IndexView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_IndexView.m; sourceTree = "<group>"; };
 		6ADD761520B5C8E600975F5F /* SPSZ_DeviceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_DeviceTableViewCell.h; sourceTree = "<group>"; };
 		6ADD761620B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_DeviceTableViewCell.m; sourceTree = "<group>"; };
+		CC2DA37A20BD244D002F5256 /* SPSZ_chu_recordsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_recordsModel.h; sourceTree = "<group>"; };
+		CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_recordsModel.m; sourceTree = "<group>"; };
+		CC2DA37D20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_jinHuoModel.h; sourceTree = "<group>"; };
+		CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_jinHuoModel.m; sourceTree = "<group>"; };
 		CC79647720B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordViewController.h; sourceTree = "<group>"; };
 		CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_RecordViewController.m; sourceTree = "<group>"; };
 		CC79647A20B2ED9100D695F7 /* SPSZ_chu_RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_RecordModel.h; sourceTree = "<group>"; };
@@ -1622,6 +1628,10 @@
 				6AAF973F20B5B29300A6C0E8 /* SPSZ_DeviceModel.m */,
 				6A6BACE420B85383008A428F /* SPSZ_GoodsModel.h */,
 				6A6BACE520B85383008A428F /* SPSZ_GoodsModel.m */,
+				CC2DA37A20BD244D002F5256 /* SPSZ_chu_recordsModel.h */,
+				CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */,
+				CC2DA37D20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.h */,
+				CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */,
 			);
 			path = chuModels;
 			sourceTree = "<group>";
@@ -1904,6 +1914,7 @@
 				6A143B7720BAE65C00D71959 /* UIColor+PGHex.m in Sources */,
 				6ACB552620B0121800528420 /* UIImage+Resize.m in Sources */,
 				6ACB548220B00FA500528420 /* YYTextArchiver.m in Sources */,
+				CC2DA37C20BD244D002F5256 /* SPSZ_chu_recordsModel.m in Sources */,
 				6ACB550720B011D500528420 /* AFSecurityPolicy.m in Sources */,
 				6A143B8520BAE65C00D71959 /* PGPickerTableView.m in Sources */,
 				6ACB54CD20B0110000528420 /* MJRefreshHeader.m in Sources */,
@@ -1913,6 +1924,7 @@
 				6A143BA020BAE73300D71959 /* UIView+CZHExtension.m in Sources */,
 				6A143B7920BAE65C00D71959 /* PGDatePicker+MonthDayHour.m in Sources */,
 				6ACB542920B00F9A00528420 /* UIImage+WebP.m in Sources */,
+				CC2DA37F20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m in Sources */,
 				6ACB552020B0121800528420 /* UIImage+Tint.m in Sources */,
 				6A143B7C20BAE65C00D71959 /* PGDatePicker+Time.m in Sources */,
 				6ACB54C220B0110000528420 /* UIView+MJExtension.m in Sources */,

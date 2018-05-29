@@ -7,13 +7,30 @@
 //
 
 #import "SPSZ_chu_jinHuoRecordsViewController.h"
+
 #import "SPSZ_chu_jinHuoRecordsTableViewCell.h"
 
+#import "SPSZ_chu_jinHuoModel.h"
+
+#import "ChuzhengNetworkTool.h"
+
 @interface SPSZ_chu_jinHuoRecordsViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong)NSMutableArray *dataArray;
+
 @property (nonatomic, strong) UITableView *tableView;
+
 @end
 
+
 @implementation SPSZ_chu_jinHuoRecordsViewController
+
+- (NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
 
 - (UITableView *)tableView
 {
@@ -22,7 +39,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:[SPSZ_chu_jinHuoRecordsTableViewCell class] forCellReuseIdentifier:@"RecordCell"];
+        [_tableView registerClass:[SPSZ_chu_jinHuoRecordsTableViewCell class] forCellReuseIdentifier:@"SPSZ_chu_jinHuoRecordsTableViewCell"];
     }
     return _tableView;
 }
@@ -39,6 +56,20 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
+    [self loadData];
+}
+
+
+- (void)loadData
+{
+    [ChuzhengNetworkTool geChuZhengJinHuoRecordsStall_id:@"13156" printdate:@"2018-05-17" successBlock:^(NSMutableArray *modelArray) {
+        self.dataArray = modelArray;
+        [self.tableView reloadData];
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        
+    } failureBlock:^(NSString *failure) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,17 +79,16 @@
 #pragma mark ======== UITableViewDeleate, UITableViewDataSource ========
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 13;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    SPSZ_chu_jinHuoModel *model = self.dataArray[indexPath.row];
     
-//    SPSZ_suo_shouDongRecordModel *model = [[SPSZ_suo_shouDongRecordModel alloc]init];
+    SPSZ_chu_jinHuoRecordsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SPSZ_chu_jinHuoRecordsTableViewCell" forIndexPath:indexPath];
     
-    SPSZ_chu_jinHuoRecordsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCell" forIndexPath:indexPath];
-    
-//    cell.model = model;
+    cell.model = model;
     return cell;
 }
 
