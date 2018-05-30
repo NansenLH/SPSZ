@@ -529,6 +529,7 @@
     NSArray *salerInfoArray = @[nameArray, companyArray, mobileArray];
     [PrinterWraper addItemLines:salerInfoArray];
     
+    
 //    // 空行
 //    [PrinterWraper setPrintFormat:1 LineSpace:28 alinment:1 rotation:0];
 //    [PrinterWraper addPrintText:@" "];
