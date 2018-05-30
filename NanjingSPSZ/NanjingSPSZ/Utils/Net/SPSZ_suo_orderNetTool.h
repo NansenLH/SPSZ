@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SPSZ_suo_shouDongRecordModel.h"
+
+
 @interface SPSZ_suo_orderNetTool : NSObject
 /**
  * 获取零售商进货记录列表(索证)
@@ -20,4 +23,26 @@
                  successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
                    errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
                  failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
+/**
+ 进货录入
+ */
++ (void)addJinHuoShouDongWithUserId:(NSString *)userId
+                             amount:(NSString *)amount
+                               unit:(NSString *)unit
+                       successBlock:(void (^)(void))successBlcok
+                         errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                       failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
+/**
+ 获取打印票据
+ */
++ (void)getDaYinDataWithPrintcode:(NSString *)printcode
+     successBlock:(void (^)(SPSZ_suo_shouDongRecordModel *model))successBlcok
+       errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+     failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
 @end

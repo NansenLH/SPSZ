@@ -55,6 +55,7 @@
         _passwordTextField.delegate = self;
         _passwordTextField.tintColor = [UIColor redColor];
         _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
+        _passwordTextField.secureTextEntry = YES;
         _passwordTextField.placeholder = @"请输入密码";
     }
     return _passwordTextField;

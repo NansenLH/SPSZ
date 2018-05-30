@@ -14,14 +14,14 @@
 
 #import "SPSZ_suo_SaoMaOrderCollectionViewCell.h"
 
+#import "SPSZ_suoLoginModel.h"
+#import "KRAccountTool.h"
+
 @interface SPSZ_saoMa_OrderViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
-@property (nonatomic, strong)NSString *timeString;
 
 @property (nonatomic, strong)NSString *numberString;
 
 @property (nonatomic, strong)UIView *topView;
-
-@property (nonatomic, strong)UITableView *tableView;
 
 @property (nonatomic, strong)UIImageView *imageView;
 
@@ -33,6 +33,8 @@
 
 @property (nonatomic, strong)UICollectionView *collectionView;
 
+@property (nonatomic, strong)NSString *todayString;
+
 @end
 
 @implementation SPSZ_saoMa_OrderViewController
@@ -42,7 +44,7 @@
     if (!_collectionView) {
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight - 200);
+        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - 64);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         flowLayout.minimumLineSpacing = 20;
         
@@ -91,28 +93,66 @@
     [self.imageView setImage:naviBackImage];
     
     
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    [formatter setDateFormat:@"MM"];
+    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+    [formatter setDateFormat:@"dd"];
+    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+    
+    self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%ld",currentYear,currentMonth,currentDay];
+    
     [self.view addSubview:self.collectionView];
     [self.view addSubview:self.topView];
-    [self loadData];
+    [self loadDataWith:self.todayString newDate:nil];
 }
 
-- (void)loadData{
-    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:@"12986" uploaddate:@"2018-05-29" type:@"0" successBlock:^(NSMutableArray *modelArray) {
+
+
+
+- (void)loadDataWith:(NSString *)date newDate:(NSString *)newdate
+{
+    SPSZ_suoLoginModel *model = [KRAccountTool getSuoUserInfo];
+    
+    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:model.stall_id uploaddate:date type:@"0" successBlock:^(NSMutableArray *modelArray) {
         
+        [self setDateLabelWith:newdate];
+
         self.dataArray = modelArray;
-        
-        [self.collectionView reloadData];
-        
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
 
-
-    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [self.collectionView reloadData];
         
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+    
+        [self setDateLabelWith:newdate];
+        self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
+
+        [self.collectionView reloadData];
+
     } failureBlock:^(NSString *failure) {
         
     }];
 }
 
+- (void)setDateLabelWith:(NSString *)newDate
+{
+    [self.dataArray removeAllObjects];
+        
+    if (!self.timeString) {
+        self.leftLabel.text = @"今日进货订单";
+    }else
+    {
+        if ([self.todayString isEqualToString:self.timeString]) {
+            self.leftLabel.text = @"今日进货订单";
+        }else{
+            self.leftLabel.text = [NSString stringWithFormat:@"%@进货订单",newDate];
+        }
+    }
+}
 
 #pragma mark --- delegate、dataSource ---
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -127,58 +167,33 @@
     cell.model = model;
     return cell;
 }
-//
-//#pragma mark --- 返回每个item的 宽和高 ---
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return CGSizeMake((MainScreenWidth - 50)/2 , (MainScreenWidth - 50)/2 *1.5 +30);
-//}
-//
-//#pragma mark --- 返回集合视图集体的 上 左 下 右 边距 ---
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    // 第一个参数: 上
-//    // 第二个参数: 左
-//    // 第三个参数: 下
-//    // 第四个参数: 右
-//    return UIEdgeInsetsMake(15, 15, 10, 10);
-//}
-//
-//
+
 #pragma mark --- 控制集合视图的行边距 ---
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 20;
+    return 0;
 }
-#pragma mark --- 控制集合视图的列边距 ---
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return 15;
+    // 第一个参数: 上
+    // 第二个参数: 左
+    // 第三个参数: 下
+    // 第四个参数: 右
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
-//
-//#pragma mark --- item点击的方法 ---
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    //    NSLog(@"第%ld 分区  第 %ld 个",indexPath.section,indexPath.row);
-//    //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-//    //    RootCollectionViewController *secondCollectionView = [[RootCollectionViewController alloc]initWithCollectionViewLayout:flowLayout];
-//    //    [self.navigationController pushViewController:secondCollectionView animated:YES];
-//
-//}
+
+
+
+
+- (void)reloadDataWithDateWith:(NSString *)date{
+    [self loadDataWith:self.timeString newDate:date];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -10,4 +10,9 @@
 
 @interface SPSZ_saoMa_OrderViewController : BaseViewController
 
+@property (nonatomic, strong)NSString *timeString;
+
+
+- (void)reloadDataWithDateWith:(NSString *)date;
+
 @end

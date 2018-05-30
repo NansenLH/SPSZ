@@ -11,18 +11,20 @@
 #import "SPSZ_paiZhao_OrderViewController.h"
 #import "SPSZ_shouDong_OrderViewController.h"
 
-
 #import "KRTagBar.h"
 #import "UIImage+Gradient.h"
 #import "LUNetHelp.h"
 
-@interface SPSZ_jinHuo_RecordsViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
+#import "PGDatePickManager.h"
+
+
+@interface SPSZ_jinHuo_RecordsViewController ()<KRTagBarDelegate,UIScrollViewDelegate,PGDatePickerDelegate>
 {
     SPSZ_saoMa_OrderViewController *vc1;
     SPSZ_shouDong_OrderViewController *vc3;
     SPSZ_paiZhao_OrderViewController *vc2;
 }
-@property (nonatomic, strong) KRTagBar          *tagBar;
+@property (nonatomic, strong) KRTagBar        *tagBar;
 
 @property (nonatomic, strong) UIView          *containerView;
 
@@ -60,10 +62,12 @@
     self.navigationItem.leftBarButtonItem = item;
     
     self.stall_id = [[NSUserDefaults standardUserDefaults] objectForKey:@"stallID"];
+    
     [self setupTagBar];
     [self configNavigation];
     [self setupDetailScrollView];
 
+    
 //    [self getuploadprintinvoicedetaillist:0];
 }
 
@@ -189,8 +193,34 @@
 
 - (void)rightButtonAction:(UIButton *)button{
     
-    
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    datePickManager.isShadeBackgroud = true;
+    datePickManager.style = PGDatePickManagerStyle3;
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    datePicker.delegate = self;
+    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.isHiddenMiddleText = false;
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
+
+
+
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%ld",dateComponents.year,dateComponents.month,dateComponents.day];
+    NSString *newDate = [NSString stringWithFormat:@"%ld月%ld日",dateComponents.month,dateComponents.day];
+    if (self.tagBar.selectedIndex == 2) {
+        vc3.timeString = date;
+        [vc3 reloadDataWithDateWith:newDate];
+    }else if (self.tagBar.selectedIndex == 1){
+        vc2.timeString = date;
+        [vc2 reloadDataWithDateWith:newDate];
+    }else{
+        vc1.timeString = date;
+        [vc1 reloadDataWithDateWith:newDate];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

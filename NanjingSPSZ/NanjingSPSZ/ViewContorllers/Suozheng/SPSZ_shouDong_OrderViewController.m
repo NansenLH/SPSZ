@@ -14,10 +14,13 @@
 
 #import "SPSZ_suo_shouDongRecordModel.h"
 
+#import "SPSZ_suoLoginModel.h"
+#import "KRAccountTool.h"
+
 
 @interface SPSZ_shouDong_OrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong)NSString *timeString;
+@property (nonatomic, strong)NSString *todayString;
 
 @property (nonatomic, strong)UIView *topView;
 
@@ -62,7 +65,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:[SPSZ_suo_shouDongTableViewCell class] forCellReuseIdentifier:@"RecordCell"];
+        [_tableView registerClass:[SPSZ_suo_shouDongTableViewCell class] forCellReuseIdentifier:@"SPSZ_suo_shouDongTableViewCell"];
     }
     return _tableView;
 }
@@ -79,32 +82,66 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.timeString = @"5月24日";
+
 
     [self.view addSubview:self.topView];
     
     [self.view addSubview:self.tableView];
     
-    [self loadData];
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    [formatter setDateFormat:@"MM"];
+    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+    [formatter setDateFormat:@"dd"];
+    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+    
+    self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%ld",currentYear,currentMonth,currentDay];
+    
+    [self loadDataWith:self.todayString newDate:nil];
 }
 
 
-- (void)loadData
+
+
+
+- (void)loadDataWith:(NSString *)date newDate:(NSString *)newDate
 {
-    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:@"12986" uploaddate:@"2018-05-28" type:@"2" successBlock:^(NSMutableArray *modelArray) {
-        
+    SPSZ_suoLoginModel *model = [KRAccountTool getSuoUserInfo];
+    
+    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:model.stall_id uploaddate:date type:@"2" successBlock:^(NSMutableArray *modelArray) {
+
+        [self setDateLabelWith:newDate];
         self.dataArray = modelArray;
-        
-        [self.tableView reloadData];
-
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
-
+        [self.tableView reloadData];
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
+        [self setDateLabelWith:newDate];
+        self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
+
+        [self.tableView reloadData];
+
     } failureBlock:^(NSString *failure) {
         
     }];
+}
+
+- (void)setDateLabelWith:(NSString *)newDate
+{
+    [self.dataArray removeAllObjects];
+    if (!self.timeString) {
+        self.leftLabel.text = @"今日进货订单";
+    }else
+    {
+        if ([self.todayString isEqualToString:self.timeString]) {
+            self.leftLabel.text = @"今日进货订单";
+        }else{
+            self.leftLabel.text = [NSString stringWithFormat:@"%@进货订单",newDate];
+        }
+    }
 }
 
 
@@ -119,7 +156,7 @@
 
     SPSZ_suo_shouDongRecordModel *model = self.dataArray[indexPath.row];
     
-    SPSZ_suo_shouDongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordCell" forIndexPath:indexPath];
+    SPSZ_suo_shouDongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SPSZ_suo_shouDongTableViewCell" forIndexPath:indexPath];
     cell.model = model;
     return cell;
 }
@@ -134,14 +171,10 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)reloadDataWithDateWith:(NSString *)date{
+    [self loadDataWith:self.timeString newDate:date];
 }
-*/
+
+
 
 @end

@@ -14,4 +14,6 @@
 
 - (void)sureUpload;
 
+- (void)saoMa;
+
 @end

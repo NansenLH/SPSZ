@@ -21,9 +21,9 @@
             make.top.equalTo(20);
             make.left.equalTo(20);
             make.right.equalTo(-20);
-            make.bottom.equalTo(-20);
+            make.bottom.equalTo(-60);
         }];
-        
+                
     }
     return self;
 }
