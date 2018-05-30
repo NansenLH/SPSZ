@@ -27,6 +27,8 @@
 #import "SPSZ_chuLoginModel.h"
 
 #import "ChuzhengNetworkTool.h"
+#import "SPSZ_EditWightView.h"
+
 
 @interface SPSZ_chu_jinHuoLuRuViewController ()
 <
@@ -46,7 +48,8 @@ UIGestureRecognizerDelegate
 
 @property (nonatomic, strong)UITextField *productNameLabel;
 
-@property (nonatomic, strong)UITextField *numberLabel;
+@property (nonatomic, strong)UIButton *numberButton;
+//@property (nonatomic, strong) UILabel *numberLabel;
 
 @property (nonatomic, strong)UITextField *carLabel;
 
@@ -70,9 +73,27 @@ UIGestureRecognizerDelegate
 
 @property (nonatomic, strong) CityView *cityView;
 
+@property (nonatomic, strong) SPSZ_EditWightView *editWeightView;
+
 @end
 
 @implementation SPSZ_chu_jinHuoLuRuViewController
+
+- (SPSZ_EditWightView *)editWeightView
+{
+    if (!_editWeightView) {
+        _editWeightView = [[SPSZ_EditWightView alloc] init];
+        KRWeakSelf;
+        [_editWeightView setChooseWeightBlock:^(NSString *weight, NSString *unit) {
+            weakSelf.addGoods.dishamount = weight;
+            weakSelf.addGoods.unit = unit;
+            
+            [weakSelf.numberButton setTitle:[NSString stringWithFormat:@"%@%@", weight, unit] forState:UIControlStateNormal];
+            [weakSelf.numberButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }];
+    }
+    return _editWeightView;
+}
 
 - (CityView *)cityView
 {
@@ -160,17 +181,19 @@ UIGestureRecognizerDelegate
     return _productNameLabel;
 }
 
-- (UITextField *)numberLabel
+- (UIButton *)numberButton
 {
-    if (!_numberLabel) {
-        _numberLabel = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, MainScreenWidth - 150, _height)];
-        _numberLabel.placeholder = @"请输入";
-        _numberLabel.font = [UIFont systemFontOfSize:14];
-        _numberLabel.delegate = self;
-        _numberLabel.tintColor = [UIColor redColor];
-        _numberLabel.textAlignment = NSTextAlignmentRight;
+    if (!_numberButton) {
+        _numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _numberButton.frame = CGRectMake(140, 0, MainScreenWidth - 150, _height);
+        [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
+        [_numberButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        _numberButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _numberButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        _numberButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
+        [_numberButton addTarget:self action:@selector(editNumber:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _numberLabel;
+    return _numberButton;
 }
 
 
@@ -309,7 +332,8 @@ UIGestureRecognizerDelegate
         if (number == 1) {
             [view addSubview:self.productNameLabel];
         }else if (number == 2){
-            [view addSubview:self.numberLabel];
+//            [view addSubview:self.numberLabel];
+            [view addSubview:self.numberButton];
             w = 140;
         }else if (number == 3){
             [view addSubview:self.carLabel];
@@ -378,11 +402,10 @@ UIGestureRecognizerDelegate
     }
     self.addGoods.dishname = self.productNameLabel.text;
 
-    if (!self.numberLabel.text) {
+    if (!self.addGoods.dishamount) {
         [KRAlertTool alertString:@"请填写货品重量"];
         return;
     }
-    self.addGoods.dishamount = self.numberLabel.text;
 
     if (!self.addGoods.cityname || !self.addGoods.cityid) {
         [KRAlertTool alertString:@"请填写来源产地"];
@@ -417,15 +440,17 @@ UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    //注意：_touchView应该是_referenceView的子视图
     CGPoint p = [touch locationInView:self.view];
-    //NSLog(@"frame:%@",NSStringFromCGPoint(p));
     if(CGRectContainsPoint(self.collectionView.frame, p)) {
         return NO;
     }
     return YES;
 }
 
+- (void)editNumber:(UIButton *)button
+{
+    [self.editWeightView show];
+}
 
 
 #pragma mark --- delegate、dataSource ---

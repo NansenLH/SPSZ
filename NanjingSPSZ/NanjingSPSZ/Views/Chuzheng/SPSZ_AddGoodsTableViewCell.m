@@ -121,6 +121,7 @@
     self.addressLabel.text = [NSString stringWithFormat:@"%@%@", dishModel.cityname, dishModel.addresssource];
     self.weightView.backgroundColor = dishModel.isSelected ? [ProgramColor RGBColorWithRed:67 green:130 blue:255] : [UIColor grayColor];
     self.weightView.weight = dishModel.weight;
+    self.weightView.unit = dishModel.unit;
     self.weightView.button.userInteractionEnabled = dishModel.isSelected;
 }
 

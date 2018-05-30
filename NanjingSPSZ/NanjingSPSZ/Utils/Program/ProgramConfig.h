@@ -30,4 +30,8 @@ UIKIT_EXTERN const int Pagesize;
 
 @interface ProgramConfig : NSObject
 
++ (NSArray *)unitArray;
+
++ (NSString *)getUnitTypeFromUnit:(NSString *)unit;
+
 @end

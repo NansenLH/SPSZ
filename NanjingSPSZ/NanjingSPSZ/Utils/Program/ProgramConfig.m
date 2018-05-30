@@ -36,4 +36,57 @@ const int Pagesize = 20;
 
 @implementation ProgramConfig
 
++ (NSArray *)unitArray
+{
+    NSArray *array = @[
+                       @{
+                           @"unit" : @"公斤",
+                           @"unitType" : @"重量",
+                           },
+                       @{
+                           @"unit" : @"斤",
+                           @"unitType" : @"重量",
+                           },
+                       @{
+                           @"unit" : @"吨",
+                           @"unitType" : @"重量",
+                           },
+                       @{
+                           @"unit" : @"Kg",
+                           @"unitType" : @"重量",
+                           },
+                       @{
+                           @"unit" : @"g",
+                           @"unitType" : @"重量",
+                           },
+                       @{
+                           @"unit" : @"箱",
+                           @"unitType" : @"数量",
+                           },
+                       @{
+                           @"unit" : @"盒",
+                           @"unitType" : @"数量",
+                           },
+                       @{
+                           @"unit" : @"袋",
+                           @"unitType" : @"数量",
+                           },
+                       ];
+    return array;
+}
+
++ (NSString *)getUnitTypeFromUnit:(NSString *)unit
+{
+    NSString *type = @"重量";
+    if (
+        [unit isEqualToString:@"箱"] ||
+        [unit isEqualToString:@"盒"] ||
+        [unit isEqualToString:@"袋"]
+        ) {
+        type = @"数量";
+    }
+    return type;
+}
+
+
 @end
