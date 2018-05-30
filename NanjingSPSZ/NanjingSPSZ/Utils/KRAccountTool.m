@@ -23,6 +23,7 @@ static NSString *const PhoneKey       = @"PhoneKey";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         accountTool = [[KRAccountTool alloc] init];
+        
     });
     
     return accountTool;

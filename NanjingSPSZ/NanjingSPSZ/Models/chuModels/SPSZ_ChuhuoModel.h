@@ -32,15 +32,10 @@
 
 @property (nonatomic, copy) NSString *cityid;
 
-
 /**
  具体地址
  */
 @property (nonatomic, copy) NSString *addresssource;
-
-
-
-
 
 /**
  车牌号

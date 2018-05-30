@@ -54,7 +54,7 @@
     
     
     self.showImageView = [[UIImageView alloc] init];
-    self.showImageView.backgroundColor = [UIColor blueColor];
+    self.showImageView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.showImageView];
     [self.showImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.width.mas_equalTo(53);
@@ -114,8 +114,8 @@
     
     self.contentView.backgroundColor = dishModel.isSelected ? [ProgramColor RGBColorWithRed:55 green:55 blue:55 alpha:0.07] : [UIColor whiteColor];
     self.chooseButton.selected = dishModel.isSelected;
-    // TODO: 图片地址是什么?
-//    [self.showImageView sd_setImageWithURL:[NSURL URLWithString:dishModel.dishimg1]];
+    NSString *imageurlstring = [NSString stringWithFormat:@"%@%@", BaseImagePath, dishModel.dishimg1];
+    [self.showImageView sd_setImageWithURLString:imageurlstring];
     self.goodsNameLabel.text = dishModel.dishname;
     self.timeLabel.text = dishModel.dishdate;
     self.addressLabel.text = [NSString stringWithFormat:@"%@%@", dishModel.cityname, dishModel.addresssource];

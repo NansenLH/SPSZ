@@ -15,6 +15,11 @@
 
 #import "SPSZ_chu_recordsModel.h"
 #import "SPSZ_chu_jinHuoModel.h"
+
+#import "KRAccountTool.h"
+#import "SPSZ_chuLoginModel.h"
+#import "SPSZ_ChuhuoModel.h"
+
 @implementation ChuzhengNetworkTool
 
 /**
@@ -25,11 +30,13 @@
                     errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
                   failureBlock:(void (^)(NSString *failure))failureBlock
 {
+    SPSZ_chuLoginModel *chuUser = [KRAccountTool getChuUserInfo];
+    
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getDishesByUserId"];
     [requestDic setObject:@(Pagesize) forKey:@"pageSize"];
     [requestDic setObject:@(pageNumber) forKey:@"pageNo"];
-    [requestDic setObject:@"13156" forKey:@"userid"];
+    [requestDic setObject:chuUser.login_Id forKey:@"userid"];
     
     [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
         if (success) {
@@ -72,11 +79,12 @@
                        errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
                      failureBlock:(void (^)(NSString *failure))failureBlock
 {
+    SPSZ_chuLoginModel *chuUser = [KRAccountTool getChuUserInfo];
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getPrintinvoiceByUserId"];
     [requestDic setObject:@(pageSize) forKey:@"pageSize"];
     [requestDic setObject:@(pageNo) forKey:@"pageNo"];
-    [requestDic setObject:@"13156" forKey:@"userid"];
+    [requestDic setObject:chuUser.login_Id forKey:@"userid"];
     if (printdate) {
         [requestDic setObject:printdate forKey:@"printdate"];
     }
@@ -120,7 +128,8 @@
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getdishesdetaillist"];
 
-    [requestDic setObject:@"13156" forKey:@"stall_id"];
+    SPSZ_chuLoginModel *chuUser = [KRAccountTool getChuUserInfo];
+    [requestDic setObject:chuUser.login_Id forKey:@"stall_id"];
 //    if (printdate) {
         [requestDic setObject:printdate forKey:@"uploaddate"];
 //    }
@@ -153,7 +162,64 @@
 }
 
 
+/**
+ 出货录入
+ */
++ (void)addGoods:(SPSZ_ChuhuoModel *)model
+    successBlock:(void (^)(void))successBlcok
+      errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+    failureBlock:(void (^)(NSString *failure))failureBlock
+{
+    if (!model) {
+        if (errorBlock) {
+            errorBlock(@"", @"参数错误");
+        }
+        return;
+    }
+    
+    
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"addSalerDish"];
+    NSString *jsonString = [model yy_modelToJSONString];
 
+    
+    [requestDic setObject:model.salerid forKey:@"salerid"];
+    [requestDic setObject:model.dishimgs forKey:@"dishimgs"];
+    if (model.carnumber) {
+        [requestDic setObject:model.carnumber forKey:@"carnumber"];
+    }
+    if (model.addresssource) {
+        [requestDic setObject:model.addresssource forKey:@"addresssource"];
+    }
+    [requestDic setObject:model.cityid forKey:@"cityid"];
+    [requestDic setObject:model.cityname forKey:@"cityname"];
+    [requestDic setObject:model.dishamount forKey:@"dishamount"];
+    [requestDic setObject:model.dishname forKey:@"dishname"];
+    
+//    [requestDic setObject:jsonString forKey:@"dish"];
+    
+    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+        if (success) {
+            if ([result[@"respCode"] integerValue] == 1000000) {
+                if (successBlcok) {
+                    successBlcok();
+                }
+            }
+            else {
+                if (errorBlock) {
+                    errorBlock(result[@"respCode"], result[@"respMsg"]);
+                }
+            }
+        }
+        else {
+            if (failureBlock) {
+                failureBlock(result);
+            }
+        }
+    }];
+    
+    
+}
 
 
 @end

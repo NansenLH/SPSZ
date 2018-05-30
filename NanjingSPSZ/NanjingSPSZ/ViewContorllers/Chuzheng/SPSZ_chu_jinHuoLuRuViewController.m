@@ -23,6 +23,10 @@
 #import "YYModel.h"
 
 #import "CityView.h"
+#import "KRAccountTool.h"
+#import "SPSZ_chuLoginModel.h"
+
+#import "ChuzhengNetworkTool.h"
 
 @interface SPSZ_chu_jinHuoLuRuViewController ()
 <
@@ -31,7 +35,8 @@ UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout,
 UITextFieldDelegate,
 UIImagePickerControllerDelegate,
-UINavigationControllerDelegate
+UINavigationControllerDelegate,
+UIGestureRecognizerDelegate
 >
 @property (nonatomic, strong)UIView  *mainView;
 
@@ -79,6 +84,7 @@ UINavigationControllerDelegate
         _cityView.cityList = cityList;
         KRWeakSelf;
         [_cityView setGetSelectCityBlock:^(NSDictionary *dic) {
+            [weakSelf.productLocationButton setTitle:[dic objectForKey:@"name"] forState:UIControlStateNormal];
             weakSelf.addGoods.cityname = [dic objectForKey:@"name"];
             weakSelf.addGoods.cityid = [dic objectForKey:@"Id"];
         }];
@@ -106,8 +112,8 @@ UINavigationControllerDelegate
 {
     if (!_addGoods) {
         _addGoods = [[SPSZ_ChuhuoModel alloc] init];
-        // TODO: 未实现
-        _addGoods.salerid = @"";
+        SPSZ_chuLoginModel *chuUser = [KRAccountTool getChuUserInfo];
+        _addGoods.salerid = chuUser.login_Id;
     }
     return _addGoods;
 }
@@ -206,7 +212,7 @@ UINavigationControllerDelegate
         [self setUpViewWith:3 text:nil];
         [self setUpViewWith:4 text:nil];
         [self setUpViewWith:5 text:nil];
-        [self setUpViewWith:6 text: @"（请上传营业执照和相关证件）"];
+        [self setUpViewWith:6 text: @"（请上传产地证明或是货品照片）"];
         
         [_mainView addSubview:self.collectionView];
         [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -264,6 +270,16 @@ UINavigationControllerDelegate
         make.width.equalTo(180);
         make.bottom.equalTo(-margin-[ProgramSize bottomHeight]);
     }];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit)];
+    [self.view addGestureRecognizer:tap];
+    tap.delegate = self;
+    
+}
+
+- (void)endEdit
+{
+    [self.view endEditing:YES];
 }
 
 
@@ -350,6 +366,7 @@ UINavigationControllerDelegate
 
 - (void)productLocationButtonAction:(UIButton *)button
 {
+    [self.view endEditing:YES];
     [self.cityView showCityListViewInView:self.navigationController.view];
 }
 
@@ -367,7 +384,6 @@ UINavigationControllerDelegate
     }
     self.addGoods.dishamount = self.numberLabel.text;
 
-    // TODO: 未实现
     if (!self.addGoods.cityname || !self.addGoods.cityid) {
         [KRAlertTool alertString:@"请填写来源产地"];
         return;
@@ -387,8 +403,26 @@ UINavigationControllerDelegate
     }
     self.addGoods.dishimgs = [imgs substringWithRange:NSMakeRange(0, imgs.length-1)];
 
-    NSString *jsonString = [self.addGoods yy_modelToJSONString];
+    [ChuzhengNetworkTool addGoods:self.addGoods successBlock:^{
+        [KRAlertTool alertString:@"添加成功"];
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [KRAlertTool alertString:errorMessage];
+    } failureBlock:^(NSString *failure) {
+        [KRAlertTool alertString:failure];
+    }];
     
+}
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    //注意：_touchView应该是_referenceView的子视图
+    CGPoint p = [touch locationInView:self.view];
+    //NSLog(@"frame:%@",NSStringFromCGPoint(p));
+    if(CGRectContainsPoint(self.collectionView.frame, p)) {
+        return NO;
+    }
+    return YES;
 }
 
 

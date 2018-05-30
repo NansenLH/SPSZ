@@ -336,16 +336,26 @@
 
 - (void)confirmAddClick:(UIButton *)button
 {
-    // TODO: 未实现
-    if (self.addGoodsBlock) {
-        NSMutableArray *selectedArray = [NSMutableArray array];
-        for (SPSZ_GoodsModel *model in self.dataArray) {
-            if (model.isSelected) {
-                [selectedArray addObject:[model copy]];
+    BOOL hasNoWeight = NO;
+    NSMutableArray *selectedArray = [NSMutableArray array];
+    for (SPSZ_GoodsModel *model in self.dataArray) {
+        if (model.isSelected) {
+            [selectedArray addObject:[model copy]];
+            
+            if ([model.weight integerValue] == 0) {
+                hasNoWeight = YES;
+                break;
             }
         }
-        self.addGoodsBlock(selectedArray);
-        [self.navigationController popViewControllerAnimated:YES];
+    }
+    if (hasNoWeight) {
+        [KRAlertTool alertString:@"请填写要添加货物的重量"];
+    }
+    else {
+        if (self.addGoodsBlock) {
+            self.addGoodsBlock(selectedArray);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 
