@@ -51,7 +51,7 @@
                         [modelArray addObject:model];
                     }else
                     {
-                        SPSZ_suo_saoMaoOrderModel *model = [SPSZ_suo_saoMaoOrderModel yy_modelWithDictionary:dish];
+                        SPSZ_suo_shouDongRecordModel *model = [SPSZ_suo_shouDongRecordModel yy_modelWithDictionary:dish];
                         [modelArray addObject:model];
                     }
          

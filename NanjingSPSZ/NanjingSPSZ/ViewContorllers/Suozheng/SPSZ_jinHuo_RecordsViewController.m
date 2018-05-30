@@ -11,7 +11,6 @@
 #import "SPSZ_paiZhao_OrderViewController.h"
 #import "SPSZ_shouDong_OrderViewController.h"
 
-#import "SPSZ_suo_RecordViewController.h"
 
 #import "KRTagBar.h"
 #import "UIImage+Gradient.h"
@@ -19,7 +18,7 @@
 
 @interface SPSZ_jinHuo_RecordsViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
 {
-    SPSZ_suo_RecordViewController *vc1;
+    SPSZ_saoMa_OrderViewController *vc1;
     SPSZ_shouDong_OrderViewController *vc3;
     SPSZ_paiZhao_OrderViewController *vc2;
 }
@@ -114,7 +113,7 @@
     
     
     
-    vc1 = [[SPSZ_suo_RecordViewController alloc]init];
+    vc1 = [[SPSZ_saoMa_OrderViewController alloc]init];
     vc2 = [[SPSZ_paiZhao_OrderViewController alloc]init];
     vc3 = [[SPSZ_shouDong_OrderViewController alloc]init];
     
@@ -198,21 +197,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)getuploadprintinvoicedetaillist:(int)tag
-{
-    __weak typeof (self) weakSelf = self;
-    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getuploadprintinvoicedetaillist"];
-    [requestDic setObject:self.stall_id forKey:@"stall_id"];
-    [requestDic setObject:[NSString stringWithFormat:@"%d",tag] forKey:@"type"];
-    [requestDic setObject:@"" forKey:@"uploaddate"];
-    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
-        if ([result[@"respCode"] integerValue] == 1000000) {
-            if (weakSelf.tagBar.selectedIndex == 0) {
-                vc1.dataArray = result[@"resultList"];
-            }
-        }
-    }];
-}
+//- (void)getuploadprintinvoicedetaillist:(int)tag
+//{
+//    __weak typeof (self) weakSelf = self;
+//    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+//    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getuploadprintinvoicedetaillist"];
+//    [requestDic setObject:self.stall_id forKey:@"stall_id"];
+//    [requestDic setObject:[NSString stringWithFormat:@"%d",tag] forKey:@"type"];
+//    [requestDic setObject:@"" forKey:@"uploaddate"];
+//    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+//        if ([result[@"respCode"] integerValue] == 1000000) {
+//            if (weakSelf.tagBar.selectedIndex == 0) {
+//                vc1.dataArray = result[@"resultList"];
+//            }
+//        }
+//    }];
+//}
 
 @end
