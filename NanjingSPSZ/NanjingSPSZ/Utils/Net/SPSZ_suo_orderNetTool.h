@@ -25,15 +25,6 @@
                  failureBlock:(void (^)(NSString *failure))failureBlock;
 
 
-/**
- 进货录入
- */
-+ (void)addJinHuoShouDongWithUserId:(NSString *)userId
-                             amount:(NSString *)amount
-                               unit:(NSString *)unit
-                       successBlock:(void (^)(void))successBlcok
-                         errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
-                       failureBlock:(void (^)(NSString *failure))failureBlock;
 
 
 /**
@@ -43,6 +34,17 @@
      successBlock:(void (^)(SPSZ_suo_shouDongRecordModel *model))successBlcok
        errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
      failureBlock:(void (^)(NSString *failure))failureBlock;
+
+/**
+ 进货录入
+ */
++ (void)shangChuanWith:(NSString *)type
+                 model:(SPSZ_suo_shouDongRecordModel *)model
+          successBlock:(void (^)(NSString  *string))successBlcok
+            errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+          failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
 
 
 @end

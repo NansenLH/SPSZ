@@ -292,7 +292,7 @@
         [_centerButton setTitle:@"拍照上传" forState:UIControlStateNormal];
         self.centerButtonImageName = @"scan_qr_white";
     }else if (index == 2){
-        [_centerButton setImage:[UIImage imageNamed:@"sd_upload_white"] forState:UIControlStateNormal];
+        [_centerButton setImage:[UIImage imageNamed:@"Image"] forState:UIControlStateNormal];
         [_centerButton setTitle:@"手动上传" forState:UIControlStateNormal];
     }
 }
@@ -316,6 +316,7 @@
 }
 
 - (void)sureUpLoadAction:(UIButton *)button{
+    
     if (self.tagBar.selectedIndex == 2) {
         SPSZ_shouDongViewController *vc = self.vcArray[2];
         [vc sureUpload];

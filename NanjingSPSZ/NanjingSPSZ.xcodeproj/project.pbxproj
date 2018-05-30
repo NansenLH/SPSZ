@@ -58,6 +58,8 @@
 		6A494E8020BDB4BC00D13159 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E7820BDB4BC00D13159 /* SEPrinterManager.m */; };
 		6A494E8120BDB4BC00D13159 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E7A20BDB4BC00D13159 /* UIImage+Bitmap.m */; };
 		6A494E8420BE520C00D13159 /* SPSZ_EditWightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E8320BE520C00D13159 /* SPSZ_EditWightView.m */; };
+		6A5535BE20BED937003B0C04 /* QRCodeSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A5535BD20BED936003B0C04 /* QRCodeSound.wav */; };
+		6A5535C120BED950003B0C04 /* KRAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5535C020BED950003B0C04 /* KRAudioTool.m */; };
 		6A6BACD020B85013008A428F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A6BACD420B85021008A428F /* SPSZ_personalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */; };
 		6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE820B856EE008A428F /* LUNetHelp.m */; };
@@ -75,6 +77,7 @@
 		6AAF973A20B562C800A6C0E8 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973920B562C800A6C0E8 /* UIButton+ImageTitleSpacing.m */; };
 		6AAF973D20B5B23A00A6C0E8 /* SPSZ_ChooseConnectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973C20B5B23A00A6C0E8 /* SPSZ_ChooseConnectView.m */; };
 		6AAF974020B5B29300A6C0E8 /* SPSZ_DeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973F20B5B29300A6C0E8 /* SPSZ_DeviceModel.m */; };
+		6ABE9B9720BED23000EFB505 /* KRScanBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABE9B9620BED23000EFB505 /* KRScanBaseController.m */; };
 		6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB53A120AFFD4500528420 /* AppDelegate.m */; };
 		6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ACB53AB20AFFD4800528420 /* LaunchScreen.storyboard */; };
 		6ACB53B020AFFD4800528420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB53AF20AFFD4800528420 /* main.m */; };
@@ -203,12 +206,9 @@
 		6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD761620B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m */; };
 		CC2DA37C20BD244D002F5256 /* SPSZ_chu_recordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */; };
 		CC2DA37F20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */; };
-		CC2DA38220BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */; };
 		CC2DA38520BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */; };
-		CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */; };
 		CC2DA38C20BD52F3002F5256 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = CC2DA38920BD52F2002F5256 /* city.json */; };
 		CC2DA38D20BD52F3002F5256 /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38B20BD52F3002F5256 /* CityView.m */; };
-		CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */; };
 		CC2DA39320BD99E2002F5256 /* KRAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39220BD99E1002F5256 /* KRAccountTool.m */; };
 		CC2DA39620BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39520BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m */; };
 		CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */; };
@@ -378,6 +378,9 @@
 		6A494E7D20BDB4BC00D13159 /* SEBLEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEBLEConst.h; sourceTree = "<group>"; };
 		6A494E8220BE520C00D13159 /* SPSZ_EditWightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_EditWightView.h; sourceTree = "<group>"; };
 		6A494E8320BE520C00D13159 /* SPSZ_EditWightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_EditWightView.m; sourceTree = "<group>"; };
+		6A5535BD20BED936003B0C04 /* QRCodeSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = QRCodeSound.wav; sourceTree = "<group>"; };
+		6A5535BF20BED950003B0C04 /* KRAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRAudioTool.h; sourceTree = "<group>"; };
+		6A5535C020BED950003B0C04 /* KRAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAudioTool.m; sourceTree = "<group>"; };
 		6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
 		6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
 		6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 		6AAF973C20B5B23A00A6C0E8 /* SPSZ_ChooseConnectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_ChooseConnectView.m; sourceTree = "<group>"; };
 		6AAF973E20B5B29300A6C0E8 /* SPSZ_DeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_DeviceModel.h; sourceTree = "<group>"; };
 		6AAF973F20B5B29300A6C0E8 /* SPSZ_DeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_DeviceModel.m; sourceTree = "<group>"; };
+		6ABE9B9520BED23000EFB505 /* KRScanBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRScanBaseController.h; sourceTree = "<group>"; };
+		6ABE9B9620BED23000EFB505 /* KRScanBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRScanBaseController.m; sourceTree = "<group>"; };
 		6ACB539D20AFFD4500528420 /* NanjingSPSZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanjingSPSZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACB53A020AFFD4500528420 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6ACB53A120AFFD4500528420 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -680,17 +685,11 @@
 		CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_recordsModel.m; sourceTree = "<group>"; };
 		CC2DA37D20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_jinHuoModel.h; sourceTree = "<group>"; };
 		CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_jinHuoModel.m; sourceTree = "<group>"; };
-		CC2DA38020BD3FA5002F5256 /* SPSZ_addGoodsNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_addGoodsNetTool.h; sourceTree = "<group>"; };
-		CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_addGoodsNetTool.m; sourceTree = "<group>"; };
 		CC2DA38320BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_saoMaDetailModel.h; sourceTree = "<group>"; };
 		CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_saoMaDetailModel.m; sourceTree = "<group>"; };
-		CC2DA38620BD4EDB002F5256 /* SPSZ_PromptBoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_PromptBoxView.h; sourceTree = "<group>"; };
-		CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_PromptBoxView.m; sourceTree = "<group>"; };
 		CC2DA38920BD52F2002F5256 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		CC2DA38A20BD52F2002F5256 /* CityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityView.h; sourceTree = "<group>"; };
 		CC2DA38B20BD52F3002F5256 /* CityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityView.m; sourceTree = "<group>"; };
-		CC2DA38E20BD841E002F5256 /* SPSZ_FMDBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_FMDBTool.h; sourceTree = "<group>"; };
-		CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_FMDBTool.m; sourceTree = "<group>"; };
 		CC2DA39120BD99E1002F5256 /* KRAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRAccountTool.h; sourceTree = "<group>"; };
 		CC2DA39220BD99E1002F5256 /* KRAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAccountTool.m; sourceTree = "<group>"; };
 		CC2DA39420BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_SaoMaOrderCollectionViewCell.h; sourceTree = "<group>"; };
@@ -971,8 +970,6 @@
 				CC89F3C320BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m */,
 				CC89F3DE20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.h */,
 				CC89F3DF20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m */,
-				CC2DA38020BD3FA5002F5256 /* SPSZ_addGoodsNetTool.h */,
-				CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -980,6 +977,8 @@
 		6A6BACF120B85A47008A428F /* Program */ = {
 			isa = PBXGroup;
 			children = (
+				6A5535BF20BED950003B0C04 /* KRAudioTool.h */,
+				6A5535C020BED950003B0C04 /* KRAudioTool.m */,
 				CC89F35520BA839E00FCEBD2 /* ProgramColor.h */,
 				CC89F35420BA839E00FCEBD2 /* ProgramColor.m */,
 				CC89F35220BA839E00FCEBD2 /* ProgramConfig.h */,
@@ -1127,6 +1126,8 @@
 		6ACB53DB20B00E6600528420 /* ViewContorllers */ = {
 			isa = PBXGroup;
 			children = (
+				6ABE9B9520BED23000EFB505 /* KRScanBaseController.h */,
+				6ABE9B9620BED23000EFB505 /* KRScanBaseController.m */,
 				6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */,
 				6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */,
 				6ACB554120B0136B00528420 /* Login */,
@@ -1143,14 +1144,10 @@
 		6ACB53DC20B00E9800528420 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CC2DA38E20BD841E002F5256 /* SPSZ_FMDBTool.h */,
-				CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */,
 				CC930C4C20B56B7300B99756 /* KRTagBar.h */,
 				CC930C4D20B56B7300B99756 /* KRTagBar.m */,
 				6ACB554D20B016E700528420 /* UICreateTool.h */,
 				6ACB554C20B016E700528420 /* UICreateTool.m */,
-				CC2DA38620BD4EDB002F5256 /* SPSZ_PromptBoxView.h */,
-				CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */,
 				CC2DA39120BD99E1002F5256 /* KRAccountTool.h */,
 				CC2DA39220BD99E1002F5256 /* KRAccountTool.m */,
 				6A6BACF220B85A63008A428F /* AlertTool */,
@@ -1187,6 +1184,7 @@
 		6ACB53DE20B00E9800528420 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6A5535BD20BED936003B0C04 /* QRCodeSound.wav */,
 				CC2DA38920BD52F2002F5256 /* city.json */,
 				CC2DA38A20BD52F2002F5256 /* CityView.h */,
 				CC2DA38B20BD52F3002F5256 /* CityView.m */,
@@ -1887,6 +1885,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A5535BE20BED937003B0C04 /* QRCodeSound.wav in Resources */,
 				CC2DA38C20BD52F3002F5256 /* city.json in Resources */,
 				6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */,
 				6A143B8920BAE65C00D71959 /* PGDatePicker.bundle in Resources */,
@@ -2002,12 +2001,13 @@
 				CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */,
 				6A143B8320BAE65C00D71959 /* PGPickerColumnView.m in Sources */,
 				6ACB542E20B00F9A00528420 /* SDWebImageDownloader.m in Sources */,
+				6A5535C120BED950003B0C04 /* KRAudioTool.m in Sources */,
 				6ACB550220B011D500528420 /* AFURLResponseSerialization.m in Sources */,
 				6A143B8A20BAE65C00D71959 /* PGDatePicker+TimeAndSecond.m in Sources */,
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
+				6ABE9B9720BED23000EFB505 /* KRScanBaseController.m in Sources */,
 				6A143BA920BB105100D71959 /* SPSZ_SelectedTableViewCell.m in Sources */,
 				6A6BAD0720BA51BB008A428F /* UIView+HYBImageCliped.m in Sources */,
-				CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */,
 				6ACB554820B016A300528420 /* KRAlertTool.m in Sources */,
 				6ACB54C320B0110000528420 /* MJRefreshBackGifFooter.m in Sources */,
 				6ACB542B20B00F9A00528420 /* SDWebImageManager.m in Sources */,
@@ -2070,7 +2070,6 @@
 				E288200520BEEB85002EE5E5 /* SYPhotoViewController.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
-				CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
 				CC930C3E20B56B0800B99756 /* SPSZ_paiZhao_OrderViewController.m in Sources */,
 				6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */,
@@ -2086,7 +2085,6 @@
 				CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */,
 				6A494E7E20BDB4BC00D13159 /* HLPrinter.m in Sources */,
 				6ACB540320B00F8C00528420 /* View+MASAdditions.m in Sources */,
-				CC2DA38220BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m in Sources */,
 				6ACB54CA20B0110000528420 /* MJRefreshStateHeader.m in Sources */,
 				6ACB550420B011D500528420 /* AFURLSessionManager.m in Sources */,
 				CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */,
@@ -2312,9 +2310,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanzi He (AXF6779FDV)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PY4TVE6987;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2329,8 +2327,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d9cc378c-2fca-44e8-b5c1-e2c50ccd6fdb";
-				PROVISIONING_PROFILE_SPECIFIER = sodo_common1;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2340,9 +2338,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanzi He (AXF6779FDV)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PY4TVE6987;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2357,8 +2355,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d9cc378c-2fca-44e8-b5c1-e2c50ccd6fdb";
-				PROVISIONING_PROFILE_SPECIFIER = sodo_common1;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

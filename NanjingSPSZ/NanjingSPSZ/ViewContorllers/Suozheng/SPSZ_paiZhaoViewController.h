@@ -17,4 +17,7 @@
 // 拍照
 - (void)takePhotoAction;
 
+// 确认上传
+- (void)paiZhaoUpload;
+
 @end

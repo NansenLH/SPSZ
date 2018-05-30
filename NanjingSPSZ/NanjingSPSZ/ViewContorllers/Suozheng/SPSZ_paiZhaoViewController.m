@@ -12,6 +12,10 @@
 #import "LUNetHelp.h"
 #import "UIImageView+WebCache.h"
 
+#import "SPSZ_suo_orderNetTool.h"
+#import "SPSZ_suo_saoMaDetailModel.h"
+#import "SPSZ_suo_shouDongRecordModel.h"
+
 @interface SPSZ_paiZhaoViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *mainImageView;
@@ -84,6 +88,18 @@
         else {
             [self alertSettingCameraAuth];
         }
+    }else
+    {
+        SPSZ_suo_shouDongRecordModel *shouDongModel = [[SPSZ_suo_shouDongRecordModel alloc]init];
+        shouDongModel.imgurl = self.imageArray.firstObject;
+        
+        [SPSZ_suo_orderNetTool shangChuanWith:@"1" model:shouDongModel successBlock:^(NSString *string) {
+            
+        } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+            
+        } failureBlock:^(NSString *failure) {
+            
+        }];
     }
    
 }
@@ -96,6 +112,10 @@
     ctrl.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:ctrl animated:YES completion:nil];
 }
+
+
+
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
@@ -127,7 +147,6 @@
         [self.imageArray addObject:imageURL];
         
         self.mainImageView.image = image;
-//        [self.collectionView reloadData];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {

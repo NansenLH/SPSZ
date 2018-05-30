@@ -75,6 +75,7 @@
         _passwordTextField.frame = CGRectMake(10,0, MainScreenWidth-20, 60);
         _passwordTextField.delegate = self;
         _passwordTextField.tintColor = [UIColor redColor];
+        _passwordTextField.secureTextEntry = YES;
         _passwordTextField.placeholder = @"请输入6-10位英文或数字的新密码";
     }
     return _passwordTextField;
@@ -157,6 +158,12 @@
         return;
     }
     
+    
+    if (![self.saveYanZhengMa isEqualToString:self.securityTextField.text]) {
+        [KRAlertTool alertString:@"验证码输入不正确!"];
+        return;
+    }
+    
     __weak typeof (self) weakSelf = self;
     if (self.isType) {
         [SPSZ_LoginNetTool lingshoushangChangePswWithNewPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text code:self.securityTextField.text successBlock:^(NSString *string) {
@@ -178,6 +185,23 @@
             
         }];
     }
+}
+
+
+// 回收键盘
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+    [self.passwordTextField resignFirstResponder];
+    [self.securityTextField resignFirstResponder];
+    [self.phoneNumberTextField resignFirstResponder];
+    
+    [self.view endEditing:YES];
 }
 
 

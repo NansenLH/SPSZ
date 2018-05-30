@@ -12,7 +12,11 @@
 #import "SPSZ_suoLoginModel.h"
 #import "SPSZ_chuLoginModel.h"
 #import "UIButton+WebCache.h"
+<<<<<<< HEAD
 #import "SYPhotoBrowser.h"
+=======
+#import "KRAccountTool.h"
+>>>>>>> a1864504743e8940d6a59e8f34c7e70c6f1bc3cf
 @interface SPSZ_personalInfoViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -132,8 +136,8 @@
     
     NSString *loginType = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"];
     if ([loginType isEqualToString:@"suo_login"]) {
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
-        SPSZ_suoLoginModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+        SPSZ_suoLoginModel *model = [KRAccountTool getSuoUserInfo];
         self.locationString = model.cityname;
         self.shiChangString = model.deptname;
         self.detailLocationString = model.address;
@@ -147,8 +151,9 @@
         [self.imgArray addObject:model.img_entry];
         [self.imgArray addObject:model.img_save];
     }else{
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
-        SPSZ_chuLoginModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+//        SPSZ_chuLoginModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
         self.locationString = model.cityname;
         self.shiChangString = model.companyname;
 //        self.detailLocationString = model.address;
