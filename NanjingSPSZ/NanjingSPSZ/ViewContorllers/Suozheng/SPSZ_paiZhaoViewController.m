@@ -8,15 +8,28 @@
 
 #import "SPSZ_paiZhaoViewController.h"
 
-@interface SPSZ_paiZhaoViewController ()
+#import <Photos/Photos.h>
+#import "LUNetHelp.h"
+#import "UIImageView+WebCache.h"
+
+@interface SPSZ_paiZhaoViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *mainImageView;
+
+@property (nonatomic, strong) NSMutableArray *imageArray;
 
 @end
 
 @implementation SPSZ_paiZhaoViewController
 
 
+
+- (NSMutableArray *)imageArray{
+    if (!_imageArray) {
+        _imageArray = [NSMutableArray array];
+    }
+    return _imageArray;
+}
 
 - (UIImageView *)mainImageView{
     if (!_mainImageView) {
@@ -42,12 +55,112 @@
 - (void)reEnterAction
 {
     _mainImageView.image = [UIImage imageNamed:@"retailer_take_phote"];
+    [self.imageArray removeAllObjects];
 }
 
 // 拍照
 - (void)takePhotoAction
 {
+    if (self.imageArray.count == 0) {
+        // 拍照
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusAuthorized) {
+            [self takePhoto];
+        }
+        else if (authStatus == AVAuthorizationStatusNotDetermined) {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if (granted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self takePhoto];
+                    });
+                }
+                else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self alertSettingCameraAuth];
+                    });
+                }
+            }];
+        }
+        else {
+            [self alertSettingCameraAuth];
+        }
+    }
+   
+}
+
+
+- (void)takePhoto
+{
+    UIImagePickerController *ctrl = [[UIImagePickerController alloc] init];
+    ctrl.delegate = self;
+    ctrl.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:ctrl animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    if (self.imageArray.count == 0) {
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            // 处理
+            UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+            if (image) {
+                [self uploadImage:image];
+            }
+            else {
+                NSLog(@"拍照出错");
+            }
+        }
+    }
+   
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)uploadImage:(UIImage *)image
+{
+    [LUNetHelp uploadImage:image successBlock:^(NSString *imageURL) {
+        
+        [self.imageArray addObject:imageURL];
+        
+        self.mainImageView.image = image;
+//        [self.collectionView reloadData];
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [KRAlertTool alertString:errorMessage];
+    } failureBlock:^(NSString *failure) {
+        [KRAlertTool alertString:failure];
+    }];
+}
+
+
+
+
+- (void)alertSettingCameraAuth
+{
+    NSDictionary *mainInfoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appName = [mainInfoDictionary objectForKey:@"CFBundleDisplayName"];
+    if (!appName) {
+        appName = [mainInfoDictionary objectForKey:(NSString *)kCFBundleNameKey];
+    }
+    NSString * tipTitle = [NSString stringWithFormat:@"请允许\"%@\"使用您的相机", appName];
+    NSString * tipMessage = [NSString stringWithFormat:@"您可点击\"去设置\"按钮后将\"相机\"权限打开!"];
     
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:tipTitle message:tipMessage preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *settingURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if ([[UIApplication sharedApplication] canOpenURL:settingURL]) {
+            [[UIApplication sharedApplication] openURL:settingURL options:@{} completionHandler:nil];
+        }
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"稍后设置" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:confirmAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 

@@ -179,7 +179,6 @@
         return;
     }
     
-    
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"addSalerDish"];
 //    NSString *jsonString = [model yy_modelToJSONString];

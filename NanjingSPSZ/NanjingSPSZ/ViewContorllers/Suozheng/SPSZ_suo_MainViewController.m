@@ -19,8 +19,6 @@
 #import "AppDelegate.h"
 #import "BaseNavigationController.h"
 
-#import "THDatePickerView.h"
-
 #import "KRTagBar.h"
 #import "UIButton+ImageTitleSpacing.h"
 #import "UIButton+Gradient.h"
@@ -321,9 +319,12 @@
         [vc takePhotoAction];
     }else{
         SPSZ_saoMa_ViewController *vc = self.vcArray[0];
-        [vc sureUpload];
+        [vc saoMa];
     }
 }
+
+
+
 
 - (void)rightButtonAction:(UIButton *)button
 {

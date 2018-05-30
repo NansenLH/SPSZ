@@ -112,16 +112,16 @@
     SPSZ_suo_saoMaDetailModel *detailModel = model.dishes.firstObject;
     _shopNameLabel.text = model.companyname;
     _timeLabel.text = model.uploaddate;
-    [self.productNameLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"产品名称：" string2:detailModel.objectName]];
+    [self.productNameLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"产品名称:" string2:detailModel.objectName]];
     
-    [self.weightLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"数量/重量：" string2:[NSString stringWithFormat:@"%@%@",detailModel.amount,detailModel.unit]]];
+    [self.weightLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"数量/重量:" string2:[NSString stringWithFormat:@"%@%@",detailModel.amount,detailModel.unit]]];
     
-    [self.productLocationLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"产品产地：" string2:detailModel.cityname]];
+    [self.productLocationLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"产品产地:" string2:detailModel.cityname]];
     
-    [self.piFaNamelabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"批发商姓名：" string2:model.realname]];
+    [self.piFaNamelabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"批发商姓名:" string2:model.realname]];
 
     
-    [self.phoneLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"联系电话：" string2:model.mobile]];
+    [self.phoneLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"联系电话:" string2:model.mobile]];
 
     
 }

@@ -15,4 +15,5 @@
 @property(nonatomic, strong) SPSZ_suo_shouDongRecordModel *model;
 
 @property (nonatomic, strong) SPSZ_ShowTicketView *showView;
+
 @end

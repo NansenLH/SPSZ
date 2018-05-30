@@ -12,4 +12,9 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
+@property (nonatomic, strong)NSString *timeString;
+
+- (void)reloadDataWithDateWith:(NSString *)date;
+
+
 @end

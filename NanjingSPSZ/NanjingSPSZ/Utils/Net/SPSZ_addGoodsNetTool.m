@@ -20,6 +20,7 @@
 {
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"addSalerDish"];
+    
     [requestDic setObject:dish forKey:@"dish"];
 
     [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {

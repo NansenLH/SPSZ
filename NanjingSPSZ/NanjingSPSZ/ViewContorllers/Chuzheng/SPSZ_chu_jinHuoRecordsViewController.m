@@ -14,7 +14,11 @@
 
 #import "ChuzhengNetworkTool.h"
 
-@interface SPSZ_chu_jinHuoRecordsViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "KRAccountTool.h"
+#import "SPSZ_chuLoginModel.h"
+#import "PGDatePickManager.h"
+
+@interface SPSZ_chu_jinHuoRecordsViewController ()<UITableViewDelegate,UITableViewDataSource,PGDatePickerDelegate>
 
 @property (nonatomic, strong)NSMutableArray *dataArray;
 
@@ -44,6 +48,22 @@
     return _tableView;
 }
 
+- (void)configNavigation
+{
+    self.navigationItem.title = @"进货记录";
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setImage:[UIImage imageNamed:@"calendar_white"] forState:UIControlStateNormal];
+    [rightButton setTitle:@"日期查询" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    rightButton.frame = CGRectMake(0, 0, 80, 44);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(12, 10, 12, 57)];
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+}
+
 - (void)backToUpView
 {
     [self.navigationController popViewControllerAnimated:true];
@@ -51,18 +71,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"进货记录";
+
+    [self configNavigation];
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
-    [self loadData];
+    
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    [formatter setDateFormat:@"MM"];
+    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+    [formatter setDateFormat:@"dd"];
+    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+    
+    NSString *dateString = [NSString stringWithFormat:@"%ld-%02ld-%ld",currentYear,currentMonth,currentDay];
+    [self loadDataWith:dateString];
 }
 
 
-- (void)loadData
+- (void)loadDataWith:(NSString *)date
 {
-    [ChuzhengNetworkTool geChuZhengJinHuoRecordsStall_id:@"13156" printdate:@"2018-05-17" successBlock:^(NSMutableArray *modelArray) {
+    SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
+    
+    [ChuzhengNetworkTool geChuZhengJinHuoRecordsStall_id:model.login_Id printdate:date successBlock:^(NSMutableArray *modelArray) {
+        [self.dataArray removeAllObjects];
         self.dataArray = modelArray;
         [self.tableView reloadData];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
@@ -100,6 +136,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (void)rightButtonAction:(UIButton *)button{
+    
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    datePickManager.isShadeBackgroud = true;
+    datePickManager.style = PGDatePickManagerStyle3;
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    datePicker.delegate = self;
+    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.isHiddenMiddleText = false;
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    [self presentViewController:datePickManager animated:false completion:nil];
+}
+
+
+
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%ld",dateComponents.year,dateComponents.month,dateComponents.day];
+    [self loadDataWith:date];
 }
 
 /*
