@@ -342,7 +342,7 @@
         if (model.isSelected) {
             [selectedArray addObject:[model copy]];
             
-            if ([model.weight integerValue] == 0) {
+            if ([model.weight isEqualToString:@"0"]) {
                 hasNoWeight = YES;
                 break;
             }

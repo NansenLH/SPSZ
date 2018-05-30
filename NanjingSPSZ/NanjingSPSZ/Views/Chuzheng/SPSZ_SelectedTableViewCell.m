@@ -91,7 +91,8 @@
     
     NSString *imageurlstring = [NSString stringWithFormat:@"%@%@", BaseImagePath, model.dishimg1];
     [self.showImageView sd_setImageWithURLString:imageurlstring];
-    self.goodsNameLabel.text = [NSString stringWithFormat:@"%@    %@公斤", model.dishname, model.weight];
+    
+    self.goodsNameLabel.text = [NSString stringWithFormat:@"%@    %@%@", model.dishname, model.weight, model.unit];
     self.timeLabel.text = model.dishdate;
     self.addressLabel.text = [NSString stringWithFormat:@"%@%@", model.cityname, model.addresssource];
 }

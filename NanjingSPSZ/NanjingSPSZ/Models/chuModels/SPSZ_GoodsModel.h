@@ -61,5 +61,10 @@
  */
 @property (nonatomic, copy) NSString *weight;
 
+/**
+ 手动添加-单位
+ */
+@property (nonatomic, copy) NSString *unit;
+
 
 @end

@@ -33,4 +33,12 @@
     return _weight;
 }
 
+- (NSString *)unit
+{
+    if (!_unit || [_unit isEqualToString:@""]) {
+        _unit = @"公斤";
+    }
+    return _unit;
+}
+
 @end

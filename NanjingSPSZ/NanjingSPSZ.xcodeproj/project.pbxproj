@@ -57,6 +57,7 @@
 		6A494E7F20BDB4BC00D13159 /* UIWebView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E7620BDB4BC00D13159 /* UIWebView+UIImage.m */; };
 		6A494E8020BDB4BC00D13159 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E7820BDB4BC00D13159 /* SEPrinterManager.m */; };
 		6A494E8120BDB4BC00D13159 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E7A20BDB4BC00D13159 /* UIImage+Bitmap.m */; };
+		6A494E8420BE520C00D13159 /* SPSZ_EditWightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E8320BE520C00D13159 /* SPSZ_EditWightView.m */; };
 		6A6BACD020B85013008A428F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A6BACD420B85021008A428F /* SPSZ_personalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */; };
 		6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE820B856EE008A428F /* LUNetHelp.m */; };
@@ -369,6 +370,8 @@
 		6A494E7B20BDB4BC00D13159 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
 		6A494E7C20BDB4BC00D13159 /* SEPrinterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEPrinterManager.h; sourceTree = "<group>"; };
 		6A494E7D20BDB4BC00D13159 /* SEBLEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEBLEConst.h; sourceTree = "<group>"; };
+		6A494E8220BE520C00D13159 /* SPSZ_EditWightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_EditWightView.h; sourceTree = "<group>"; };
+		6A494E8320BE520C00D13159 /* SPSZ_EditWightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_EditWightView.m; sourceTree = "<group>"; };
 		6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
 		6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
 		6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
@@ -1667,6 +1670,8 @@
 				6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */,
 				6A143BA720BB105100D71959 /* SPSZ_SelectedTableViewCell.h */,
 				6A143BA820BB105100D71959 /* SPSZ_SelectedTableViewCell.m */,
+				6A494E8220BE520C00D13159 /* SPSZ_EditWightView.h */,
+				6A494E8320BE520C00D13159 /* SPSZ_EditWightView.m */,
 			);
 			path = Chuzheng;
 			sourceTree = "<group>";
@@ -1943,6 +1948,7 @@
 				6A143B7620BAE65C00D71959 /* PGDatePicker.m in Sources */,
 				6ACB540620B00F8C00528420 /* MASViewAttribute.m in Sources */,
 				6ACB550620B011D500528420 /* AFNetworkReachabilityManager.m in Sources */,
+				6A494E8420BE520C00D13159 /* SPSZ_EditWightView.m in Sources */,
 				6ACB554520B0163A00528420 /* NSNull+LUNullExtention.m in Sources */,
 				6ACB54FE20B011D500528420 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				6A494E8120BDB4BC00D13159 /* UIImage+Bitmap.m in Sources */,

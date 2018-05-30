@@ -49,6 +49,14 @@
 
 @property (nonatomic, copy) NSString *salerid;
 
+/**
+ 重量单位
+ */
+@property (nonatomic, copy) NSString *unit;
 
+/**
+ 重量类型
+ */
+@property (nonatomic, copy) NSString *unitType;
 
 @end
