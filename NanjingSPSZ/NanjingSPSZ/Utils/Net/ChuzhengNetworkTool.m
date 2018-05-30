@@ -180,23 +180,26 @@
     
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"addSalerDish"];
-    NSString *jsonString = [model yy_modelToJSONString];
+//    NSString *jsonString = [model yy_modelToJSONString];
 
-    
-    [requestDic setObject:model.salerid forKey:@"salerid"];
-    [requestDic setObject:model.dishimgs forKey:@"dishimgs"];
+    NSMutableDictionary *jsonDic = [NSMutableDictionary dictionary];
+    [jsonDic setObject:model.salerid forKey:@"salerid"];
+    [jsonDic setObject:model.dishimgs forKey:@"dishimgs"];
     if (model.carnumber) {
-        [requestDic setObject:model.carnumber forKey:@"carnumber"];
+        [jsonDic setObject:model.carnumber forKey:@"carnumber"];
     }
     if (model.addresssource) {
-        [requestDic setObject:model.addresssource forKey:@"addresssource"];
+        [jsonDic setObject:model.addresssource forKey:@"addresssource"];
     }
-    [requestDic setObject:model.cityid forKey:@"cityid"];
-    [requestDic setObject:model.cityname forKey:@"cityname"];
-    [requestDic setObject:model.dishamount forKey:@"dishamount"];
-    [requestDic setObject:model.dishname forKey:@"dishname"];
+    [jsonDic setObject:model.cityid forKey:@"cityid"];
+    [jsonDic setObject:model.cityname forKey:@"cityname"];
+    [jsonDic setObject:model.dishamount forKey:@"dishamount"];
+    [jsonDic setObject:model.dishname forKey:@"dishname"];
+    [jsonDic setObject:@"" forKey:@"dishid"];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
-//    [requestDic setObject:jsonString forKey:@"dish"];
+    [requestDic setObject:jsonString forKey:@"dish"];
     
     [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
         if (success) {

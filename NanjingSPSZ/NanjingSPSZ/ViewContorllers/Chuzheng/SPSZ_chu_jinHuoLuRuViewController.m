@@ -405,6 +405,7 @@ UIGestureRecognizerDelegate
 
     [ChuzhengNetworkTool addGoods:self.addGoods successBlock:^{
         [KRAlertTool alertString:@"添加成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
