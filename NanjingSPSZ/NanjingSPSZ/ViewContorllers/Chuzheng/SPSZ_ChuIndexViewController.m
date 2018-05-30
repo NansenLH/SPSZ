@@ -40,11 +40,6 @@
 #import "ChuzhengNetworkTool.h"
 
 @interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate>
-//@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, BluetoothDelegate>
-//{
-//    NSTimer* mytimer;
-//    UIActivityIndicatorView *activityView;
-//}
 
 @property (nonatomic, strong) SPSZ_IndexView *indexView;
 @property (nonatomic, strong) SPSZ_ChooseConnectView *chooseConnectView;
@@ -338,42 +333,6 @@
 
 
 #pragma mark - ======== Delegate ========
-
-
-//#pragma mark ---- 立即连接 ----
-//- (void)connectNow
-//{
-//    [PrinterWraper SetBlutoothDelegate:self];
-//    [PrinterWraper StartScanTimeout:10];
-//
-//    mytimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
-//    activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//
-//    activityView.center=self.view.center;
-//
-//    [activityView startAnimating];
-//
-//    [self.view addSubview:activityView];
-//}
-//
-//- (void)timeout
-//{
-//    [self stopScan];
-//    if (self.deviceArray.count == 0)
-//    {
-//        UIAlertView*alert=[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"没有扫描到打印机",@"") delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", @"") otherButtonTitles:nil, nil];
-//        [alert show];
-//    }
-//}
-//
-//-(void)stopScan
-//{
-//    [PrinterWraper StopScan];
-//    [activityView stopAnimating];
-//    [mytimer invalidate];
-//    mytimer=nil;
-//}
-
 - (void)connectNow
 {
     if (self.centralManager) {
@@ -457,6 +416,7 @@
         limitLength = [self.peripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
     }
 
+
     if (limitLength <= 0 || mainData.length <= limitLength) {
         [self.peripheral writeValue:mainData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
     }
@@ -475,58 +435,16 @@
 
     }
 
-
 }
 
 
 
-//#pragma mark bluetooth delegate
-//-(void)BlueToothOpen:(BOOL)isopen
-//{
-//    if (!isopen) {
-//        [self stopScan];
-//        [self.deviceArray removeAllObjects];
-//    }
-//}
-//
-//- (void)updateBluetoothDevice:(NSMutableArray*)devices;
-//{
-//    self.deviceArray = devices;
-//
-//    self.chooseConnectView.dataArray = devices;
-//    if (!self.isConnect) {
-//        [self.chooseConnectView showInView:self.navigationController.view];
-//    }
-//}
-//
-//- (void)didConnected:(NSString*)deviceUid Result:(BOOL)success
-//{
-//    if (success) {
-//        self.isConnect = YES;
-//    }
-//    else {
-//        NSLog(@"连接失败!");
-//    }
-//}
-//
-//- (void)finishPrint
-//{
-//    NSLog(@"打印完成!");
-//}
-
-
 #pragma mark ---- ChooseConnectViewDelegate ----
-//- (void)chooseDevice:(CBPeripheral *)device
-//{
-//    [PrinterWraper connectPrinter:device.identifier.UUIDString shouldreset:YES];
-//    [self.chooseConnectView hidden];
-//}
 - (void)chooseDevice:(CBPeripheral *)device
 {
     [self.centralManager connectPeripheral:device options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey:@(YES)}];
     [self.chooseConnectView hidden];
 }
-
 
 
 #pragma mark - ======== CBCentralManagerDelegate ========
@@ -636,12 +554,6 @@
         NSLog(@"写入成功");
     }
 }
-
-
-
-
-
-
 
 
 

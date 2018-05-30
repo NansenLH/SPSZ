@@ -221,4 +221,14 @@
     [textField resignFirstResponder];
     return true;
 }
+
+// 回收键盘
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    [self.passwordTextField resignFirstResponder];
+    [self.phoneNumberTextField resignFirstResponder];
+    
+    [self.view endEditing:YES];
+}
 @end

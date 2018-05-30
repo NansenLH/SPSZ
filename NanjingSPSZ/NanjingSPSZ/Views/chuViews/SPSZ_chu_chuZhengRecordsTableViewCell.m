@@ -59,7 +59,7 @@
     whiteView.backgroundColor = [UIColor whiteColor];
     [bgView addSubview:whiteView];
     
-    _danHaoLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 10, width - 20, 26)];
+    _danHaoLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 10, width - 6, 26)];
     [whiteView addSubview:self.danHaoLabel];
 }
 
@@ -67,8 +67,7 @@
 - (void)setModel:(SPSZ_chu_recordsModel *)model{
     _model = model;
     _timeLabel.text = model.printdate;
-    
-    
+
     [self.danHaoLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"出证单号:" string2:model.printcode]];
 }
 

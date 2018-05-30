@@ -203,12 +203,9 @@
 		6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD761620B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m */; };
 		CC2DA37C20BD244D002F5256 /* SPSZ_chu_recordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */; };
 		CC2DA37F20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */; };
-		CC2DA38220BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */; };
 		CC2DA38520BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */; };
-		CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */; };
 		CC2DA38C20BD52F3002F5256 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = CC2DA38920BD52F2002F5256 /* city.json */; };
 		CC2DA38D20BD52F3002F5256 /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38B20BD52F3002F5256 /* CityView.m */; };
-		CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */; };
 		CC2DA39320BD99E2002F5256 /* KRAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39220BD99E1002F5256 /* KRAccountTool.m */; };
 		CC2DA39620BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39520BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m */; };
 		CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */; };
@@ -251,10 +248,13 @@
 		CC930C4B20B56B1B00B99756 /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */; };
 		CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4D20B56B7300B99756 /* KRTagBar.m */; };
 		CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */; };
-		CCF0596A20BE9F9B0061E7BC /* SPSZ_shiBieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF0596920BE9F9B0061E7BC /* SPSZ_shiBieViewController.m */; };
 		E222151120BC4119006D4C5A /* MBProgressHUD+JDragon.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */; };
 		E222151220BC4119006D4C5A /* NSObject+TNAHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */; };
 		E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */; };
+		E288200520BEEB85002EE5E5 /* SYPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */; };
+		E288200620BEEB85002EE5E5 /* SYPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */; };
+		E288200B20BEEBD2002EE5E5 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */; };
+		E288200C20BEEBD2002EE5E5 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -675,17 +675,11 @@
 		CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_recordsModel.m; sourceTree = "<group>"; };
 		CC2DA37D20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_jinHuoModel.h; sourceTree = "<group>"; };
 		CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_jinHuoModel.m; sourceTree = "<group>"; };
-		CC2DA38020BD3FA5002F5256 /* SPSZ_addGoodsNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_addGoodsNetTool.h; sourceTree = "<group>"; };
-		CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_addGoodsNetTool.m; sourceTree = "<group>"; };
 		CC2DA38320BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_saoMaDetailModel.h; sourceTree = "<group>"; };
 		CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_saoMaDetailModel.m; sourceTree = "<group>"; };
-		CC2DA38620BD4EDB002F5256 /* SPSZ_PromptBoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_PromptBoxView.h; sourceTree = "<group>"; };
-		CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_PromptBoxView.m; sourceTree = "<group>"; };
 		CC2DA38920BD52F2002F5256 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		CC2DA38A20BD52F2002F5256 /* CityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityView.h; sourceTree = "<group>"; };
 		CC2DA38B20BD52F3002F5256 /* CityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityView.m; sourceTree = "<group>"; };
-		CC2DA38E20BD841E002F5256 /* SPSZ_FMDBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_FMDBTool.h; sourceTree = "<group>"; };
-		CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_FMDBTool.m; sourceTree = "<group>"; };
 		CC2DA39120BD99E1002F5256 /* KRAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRAccountTool.h; sourceTree = "<group>"; };
 		CC2DA39220BD99E1002F5256 /* KRAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAccountTool.m; sourceTree = "<group>"; };
 		CC2DA39420BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_SaoMaOrderCollectionViewCell.h; sourceTree = "<group>"; };
@@ -772,14 +766,20 @@
 		CC930C4D20B56B7300B99756 /* KRTagBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRTagBar.m; sourceTree = "<group>"; };
 		CC930C6020B5998200B99756 /* SPSZ_suo_personalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_personalCenterViewController.h; sourceTree = "<group>"; };
 		CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_personalCenterViewController.m; sourceTree = "<group>"; };
-		CCF0596820BE9F9B0061E7BC /* SPSZ_shiBieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_shiBieViewController.h; sourceTree = "<group>"; };
-		CCF0596920BE9F9B0061E7BC /* SPSZ_shiBieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_shiBieViewController.m; sourceTree = "<group>"; };
 		E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+JDragon.m"; sourceTree = "<group>"; };
 		E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TNAHUD.m"; sourceTree = "<group>"; };
 		E222150F20BC4118006D4C5A /* MBProgressHUD+JDragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+JDragon.h"; sourceTree = "<group>"; };
 		E222151020BC4119006D4C5A /* NSObject+TNAHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TNAHUD.h"; sourceTree = "<group>"; };
 		E222151320BDBCBE006D4C5A /* SPSZ_Help_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_Help_ViewController.h; sourceTree = "<group>"; };
 		E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_Help_ViewController.m; sourceTree = "<group>"; };
+		E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoViewController.m; sourceTree = "<group>"; };
+		E288200220BEEB85002EE5E5 /* SYPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoBrowser.h; sourceTree = "<group>"; };
+		E288200320BEEB85002EE5E5 /* SYPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoViewController.h; sourceTree = "<group>"; };
+		E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoBrowser.m; sourceTree = "<group>"; };
+		E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
+		E288200820BEEBD2002EE5E5 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
+		E288200920BEEBD2002EE5E5 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -945,8 +945,6 @@
 				CC89F3C320BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m */,
 				CC89F3DE20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.h */,
 				CC89F3DF20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m */,
-				CC2DA38020BD3FA5002F5256 /* SPSZ_addGoodsNetTool.h */,
-				CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -1120,14 +1118,10 @@
 		6ACB53DC20B00E9800528420 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CC2DA38E20BD841E002F5256 /* SPSZ_FMDBTool.h */,
-				CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */,
 				CC930C4C20B56B7300B99756 /* KRTagBar.h */,
 				CC930C4D20B56B7300B99756 /* KRTagBar.m */,
 				6ACB554D20B016E700528420 /* UICreateTool.h */,
 				6ACB554C20B016E700528420 /* UICreateTool.m */,
-				CC2DA38620BD4EDB002F5256 /* SPSZ_PromptBoxView.h */,
-				CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */,
 				CC2DA39120BD99E1002F5256 /* KRAccountTool.h */,
 				CC2DA39220BD99E1002F5256 /* KRAccountTool.m */,
 				6A6BACF220B85A63008A428F /* AlertTool */,
@@ -1141,6 +1135,7 @@
 		6ACB53DD20B00E9800528420 /* ThirdParts */ = {
 			isa = PBXGroup;
 			children = (
+				E288200020BEEB85002EE5E5 /* SYPhotoBrowser */,
 				6A494E7420BDB4BC00D13159 /* BLEPrinter */,
 				6A143B9520BAE73300D71959 /* AddressPickerView */,
 				6A143B9120BAE66D00D71959 /* 时间选择器 */,
@@ -1173,12 +1168,12 @@
 		6ACB53DF20B00F8200528420 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				6ACB53E120B00F8200528420 /* MBProgressHUD.h */,
 				6ACB53E020B00F8200528420 /* MBProgressHUD.m */,
 				E222150F20BC4118006D4C5A /* MBProgressHUD+JDragon.h */,
 				E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */,
 				E222151020BC4119006D4C5A /* NSObject+TNAHUD.h */,
 				E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */,
-				6ACB53E120B00F8200528420 /* MBProgressHUD.h */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -1584,8 +1579,6 @@
 				CC930C2F20B56B0600B99756 /* SPSZ_saoMa_OrderViewController.m */,
 				CC930C3920B56B0700B99756 /* SPSZ_saoMa_ViewController.h */,
 				CC930C3120B56B0600B99756 /* SPSZ_saoMa_ViewController.m */,
-				CCF0596820BE9F9B0061E7BC /* SPSZ_shiBieViewController.h */,
-				CCF0596920BE9F9B0061E7BC /* SPSZ_shiBieViewController.m */,
 				CC930C3620B56B0700B99756 /* SPSZ_shouDong_OrderViewController.h */,
 				CC930C3820B56B0700B99756 /* SPSZ_shouDong_OrderViewController.m */,
 				CC930C3420B56B0600B99756 /* SPSZ_shouDongViewController.h */,
@@ -1743,6 +1736,22 @@
 			path = suoViews;
 			sourceTree = "<group>";
 		};
+		E288200020BEEB85002EE5E5 /* SYPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				E288200920BEEBD2002EE5E5 /* DACircularProgressView.h */,
+				E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */,
+				E288200820BEEBD2002EE5E5 /* DALabeledCircularProgressView.h */,
+				E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */,
+				E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */,
+				E288200220BEEB85002EE5E5 /* SYPhotoBrowser.h */,
+				E288200320BEEB85002EE5E5 /* SYPhotoViewController.h */,
+				E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */,
+			);
+			name = SYPhotoBrowser;
+			path = ../../../../../../Downloads/SYPhotoBrowser/SYPhotoBrowser/SYPhotoBrowser;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1884,7 +1893,6 @@
 				6A6BACD020B85013008A428F /* (null) in Sources */,
 				E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */,
 				6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */,
-				CCF0596A20BE9F9B0061E7BC /* SPSZ_shiBieViewController.m in Sources */,
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
 				6ACB54D020B0110000528420 /* MJRefreshComponent.m in Sources */,
 				CC89F3D120BBDDB600FCEBD2 /* SPSZ_chu_chuZhengRecordsViewController.m in Sources */,
@@ -1930,6 +1938,7 @@
 				6A143B8720BAE65C00D71959 /* NSDate+PGCategory.m in Sources */,
 				CC89F35920BA839F00FCEBD2 /* ProgramSize.m in Sources */,
 				6ACB54FF20B011D500528420 /* UIWebView+AFNetworking.m in Sources */,
+				E288200620BEEB85002EE5E5 /* SYPhotoBrowser.m in Sources */,
 				6A143BA120BAE73300D71959 /* UIButton+CZHExtension.m in Sources */,
 				6ACB547F20B00FA500528420 /* YYTextRunDelegate.m in Sources */,
 				6ACB543520B00F9A00528420 /* NSData+ImageContentType.m in Sources */,
@@ -1968,7 +1977,6 @@
 				6ABE9B9720BED23000EFB505 /* KRScanBaseController.m in Sources */,
 				6A143BA920BB105100D71959 /* SPSZ_SelectedTableViewCell.m in Sources */,
 				6A6BAD0720BA51BB008A428F /* UIView+HYBImageCliped.m in Sources */,
-				CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */,
 				6ACB554820B016A300528420 /* KRAlertTool.m in Sources */,
 				6ACB54C320B0110000528420 /* MJRefreshBackGifFooter.m in Sources */,
 				6ACB542B20B00F9A00528420 /* SDWebImageManager.m in Sources */,
@@ -1981,6 +1989,7 @@
 				CC930C4220B56B0800B99756 /* SPSZ_shouDong_OrderViewController.m in Sources */,
 				CC930C3F20B56B0800B99756 /* SPSZ_saoMa_ViewController.m in Sources */,
 				6ACB548D20B00FA500528420 /* YYClassInfo.m in Sources */,
+				E288200C20BEEBD2002EE5E5 /* DACircularProgressView.m in Sources */,
 				6ACB554B20B016B400528420 /* LUAlertTool.m in Sources */,
 				6ACB54FC20B011D500528420 /* UIImageView+AFNetworking.m in Sources */,
 				CC89F3C820BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m in Sources */,
@@ -2026,9 +2035,10 @@
 				6ACB54D420B0118900528420 /* UIView+Extension.m in Sources */,
 				6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */,
 				6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */,
+				E288200B20BEEBD2002EE5E5 /* DALabeledCircularProgressView.m in Sources */,
+				E288200520BEEB85002EE5E5 /* SYPhotoViewController.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
-				CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
 				CC930C3E20B56B0800B99756 /* SPSZ_paiZhao_OrderViewController.m in Sources */,
 				6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */,
@@ -2044,7 +2054,6 @@
 				CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */,
 				6A494E7E20BDB4BC00D13159 /* HLPrinter.m in Sources */,
 				6ACB540320B00F8C00528420 /* View+MASAdditions.m in Sources */,
-				CC2DA38220BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m in Sources */,
 				6ACB54CA20B0110000528420 /* MJRefreshStateHeader.m in Sources */,
 				6ACB550420B011D500528420 /* AFURLSessionManager.m in Sources */,
 				CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */,
@@ -2260,7 +2269,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
+				DEVELOPMENT_TEAM = PY4TVE6987;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2273,7 +2282,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2288,7 +2297,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
+				DEVELOPMENT_TEAM = PY4TVE6987;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2301,7 +2310,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

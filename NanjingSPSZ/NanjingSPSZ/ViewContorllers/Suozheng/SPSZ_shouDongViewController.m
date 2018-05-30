@@ -14,14 +14,17 @@
 #import "PGDatePickManager.h"
 
 #import "CityView.h"
-
-#import "SPSZ_addGoodsNetTool.h"
+#import "SPSZ_EditWightView.h"
 
 #import "SPSZ_suo_orderNetTool.h"
 
 #import "KRAccountTool.h"
 
 #import "SPSZ_suoLoginModel.h"
+
+#import "SPSZ_suo_saoMaDetailModel.h"
+
+
 
 @interface SPSZ_shouDongViewController ()<UITextFieldDelegate,PGDatePickerDelegate>
 
@@ -33,7 +36,8 @@
 
 @property (nonatomic, strong)UITextField *detailLocationTextField;
 
-@property (nonatomic, strong)UITextField *numberTextField;
+//@property (nonatomic, strong)UITextField *numberTextField;
+@property (nonatomic, strong)UIButton *numberButton;
 
 @property (nonatomic, strong)UITextField *companyTextField;
 
@@ -50,14 +54,33 @@
 @property (nonatomic, strong)NSMutableArray *titleArray;
 
 @property (nonatomic, strong)CityView *cityView;
+@property (nonatomic, strong)SPSZ_EditWightView *editWeightView;
 
 @property (nonatomic, strong) UITextField *nowEditTF;
+
 @property (nonatomic, strong)NSString *locationString;
 
+@property (nonatomic, strong)NSString *amount;
 @end
 
 @implementation SPSZ_shouDongViewController
 
+
+- (SPSZ_EditWightView *)editWeightView
+{
+    if (!_editWeightView) {
+        _editWeightView = [[SPSZ_EditWightView alloc] init];
+        KRWeakSelf;
+        [_editWeightView setChooseWeightBlock:^(NSString *weight, NSString *unit) {
+//            weakSelf.addGoods.dishamount = weight;
+//            weakSelf.addGoods.unit = unit;
+            weakSelf.amount = [NSString stringWithFormat:@"%@%@",weight,unit];
+            [weakSelf.numberButton setTitle:[NSString stringWithFormat:@"%@%@", weight, unit] forState:UIControlStateNormal];
+            [weakSelf.numberButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }];
+    }
+    return _editWeightView;
+}
 
 - (NSMutableArray *)titleArray{
     if (!_titleArray) {
@@ -102,18 +125,32 @@
     return _detailLocationTextField;
 }
 
-- (UITextField *)numberTextField{
-    if (!_numberTextField) {
-        _numberTextField = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, _width - 140 -10, _height)];
-        _numberTextField.delegate = self;
-        _numberTextField.keyboardType = UIKeyboardTypePhonePad;
-        _numberTextField.tintColor = [UIColor redColor];
-        _numberTextField.textAlignment = NSTextAlignmentRight;
-        _numberTextField.placeholder = @"请输入";
+//- (UITextField *)numberTextField{
+//    if (!_numberTextField) {
+//        _numberTextField = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, _width - 140 -10, _height)];
+//        _numberTextField.delegate = self;
+//        _numberTextField.keyboardType = UIKeyboardTypePhonePad;
+//        _numberTextField.tintColor = [UIColor redColor];
+//        _numberTextField.textAlignment = NSTextAlignmentRight;
+//        _numberTextField.placeholder = @"请输入";
+//    }
+//    return _numberTextField;
+//}
+- (UIButton *)numberButton
+{
+    if (!_numberButton) {
+        _numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _numberButton.frame = CGRectMake(140, 0, _width - 150, _height);
+        _numberButton.backgroundColor = [UIColor redColor];
+        [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
+        [_numberButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        _numberButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _numberButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        _numberButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
+        [_numberButton addTarget:self action:@selector(editNumber:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _numberTextField;
+    return _numberButton;
 }
-
 - (UITextField *)companyTextField{
     if (!_companyTextField) {
         _companyTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 0, _width - 110 -10, _height)];
@@ -129,7 +166,6 @@
     if (!_nameTextField) {
         _nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(130, 0, _width - 130 -10, _height)];
         _nameTextField.delegate = self;
-        _nameTextField.tintColor = [UIColor redColor];
         _nameTextField.textAlignment = NSTextAlignmentRight;
         _nameTextField.placeholder = @"请输入";
     }
@@ -176,7 +212,7 @@
 
 - (UIView *)mainView{
     if (!_mainView) {
-        _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight -264)];
+        _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight -264-[ProgramSize bottomHeight])];
         _mainView.backgroundColor = [UIColor whiteColor];
     }
     return _mainView;
@@ -186,7 +222,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.height = (MainScreenHeight -264)/8;
+    self.height = (MainScreenHeight -264 - [ProgramSize bottomHeight])/8;
     self.width = MainScreenWidth - 60;
     
     [self.view addSubview:self.mainView];
@@ -213,7 +249,7 @@
     [self setUpViewWith:0 textfield:self.productNameTextField button:nil];
     [self setUpViewWith:1 textfield:nil button:self.productLocationButton];
     [self setUpViewWith:2 textfield:self.detailLocationTextField button:nil];
-    [self setUpViewWith:3 textfield:self.numberTextField button:nil];
+    [self setUpViewWith:3 textfield:nil button:self.numberButton];
     [self setUpViewWith:4 textfield:self.companyTextField button:nil];
     [self setUpViewWith:5 textfield:self.nameTextField button:nil];
     [self setUpViewWith:6 textfield:self.phoneTextField button:nil];
@@ -223,15 +259,19 @@
 
 - (void)setUpViewWith:(NSInteger)number textfield:(UITextField *)textfield button:(UIButton *)button{
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, _height*number, _width, _height)];
-    if (number == 1 || number == 7) {
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, _height)];
+    CGFloat w = 100;
+
+    if (number == 1 || number == 7 || number == 3) {
+        if (number == 3) {
+            w = 140;
+        }
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
         label.textColor = [UIColor redColor];
         [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"    " string2:self.titleArray[number]]];
         [view addSubview:label];
         [view addSubview:button];
     }else{
-        CGFloat w = 100;
-        if (number == 3 || number == 5) {
+        if (number == 5) {
             w = 140;
         }
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
@@ -252,16 +292,6 @@
 - (void)productLocationButtonAction:(UIButton *)button{
     [self huishoujianpan];
     [self.cityView showCityListViewInView:self.navigationController.view];
-
-    
-//    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
-//        KRWeakSelf;
-//        weakSelf.province = province;
-//        weakSelf.city = city;
-//        weakSelf.area = area;
-//        [button setTitle:[NSString stringWithFormat:@"%@%@%@",province,city,area] forState:UIControlStateNormal];
-//    }];
-
 }
 
 
@@ -296,26 +326,25 @@
     //需要设置的位置
     [noteStr addAttribute:NSForegroundColorAttributeName value:secondColor range:redRange];
     return noteStr;
-    
 }
 
 
 - (void)reloadNewData{
     _productNameTextField.text = @"";
     _detailLocationTextField.text = @"";
-    _numberTextField.text = @"";
     _companyTextField.text = @"";
     _nameTextField.text = @"";
     _phoneTextField.text = @"";
     [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
     [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
+    [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
+
 }
 
 - (void)sureUpload{
     
-    SPSZ_suoLoginModel *model =  [KRAccountTool getSuoUserInfo];
 
-    if (!_phoneTextField.text) {
+    if (!_productNameTextField.text.length) {
         [KRAlertTool alertString:@"请填写产品名称!"];
         return;
     }
@@ -324,21 +353,21 @@
         return;
     }
     
-    if (!_numberTextField.text) {
+    if (!self.amount.length) {
         [KRAlertTool alertString:@"请输入数量/重量!"];
         return;
     }
     
-    if (!_companyTextField.text) {
+    if (!_companyTextField.text.length) {
         [KRAlertTool alertString:@"请填写供货单位!"];
         return;
     }
     
-    if (!_nameTextField.text) {
+    if (!_nameTextField.text.length) {
         [KRAlertTool alertString:@"请填写批发商姓名!"];
         return;
     }
-    if (!_phoneTextField.text) {
+    if (!_phoneTextField.text.length) {
         [KRAlertTool alertString:@"请填写联系电话"];
         return;
     }
@@ -346,17 +375,39 @@
         [KRAlertTool alertString:@"请选择发货时间！"];
         return;
     }
+ 
+    SPSZ_suo_shouDongRecordModel *shouDongModel = [[SPSZ_suo_shouDongRecordModel alloc]init];
+    shouDongModel.mobile = self.phoneTextField.text;
+    shouDongModel.companyname = self.companyTextField.text;
+    shouDongModel.realname = self.nameTextField.text;
+    shouDongModel.address = self.detailLocationTextField.text;
     
-
-    [SPSZ_suo_orderNetTool addJinHuoShouDongWithUserId:model.stall_id amount:_numberTextField.text unit:_companyTextField.text successBlock:^{
+    SPSZ_suo_saoMaDetailModel *detailModel = [[SPSZ_suo_saoMaDetailModel alloc]init];
+    detailModel.amount = self.amount;
+    detailModel.addresssource = self.detailLocationTextField.text;
+    detailModel.cityname = self.locationString;
+    detailModel.dishid = @" ";
+    detailModel.objectName = self.productNameTextField.text;
+    
+    
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:detailModel];
+    shouDongModel.dishes = array;
+    
+    [SPSZ_suo_orderNetTool shangChuanWith:@"2" model:shouDongModel successBlock:^(NSString *string) {
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         
     } failureBlock:^(NSString *failure) {
         
     }];
-
 }
+
+- (void)editNumber:(UIButton *)button
+{
+    [self.editWeightView show];
+}
+
 
 
 // 回收键盘
@@ -375,7 +426,7 @@
 
 //时时获取输入框输入的新内容   return NO：输入内容清空   return YES：输入内容不清空， string 输入内容 ，range输入的范围
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if ([textField isEqual:self.numberTextField] || [textField isEqual:self.phoneTextField]) {
+    if ([textField isEqual:self.phoneTextField]) {
         if ([string isEqualToString:@""]) {
             return YES;
         }
@@ -392,18 +443,6 @@
 }
 
 
-
-//- (void)tiShiKuangWithString:(NSString *)string
-//{
-//    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"%@不能为空!",string] preferredStyle:UIAlertControllerStyleAlert];
-//
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//    }];
-//
-//    [actionSheetController addAction:okAction];
-//
-//    [self presentViewController:actionSheetController animated:YES completion:nil];
-//}
 
 - (NSArray *)readLocalFileWithName:(NSString *)name {
     // 获取文件路径
@@ -424,7 +463,6 @@
 {
     [self.productNameTextField resignFirstResponder];
     [self.detailLocationTextField resignFirstResponder];
-    [self.numberTextField resignFirstResponder];
     [self.companyTextField resignFirstResponder];
     [self.nameTextField resignFirstResponder];
     [self.phoneTextField resignFirstResponder];
@@ -441,7 +479,7 @@
     CGFloat kbHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     
     //计算出键盘顶端到inputTextView panel底端的距离(加上自定义的缓冲距离INTERVAL_KEYBOARD)
-    CGFloat offset = (self.nowEditTF.frame.origin.y+self.nowEditTF.frame.size.height+50) - (self.view.frame.size.height - kbHeight);
+    CGFloat offset = (self.nowEditTF.frame.origin.y+self.nowEditTF.frame.size.height+50) - (self.view.frame.size.height - kbHeight) - 20;
     
     // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
     double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];

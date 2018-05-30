@@ -133,7 +133,7 @@
             make.left.equalTo(x);
             make.width.equalTo(w);
             make.top.equalTo(0);
-            make.height.equalTo(MainScreenHeight - 104);
+            make.height.equalTo(MainScreenHeight - 104 - [ProgramSize bottomHeight]);
         }];
     }
     

@@ -24,6 +24,9 @@
 
 @property (nonatomic, strong)SPSZ_ShowTicketView *showView;
 
+
+@property (nonatomic, strong)SPSZ_suo_shouDongRecordModel *model;
+
 @end
 
 @implementation SPSZ_saoMa_ViewController
@@ -31,7 +34,7 @@
 - (UIImageView *)mainImageView{
     if (!_mainImageView) {
         _mainImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"retailer_scan"]];
-        _mainImageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264);
+        _mainImageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264-[ProgramSize bottomHeight]);
         _mainImageView.userInteractionEnabled = YES;
     }
     return _mainImageView;
@@ -42,7 +45,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor   = [ UIColor clearColor];
 
-    UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236)];
+    UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236-[ProgramSize bottomHeight])];
     [yy addSubview:self.mainImageView];
     
     [self.view addSubview:yy];
@@ -85,6 +88,8 @@
     }];
     [SPSZ_suo_orderNetTool getDaYinDataWithPrintcode:qrString successBlock:^(SPSZ_suo_shouDongRecordModel *model) {
         showView.model = model;
+        self.model = model;
+        [self sureUpload];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         
     } failureBlock:^(NSString *failure) {
@@ -102,7 +107,13 @@
 
 - (void)sureUpload
 {
-    
+    [SPSZ_suo_orderNetTool shangChuanWith:@"0" model:self.model successBlock:^(NSString *string) {
+        
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        
+    } failureBlock:^(NSString *failure) {
+        
+    }];
 }
 
 - (void)takePhoto

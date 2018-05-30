@@ -44,11 +44,11 @@
     if (!_collectionView) {
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - 64);
+        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - 64-[ProgramSize bottomHeight]);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         flowLayout.minimumLineSpacing = 20;
         
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64-[ProgramSize bottomHeight]) collectionViewLayout:flowLayout];
         // 设置代理
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -64,15 +64,15 @@
         _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
         _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, (MainScreenWidth - 30)/2 +80,60)];
         _leftLabel.font = [UIFont systemFontOfSize:25];
+ 
         _leftLabel.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
-        _leftLabel.text = [NSString stringWithFormat:@"%@进货订单",self.timeString];
+ 
         [_topView addSubview:self.leftLabel];
         
         _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(15 + (MainScreenWidth - 30)/2 +80, 0, (MainScreenWidth - 30)/2-80,60)];
         _rightLabel.font = [UIFont systemFontOfSize:25];
         _rightLabel.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
         _rightLabel.textAlignment = NSTextAlignmentRight;
-        _rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
         [_topView addSubview:self.rightLabel];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 59, MainScreenWidth - 30, 1)];
@@ -88,7 +88,7 @@
                                                        percentage:@[@(1), @(0)]
                                                      gradientType:GradientFromTopToBottom];
     
-    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight)];
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight-[ProgramSize bottomHeight])];
     [self.view addSubview:self.imageView];
     [self.imageView setImage:naviBackImage];
     
