@@ -21,6 +21,9 @@
 
 @property (nonatomic, strong)SPSZ_ShowTicketView *showView;
 
+
+@property (nonatomic, strong)SPSZ_suo_shouDongRecordModel *model;
+
 @end
 
 @implementation SPSZ_saoMa_ViewController
@@ -70,6 +73,8 @@
     }];
     [SPSZ_suo_orderNetTool getDaYinDataWithPrintcode:@"10012949758109081600" successBlock:^(SPSZ_suo_shouDongRecordModel *model) {
         showView.model = model;
+        self.model = model;
+        [self sureUpload];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         
     } failureBlock:^(NSString *failure) {
@@ -86,7 +91,13 @@
 
 - (void)sureUpload
 {
-    
+    [SPSZ_suo_orderNetTool shangChuanWith:@"0" model:self.model successBlock:^(NSString *string) {
+        
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        
+    } failureBlock:^(NSString *failure) {
+        
+    }];
 }
 
 - (void)takePhoto

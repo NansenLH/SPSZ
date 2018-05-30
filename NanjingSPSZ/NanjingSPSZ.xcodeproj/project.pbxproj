@@ -203,12 +203,9 @@
 		6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD761620B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m */; };
 		CC2DA37C20BD244D002F5256 /* SPSZ_chu_recordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */; };
 		CC2DA37F20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */; };
-		CC2DA38220BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */; };
 		CC2DA38520BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */; };
-		CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */; };
 		CC2DA38C20BD52F3002F5256 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = CC2DA38920BD52F2002F5256 /* city.json */; };
 		CC2DA38D20BD52F3002F5256 /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38B20BD52F3002F5256 /* CityView.m */; };
-		CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */; };
 		CC2DA39320BD99E2002F5256 /* KRAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39220BD99E1002F5256 /* KRAccountTool.m */; };
 		CC2DA39620BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39520BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m */; };
 		CC79647920B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC79647820B2ECFF00D695F7 /* SPSZ_chu_RecordViewController.m */; };
@@ -675,17 +672,11 @@
 		CC2DA37B20BD244D002F5256 /* SPSZ_chu_recordsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_recordsModel.m; sourceTree = "<group>"; };
 		CC2DA37D20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_jinHuoModel.h; sourceTree = "<group>"; };
 		CC2DA37E20BD2AEA002F5256 /* SPSZ_chu_jinHuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_jinHuoModel.m; sourceTree = "<group>"; };
-		CC2DA38020BD3FA5002F5256 /* SPSZ_addGoodsNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_addGoodsNetTool.h; sourceTree = "<group>"; };
-		CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_addGoodsNetTool.m; sourceTree = "<group>"; };
 		CC2DA38320BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_saoMaDetailModel.h; sourceTree = "<group>"; };
 		CC2DA38420BD424A002F5256 /* SPSZ_suo_saoMaDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_saoMaDetailModel.m; sourceTree = "<group>"; };
-		CC2DA38620BD4EDB002F5256 /* SPSZ_PromptBoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_PromptBoxView.h; sourceTree = "<group>"; };
-		CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_PromptBoxView.m; sourceTree = "<group>"; };
 		CC2DA38920BD52F2002F5256 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		CC2DA38A20BD52F2002F5256 /* CityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityView.h; sourceTree = "<group>"; };
 		CC2DA38B20BD52F3002F5256 /* CityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityView.m; sourceTree = "<group>"; };
-		CC2DA38E20BD841E002F5256 /* SPSZ_FMDBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_FMDBTool.h; sourceTree = "<group>"; };
-		CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_FMDBTool.m; sourceTree = "<group>"; };
 		CC2DA39120BD99E1002F5256 /* KRAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRAccountTool.h; sourceTree = "<group>"; };
 		CC2DA39220BD99E1002F5256 /* KRAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAccountTool.m; sourceTree = "<group>"; };
 		CC2DA39420BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_SaoMaOrderCollectionViewCell.h; sourceTree = "<group>"; };
@@ -956,8 +947,6 @@
 				CC89F3C320BAD8EA00FCEBD2 /* SPSZ_LoginNetTool.m */,
 				CC89F3DE20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.h */,
 				CC89F3DF20BC503400FCEBD2 /* SPSZ_suo_orderNetTool.m */,
-				CC2DA38020BD3FA5002F5256 /* SPSZ_addGoodsNetTool.h */,
-				CC2DA38120BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -1126,14 +1115,10 @@
 		6ACB53DC20B00E9800528420 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CC2DA38E20BD841E002F5256 /* SPSZ_FMDBTool.h */,
-				CC2DA38F20BD841E002F5256 /* SPSZ_FMDBTool.m */,
 				CC930C4C20B56B7300B99756 /* KRTagBar.h */,
 				CC930C4D20B56B7300B99756 /* KRTagBar.m */,
 				6ACB554D20B016E700528420 /* UICreateTool.h */,
 				6ACB554C20B016E700528420 /* UICreateTool.m */,
-				CC2DA38620BD4EDB002F5256 /* SPSZ_PromptBoxView.h */,
-				CC2DA38720BD4EDB002F5256 /* SPSZ_PromptBoxView.m */,
 				CC2DA39120BD99E1002F5256 /* KRAccountTool.h */,
 				CC2DA39220BD99E1002F5256 /* KRAccountTool.m */,
 				6A6BACF220B85A63008A428F /* AlertTool */,
@@ -1971,7 +1956,6 @@
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
 				6A143BA920BB105100D71959 /* SPSZ_SelectedTableViewCell.m in Sources */,
 				6A6BAD0720BA51BB008A428F /* UIView+HYBImageCliped.m in Sources */,
-				CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */,
 				6ACB554820B016A300528420 /* KRAlertTool.m in Sources */,
 				6ACB54C320B0110000528420 /* MJRefreshBackGifFooter.m in Sources */,
 				6ACB542B20B00F9A00528420 /* SDWebImageManager.m in Sources */,
@@ -2031,7 +2015,6 @@
 				6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
-				CC2DA38820BD4EDB002F5256 /* SPSZ_PromptBoxView.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
 				CC930C3E20B56B0800B99756 /* SPSZ_paiZhao_OrderViewController.m in Sources */,
 				6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */,
@@ -2047,7 +2030,6 @@
 				CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */,
 				6A494E7E20BDB4BC00D13159 /* HLPrinter.m in Sources */,
 				6ACB540320B00F8C00528420 /* View+MASAdditions.m in Sources */,
-				CC2DA38220BD3FA5002F5256 /* SPSZ_addGoodsNetTool.m in Sources */,
 				6ACB54CA20B0110000528420 /* MJRefreshStateHeader.m in Sources */,
 				6ACB550420B011D500528420 /* AFURLSessionManager.m in Sources */,
 				CC930C4020B56B0800B99756 /* SPSZ_suo_MainViewController.m in Sources */,

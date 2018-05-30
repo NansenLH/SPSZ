@@ -152,7 +152,7 @@
         
         if (success) {
             if ([result[@"respCode"] integerValue] == 1000000) {
-                NSDictionary *dic = result[@"result"];
+                 // NSDictionary *dic = result[@"result"];
 //                SPSZ_suoLoginModel *model = [SPSZ_suoLoginModel yy_modelWithDictionary:dic];
                 
                 if (successBlcok) {

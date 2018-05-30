@@ -15,13 +15,15 @@
 
 #import "CityView.h"
 
-#import "SPSZ_addGoodsNetTool.h"
-
 #import "SPSZ_suo_orderNetTool.h"
 
 #import "KRAccountTool.h"
 
 #import "SPSZ_suoLoginModel.h"
+
+#import "SPSZ_suo_saoMaDetailModel.h"
+
+
 
 @interface SPSZ_shouDongViewController ()<UITextFieldDelegate,PGDatePickerDelegate>
 
@@ -293,7 +295,6 @@
 
 - (void)sureUpload{
     
-    SPSZ_suoLoginModel *model =  [KRAccountTool getSuoUserInfo];
 
     if (!_phoneTextField.text) {
         [KRAlertTool alertString:@"请填写产品名称!"];
@@ -326,15 +327,33 @@
         [KRAlertTool alertString:@"请选择发货时间！"];
         return;
     }
+ 
+    SPSZ_suo_shouDongRecordModel *shouDongModel = [[SPSZ_suo_shouDongRecordModel alloc]init];
+    shouDongModel.mobile = self.phoneTextField.text;
+    shouDongModel.companyname = self.companyTextField.text;
+    shouDongModel.realname = self.nameTextField.text;
+    shouDongModel.address = self.detailLocationTextField.text;
     
-
-    [SPSZ_suo_orderNetTool addJinHuoShouDongWithUserId:model.stall_id amount:_numberTextField.text unit:_companyTextField.text successBlock:^{
+    SPSZ_suo_saoMaDetailModel *detailModel = [[SPSZ_suo_saoMaDetailModel alloc]init];
+    detailModel.amount = self.numberTextField.text;
+    detailModel.addresssource = self.detailLocationTextField.text;
+    detailModel.cityname = self.locationString;
+    detailModel.dishid = @" ";
+    detailModel.objectName = self.productNameTextField.text;
+    
+    
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:detailModel];
+    shouDongModel.dishes = array;
+    
+    [SPSZ_suo_orderNetTool shangChuanWith:@"2" model:shouDongModel successBlock:^(NSString *string) {
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         
     } failureBlock:^(NSString *failure) {
         
     }];
+
 
 }
 
@@ -372,18 +391,6 @@
 }
 
 
-
-//- (void)tiShiKuangWithString:(NSString *)string
-//{
-//    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"%@不能为空!",string] preferredStyle:UIAlertControllerStyleAlert];
-//
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//    }];
-//
-//    [actionSheetController addAction:okAction];
-//
-//    [self presentViewController:actionSheetController animated:YES completion:nil];
-//}
 
 - (NSArray *)readLocalFileWithName:(NSString *)name {
     // 获取文件路径
