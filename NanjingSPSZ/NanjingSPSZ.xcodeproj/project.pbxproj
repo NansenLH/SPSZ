@@ -251,6 +251,7 @@
 		CC930C4B20B56B1B00B99756 /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */; };
 		CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4D20B56B7300B99756 /* KRTagBar.m */; };
 		CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */; };
+		CCF0596A20BE9F9B0061E7BC /* SPSZ_shiBieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF0596920BE9F9B0061E7BC /* SPSZ_shiBieViewController.m */; };
 		E222151120BC4119006D4C5A /* MBProgressHUD+JDragon.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */; };
 		E222151220BC4119006D4C5A /* NSObject+TNAHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */; };
 /* End PBXBuildFile section */
@@ -771,6 +772,8 @@
 		CC930C4D20B56B7300B99756 /* KRTagBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRTagBar.m; sourceTree = "<group>"; };
 		CC930C6020B5998200B99756 /* SPSZ_suo_personalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_personalCenterViewController.h; sourceTree = "<group>"; };
 		CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_personalCenterViewController.m; sourceTree = "<group>"; };
+		CCF0596820BE9F9B0061E7BC /* SPSZ_shiBieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_shiBieViewController.h; sourceTree = "<group>"; };
+		CCF0596920BE9F9B0061E7BC /* SPSZ_shiBieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_shiBieViewController.m; sourceTree = "<group>"; };
 		E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+JDragon.m"; sourceTree = "<group>"; };
 		E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TNAHUD.m"; sourceTree = "<group>"; };
 		E222150F20BC4118006D4C5A /* MBProgressHUD+JDragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+JDragon.h"; sourceTree = "<group>"; };
@@ -1587,6 +1590,8 @@
 				CC930C2F20B56B0600B99756 /* SPSZ_saoMa_OrderViewController.m */,
 				CC930C3920B56B0700B99756 /* SPSZ_saoMa_ViewController.h */,
 				CC930C3120B56B0600B99756 /* SPSZ_saoMa_ViewController.m */,
+				CCF0596820BE9F9B0061E7BC /* SPSZ_shiBieViewController.h */,
+				CCF0596920BE9F9B0061E7BC /* SPSZ_shiBieViewController.m */,
 				CC930C3620B56B0700B99756 /* SPSZ_shouDong_OrderViewController.h */,
 				CC930C3820B56B0700B99756 /* SPSZ_shouDong_OrderViewController.m */,
 				CC930C3420B56B0600B99756 /* SPSZ_shouDongViewController.h */,
@@ -1884,6 +1889,7 @@
 				6A143BA220BAE7F400D71959 /* ChuzhengNetworkTool.m in Sources */,
 				6A6BACD020B85013008A428F /* (null) in Sources */,
 				6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */,
+				CCF0596A20BE9F9B0061E7BC /* SPSZ_shiBieViewController.m in Sources */,
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
 				6ACB54D020B0110000528420 /* MJRefreshComponent.m in Sources */,
 				CC89F3D120BBDDB600FCEBD2 /* SPSZ_chu_chuZhengRecordsViewController.m in Sources */,

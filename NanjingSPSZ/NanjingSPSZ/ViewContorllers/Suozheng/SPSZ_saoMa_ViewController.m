@@ -66,7 +66,7 @@
         make.top.equalTo(0);
         make.left.equalTo(0);
         make.right.equalTo(0);
-        make.bottom.equalTo(0);
+        make.bottom.equalTo(20);
     }];
     [SPSZ_suo_orderNetTool getDaYinDataWithPrintcode:@"10012949758109081600" successBlock:^(SPSZ_suo_shouDongRecordModel *model) {
         showView.model = model;
