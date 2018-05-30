@@ -247,6 +247,7 @@
 		CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */; };
 		E222151120BC4119006D4C5A /* MBProgressHUD+JDragon.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */; };
 		E222151220BC4119006D4C5A /* NSObject+TNAHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */; };
+		E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -756,6 +757,8 @@
 		E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TNAHUD.m"; sourceTree = "<group>"; };
 		E222150F20BC4118006D4C5A /* MBProgressHUD+JDragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+JDragon.h"; sourceTree = "<group>"; };
 		E222151020BC4119006D4C5A /* NSObject+TNAHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TNAHUD.h"; sourceTree = "<group>"; };
+		E222151320BDBCBE006D4C5A /* SPSZ_Help_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_Help_ViewController.h; sourceTree = "<group>"; };
+		E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_Help_ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1081,6 +1084,8 @@
 				6ACB553F20B0132C00528420 /* Suozheng */,
 				CC89F34520B6E06500FCEBD2 /* SPSZ_personalInfoViewController.h */,
 				CC89F34620B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m */,
+				E222151320BDBCBE006D4C5A /* SPSZ_Help_ViewController.h */,
+				E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */,
 			);
 			path = ViewContorllers;
 			sourceTree = "<group>";
@@ -1842,6 +1847,7 @@
 				6A143BA320BAE81B00D71959 /* SPSZ_GoodsModel.m in Sources */,
 				6A143BA220BAE7F400D71959 /* ChuzhengNetworkTool.m in Sources */,
 				6A6BACD020B85013008A428F /* (null) in Sources */,
+				E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */,
 				6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */,
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
 				6ACB54D020B0110000528420 /* MJRefreshComponent.m in Sources */,
@@ -2220,8 +2226,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanzi He (AXF6779FDV)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2236,6 +2244,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d9cc378c-2fca-44e8-b5c1-e2c50ccd6fdb";
+				PROVISIONING_PROFILE_SPECIFIER = sodo_common1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2244,8 +2254,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanzi He (AXF6779FDV)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2260,6 +2272,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d9cc378c-2fca-44e8-b5c1-e2c50ccd6fdb";
+				PROVISIONING_PROFILE_SPECIFIER = sodo_common1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
