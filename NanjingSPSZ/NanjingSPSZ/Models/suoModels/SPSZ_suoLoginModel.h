@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "YYModel.h"
-@interface SPSZ_suoLoginModel : NSObject
+@interface SPSZ_suoLoginModel : NSObject<NSCoding>
 /**
  "img_qs": "",
  "img_entry": "",
@@ -25,9 +25,9 @@
  "bus_img": ""
  */
 
-@property (nonatomic, strong)NSString *img_qs;
-@property (nonatomic, strong)NSString *img_entry;
-@property (nonatomic, strong)NSString *bus_license;
+@property (nonatomic, strong)NSString *img_qs;//食品经营许可证
+@property (nonatomic, strong)NSString *img_entry;//入场协议
+@property (nonatomic, strong)NSString *bus_license;//社会信用码
 @property (nonatomic, strong)NSString *stall_id;
 @property (nonatomic, strong)NSString *img_save;
 @property (nonatomic, strong)NSString *create_date;
@@ -37,7 +37,7 @@
 @property (nonatomic, strong)NSString *cityname;
 @property (nonatomic, strong)NSString *stall_name;
 @property (nonatomic, strong)NSString *deptname;
-@property (nonatomic, strong)NSString *bus_img;
+@property (nonatomic, strong)NSString *bus_img; //营业执照图片
 
 
 

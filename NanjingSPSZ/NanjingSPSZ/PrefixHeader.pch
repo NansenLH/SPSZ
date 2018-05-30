@@ -18,7 +18,7 @@
 #define MAS_SHORTHAND_GLOBALS
 
 #define ALPHANUM @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-
+#define INTERVAL_KEYBOARD 5
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"

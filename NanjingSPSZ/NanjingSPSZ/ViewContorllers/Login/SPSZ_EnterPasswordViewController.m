@@ -136,10 +136,14 @@
     // suo
     if (self.isType) {
         [SPSZ_LoginNetTool lingshoushangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_suoLoginModel *model) {
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
+            
             NSString *isLogin = @"suo_login";
             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
             [user setObject:isLogin forKey:@"isLogin"];
-//            [user setObject:model.stall_id forKey:@"stallID"];
+
+            [user setObject:model.stall_id forKey:@"stallID"];
+            [user setObject:data forKey:@"userInfo"];
             [user synchronize];
             
             [KRAccountTool saveSuoUserInfo:model];
@@ -156,11 +160,13 @@
     }
     else{// chu
         [SPSZ_LoginNetTool pifashangLoginWithPwd:self.passwordTextField.text tel:self.phoneNumberTextField.text successBlock:^(SPSZ_chuLoginModel *model) {
-
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
+            
             NSString *isLogin = @"chu_login";
             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
             [user setObject:isLogin forKey:@"isLogin"];
             [user setObject:model.stall_no forKey:@"stallID"];
+            [user setObject:data forKey:@"userInfo"];
             [user synchronize];
             
             [KRAccountTool saveChuUserInfo:model];

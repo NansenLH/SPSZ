@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "YYModel.h"
-@interface SPSZ_chuLoginModel : NSObject
+@interface SPSZ_chuLoginModel : NSObject<NSCoding>
 
 /**
  "img_qs": "",
@@ -28,7 +28,6 @@
  */
 
 @property (nonatomic, strong)NSString *img_qs;
-
 @property (nonatomic, strong)NSString *socialcode;
 @property (nonatomic, strong)NSString *companyname;
 @property (nonatomic, strong)NSString *bus_img;

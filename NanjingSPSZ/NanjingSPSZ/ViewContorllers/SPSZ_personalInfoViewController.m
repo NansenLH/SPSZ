@@ -9,6 +9,10 @@
 #import "SPSZ_personalInfoViewController.h"
 #import "BaseNavigationController.h"
 #import "SPSZ_LoginViewController.h"
+#import "SPSZ_suoLoginModel.h"
+#import "SPSZ_chuLoginModel.h"
+#import "UIButton+WebCache.h"
+#import "KRAccountTool.h"
 @interface SPSZ_personalInfoViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -35,7 +39,11 @@
 
 @property (nonatomic, strong)NSString *xinYongMaString;
 
-
+@property (nonatomic, strong) NSMutableArray *imgArray;
+@property (nonatomic, copy) NSString *bus_img;//营业执照
+@property (nonatomic, copy) NSString *img_qs;//食品经营许可证
+@property (nonatomic, copy) NSString *img_entry;//入场协议
+@property (nonatomic, copy) NSString *img_save;//安全承诺书
 @end
 
 @implementation SPSZ_personalInfoViewController
@@ -103,6 +111,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人信息";
+    self.imgArray = [NSMutableArray array];
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
@@ -119,6 +128,41 @@
     
     self.height = 50;
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    NSString *loginType = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"];
+    if ([loginType isEqualToString:@"suo_login"]) {
+//        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+        SPSZ_suoLoginModel *model = [KRAccountTool getSuoUserInfo];
+        self.locationString = model.cityname;
+        self.shiChangString = model.deptname;
+        self.detailLocationString = model.address;
+        self.tanWeiString = model.stall_no;
+        self.tanZhuString = model.stall_name;
+//        self.zhuYingXiangMuString =
+        self.xinYongMaString = model.bus_license;
+        
+        [self.imgArray addObject:model.bus_img];
+        [self.imgArray addObject:model.img_qs];
+        [self.imgArray addObject:model.img_entry];
+        [self.imgArray addObject:model.img_save];
+    }else{
+//        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+//        SPSZ_chuLoginModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
+        self.locationString = model.cityname;
+        self.shiChangString = model.companyname;
+//        self.detailLocationString = model.address;
+        self.tanWeiString = model.stall_no;
+        self.tanZhuString = model.realname;
+        self.xinYongMaString = model.socialcode;
+        
+        [self.imgArray addObject:model.bus_img];
+        [self.imgArray addObject:model.img_qs];
+        [self.imgArray addObject:model.img_entry];
+        [self.imgArray addObject:model.img_save];
+    }
+    
     [self.view addSubview:self.scrollView];
 }
 
@@ -175,6 +219,17 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [ProgramColor huiseColor];
     [imageView addSubview:label];
+    
+    UIButton *photoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    photoBtn.frame = imageView.frame;
+    photoBtn.tag = number;
+    photoBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    photoBtn.clipsToBounds = true;
+//    [photoBtn addTarget:self action:@selector(showPhoto:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:photoBtn];
+    
+    NSString *imageURL = [NSString stringWithFormat:@"%@%@", BaseImagePath, self.imgArray[number]];
+    [photoBtn sd_setImageWithURL:[NSURL URLWithString:imageURL] forState:UIControlStateNormal];
 }
 
 
@@ -228,5 +283,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end
