@@ -11,12 +11,14 @@
 #import "LUNetHelp.h"
 #import "YYModel.h"
 
-#import "SPSZ_GoodsModel.h"
+
 
 #import "SPSZ_chu_recordsModel.h"
 #import "SPSZ_chu_jinHuoModel.h"
 
 #import "KRAccountTool.h"
+
+#import "SPSZ_GoodsModel.h"
 #import "SPSZ_chuLoginModel.h"
 #import "SPSZ_ChuhuoModel.h"
 
@@ -222,6 +224,68 @@
     
     
 }
+
+
+
+/**
+ 上传打印内容
+ */
++ (void)uploadPrintContent:(NSArray<SPSZ_GoodsModel *> *)dishes
+              successBlock:(void (^)(NSString *qrCodeString))successBlcok
+                errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+              failureBlock:(void (^)(NSString *failure))failureBlock
+{
+    if (!dishes || dishes.count == 0) {
+        if (errorBlock) {
+            errorBlock(@"", @"参数错误");
+        }
+        return;
+    }
+    
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"uploadPrintConent"];
+    
+    NSMutableArray *dishesArray = [NSMutableArray array];
+    for (SPSZ_GoodsModel *tmpModel in dishes) {
+        NSDictionary *dic = @{
+                              @"dishid" : [NSString stringWithFormat:@"%d", tmpModel.dishid],
+                              @"amount" : tmpModel.weight,
+                              @"unit"   : tmpModel.unit,
+                              };
+        [dishesArray addObject:dic];
+    }
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dishesArray options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    [requestDic setObject:jsonString forKey:@"dish"];
+    
+    SPSZ_chuLoginModel *chuUser = [KRAccountTool getChuUserInfo];
+    [requestDic setObject:chuUser.login_Id forKey:@"userid"];
+    
+    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+        if (success) {
+            if ([result[@"respCode"] integerValue] == 1000000) {
+                if (successBlcok) {
+                    successBlcok([result objectForKey:@"result"]);
+                }
+            }
+            else {
+                if (errorBlock) {
+                    errorBlock(result[@"respCode"], result[@"respMsg"]);
+                }
+            }
+        }
+        else {
+            if (failureBlock) {
+                failureBlock(result);
+            }
+        }
+    }];
+}
+
+
+
+
+
 
 
 @end
