@@ -13,6 +13,7 @@
 #import "SPSZ_suo_MainViewController.h"
 #import "SPSZ_ChuIndexViewController.h"
 
+
 @interface SPSZ_LoginViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -24,6 +25,7 @@
 @property (nonatomic, strong)UIButton *chuButton;
 
 @property (nonatomic, strong)UIButton *suoButton;
+
 
 @end
 
@@ -73,19 +75,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.navigationController.navigationBar.hidden = YES;
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"])
     {
         NSLog(@"第一次运行程序");
         [self.view addSubview:self.scrollView];
-
+        
     }
     else{
         
         [self setChooseLoginView];
-
         
         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
         NSString *isLogin = [ user objectForKey:@"isLogin"];

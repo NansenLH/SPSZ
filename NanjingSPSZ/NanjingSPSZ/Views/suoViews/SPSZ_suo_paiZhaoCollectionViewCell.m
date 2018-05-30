@@ -18,7 +18,6 @@
     if (self) {
         
         self.picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 30)];
-         self.picImageView.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_picImageView];
         
         self.timelabel = [[UILabel alloc]initWithFrame:CGRectMake(0, frame.size.height - 30, frame.size.width, 30)];

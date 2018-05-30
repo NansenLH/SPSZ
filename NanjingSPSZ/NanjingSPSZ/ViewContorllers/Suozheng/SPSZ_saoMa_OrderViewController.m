@@ -12,14 +12,16 @@
 
 #import "SPSZ_suo_orderNetTool.h"
 
-@interface SPSZ_saoMa_OrderViewController ()
-@property (nonatomic, strong)NSString *timeString;
+#import "SPSZ_suo_SaoMaOrderCollectionViewCell.h"
+
+#import "SPSZ_suoLoginModel.h"
+#import "KRAccountTool.h"
+
+@interface SPSZ_saoMa_OrderViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)NSString *numberString;
 
 @property (nonatomic, strong)UIView *topView;
-
-@property (nonatomic, strong)UITableView *tableView;
 
 @property (nonatomic, strong)UIImageView *imageView;
 
@@ -28,11 +30,35 @@
 @property (nonatomic, strong)UILabel *leftLabel;
 
 @property (nonatomic, strong)UILabel *rightLabel;
+
+@property (nonatomic, strong)UICollectionView *collectionView;
+
+@property (nonatomic, strong)NSString *todayString;
+
 @end
 
 @implementation SPSZ_saoMa_OrderViewController
 
-
+-(UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+        
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - 64);
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        flowLayout.minimumLineSpacing = 20;
+        
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64) collectionViewLayout:flowLayout];
+        // 设置代理
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        _collectionView.backgroundColor = [UIColor clearColor];
+        // 注册cell
+        [_collectionView registerClass:[SPSZ_suo_SaoMaOrderCollectionViewCell class] forCellWithReuseIdentifier:@"SPSZ_suo_SaoMaOrderCollectionViewCell"];
+        
+    }
+    return _collectionView;
+}
 - (UIView *)topView{
     if (!_topView) {
         _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
@@ -65,24 +91,103 @@
     self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight)];
     [self.view addSubview:self.imageView];
     [self.imageView setImage:naviBackImage];
-    // Do any additional setup after loading the view.
+    
+    
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    [formatter setDateFormat:@"MM"];
+    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+    [formatter setDateFormat:@"dd"];
+    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+    
+    self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%ld",currentYear,currentMonth,currentDay];
+    
+    [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.topView];
+    [self loadDataWith:self.todayString newDate:nil];
 }
 
-- (void)loadData{
-    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:@"12986" uploaddate:@"2018-05-29" type:@"0" successBlock:^(NSMutableArray *modelArray) {
+
+
+
+- (void)loadDataWith:(NSString *)date newDate:(NSString *)newdate
+{
+    SPSZ_suoLoginModel *model = [KRAccountTool getSuoUserInfo];
+    
+    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:model.stall_id uploaddate:date type:@"0" successBlock:^(NSMutableArray *modelArray) {
         
+        [self setDateLabelWith:newdate];
+
         self.dataArray = modelArray;
-        
-//        [self.collectionView reloadData];
-        
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
-        
+
+        [self.collectionView reloadData];
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
+    
+        [self setDateLabelWith:newdate];
+        self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
+
+        [self.collectionView reloadData];
+
     } failureBlock:^(NSString *failure) {
         
     }];
+}
+
+- (void)setDateLabelWith:(NSString *)newDate
+{
+    [self.dataArray removeAllObjects];
+        
+    if (!self.timeString) {
+        self.leftLabel.text = @"今日进货订单";
+    }else
+    {
+        if ([self.todayString isEqualToString:self.timeString]) {
+            self.leftLabel.text = @"今日进货订单";
+        }else{
+            self.leftLabel.text = [NSString stringWithFormat:@"%@进货订单",newDate];
+        }
+    }
+}
+
+#pragma mark --- delegate、dataSource ---
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+}
+#pragma mark --- 返回cell ---
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPSZ_suo_SaoMaOrderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SPSZ_suo_SaoMaOrderCollectionViewCell" forIndexPath:indexPath];
+    SPSZ_suo_shouDongRecordModel *model = self.dataArray[indexPath.row];
+    cell.model = model;
+    return cell;
+}
+
+#pragma mark --- 控制集合视图的行边距 ---
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    // 第一个参数: 上
+    // 第二个参数: 左
+    // 第三个参数: 下
+    // 第四个参数: 右
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+
+
+
+- (void)reloadDataWithDateWith:(NSString *)date{
+    [self loadDataWith:self.timeString newDate:date];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,14 +195,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

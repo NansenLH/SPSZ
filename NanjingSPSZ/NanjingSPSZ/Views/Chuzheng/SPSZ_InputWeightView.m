@@ -11,6 +11,7 @@
 @interface SPSZ_InputWeightView ()
 
 @property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UILabel *unitLabel;
 
 @end
 
@@ -27,6 +28,9 @@
 
 - (void)configSubviews
 {
+    self.weight = @"0";
+    self.unit = @"公斤";
+    
     UIImageView *imageView = [[UIImageView alloc] init];
     [self addSubview:imageView];
     imageView.image = [UIImage imageNamed:@"edit_white"];
@@ -36,7 +40,7 @@
         make.centerY.equalTo(0);
     }];
     
-    UILabel *label = [UICreateTool labelWithFont:[UIFont systemFontOfSize:15] text:@"公斤" textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter];
+    UILabel *label = [UICreateTool labelWithFont:[UIFont systemFontOfSize:15] text:self.unit textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter];
     [self addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(0);
@@ -44,8 +48,9 @@
         make.width.equalTo(30);
     }];
     label.userInteractionEnabled = YES;
+    self.unitLabel = label;
     
-    UILabel *weightLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:15] text:@"0" textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentRight];
+    UILabel *weightLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:15] text:self.weight textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentRight];
     [self addSubview:weightLabel];
     [weightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(imageView.mas_right).offset(5);
@@ -68,12 +73,22 @@
 {
     _weight = weight;
     
-    if ([weight intValue] <= 0) {
-        self.label.text = @"0";
+    self.label.text = weight;
+}
+
+- (void)setUnit:(NSString *)unit
+{
+    _unit = unit;
+    
+    if (unit) {
+        self.unitLabel.text = unit;
     }
     else {
-        self.label.text = weight;
+        self.unitLabel.text = @"公斤";
+        _unit = @"公斤";
     }
+    
+    
 }
 
 

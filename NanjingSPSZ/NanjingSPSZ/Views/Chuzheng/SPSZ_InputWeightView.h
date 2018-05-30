@@ -12,6 +12,8 @@
 
 @property (nonatomic, copy) NSString *weight;
 
+@property (nonatomic, copy) NSString *unit;
+
 @property (nonatomic, strong) UIButton *button;
 
 @end

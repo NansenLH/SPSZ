@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class SPSZ_ChuhuoModel;
+@class SPSZ_GoodsModel;
+
 @interface ChuzhengNetworkTool : NSObject
 
 /**
@@ -40,6 +43,23 @@
                      failureBlock:(void (^)(NSString *failure))failureBlock;
 
 
+/**
+ 出货录入
+ */
++ (void)addGoods:(SPSZ_ChuhuoModel *)model
+    successBlock:(void (^)(void))successBlcok
+      errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+    failureBlock:(void (^)(NSString *failure))failureBlock;
+
+
+
+/**
+ 上传打印内容
+ */
++ (void)uploadPrintContent:(NSArray<SPSZ_GoodsModel *> *)dishes
+              successBlock:(void (^)(NSString *qrCodeString))successBlcok
+                errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+              failureBlock:(void (^)(NSString *failure))failureBlock;
 
 
 

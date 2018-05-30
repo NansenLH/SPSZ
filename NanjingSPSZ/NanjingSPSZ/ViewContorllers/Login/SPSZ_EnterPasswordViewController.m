@@ -15,8 +15,11 @@
 
 #import "SPSZ_LoginNetTool.h"
 
-
 #import "UIButton+Gradient.h"
+
+#import "KRAccountTool.h"
+
+
 @interface SPSZ_EnterPasswordViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong)UITextField *phoneNumberTextField;
@@ -52,6 +55,7 @@
         _passwordTextField.delegate = self;
         _passwordTextField.tintColor = [UIColor redColor];
         _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
+        _passwordTextField.secureTextEntry = YES;
         _passwordTextField.placeholder = @"请输入密码";
     }
     return _passwordTextField;
@@ -85,7 +89,6 @@
 - (void)configNavigation
 {
     self.navigationItem.title = @"登录";
-    
 }
 
 - (void)viewDidLoad {
@@ -114,6 +117,8 @@
     UITapGestureRecognizer *tapRecognize = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenKeyboard)];
     tapRecognize.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapRecognize];
+    
+
 }
 
 - (void)hiddenKeyboard
@@ -136,10 +141,14 @@
             NSString *isLogin = @"suo_login";
             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
             [user setObject:isLogin forKey:@"isLogin"];
+
             [user setObject:model.stall_id forKey:@"stallID"];
             [user setObject:data forKey:@"userInfo"];
             [user synchronize];
             
+            [KRAccountTool saveSuoUserInfo:model];
+            
+
             SPSZ_suo_MainViewController *vc = [[SPSZ_suo_MainViewController alloc]init];
             BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
             [[AppDelegate shareInstance].window setRootViewController:nav];
@@ -160,6 +169,9 @@
             [user setObject:data forKey:@"userInfo"];
             [user synchronize];
             
+            [KRAccountTool saveChuUserInfo:model];
+
+                    
             SPSZ_ChuIndexViewController *vc = [[SPSZ_ChuIndexViewController alloc] init];
             BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
             [[AppDelegate shareInstance].window setRootViewController:nav];

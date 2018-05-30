@@ -11,14 +11,13 @@
 #import "SPSZ_suo_paiZhaoCollectionViewCell.h"
 
 #import "SPSZ_suo_orderNetTool.h"
+#import "KRAccountTool.h"
 
+#import "SPSZ_suoLoginModel.h"
 #import "SPSZ_suo_paiZhaoOrderModel.h"
 
 
-
 @interface SPSZ_paiZhao_OrderViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
-
-@property (nonatomic, strong)NSString *timeString;
 
 @property (nonatomic, strong)NSString *numberString;
 
@@ -30,10 +29,13 @@
 
 @property (nonatomic, strong)UILabel *leftLabel;
 
+@property (nonatomic, strong)NSString *todayString;
 
 @end
 
 @implementation SPSZ_paiZhao_OrderViewController
+
+
 
 -(UICollectionView *)collectionView
 {
@@ -47,7 +49,7 @@
     
         _collectionView.backgroundColor = [UIColor whiteColor];
         // 注册cell
-        [_collectionView registerClass:[SPSZ_suo_paiZhaoCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+        [_collectionView registerClass:[SPSZ_suo_paiZhaoCollectionViewCell class] forCellWithReuseIdentifier:@"SPSZ_suo_paiZhaoCollectionViewCell"];
 
     }
     return _collectionView;
@@ -87,32 +89,65 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    [formatter setDateFormat:@"MM"];
+    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+    [formatter setDateFormat:@"dd"];
+    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+    
+    self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%ld",currentYear,currentMonth,currentDay];
+    
     [self.view addSubview:self.topView];
     
     [self.view addSubview:self.collectionView];
     
-    [self loadData];
+    [self loadDataWith:self.todayString newDate:nil];
 
 }
 
-- (void)loadData
+- (void)loadDataWith:(NSString *)date newDate:(NSString *)newdate
 {
-    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:@"12986" uploaddate:@"2018-05-27" type:@"1" successBlock:^(NSMutableArray *modelArray) {
+    SPSZ_suoLoginModel *model = [KRAccountTool getSuoUserInfo];
+    
+    [SPSZ_suo_orderNetTool getSuoRecordWithStall_id:model.stall_id uploaddate:date type:@"1" successBlock:^(NSMutableArray *modelArray) {
+        
+        [self setDateLabelWith:newdate];
         
         self.dataArray = modelArray;
-        
-        [self.collectionView reloadData];
-        
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
-        
-        
+
+        [self.collectionView reloadData];
+
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
+        [self setDateLabelWith:newdate];
+        self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
+
+        [self.collectionView reloadData];
+
     } failureBlock:^(NSString *failure) {
         
     }];
 }
 
+- (void)setDateLabelWith:(NSString *)newDate
+{
+    [self.dataArray removeAllObjects];
+    
+    if (!self.timeString) {
+        self.leftLabel.text = @"今日进货订单";
+    }else
+    {
+        if ([self.todayString isEqualToString:self.timeString]) {
+            self.leftLabel.text = @"今日进货订单";
+        }else{
+            self.leftLabel.text = [NSString stringWithFormat:@"%@进货订单",newDate];
+        }
+    }
+}
 
 #pragma mark --- delegate、dataSource ---
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -122,7 +157,7 @@
 #pragma mark --- 返回cell ---
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPSZ_suo_paiZhaoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    SPSZ_suo_paiZhaoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SPSZ_suo_paiZhaoCollectionViewCell" forIndexPath:indexPath];
     SPSZ_suo_paiZhaoOrderModel *model = self.dataArray[indexPath.row];
     cell.model = model;
     
@@ -157,14 +192,10 @@
     return 15;
 }
 
-#pragma mark --- item点击的方法 ---
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-//    NSLog(@"第%ld 分区  第 %ld 个",indexPath.section,indexPath.row);
-//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-//    RootCollectionViewController *secondCollectionView = [[RootCollectionViewController alloc]initWithCollectionViewLayout:flowLayout];
-//    [self.navigationController pushViewController:secondCollectionView animated:YES];
-    
+
+
+- (void)reloadDataWithDateWith:(NSString *)date{
+    [self loadDataWith:self.timeString newDate:date];
 }
 
 

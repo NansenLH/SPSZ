@@ -19,8 +19,6 @@
 #import "AppDelegate.h"
 #import "BaseNavigationController.h"
 
-#import "THDatePickerView.h"
-
 #import "KRTagBar.h"
 #import "UIButton+ImageTitleSpacing.h"
 #import "UIButton+Gradient.h"
@@ -283,7 +281,7 @@
 - (void)changeCenterButtonTitleWith:(NSInteger)index{
     if (index == 0 || index == 1) {
         SPSZ_shouDongViewController *vc = self.vcArray[2];
-        [vc hiddenKeyboard];
+        [vc huishoujianpan];
     }
     
     if (index == 0) {
@@ -326,9 +324,12 @@
         [vc takePhotoAction];
     }else{
         SPSZ_saoMa_ViewController *vc = self.vcArray[0];
-        [vc sureUpload];
+        [vc saoMa];
     }
 }
+
+
+
 
 - (void)rightButtonAction:(UIButton *)button
 {

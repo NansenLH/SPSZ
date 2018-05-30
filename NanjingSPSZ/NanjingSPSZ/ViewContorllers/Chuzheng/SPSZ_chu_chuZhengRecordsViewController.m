@@ -13,6 +13,11 @@
 #import "SPSZ_chu_chuZhengRecordsTableViewCell.h"
 
 #import "SPSZ_chu_recordsModel.h"
+
+#import "KRAccountTool.h"
+
+#import "SPSZ_chuLoginModel.h"
+
 @interface SPSZ_chu_chuZhengRecordsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -61,7 +66,8 @@
 
 - (void)loadData
 {
-    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:1 userId:@"13156" printdate:nil successBlock:^(NSMutableArray *modelArray) {
+    SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:1 userId:model.login_Id printdate:nil successBlock:^(NSMutableArray *modelArray) {
         self.dataArray = modelArray;
         [self.tableView reloadData];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {

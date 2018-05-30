@@ -12,5 +12,7 @@
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) NSArray *cityList;
 @property (nonatomic, copy) void(^getSelectCityBlock)(NSDictionary *dic);
+
 - (void)showCityListViewInView:(UIView *)view;
+
 @end

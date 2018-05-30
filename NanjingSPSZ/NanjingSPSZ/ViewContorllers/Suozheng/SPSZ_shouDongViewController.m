@@ -15,8 +15,13 @@
 
 #import "CityView.h"
 
-
 #import "SPSZ_addGoodsNetTool.h"
+
+#import "SPSZ_suo_orderNetTool.h"
+
+#import "KRAccountTool.h"
+
+#import "SPSZ_suoLoginModel.h"
 
 @interface SPSZ_shouDongViewController ()<UITextFieldDelegate,PGDatePickerDelegate>
 
@@ -44,15 +49,11 @@
 
 @property (nonatomic, strong)NSMutableArray *titleArray;
 
-@property (nonatomic, copy) NSString *province;
-
-@property (nonatomic, copy) NSString *city;
-
-@property (nonatomic, copy) NSString *area;
-
 @property (nonatomic, strong)CityView *cityView;
 
 @property (nonatomic, strong) UITextField *nowEditTF;
+@property (nonatomic, strong)NSString *locationString;
+
 @end
 
 @implementation SPSZ_shouDongViewController
@@ -69,6 +70,12 @@
     if (!_cityView) {
         _cityView = [[CityView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight)];
         _cityView.cityList = [self readLocalFileWithName:@"city"];
+        
+        KRWeakSelf
+        _cityView.getSelectCityBlock = ^(NSDictionary *dic) {
+             weakSelf.locationString = dic[@"name"];
+             [weakSelf.productLocationButton setTitle:weakSelf.locationString forState:UIControlStateNormal];
+        };
     }
     return _cityView;
 }
@@ -243,9 +250,9 @@
 
 
 - (void)productLocationButtonAction:(UIButton *)button{
+    [self huishoujianpan];
     [self.cityView showCityListViewInView:self.navigationController.view];
-    
-    [self hiddenKeyboard];
+
     
 //    [CZHAddressPickerView areaPickerViewWithProvince:self.province city:self.city area:self.area areaBlock:^(NSString *province, NSString *city, NSString *area) {
 //        KRWeakSelf;
@@ -257,18 +264,11 @@
 
 }
 
-- (void)hiddenKeyboard
-{
-    [self.productNameTextField resignFirstResponder];
-    [self.detailLocationTextField resignFirstResponder];
-    [self.numberTextField resignFirstResponder];
-    [self.companyTextField resignFirstResponder];
-    [self.nameTextField resignFirstResponder];
-    [self.phoneTextField resignFirstResponder];
-}
+
+
 
 - (void)timeButtonAction:(UIButton *)button{
-    [self hiddenKeyboard];
+    [self huishoujianpan];
     
     PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
     datePickManager.isShadeBackgroud = true;
@@ -313,11 +313,49 @@
 
 - (void)sureUpload{
     
-    if ([_phoneTextField.text isEqualToString:@""]) {
-        [self tiShiKuangWithString:@"产品名称"];
-    }else if ([_productLocationButton.titleLabel.text isEqualToString:@"请选择"]) {
-        [self tiShiKuangWithString:@"产品产地"];
+    SPSZ_suoLoginModel *model =  [KRAccountTool getSuoUserInfo];
+
+    if (!_phoneTextField.text) {
+        [KRAlertTool alertString:@"请填写产品名称!"];
+        return;
     }
+    if ([_productLocationButton.titleLabel.text isEqualToString:@"请选择"]) {
+        [KRAlertTool alertString:@"请选择产品产地!"];
+        return;
+    }
+    
+    if (!_numberTextField.text) {
+        [KRAlertTool alertString:@"请输入数量/重量!"];
+        return;
+    }
+    
+    if (!_companyTextField.text) {
+        [KRAlertTool alertString:@"请填写供货单位!"];
+        return;
+    }
+    
+    if (!_nameTextField.text) {
+        [KRAlertTool alertString:@"请填写批发商姓名!"];
+        return;
+    }
+    if (!_phoneTextField.text) {
+        [KRAlertTool alertString:@"请填写联系电话"];
+        return;
+    }
+    if ([_timeButton.titleLabel.text isEqualToString:@"请选择"]) {
+        [KRAlertTool alertString:@"请选择发货时间！"];
+        return;
+    }
+    
+
+    [SPSZ_suo_orderNetTool addJinHuoShouDongWithUserId:model.stall_id amount:_numberTextField.text unit:_companyTextField.text successBlock:^{
+        
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        
+    } failureBlock:^(NSString *failure) {
+        
+    }];
+
 }
 
 
@@ -329,12 +367,8 @@
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.productNameTextField resignFirstResponder];
-    [self.detailLocationTextField resignFirstResponder];
-    [self.numberTextField resignFirstResponder];
-    [self.companyTextField resignFirstResponder];
-    [self.nameTextField resignFirstResponder];
-    [self.phoneTextField resignFirstResponder];
+
+    [self huishoujianpan];
 
     [self.view endEditing:YES];
 }
@@ -359,17 +393,17 @@
 
 
 
-- (void)tiShiKuangWithString:(NSString *)string
-{
-    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"%@不能为空!",string] preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    
-    [actionSheetController addAction:okAction];
-    
-    [self presentViewController:actionSheetController animated:YES completion:nil];
-}
+//- (void)tiShiKuangWithString:(NSString *)string
+//{
+//    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"%@不能为空!",string] preferredStyle:UIAlertControllerStyleAlert];
+//
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//    }];
+//
+//    [actionSheetController addAction:okAction];
+//
+//    [self presentViewController:actionSheetController animated:YES completion:nil];
+//}
 
 - (NSArray *)readLocalFileWithName:(NSString *)name {
     // 获取文件路径
@@ -385,6 +419,17 @@
     self.nowEditTF = textField;
     return true;
 }
+
+- (void)huishoujianpan
+{
+    [self.productNameTextField resignFirstResponder];
+    [self.detailLocationTextField resignFirstResponder];
+    [self.numberTextField resignFirstResponder];
+    [self.companyTextField resignFirstResponder];
+    [self.nameTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

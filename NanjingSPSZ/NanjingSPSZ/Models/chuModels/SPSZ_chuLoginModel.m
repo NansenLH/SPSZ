@@ -47,7 +47,7 @@
 
 + (NSDictionary *)modelCustomPropertyMapper {
     //前面是model中的名字,后面是json中的名字
-    return @{@"login_id" : @"id"};
+    return @{@"login_Id" : @"id"};
 }
 
 - (NSString *)description {

@@ -189,9 +189,9 @@
 //取消按钮
 - (void)leftAction
 {
-    if (self.getSelectCityBlock) {
-        self.getSelectCityBlock(nil);
-    }
+//    if (self.getSelectCityBlock) {
+//        self.getSelectCityBlock(nil);
+//    }
     
     //隐藏地址选择器
     [self hiddenPickerView];
@@ -208,12 +208,12 @@
     nameId = pDic[@"areaId"];
     
     NSDictionary *cDic = pDic[@"cities"][_component2];
-    name = [NSString stringWithFormat:@"%@ %@",name,cDic[@"areaName"]];
-    nameId = [NSString stringWithFormat:@"%@ %@",nameId,cDic[@"areaId"]];
+    name = [NSString stringWithFormat:@"%@%@",name,cDic[@"areaName"]];
+    nameId = [NSString stringWithFormat:@"%@%@",nameId,cDic[@"areaId"]];
     
     NSDictionary *aDic = cDic[@"counties"][_component3];
-    name = [NSString stringWithFormat:@"%@ %@",name,aDic[@"areaName"]];
-    nameId = [NSString stringWithFormat:@"%@ %@",nameId,aDic[@"areaId"]];
+    name = [NSString stringWithFormat:@"%@%@",name,aDic[@"areaName"]];
+    nameId = [NSString stringWithFormat:@"%@",aDic[@"areaId"]];
     
     NSMutableDictionary *cityInfoDic = [NSMutableDictionary dictionary];
     [cityInfoDic setValue:name forKey:@"name"];

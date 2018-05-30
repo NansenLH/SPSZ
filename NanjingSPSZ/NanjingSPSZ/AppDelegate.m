@@ -88,6 +88,8 @@
         if ([tmp isKindOfClass:[MBProgressHUD class]]) {
             [tmp removeFromSuperview];
         }
+        
+        // TODO: 相关加在 window 上的 view 必须移除掉
     }
     
 }

@@ -15,5 +15,5 @@
 
 - (void)reloadNewData;
 
-- (void)hiddenKeyboard;
+- (void)huishoujianpan;
 @end

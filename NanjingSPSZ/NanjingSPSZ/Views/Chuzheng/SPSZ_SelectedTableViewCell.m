@@ -38,7 +38,7 @@
     self.contentView.backgroundColor = [UIColor whiteColor];
     
     self.showImageView = [[UIImageView alloc] init];
-    self.showImageView.backgroundColor = [UIColor blueColor];
+    self.showImageView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.showImageView];
     [self.showImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.width.mas_equalTo(50);
@@ -89,9 +89,10 @@
 {
     _model = model;
     
-    // TODO: 图片地址是什么
-//    [self.showImageView sd_setImageWithURLString:model.dishimg1];
-    self.goodsNameLabel.text = [NSString stringWithFormat:@"%@    %@公斤", model.dishname, model.weight];
+    NSString *imageurlstring = [NSString stringWithFormat:@"%@%@", BaseImagePath, model.dishimg1];
+    [self.showImageView sd_setImageWithURLString:imageurlstring];
+    
+    self.goodsNameLabel.text = [NSString stringWithFormat:@"%@    %@%@", model.dishname, model.weight, model.unit];
     self.timeLabel.text = model.dishdate;
     self.addressLabel.text = [NSString stringWithFormat:@"%@%@", model.cityname, model.addresssource];
 }

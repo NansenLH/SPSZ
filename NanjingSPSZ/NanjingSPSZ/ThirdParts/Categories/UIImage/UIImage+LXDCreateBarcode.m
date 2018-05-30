@@ -98,7 +98,7 @@
  * @abstract
  * 回调函数
  */
-void ProviderReleaseData(void * info, const void * data, size_t size) {
+void LXDProviderReleaseData(void * info, const void * data, size_t size) {
     free((void *)data);
 }
 
@@ -182,7 +182,7 @@ void ProviderReleaseData(void * info, const void * data, size_t size) {
     int pixelNumber = imageHeight * imageWidth;
     [self fillWhiteToTransparentOnPixel: rgbImageBuf pixelNum: pixelNumber red: red green: green blue: blue];
     
-    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, rgbImageBuf, bytesPerRow, ProviderReleaseData);
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, rgbImageBuf, bytesPerRow, LXDProviderReleaseData);
     CGImageRef imageRef = CGImageCreate(imageWidth, imageHeight, 8, 32, bytesPerRow, colorSpace, kCGImageAlphaLast | kCGBitmapByteOrder32Little, dataProvider, NULL, true, kCGRenderingIntentDefault);
 
     UIImage * resultImage = [UIImage imageWithCGImage: imageRef];

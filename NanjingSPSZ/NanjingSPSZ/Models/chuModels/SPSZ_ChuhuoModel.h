@@ -32,15 +32,10 @@
 
 @property (nonatomic, copy) NSString *cityid;
 
-
 /**
  具体地址
  */
 @property (nonatomic, copy) NSString *addresssource;
-
-
-
-
 
 /**
  车牌号
@@ -54,6 +49,14 @@
 
 @property (nonatomic, copy) NSString *salerid;
 
+/**
+ 重量单位
+ */
+@property (nonatomic, copy) NSString *unit;
 
+/**
+ 重量类型
+ */
+@property (nonatomic, copy) NSString *unitType;
 
 @end

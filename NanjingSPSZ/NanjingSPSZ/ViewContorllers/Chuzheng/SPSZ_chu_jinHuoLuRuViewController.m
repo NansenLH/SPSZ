@@ -23,6 +23,12 @@
 #import "YYModel.h"
 
 #import "CityView.h"
+#import "KRAccountTool.h"
+#import "SPSZ_chuLoginModel.h"
+
+#import "ChuzhengNetworkTool.h"
+#import "SPSZ_EditWightView.h"
+
 
 @interface SPSZ_chu_jinHuoLuRuViewController ()
 <
@@ -31,7 +37,8 @@ UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout,
 UITextFieldDelegate,
 UIImagePickerControllerDelegate,
-UINavigationControllerDelegate
+UINavigationControllerDelegate,
+UIGestureRecognizerDelegate
 >
 @property (nonatomic, strong)UIView  *mainView;
 
@@ -41,7 +48,8 @@ UINavigationControllerDelegate
 
 @property (nonatomic, strong)UITextField *productNameLabel;
 
-@property (nonatomic, strong)UITextField *numberLabel;
+@property (nonatomic, strong)UIButton *numberButton;
+//@property (nonatomic, strong) UILabel *numberLabel;
 
 @property (nonatomic, strong)UITextField *carLabel;
 
@@ -65,9 +73,27 @@ UINavigationControllerDelegate
 
 @property (nonatomic, strong) CityView *cityView;
 
+@property (nonatomic, strong) SPSZ_EditWightView *editWeightView;
+
 @end
 
 @implementation SPSZ_chu_jinHuoLuRuViewController
+
+- (SPSZ_EditWightView *)editWeightView
+{
+    if (!_editWeightView) {
+        _editWeightView = [[SPSZ_EditWightView alloc] init];
+        KRWeakSelf;
+        [_editWeightView setChooseWeightBlock:^(NSString *weight, NSString *unit) {
+            weakSelf.addGoods.dishamount = weight;
+            weakSelf.addGoods.unit = unit;
+            
+            [weakSelf.numberButton setTitle:[NSString stringWithFormat:@"%@%@", weight, unit] forState:UIControlStateNormal];
+            [weakSelf.numberButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }];
+    }
+    return _editWeightView;
+}
 
 - (CityView *)cityView
 {
@@ -79,6 +105,7 @@ UINavigationControllerDelegate
         _cityView.cityList = cityList;
         KRWeakSelf;
         [_cityView setGetSelectCityBlock:^(NSDictionary *dic) {
+            [weakSelf.productLocationButton setTitle:[dic objectForKey:@"name"] forState:UIControlStateNormal];
             weakSelf.addGoods.cityname = [dic objectForKey:@"name"];
             weakSelf.addGoods.cityid = [dic objectForKey:@"Id"];
         }];
@@ -106,8 +133,8 @@ UINavigationControllerDelegate
 {
     if (!_addGoods) {
         _addGoods = [[SPSZ_ChuhuoModel alloc] init];
-        // TODO: 未实现
-        _addGoods.salerid = @"";
+        SPSZ_chuLoginModel *chuUser = [KRAccountTool getChuUserInfo];
+        _addGoods.salerid = chuUser.login_Id;
     }
     return _addGoods;
 }
@@ -154,17 +181,19 @@ UINavigationControllerDelegate
     return _productNameLabel;
 }
 
-- (UITextField *)numberLabel
+- (UIButton *)numberButton
 {
-    if (!_numberLabel) {
-        _numberLabel = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, MainScreenWidth - 150, _height)];
-        _numberLabel.placeholder = @"请输入";
-        _numberLabel.font = [UIFont systemFontOfSize:14];
-        _numberLabel.delegate = self;
-        _numberLabel.tintColor = [UIColor redColor];
-        _numberLabel.textAlignment = NSTextAlignmentRight;
+    if (!_numberButton) {
+        _numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _numberButton.frame = CGRectMake(140, 0, MainScreenWidth - 150, _height);
+        [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
+        [_numberButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        _numberButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _numberButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        _numberButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
+        [_numberButton addTarget:self action:@selector(editNumber:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _numberLabel;
+    return _numberButton;
 }
 
 
@@ -206,7 +235,7 @@ UINavigationControllerDelegate
         [self setUpViewWith:3 text:nil];
         [self setUpViewWith:4 text:nil];
         [self setUpViewWith:5 text:nil];
-        [self setUpViewWith:6 text: @"（请上传营业执照和相关证件）"];
+        [self setUpViewWith:6 text: @"（请上传产地证明或是货品照片）"];
         
         [_mainView addSubview:self.collectionView];
         [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -264,6 +293,16 @@ UINavigationControllerDelegate
         make.width.equalTo(180);
         make.bottom.equalTo(-margin-[ProgramSize bottomHeight]);
     }];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit)];
+    [self.view addGestureRecognizer:tap];
+    tap.delegate = self;
+    
+}
+
+- (void)endEdit
+{
+    [self.view endEditing:YES];
 }
 
 
@@ -293,7 +332,8 @@ UINavigationControllerDelegate
         if (number == 1) {
             [view addSubview:self.productNameLabel];
         }else if (number == 2){
-            [view addSubview:self.numberLabel];
+//            [view addSubview:self.numberLabel];
+            [view addSubview:self.numberButton];
             w = 140;
         }else if (number == 3){
             [view addSubview:self.carLabel];
@@ -350,6 +390,7 @@ UINavigationControllerDelegate
 
 - (void)productLocationButtonAction:(UIButton *)button
 {
+    [self.view endEditing:YES];
     [self.cityView showCityListViewInView:self.navigationController.view];
 }
 
@@ -361,13 +402,11 @@ UINavigationControllerDelegate
     }
     self.addGoods.dishname = self.productNameLabel.text;
 
-    if (!self.numberLabel.text) {
+    if (!self.addGoods.dishamount) {
         [KRAlertTool alertString:@"请填写货品重量"];
         return;
     }
-    self.addGoods.dishamount = self.numberLabel.text;
 
-    // TODO: 未实现
     if (!self.addGoods.cityname || !self.addGoods.cityid) {
         [KRAlertTool alertString:@"请填写来源产地"];
         return;
@@ -387,10 +426,31 @@ UINavigationControllerDelegate
     }
     self.addGoods.dishimgs = [imgs substringWithRange:NSMakeRange(0, imgs.length-1)];
 
-    NSString *jsonString = [self.addGoods yy_modelToJSONString];
+    [ChuzhengNetworkTool addGoods:self.addGoods successBlock:^{
+        [KRAlertTool alertString:@"添加成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [KRAlertTool alertString:errorMessage];
+    } failureBlock:^(NSString *failure) {
+        [KRAlertTool alertString:failure];
+    }];
     
 }
 
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    CGPoint p = [touch locationInView:self.view];
+    if(CGRectContainsPoint(self.collectionView.frame, p)) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)editNumber:(UIButton *)button
+{
+    [self.editWeightView show];
+}
 
 
 #pragma mark --- delegate、dataSource ---
