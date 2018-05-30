@@ -44,11 +44,11 @@
     if (!_collectionView) {
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - 64);
+        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - 64-[ProgramSize bottomHeight]);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         flowLayout.minimumLineSpacing = 20;
         
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64-[ProgramSize bottomHeight]) collectionViewLayout:flowLayout];
         // 设置代理
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -88,7 +88,7 @@
                                                        percentage:@[@(1), @(0)]
                                                      gradientType:GradientFromTopToBottom];
     
-    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight)];
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight-[ProgramSize bottomHeight])];
     [self.view addSubview:self.imageView];
     [self.imageView setImage:naviBackImage];
     

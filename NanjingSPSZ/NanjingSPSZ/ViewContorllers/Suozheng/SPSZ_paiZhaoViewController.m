@@ -39,7 +39,7 @@
     if (!_mainImageView) {
         
         _mainImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"retailer_take_phote"]];
-        _mainImageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264);
+        _mainImageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264-[ProgramSize bottomHeight]);
     }
     return _mainImageView;
 }
@@ -49,7 +49,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor   = [ UIColor clearColor];
     
-    UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236)];
+    UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236-[ProgramSize bottomHeight])];
     [yy addSubview:self.mainImageView];
     [self.view addSubview:yy];
 }

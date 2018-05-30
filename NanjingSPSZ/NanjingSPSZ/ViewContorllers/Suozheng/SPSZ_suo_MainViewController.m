@@ -74,7 +74,7 @@
 
 - (UIView *)bottomView{
     if (!_bottomView) {
-        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0,MainScreenHeight -100 - 64 , MainScreenWidth, 100)];
+        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0,MainScreenHeight -100 - 64 - [ProgramSize bottomHeight], MainScreenWidth, 100 + [ProgramSize bottomHeight])];
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 30)];
         imageView.image = [UIImage imageNamed:@"bg_white_radius"];
         UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, 70)];
@@ -293,7 +293,7 @@
         self.centerButtonImageName = @"scan_qr_white";
     }else if (index == 2){
         [_centerButton setImage:[UIImage imageNamed:@"Image"] forState:UIControlStateNormal];
-        [_centerButton setTitle:@"手动上传" forState:UIControlStateNormal];
+        [_centerButton setTitle:@"确认上传" forState:UIControlStateNormal];
     }
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

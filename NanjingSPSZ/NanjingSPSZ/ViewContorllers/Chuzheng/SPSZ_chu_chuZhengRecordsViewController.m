@@ -9,20 +9,24 @@
 #import "SPSZ_chu_chuZhengRecordsViewController.h"
 
 #import "ChuzhengNetworkTool.h"
+#import "KRAccountTool.h"
+#import "MJRefresh.h"
+
 
 #import "SPSZ_chu_chuZhengRecordsTableViewCell.h"
 
 #import "SPSZ_chu_recordsModel.h"
-
-#import "KRAccountTool.h"
-
 #import "SPSZ_chuLoginModel.h"
+
+
 
 @interface SPSZ_chu_chuZhengRecordsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
+@property (nonatomic, assign) NSInteger index;
 
 @end
 
@@ -35,7 +39,14 @@
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:[SPSZ_chu_chuZhengRecordsTableViewCell class] forCellReuseIdentifier:@"SPSZ_chu_chuZhengRecordsTableViewCell"];
-        
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [self.dataArray removeAllObjects];
+            self.index = 1;
+            [self downloadData];
+        }];
+        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [self uploadData];
+        }];
     }
     return _tableView;
 }
@@ -55,25 +66,60 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"出货记录";
+    self.index = 1;
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
     
-    [self loadData];
+    [self uploadData];
 }
 
 
-- (void)loadData
+- (void)uploadData
 {
+    KRWeakSelf;
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
-    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:1 userId:model.login_Id printdate:nil successBlock:^(NSMutableArray *modelArray) {
-        self.dataArray = modelArray;
-        [self.tableView reloadData];
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:nil successBlock:^(NSMutableArray *modelArray) {
+        [weakSelf.tableView.mj_footer endRefreshing];
+
+        if (modelArray.count >0) {
+            weakSelf.index++;
+            [weakSelf.dataArray addObjectsFromArray:modelArray];
+        }else
+        {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+       
+        [weakSelf.tableView reloadData];
+        
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [weakSelf.tableView.mj_footer endRefreshing];
+        if ([errorMessage isEqualToString:@"无出证记录" ]) {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+
+    } failureBlock:^(NSString *failure) {
+        [weakSelf.tableView.mj_footer endRefreshing];
+    }];
+}
+
+- (void)downloadData
+{
+    KRWeakSelf;
+    SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:nil successBlock:^(NSMutableArray *modelArray) {
+        [weakSelf.tableView.mj_header endRefreshing];
+        self.index++;
+        [weakSelf.dataArray addObjectsFromArray:modelArray];
+        
+        [weakSelf.tableView reloadData];
+        
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [weakSelf.tableView.mj_header endRefreshing];
         
     } failureBlock:^(NSString *failure) {
-        
+        [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
 
