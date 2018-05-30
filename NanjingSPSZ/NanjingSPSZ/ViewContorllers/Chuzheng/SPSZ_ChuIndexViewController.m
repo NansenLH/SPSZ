@@ -39,7 +39,7 @@
 
 #import "KRAccountTool.h"
 #import "SPSZ_chuLoginModel.h"
-
+#import "ChuzhengNetworkTool.h"
 
 //@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate>
 @interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, BluetoothDelegate>
@@ -59,7 +59,7 @@
 
 @property (nonatomic, assign) BOOL isConnect;
 
-@property (nonatomic, strong) NSMutableArray *selectedArray;
+@property (nonatomic, strong) NSMutableArray<SPSZ_GoodsModel *> *selectedArray;
 
 @property (nonatomic, strong) NSMutableArray *deviceArray;
 
@@ -455,10 +455,24 @@
         return;
     }
     
-    [self startPrint];
+    [self uploadTicket];
 }
 
-- (void)startPrint
+// 上传打印内容
+- (void)uploadTicket
+{
+    [ChuzhengNetworkTool uploadPrintContent:self.selectedArray successBlock:^(NSString *qrCodeString){
+        [self startPrint:qrCodeString];
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [KRAlertTool alertString:errorMessage];
+    } failureBlock:^(NSString *failure) {
+        [KRAlertTool alertString:failure];
+    }];
+}
+
+
+
+- (void)startPrint:(NSString *)qrCodeString
 {
     NSInteger maxWidth = [PrinterWraper getPrinterMaxWidth];
     NSMutableString *lineString = [NSMutableString string];

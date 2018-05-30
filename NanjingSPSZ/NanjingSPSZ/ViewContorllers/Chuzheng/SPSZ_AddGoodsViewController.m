@@ -190,9 +190,12 @@
     [ChuzhengNetworkTool addGoodsFromPageNumber:self.pageNo successBlock:^(NSMutableArray *goodsArray) {
         [self.dataArray addObjectsFromArray:goodsArray];
         [self.tableView reloadData];
+        
+        [self.tableView.mj_footer endRefreshing];
         if (goodsArray.count < Pagesize) {
             self.tableView.mj_footer.hidden = YES;
         }
+        
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
