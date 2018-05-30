@@ -12,7 +12,11 @@
 #import "SPSZ_suoLoginModel.h"
 #import "SPSZ_chuLoginModel.h"
 #import "UIButton+WebCache.h"
+<<<<<<< HEAD
+#import "SYPhotoBrowser.h"
+=======
 #import "KRAccountTool.h"
+>>>>>>> a1864504743e8940d6a59e8f34c7e70c6f1bc3cf
 @interface SPSZ_personalInfoViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -225,7 +229,7 @@
     photoBtn.tag = number;
     photoBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
     photoBtn.clipsToBounds = true;
-//    [photoBtn addTarget:self action:@selector(showPhoto:) forControlEvents:UIControlEventTouchUpInside];
+    [photoBtn addTarget:self action:@selector(showPhoto:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:photoBtn];
     
     NSString *imageURL = [NSString stringWithFormat:@"%@%@", BaseImagePath, self.imgArray[number]];
@@ -284,5 +288,15 @@
 }
 */
 
-
+- (void)showPhoto:(UIButton *)sender
+{
+    NSString *imgPath = self.imgArray[sender.tag];
+    if (imgPath) {
+        if (imgPath.length != 0) {
+            NSString *imageURL = [NSString stringWithFormat:@"%@%@", BaseImagePath, self.imgArray[sender.tag]];
+            SYPhotoBrowser *photoBrowser = [[SYPhotoBrowser alloc] initWithImageSourceArray:@[imageURL] delegate:self];
+            [self presentViewController:photoBrowser animated:YES completion:nil];
+        }
+    }
+}
 @end

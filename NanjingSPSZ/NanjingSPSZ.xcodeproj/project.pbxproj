@@ -254,6 +254,10 @@
 		E222151120BC4119006D4C5A /* MBProgressHUD+JDragon.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */; };
 		E222151220BC4119006D4C5A /* NSObject+TNAHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */; };
 		E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */; };
+		E288200520BEEB85002EE5E5 /* SYPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */; };
+		E288200620BEEB85002EE5E5 /* SYPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */; };
+		E288200B20BEEBD2002EE5E5 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */; };
+		E288200C20BEEBD2002EE5E5 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -777,6 +781,14 @@
 		E222151020BC4119006D4C5A /* NSObject+TNAHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TNAHUD.h"; sourceTree = "<group>"; };
 		E222151320BDBCBE006D4C5A /* SPSZ_Help_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_Help_ViewController.h; sourceTree = "<group>"; };
 		E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_Help_ViewController.m; sourceTree = "<group>"; };
+		E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoViewController.m; sourceTree = "<group>"; };
+		E288200220BEEB85002EE5E5 /* SYPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoBrowser.h; sourceTree = "<group>"; };
+		E288200320BEEB85002EE5E5 /* SYPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoViewController.h; sourceTree = "<group>"; };
+		E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoBrowser.m; sourceTree = "<group>"; };
+		E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
+		E288200820BEEBD2002EE5E5 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
+		E288200920BEEBD2002EE5E5 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1146,6 +1158,7 @@
 		6ACB53DD20B00E9800528420 /* ThirdParts */ = {
 			isa = PBXGroup;
 			children = (
+				E288200020BEEB85002EE5E5 /* SYPhotoBrowser */,
 				6A494E7420BDB4BC00D13159 /* BLEPrinter */,
 				6A143BAA20BB25F500D71959 /* HLBluetooth */,
 				6A143B9520BAE73300D71959 /* AddressPickerView */,
@@ -1179,12 +1192,12 @@
 		6ACB53DF20B00F8200528420 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				6ACB53E120B00F8200528420 /* MBProgressHUD.h */,
 				6ACB53E020B00F8200528420 /* MBProgressHUD.m */,
 				E222150F20BC4118006D4C5A /* MBProgressHUD+JDragon.h */,
 				E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */,
 				E222151020BC4119006D4C5A /* NSObject+TNAHUD.h */,
 				E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */,
-				6ACB53E120B00F8200528420 /* MBProgressHUD.h */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -1747,6 +1760,22 @@
 			path = suoViews;
 			sourceTree = "<group>";
 		};
+		E288200020BEEB85002EE5E5 /* SYPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				E288200920BEEBD2002EE5E5 /* DACircularProgressView.h */,
+				E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */,
+				E288200820BEEBD2002EE5E5 /* DALabeledCircularProgressView.h */,
+				E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */,
+				E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */,
+				E288200220BEEB85002EE5E5 /* SYPhotoBrowser.h */,
+				E288200320BEEB85002EE5E5 /* SYPhotoViewController.h */,
+				E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */,
+			);
+			name = SYPhotoBrowser;
+			path = ../../../../../../Downloads/SYPhotoBrowser/SYPhotoBrowser/SYPhotoBrowser;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1934,6 +1963,7 @@
 				6A143B8720BAE65C00D71959 /* NSDate+PGCategory.m in Sources */,
 				CC89F35920BA839F00FCEBD2 /* ProgramSize.m in Sources */,
 				6ACB54FF20B011D500528420 /* UIWebView+AFNetworking.m in Sources */,
+				E288200620BEEB85002EE5E5 /* SYPhotoBrowser.m in Sources */,
 				6A143BA120BAE73300D71959 /* UIButton+CZHExtension.m in Sources */,
 				6ACB547F20B00FA500528420 /* YYTextRunDelegate.m in Sources */,
 				6ACB543520B00F9A00528420 /* NSData+ImageContentType.m in Sources */,
@@ -1984,6 +2014,7 @@
 				CC930C4220B56B0800B99756 /* SPSZ_shouDong_OrderViewController.m in Sources */,
 				CC930C3F20B56B0800B99756 /* SPSZ_saoMa_ViewController.m in Sources */,
 				6ACB548D20B00FA500528420 /* YYClassInfo.m in Sources */,
+				E288200C20BEEBD2002EE5E5 /* DACircularProgressView.m in Sources */,
 				6ACB554B20B016B400528420 /* LUAlertTool.m in Sources */,
 				6ACB54FC20B011D500528420 /* UIImageView+AFNetworking.m in Sources */,
 				CC89F3C820BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m in Sources */,
@@ -2029,6 +2060,8 @@
 				6ACB54D420B0118900528420 /* UIView+Extension.m in Sources */,
 				6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */,
 				6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */,
+				E288200B20BEEBD2002EE5E5 /* DALabeledCircularProgressView.m in Sources */,
+				E288200520BEEB85002EE5E5 /* SYPhotoViewController.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
