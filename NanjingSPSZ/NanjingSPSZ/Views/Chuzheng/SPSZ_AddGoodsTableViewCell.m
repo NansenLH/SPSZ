@@ -61,7 +61,8 @@
         make.centerY.equalTo(0);
         make.left.mas_equalTo(40);
     }];
-    self.showImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.showImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.showImageView.clipsToBounds = YES;
     
     self.goodsNameLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:14] text:nil textColor:[ProgramColor RGBColorWithRed:0 green:0 blue:0 alpha:0.86] textAlignment:NSTextAlignmentLeft];
     [self.contentView addSubview:self.goodsNameLabel];

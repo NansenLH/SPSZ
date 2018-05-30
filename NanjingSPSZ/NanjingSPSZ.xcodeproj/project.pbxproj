@@ -46,9 +46,7 @@
 		6A143BA320BAE81B00D71959 /* SPSZ_GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE520B85383008A428F /* SPSZ_GoodsModel.m */; };
 		6A143BA620BAF08900D71959 /* SPSZ_ChuSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143BA520BAF08900D71959 /* SPSZ_ChuSelectedView.m */; };
 		6A143BA920BB105100D71959 /* SPSZ_SelectedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143BA820BB105100D71959 /* SPSZ_SelectedTableViewCell.m */; };
-		6A143BAE20BB25F500D71959 /* HLBLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143BAC20BB25F500D71959 /* HLBLEManager.m */; };
 		6A143BB020BB329D00D71959 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BAF20BB329C00D71959 /* CoreBluetooth.framework */; };
-		6A143BB320BC420900D71959 /* libPrinterSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BB120BC420900D71959 /* libPrinterSDK.a */; };
 		6A143BB520BC422200D71959 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A143BB420BC422200D71959 /* AVFoundation.framework */; };
 		6A143BB820BD52D400D71959 /* SPSZ_ChuhuoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143BB720BD52D400D71959 /* SPSZ_ChuhuoModel.m */; };
 		6A494E7020BD836A00D13159 /* SPSZ_ShowTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E6F20BD836A00D13159 /* SPSZ_ShowTicketView.m */; };
@@ -79,7 +77,6 @@
 		6AAF974020B5B29300A6C0E8 /* SPSZ_DeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973F20B5B29300A6C0E8 /* SPSZ_DeviceModel.m */; };
 		6ABE9B9720BED23000EFB505 /* KRScanBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABE9B9620BED23000EFB505 /* KRScanBaseController.m */; };
 		6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB53A120AFFD4500528420 /* AppDelegate.m */; };
-		6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ACB53AB20AFFD4800528420 /* LaunchScreen.storyboard */; };
 		6ACB53B020AFFD4800528420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB53AF20AFFD4800528420 /* main.m */; };
 		6ACB53BA20AFFD4800528420 /* NanjingSPSZTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB53B920AFFD4800528420 /* NanjingSPSZTests.m */; };
 		6ACB53C520AFFD4800528420 /* NanjingSPSZUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB53C420AFFD4800528420 /* NanjingSPSZUITests.m */; };
@@ -353,12 +350,7 @@
 		6A143BA520BAF08900D71959 /* SPSZ_ChuSelectedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_ChuSelectedView.m; sourceTree = "<group>"; };
 		6A143BA720BB105100D71959 /* SPSZ_SelectedTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_SelectedTableViewCell.h; sourceTree = "<group>"; };
 		6A143BA820BB105100D71959 /* SPSZ_SelectedTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_SelectedTableViewCell.m; sourceTree = "<group>"; };
-		6A143BAB20BB25F500D71959 /* HLBLEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLBLEConst.h; sourceTree = "<group>"; };
-		6A143BAC20BB25F500D71959 /* HLBLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLBLEManager.m; sourceTree = "<group>"; };
-		6A143BAD20BB25F500D71959 /* HLBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLBLEManager.h; sourceTree = "<group>"; };
 		6A143BAF20BB329C00D71959 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		6A143BB120BC420900D71959 /* libPrinterSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPrinterSDK.a; sourceTree = "<group>"; };
-		6A143BB220BC420900D71959 /* PrinterSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrinterSDK.h; sourceTree = "<group>"; };
 		6A143BB420BC422200D71959 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A143BB620BD52D400D71959 /* SPSZ_ChuhuoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_ChuhuoModel.h; sourceTree = "<group>"; };
 		6A143BB720BD52D400D71959 /* SPSZ_ChuhuoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_ChuhuoModel.m; sourceTree = "<group>"; };
@@ -423,7 +415,6 @@
 		6ACB539D20AFFD4500528420 /* NanjingSPSZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanjingSPSZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACB53A020AFFD4500528420 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6ACB53A120AFFD4500528420 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6ACB53AC20AFFD4800528420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6ACB53AE20AFFD4800528420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6ACB53AF20AFFD4800528420 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6ACB53B520AFFD4800528420 /* NanjingSPSZTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NanjingSPSZTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -802,7 +793,6 @@
 				6ACB557020B1206900528420 /* MobileCoreServices.framework in Frameworks */,
 				6ACB556E20B1206000528420 /* Accelerate.framework in Frameworks */,
 				6ACB556C20B1205800528420 /* QuartzCore.framework in Frameworks */,
-				6A143BB320BC420900D71959 /* libPrinterSDK.a in Frameworks */,
 				6ACB556A20B1204E00528420 /* CoreText.framework in Frameworks */,
 				6ACB556820B1204200528420 /* CoreFoundation.framework in Frameworks */,
 				6ACB556620B1203600528420 /* UIKit.framework in Frameworks */,
@@ -922,18 +912,6 @@
 				6A143B9D20BAE73300D71959 /* UIButton+CZHExtension.m */,
 			);
 			path = AddressPickerView;
-			sourceTree = "<group>";
-		};
-		6A143BAA20BB25F500D71959 /* HLBluetooth */ = {
-			isa = PBXGroup;
-			children = (
-				6A143BB120BC420900D71959 /* libPrinterSDK.a */,
-				6A143BB220BC420900D71959 /* PrinterSDK.h */,
-				6A143BAB20BB25F500D71959 /* HLBLEConst.h */,
-				6A143BAC20BB25F500D71959 /* HLBLEManager.m */,
-				6A143BAD20BB25F500D71959 /* HLBLEManager.h */,
-			);
-			path = HLBluetooth;
 			sourceTree = "<group>";
 		};
 		6A494E7420BDB4BC00D13159 /* BLEPrinter */ = {
@@ -1092,7 +1070,6 @@
 				6ACB53A020AFFD4500528420 /* AppDelegate.h */,
 				6ACB53A120AFFD4500528420 /* AppDelegate.m */,
 				6ACB554220B013CE00528420 /* PrefixHeader.pch */,
-				6ACB53AB20AFFD4800528420 /* LaunchScreen.storyboard */,
 				6ACB53AE20AFFD4800528420 /* Info.plist */,
 				6ACB53AF20AFFD4800528420 /* main.m */,
 			);
@@ -1165,7 +1142,6 @@
 			isa = PBXGroup;
 			children = (
 				6A494E7420BDB4BC00D13159 /* BLEPrinter */,
-				6A143BAA20BB25F500D71959 /* HLBluetooth */,
 				6A143B9520BAE73300D71959 /* AddressPickerView */,
 				6A143B9120BAE66D00D71959 /* 时间选择器 */,
 				6A143B3720BAE65C00D71959 /* PGDatePicker */,
@@ -1873,7 +1849,6 @@
 			files = (
 				6A5535BE20BED937003B0C04 /* QRCodeSound.wav in Resources */,
 				CC2DA38C20BD52F3002F5256 /* city.json in Resources */,
-				6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */,
 				6A143B8920BAE65C00D71959 /* PGDatePicker.bundle in Resources */,
 				6A143B9F20BAE73300D71959 /* city.plist in Resources */,
 				6AAF972D20B5428C00A6C0E8 /* Assets.xcassets in Resources */,
@@ -2114,7 +2089,6 @@
 				6A143B8B20BAE65C00D71959 /* PGDatePicker+DateAndTime.m in Sources */,
 				CC89F3DD20BC462A00FCEBD2 /* SPSZ_chu_luRuCollectionViewCell.m in Sources */,
 				6A143B3620BAB36200D71959 /* SPSZ_InputWeightView.m in Sources */,
-				6A143BAE20BB25F500D71959 /* HLBLEManager.m in Sources */,
 				6ACB553620B0124F00528420 /* FMDatabasePool.m in Sources */,
 				CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */,
 				6ACB547720B00FA500528420 /* YYTextEffectWindow.m in Sources */,
@@ -2167,17 +2141,6 @@
 			targetProxy = 6ACB53C120AFFD4800528420 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6ACB53AB20AFFD4800528420 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6ACB53AC20AFFD4800528420 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6ACB53C720AFFD4800528420 /* Debug */ = {
@@ -2294,6 +2257,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
@@ -2321,6 +2285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82LG5ZMTLQ;

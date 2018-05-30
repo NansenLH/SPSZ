@@ -24,8 +24,6 @@
 #import "UIButton+Gradient.h"
 #import "UIButton+ImageTitleSpacing.h"
 
-
-#import "PrinterSDK.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 
 #import "BaseNavigationController.h"
@@ -41,12 +39,12 @@
 #import "SPSZ_chuLoginModel.h"
 #import "ChuzhengNetworkTool.h"
 
-//@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate>
-@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, BluetoothDelegate>
-{
-    NSTimer* mytimer;
-    UIActivityIndicatorView *activityView;
-}
+@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate>
+//@interface SPSZ_ChuIndexViewController ()<ChooseConnectViewDelegate, BluetoothDelegate>
+//{
+//    NSTimer* mytimer;
+//    UIActivityIndicatorView *activityView;
+//}
 
 @property (nonatomic, strong) SPSZ_IndexView *indexView;
 @property (nonatomic, strong) SPSZ_ChooseConnectView *chooseConnectView;
@@ -65,12 +63,12 @@
 
 @property (nonatomic, assign) BOOL hasCreate;
 
-//// 蓝牙中心管理器
-//@property (nonatomic, strong) CBCentralManager *centralManager;
-//// 当前连接的外设
-//@property (nonatomic, strong) CBPeripheral *peripheral;
-//// 要使用的特征
-//@property (nonatomic, strong) CBCharacteristic *characteristic;
+// 蓝牙中心管理器
+@property (nonatomic, strong) CBCentralManager *centralManager;
+// 当前连接的外设
+@property (nonatomic, strong) CBPeripheral *peripheral;
+// 要使用的特征
+@property (nonatomic, strong) CBCharacteristic *characteristic;
 
 @end
 
@@ -102,68 +100,8 @@
     [self configSubViews];
 
     [self configTabbar];
-    
-    
-//    [self testCode];
 }
 
-- (void)testCode
-{
-    SPSZ_suo_shouDongRecordModel *model = [[SPSZ_suo_shouDongRecordModel alloc] init];
-    model.suo_shouDongId = @"10741";
-    model.address = @"detail";
-    model.printcode = @"1231231221312";
-    model.uploaddate = @"2018-05-28 23:27:43";
-    model.cityname = @"江苏南京市玄武区";
-    model.realname = @"hahah11";
-    model.imgurl = @"";
-    model.mobile = @"111232312";
-    model.companyname = @"dadadadad";
-    /**
-     "id": 10741,
-     "address": "detail",
-     "printcode": "",
-     "dishes":
-     "uploaddate": "2018-05-28 23:27:43",
-     "cityname": "江苏南京市玄武区",
-     "realname": "hahah",
-     "companyname": "gongjin",
-     "imgurl": "",
-     "mobile": "186"
-     */
-    SPSZ_suo_saoMaDetailModel *d1 = [[SPSZ_suo_saoMaDetailModel alloc] init];
-    d1.amount = @"20";
-    d1.addresssource = @"sfafda";
-    d1.unit = @"haha";
-    d1.objectName = @"water";
-    d1.dishid = @"1";
-    d1.cityname = @"Beijing";
-    
-    SPSZ_suo_saoMaDetailModel *d2 = [[SPSZ_suo_saoMaDetailModel alloc] init];
-    d2.amount = @"230";
-    d2.addresssource = @"s222da";
-    d2.unit = @"h1h1";
-    d2.objectName = @"cake";
-    d2.dishid = @"2";
-    d2.cityname = @"Jiangsu";
-    
-
-    model.dishes = @[d1, d2, d1, d2, d1, d2];
-    
-    self.view.backgroundColor = [UIColor redColor];
-    
-    SPSZ_ShowTicketView *showTicketView = [[SPSZ_ShowTicketView alloc] init];
-    [self.view addSubview:showTicketView];
-    [showTicketView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(100);
-        make.left.equalTo(60);
-        make.right.equalTo(-60);
-        make.bottom.equalTo(-300);
-    }];
-    showTicketView.model = model;
-    showTicketView.hasHuabian = NO;
-    
-}
 
 
 - (void)setIsConnect:(BOOL)isConnect
@@ -402,49 +340,49 @@
 #pragma mark - ======== Delegate ========
 
 
-#pragma mark ---- 立即连接 ----
-- (void)connectNow
-{
-    [PrinterWraper SetBlutoothDelegate:self];
-    [PrinterWraper StartScanTimeout:10];
-
-    mytimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
-    activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-
-    activityView.center=self.view.center;
-
-    [activityView startAnimating];
-
-    [self.view addSubview:activityView];
-}
-
-- (void)timeout
-{
-    [self stopScan];
-    if (self.deviceArray.count == 0)
-    {
-        UIAlertView*alert=[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"没有扫描到打印机",@"") delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", @"") otherButtonTitles:nil, nil];
-        [alert show];
-    }
-}
-
--(void)stopScan
-{
-    [PrinterWraper StopScan];
-    [activityView stopAnimating];
-    [mytimer invalidate];
-    mytimer=nil;
-}
-
+//#pragma mark ---- 立即连接 ----
 //- (void)connectNow
 //{
-//    if (self.centralManager) {
-//        self.centralManager = nil;
-//    }
+//    [PrinterWraper SetBlutoothDelegate:self];
+//    [PrinterWraper StartScanTimeout:10];
 //
-//    NSDictionary *options = @{CBCentralManagerOptionShowPowerAlertKey:@(YES)};
-//    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:options];
+//    mytimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+//    activityView=[[UIActivityIndicatorView alloc]     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//
+//    activityView.center=self.view.center;
+//
+//    [activityView startAnimating];
+//
+//    [self.view addSubview:activityView];
 //}
+//
+//- (void)timeout
+//{
+//    [self stopScan];
+//    if (self.deviceArray.count == 0)
+//    {
+//        UIAlertView*alert=[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"没有扫描到打印机",@"") delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", @"") otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
+//}
+//
+//-(void)stopScan
+//{
+//    [PrinterWraper StopScan];
+//    [activityView stopAnimating];
+//    [mytimer invalidate];
+//    mytimer=nil;
+//}
+
+- (void)connectNow
+{
+    if (self.centralManager) {
+        self.centralManager = nil;
+    }
+
+    NSDictionary *options = @{CBCentralManagerOptionShowPowerAlertKey:@(YES)};
+    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:options];
+}
 
 
 #pragma mark ---- 打印票据 ----
@@ -454,7 +392,7 @@
         [KRAlertTool alertString:@"请添加货物!"];
         return;
     }
-    
+
     [self uploadTicket];
 }
 
@@ -470,279 +408,234 @@
     }];
 }
 
-
-
+// 打印小票
 - (void)startPrint:(NSString *)qrCodeString
 {
-    NSInteger maxWidth = [PrinterWraper getPrinterMaxWidth];
-    NSMutableString *lineString = [NSMutableString string];
-    for (int i = 0; i < maxWidth; i++) {
-        [lineString appendString:@"-"];
+    HLPrinter *printer = [[HLPrinter alloc] init];
+    
+    // 标题
+    [printer setTitle];
+    // 时间戳
+    [printer setSmallCenter:[self getTime]];
+    // 产品标题
+    [printer setleft:@"产品名称" center:@"产品产地" right:@"进货数量/重量"];
+    // ----
+    [printer appendLine];
+    // 商品
+    for (SPSZ_GoodsModel *tmpModel in self.selectedArray) {
+        NSString *rightString = [NSString stringWithFormat:@"%@%@", tmpModel.weight, tmpModel.unit];
+        [printer setleft:tmpModel.dishname center:tmpModel.cityname right:rightString];
     }
-    
-    //设置格式 大字体 行间距28 局中
-//    [PrinterWraper setPrintFormat:2 LineSpace:28 alinment:1 rotation:0];// 3 大字体  ，28默认行间距,1局中对齐
-//    [PrinterWraper addPrintText:@" "];
-    
-    [PrinterWraper setPrintFormat:2 LineSpace:28 alinment:1 rotation:0];
-    [PrinterWraper addPrintText:@"南京市农产品销售流通凭证"];//打印文字
-
-    // 打印时间戳
-    NSString *timeString = [NSString stringWithFormat:@"%@", [self getTime]];
-    [PrinterWraper setPrintFormat:1 LineSpace:28 alinment:1 rotation:0];
-    [PrinterWraper addPrintText:timeString];
-
-    // 打印分类
-    NSArray *titleValueArray = @[@"产品名称", @" ", @" ", @"产品产地", @" ", @" ", @"进货数量"];
-    [PrinterWraper setPrintFormat:1 LineSpace:28 alinment:1 rotation:0];
-    NSArray *titleArray = @[titleValueArray];
-    [PrinterWraper addItemLines:titleArray];
-    
-    // 打印 ---
-    [PrinterWraper setPrintFormat:1 LineSpace:28 alinment:1 rotation:0];
-    [PrinterWraper addPrintText:lineString];
-    
-    // 打印商品
-    NSMutableArray *goodsArray = [NSMutableArray array];
-    for (SPSZ_GoodsModel *model in self.selectedArray) {
-        NSMutableArray *valueArray = [NSMutableArray array];
-        [valueArray addObject:model.dishname];
-        [valueArray addObject:model.cityname];
-        NSString *weightString = [NSString stringWithFormat:@"%@公斤", model.weight];
-        [valueArray addObject:weightString];
-        [goodsArray addObject:valueArray];
-    }
-    [PrinterWraper addItemLines:titleArray];
-
-    // 打印 ---
-    [PrinterWraper setPrintFormat:1 LineSpace:28 alinment:1 rotation:0];
-    [PrinterWraper addPrintText:lineString];
-    
-    
-    // 打印二维码
-    
-    // 打印商家
+    // ----
+    [printer appendLine];
+    // 二维码
+    [printer setQR:qrCodeString];
+    // 二维码内容
+    [printer setSmallCenter:qrCodeString];
+    // ----
+    [printer appendLine];
+    // 商家信息
     SPSZ_chuLoginModel *user = [KRAccountTool getChuUserInfo];
-    NSArray *nameArray = @[@"批发商姓名", user.realname];
-    NSArray *companyArray = @[@"供货单位", user.companyname];
-    NSArray *mobileArray = @[@"联系电话", user.mobile];
-    NSArray *salerInfoArray = @[nameArray, companyArray, mobileArray];
-    [PrinterWraper addItemLines:salerInfoArray];
+    [printer setleft:@"批发商姓名" right:user.realname];
+    NSString *company = [NSString stringWithFormat:@"%@/%@", user.companyname, user.stall_no];
+    [printer setleft:@"供货单位" right:company];
+    [printer setleft:@"联系电话" right:user.mobile];
+    // ----
+    [printer appendLine];
+    // 6个换行
+    [printer appendNewLine];
+    [printer appendNewLine];
+    [printer appendNewLine];
+    [printer appendNewLine];
+    [printer appendNewLine];
+    [printer appendNewLine];
     
-//    // 空行
-//    [PrinterWraper setPrintFormat:1 LineSpace:28 alinment:1 rotation:0];
-//    [PrinterWraper addPrintText:@" "];
-    
-    
-    // 打印---
-    [PrinterWraper startPrint:nil];
-}
+    NSData *mainData = [printer getFinalData];
 
-//- (void)startPrint
-//{
-//    HLPrinter *printer = [[HLPrinter alloc] init];
-//    [printer appendText:@"HLFontSizeTitleSmalle" alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleSmalle];
-//    [printer appendText:@"HLFontSizeTitleMiddle" alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleMiddle];
-//
-//    [printer appendSeperatorLine];
-//
-//    [printer appendTitle:@"双参数" value:@"HLFontSizeTitleSmalle" fontSize:HLFontSizeTitleSmalle];
-//    [printer appendTitle:@"偏移" value:@"20" valueOffset:20];
-//
-//    [printer appendSeperatorLine];
-//
-//    [printer appendLeftText:@"三列" middleText:@"title" rightText:@"右边" isTitle:YES];
-//    [printer appendLeftText:@"三列" middleText:@"noTitle" rightText:@"右边" isTitle:NO];
-//
-//    [printer appendSeperatorLine];
-//
-//    [printer appendQRCodeWithInfo:@"12323123" size:8];
-//
-//    NSData *mainData = [printer getFinalData];
-//
-//    NSInteger limitLength = 146;
-//    if ([self.peripheral respondsToSelector:@selector(maximumWriteValueLengthForType:)]) {
-//        limitLength = [self.peripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
-//    }
-//
-//    if (limitLength <= 0 || mainData.length <= limitLength) {
-//        [self.peripheral writeValue:mainData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
-//    }
-//    else {
-//
-//        NSInteger index = 0;
-//        for (index = 0; index < mainData.length - limitLength; index += limitLength) {
-//            NSData *subData = [mainData subdataWithRange:NSMakeRange(index, limitLength)];
-//            [self.peripheral writeValue:subData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
-//        }
-//
-//        NSData *leftData = [mainData subdataWithRange:NSMakeRange(index, mainData.length - index)];
-//        if (leftData) {
-//            [self.peripheral writeValue:leftData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
-//        }
-//
-//    }
-//
-//
-//}
-
-
-
-#pragma mark bluetooth delegate
--(void)BlueToothOpen:(BOOL)isopen
-{
-    if (!isopen) {
-        [self stopScan];
-        [self.deviceArray removeAllObjects];
+    NSInteger limitLength = 146;
+    if ([self.peripheral respondsToSelector:@selector(maximumWriteValueLengthForType:)]) {
+        limitLength = [self.peripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
     }
-}
 
-- (void)updateBluetoothDevice:(NSMutableArray*)devices;
-{
-    self.deviceArray = devices;
-
-    self.chooseConnectView.dataArray = devices;
-    if (!self.isConnect) {
-        [self.chooseConnectView showInView:self.navigationController.view];
-    }
-}
-
-- (void)didConnected:(NSString*)deviceUid Result:(BOOL)success
-{
-    if (success) {
-        self.isConnect = YES;
+    if (limitLength <= 0 || mainData.length <= limitLength) {
+        [self.peripheral writeValue:mainData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
     }
     else {
-        NSLog(@"连接失败!");
+
+        NSInteger index = 0;
+        for (index = 0; index < mainData.length - limitLength; index += limitLength) {
+            NSData *subData = [mainData subdataWithRange:NSMakeRange(index, limitLength)];
+            [self.peripheral writeValue:subData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
+        }
+
+        NSData *leftData = [mainData subdataWithRange:NSMakeRange(index, mainData.length - index)];
+        if (leftData) {
+            [self.peripheral writeValue:leftData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
+        }
+
     }
+
+
 }
 
-- (void)finishPrint
-{
-    NSLog(@"打印完成!");
-}
+
+
+//#pragma mark bluetooth delegate
+//-(void)BlueToothOpen:(BOOL)isopen
+//{
+//    if (!isopen) {
+//        [self stopScan];
+//        [self.deviceArray removeAllObjects];
+//    }
+//}
+//
+//- (void)updateBluetoothDevice:(NSMutableArray*)devices;
+//{
+//    self.deviceArray = devices;
+//
+//    self.chooseConnectView.dataArray = devices;
+//    if (!self.isConnect) {
+//        [self.chooseConnectView showInView:self.navigationController.view];
+//    }
+//}
+//
+//- (void)didConnected:(NSString*)deviceUid Result:(BOOL)success
+//{
+//    if (success) {
+//        self.isConnect = YES;
+//    }
+//    else {
+//        NSLog(@"连接失败!");
+//    }
+//}
+//
+//- (void)finishPrint
+//{
+//    NSLog(@"打印完成!");
+//}
 
 
 #pragma mark ---- ChooseConnectViewDelegate ----
-- (void)chooseDevice:(CBPeripheral *)device
-{
-    [PrinterWraper connectPrinter:device.identifier.UUIDString shouldreset:YES];
-    [self.chooseConnectView hidden];
-}
 //- (void)chooseDevice:(CBPeripheral *)device
 //{
-//    [self.centralManager connectPeripheral:device options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey:@(YES)}];
+//    [PrinterWraper connectPrinter:device.identifier.UUIDString shouldreset:YES];
 //    [self.chooseConnectView hidden];
 //}
+- (void)chooseDevice:(CBPeripheral *)device
+{
+    [self.centralManager connectPeripheral:device options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey:@(YES)}];
+    [self.chooseConnectView hidden];
+}
 
 
 
-//#pragma mark - ======== CBCentralManagerDelegate ========
-//- (void)centralManagerDidUpdateState:(CBCentralManager *)central
-//{
-//    // 蓝牙可用，开始扫描外设
-//    if (central.state == CBManagerStatePoweredOn) {
-//        if (!self.isConnect) {
-//            [self.chooseConnectView showInView:self.navigationController.view];
-//            [self.centralManager scanForPeripheralsWithServices:nil options:nil];
-//        }
-//    }
-//    if(central.state==CBManagerStateUnsupported) {
-//        [[LUAlertTool defaultTool] Lu_alertInViewController:self title:@"提示" message:@"该设备不支持蓝牙" cancelButtonTitle:@"确认"];
-//    }
-//    if (central.state==CBManagerStatePoweredOff) {
-//        NSLog(@"设置中未打开蓝牙");
-//    }
-//}
-//
-//- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI
-//{
-//
-//    if (self.deviceArray.count == 0) {
-//        [self.deviceArray addObject:peripheral];
-//    }
-//    else {
-//        BOOL isExist = NO;
-//        for (int i = 0; i < self.deviceArray.count; i++) {
-//            CBPeripheral *per = [self.deviceArray objectAtIndex:i];
-//            if ([per.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString]) {
-//                isExist = YES;
-//                [self.deviceArray replaceObjectAtIndex:i withObject:peripheral];
-//            }
-//        }
-//
-//        if (!isExist) {
-//            [self.deviceArray addObject:peripheral];
-//        }
-//    }
-//
-//    self.chooseConnectView.dataArray = self.deviceArray;
-//
-//}
-//
-//
-///** 连接成功 */
-//- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
-//{
-//    // 可以停止扫描
-//    [self.centralManager stopScan];
-//    // 设置代理
-//    peripheral.delegate = self;
-//    self.peripheral = peripheral;
-//
-//    self.isConnect = YES;
-//    NSLog(@"连接成功");
-//
-//    [self.peripheral discoverServices:nil];
-//}
-//
-///** 连接失败的回调 */
-//-(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
-//{
-//    [KRAlertTool alertString:@"连接蓝牙设备失败,请重试"];
-//}
-//
-///** 断开连接 */
-//- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error
-//{
-//    self.isConnect = NO;
-//}
-//
-//
-//#pragma mark - ======== CBPeripheralDelegate ========
-///** 发现服务 */
-//- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
-//{
-//    // 遍历出外设中所有的服务
-//    for (CBService *service in peripheral.services) {
-//        [peripheral discoverCharacteristics:nil forService:service];
-//    }
-//
-//}
-//
-///** 发现特征回调 */
-//- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
-//{
-//    // 遍历出所需要的特征
-//    for (CBCharacteristic *characteristic in service.characteristics) {
-//        if (characteristic.properties & CBCharacteristicPropertyWrite) {
-//            self.peripheral = peripheral;
-//            self.characteristic = characteristic;
-//        }
-//    }
-//}
-//
-//
-///** 写入数据回调 */
-//- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error
-//{
-//    if (error) {
-//        NSLog(@"写入失败:%@",error);
-//    }
-//    else {
-//        NSLog(@"写入成功");
-//    }
-//}
+#pragma mark - ======== CBCentralManagerDelegate ========
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    // 蓝牙可用，开始扫描外设
+    if (central.state == CBManagerStatePoweredOn) {
+        if (!self.isConnect) {
+            [self.chooseConnectView showInView:self.navigationController.view];
+            [self.centralManager scanForPeripheralsWithServices:nil options:nil];
+        }
+    }
+    if(central.state==CBManagerStateUnsupported) {
+        [[LUAlertTool defaultTool] Lu_alertInViewController:self title:@"提示" message:@"该设备不支持蓝牙" cancelButtonTitle:@"确认"];
+    }
+    if (central.state==CBManagerStatePoweredOff) {
+        NSLog(@"设置中未打开蓝牙");
+    }
+}
+
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI
+{
+
+    if (self.deviceArray.count == 0) {
+        [self.deviceArray addObject:peripheral];
+    }
+    else {
+        BOOL isExist = NO;
+        for (int i = 0; i < self.deviceArray.count; i++) {
+            CBPeripheral *per = [self.deviceArray objectAtIndex:i];
+            if ([per.identifier.UUIDString isEqualToString:peripheral.identifier.UUIDString]) {
+                isExist = YES;
+                [self.deviceArray replaceObjectAtIndex:i withObject:peripheral];
+            }
+        }
+
+        if (!isExist) {
+            [self.deviceArray addObject:peripheral];
+        }
+    }
+
+    self.chooseConnectView.dataArray = self.deviceArray;
+
+}
+
+
+/** 连接成功 */
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
+{
+    // 可以停止扫描
+    [self.centralManager stopScan];
+    // 设置代理
+    peripheral.delegate = self;
+    self.peripheral = peripheral;
+
+    self.isConnect = YES;
+    NSLog(@"连接成功");
+    [KRAlertTool alertString:@"设备连接成功!"];
+    [self.peripheral discoverServices:nil];
+}
+
+/** 连接失败的回调 */
+-(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    [KRAlertTool alertString:@"连接蓝牙设备失败,请重试"];
+}
+
+/** 断开连接 */
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error
+{
+    NSLog(@"断开连接-%@", error.localizedDescription);
+    self.isConnect = NO;
+}
+
+
+#pragma mark - ======== CBPeripheralDelegate ========
+/** 发现服务 */
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
+{
+    // 遍历出外设中所有的服务
+    for (CBService *service in peripheral.services) {
+        [peripheral discoverCharacteristics:nil forService:service];
+    }
+
+}
+
+/** 发现特征回调 */
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+{
+    // 遍历出所需要的特征
+    for (CBCharacteristic *characteristic in service.characteristics) {
+        if (characteristic.properties & CBCharacteristicPropertyWrite) {
+            self.peripheral = peripheral;
+            self.characteristic = characteristic;
+        }
+    }
+}
+
+
+/** 写入数据回调 */
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error
+{
+    if (error) {
+        NSLog(@"写入失败:%@",error);
+    }
+    else {
+        NSLog(@"写入成功");
+    }
+}
 
 
 

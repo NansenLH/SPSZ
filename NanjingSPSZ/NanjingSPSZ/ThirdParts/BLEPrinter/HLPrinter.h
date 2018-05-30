@@ -182,4 +182,46 @@ typedef NS_ENUM(NSInteger, HLFontSize) {
 - (NSData *)getFinalData;
 
 
+
+
+
+
+/**
+ 设置两列文字, 左边左对齐, 右边右对齐
+ */
+- (void)setleft:(NSString *)left right:(NSString *)right;
+
+/**
+ 换行
+ */
+- (void)appendNewLine;
+
+/**
+ 打印 ---- 线
+ */
+- (void)appendLine;
+
+
+/**
+ 打印三列文字
+ */
+- (void)setleft:(NSString *)left center:(NSString *)center right:(NSString *)right;
+
+
+/**
+ 打印标题
+ */
+- (void)setTitle;
+
+/**
+ 打印时间戳, 二维码内容
+ */
+- (void)setSmallCenter:(NSString *)string;
+
+/**
+ 打印二维码图片
+ */
+- (void)setQR:(NSString *)string;
+
+
 @end

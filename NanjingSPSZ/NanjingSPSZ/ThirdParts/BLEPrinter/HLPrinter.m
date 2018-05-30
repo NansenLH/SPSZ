@@ -410,4 +410,261 @@
     return _printerData;
 }
 
+
+
+- (void)setLeftText:(NSString *)leftText rightText:(NSString *)rightText offset:(NSInteger)offset
+{
+    // 1.设置对齐方式
+    [self setAlignment:HLTextAlignmentLeft];
+    // 2.设置字号
+    [self setFontSize:HLFontSizeTitleSmalle];
+    // 3.设置标题内容
+    [self setText:leftText];
+    // 4.设置内容偏移量
+    [self setOffset:offset];
+//    [self setOffsetText:rightText];
+    // 5.设置实际值
+    [self setText:rightText];
+    [self appendNewLine];
+}
+
+
+- (void)setleft:(NSString *)left right:(NSString *)right
+{
+    // 左边文字
+    [self setAlignment:HLTextAlignmentLeft];
+    [self setFontSize:HLFontSizeTitleSmalle];
+    [self setText:left];
+    
+    // 右边文字
+    NSInteger chineseCount = [self chineseCountOfString:right];
+    NSInteger numberCount = right.length - chineseCount;
+    NSInteger offset = 576 - (chineseCount * 24 + numberCount * 12);
+    
+    [self setOffset:offset];
+    [self setText:right];
+    
+    [self appendNewLine];
+}
+
+
+- (void)setleft:(NSString *)left center:(NSString *)center right:(NSString *)right
+{
+    // 180   216   180
+    
+    // 中间全部显示
+    NSInteger centerChineseCount = [self chineseCountOfString:center];
+    NSInteger centerNumberCount = center.length - centerChineseCount;
+    NSInteger centerTotalP = centerChineseCount * 24 + centerNumberCount * 12;
+    NSInteger offsetC = (576 - centerTotalP) / 2;
+    
+    // 左边
+    NSInteger leftChineseCount = [self chineseCountOfString:left];
+    NSInteger leftNumberCount = left.length - leftChineseCount;
+    NSInteger leftTotalP = leftChineseCount * 24 + leftNumberCount * 12;
+    NSInteger offsetL = 0;
+    if (leftTotalP >= offsetC) {
+        offsetC = leftTotalP;
+    }
+    else {
+        if (offsetC >= 180) {
+            // 左边 居中
+            offsetL = (180 - leftTotalP) / 2;
+        }
+        else {
+            NSInteger tttt = (180 - leftTotalP) / 2;
+            if ((tttt+leftTotalP) < offsetC) {
+                offsetL = (180 - leftTotalP) / 2;
+            }
+            else {
+                offsetL = (offsetC - leftTotalP) / 2;
+            }
+        }
+    }
+    
+    // 右边
+    NSInteger rightChineseCount = [self chineseCountOfString:right];
+    NSInteger rightNumberCount = right.length - rightChineseCount;
+    NSInteger rightTotalP = rightChineseCount * 24 + rightNumberCount * 12;
+    NSInteger offsetR = 0;
+    if ((offsetC + centerTotalP) <= 396) {
+        // 右边居中
+        offsetR = 396 + (180 - rightTotalP) / 2;
+    }
+    else if ((offsetC + centerTotalP + rightTotalP) > 576) {
+        offsetR = offsetC + centerTotalP + 24;
+    }
+    else {
+        NSInteger tttt = 396 + (180 - rightTotalP) / 2;
+        if (tttt > (offsetC + centerTotalP)) {
+            offsetR = 396 + (180 - rightTotalP) / 2;
+        }
+        else {
+            offsetR = (576 - offsetC - centerTotalP - rightTotalP) / 2 + offsetC + centerTotalP;
+        }
+    }
+    
+    
+    [self setAlignment:HLTextAlignmentLeft];
+    [self setFontSize:HLFontSizeTitleSmalle];
+    
+    [self setOffset:offsetL];
+    [self setText:left];
+    
+    [self setOffset:offsetC];
+    [self setText:center];
+    
+    [self setOffset:offsetR];
+    [self setText:right];
+    
+    [self appendNewLine];
+}
+
+- (NSString *)sizeString:(NSString *)string
+{
+    NSInteger length = 0;
+    NSInteger totalP = 0;
+    NSString *result = @"";
+    for (int i = 0; i < string.length; i++) {
+        unichar c = [string characterAtIndex:i];
+        BOOL isChinese = NO;
+        if (c >=0x4E00 && c <=0x9FA5) {
+            //汉字
+            isChinese = YES;
+            totalP += 24;
+        }
+        else {
+            totalP += 12;
+        }
+        if (totalP == 192 || totalP == 180) {
+            if (i == string.length - 1) {
+                result = string;
+            }
+            else {
+                if (totalP == 192) {
+                    NSString *t = @"";
+                    if (isChinese) {
+                        t = [string substringWithRange:NSMakeRange(0, i-1)];
+                    }
+                    else {
+                        t = [string substringWithRange:NSMakeRange(0, i-2)];
+                    }
+                    result = [NSString stringWithFormat:@"%@..", t];
+                }
+                else {
+                    // 180, 判断下一个字符是中文还是其他
+                    unichar ct = [string characterAtIndex:(i+1)];
+                    BOOL isChinese2 = NO;
+                    if (ct >=0x4E00 && ct <=0x9FA5) {
+                        //汉字
+                        isChinese2 = YES;
+                    }
+                    if (isChinese2) {
+                        NSString *t = [string substringWithRange:NSMakeRange(0, i-1)];
+                        result = [NSString stringWithFormat:@"%@..", t];
+                    }
+                    else {
+                        if ((i+1)==(string.length-1)) {
+                            result = string;
+                        }
+                        else {
+                            NSString *t = [string substringWithRange:NSMakeRange(0, i-1)];
+                            result = [NSString stringWithFormat:@"%@..", t];
+                        }
+                    }
+                }
+            }
+            break;
+        }
+        length = i;
+    }
+    
+    return result;
+}
+
+
+- (NSInteger)chineseCountOfString:(NSString *)string{
+    int ChineseCount = 0;
+    if (string.length == 0) {
+        return 0;
+    }
+    for (int i = 0; i<string.length; i++) {
+        unichar c = [string characterAtIndex:i];
+        if (c >=0x4E00 && c <=0x9FA5)        {
+            ChineseCount++ ;//汉字
+        }
+    }
+    return ChineseCount;
+}
+
+
+
+- (void)appendLine
+{
+    // 1.文字对齐方式
+    [self setAlignment:HLTextAlignmentCenter];
+    // 2.设置字号
+    [self setFontSize:HLFontSizeTitleSmalle];
+    
+    NSMutableString *mutString = [NSMutableString string];
+    for (int i = 0; i < 48; i++) {
+        [mutString appendString:@"-"];
+    }
+    
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSData *data = [mutString dataUsingEncoding:enc];
+    [_printerData appendData:data];
+    
+    [self appendNewLine];
+}
+
+/**
+ 打印标题
+ */
+- (void)setTitle
+{
+    [self appendNewLine];
+    [self appendNewLine];
+    [self appendNewLine];
+    [self appendNewLine];
+    
+    // 1.文字对齐方式
+    [self setAlignment:HLTextAlignmentCenter];
+    // 2.设置字号
+    [self setFontSize:HLFontSizeTitleMiddle];
+    [self setText:@"南京市农产品销售流通凭证"];
+    // 4.换行
+    [self appendNewLine];
+    [self appendNewLine];
+}
+
+/**
+ 打印时间戳, 二维码内容
+ */
+- (void)setSmallCenter:(NSString *)string
+{
+    // 1.文字对齐方式
+    [self setAlignment:HLTextAlignmentCenter];
+    // 2.设置字号
+    [self setFontSize:HLFontSizeTitleSmalle];
+    [self setText:string];
+    [self appendNewLine];
+    [self appendNewLine];
+}
+
+/**
+ 打印二维码图片
+ */
+- (void)setQR:(NSString *)string
+{
+    [self appendNewLine];
+    [self setAlignment:HLTextAlignmentCenter];
+    [self setQRCodeSize:12];
+    [self setQRCodeErrorCorrection:48];
+    [self setQRCodeInfo:string];
+    [self printStoredQRData];
+    [self appendNewLine];
+}
+
+
 @end
