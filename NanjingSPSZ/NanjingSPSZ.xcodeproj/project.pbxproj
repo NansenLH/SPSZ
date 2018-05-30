@@ -58,6 +58,8 @@
 		6A494E8020BDB4BC00D13159 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E7820BDB4BC00D13159 /* SEPrinterManager.m */; };
 		6A494E8120BDB4BC00D13159 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E7A20BDB4BC00D13159 /* UIImage+Bitmap.m */; };
 		6A494E8420BE520C00D13159 /* SPSZ_EditWightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A494E8320BE520C00D13159 /* SPSZ_EditWightView.m */; };
+		6A5535BE20BED937003B0C04 /* QRCodeSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A5535BD20BED936003B0C04 /* QRCodeSound.wav */; };
+		6A5535C120BED950003B0C04 /* KRAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5535C020BED950003B0C04 /* KRAudioTool.m */; };
 		6A6BACD020B85013008A428F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6A6BACD420B85021008A428F /* SPSZ_personalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */; };
 		6A6BACEA20B856EE008A428F /* LUNetHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6BACE820B856EE008A428F /* LUNetHelp.m */; };
@@ -75,6 +77,7 @@
 		6AAF973A20B562C800A6C0E8 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973920B562C800A6C0E8 /* UIButton+ImageTitleSpacing.m */; };
 		6AAF973D20B5B23A00A6C0E8 /* SPSZ_ChooseConnectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973C20B5B23A00A6C0E8 /* SPSZ_ChooseConnectView.m */; };
 		6AAF974020B5B29300A6C0E8 /* SPSZ_DeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF973F20B5B29300A6C0E8 /* SPSZ_DeviceModel.m */; };
+		6ABE9B9720BED23000EFB505 /* KRScanBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABE9B9620BED23000EFB505 /* KRScanBaseController.m */; };
 		6ACB53A220AFFD4500528420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB53A120AFFD4500528420 /* AppDelegate.m */; };
 		6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ACB53AB20AFFD4800528420 /* LaunchScreen.storyboard */; };
 		6ACB53B020AFFD4800528420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB53AF20AFFD4800528420 /* main.m */; };
@@ -373,6 +376,9 @@
 		6A494E7D20BDB4BC00D13159 /* SEBLEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEBLEConst.h; sourceTree = "<group>"; };
 		6A494E8220BE520C00D13159 /* SPSZ_EditWightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_EditWightView.h; sourceTree = "<group>"; };
 		6A494E8320BE520C00D13159 /* SPSZ_EditWightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_EditWightView.m; sourceTree = "<group>"; };
+		6A5535BD20BED936003B0C04 /* QRCodeSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = QRCodeSound.wav; sourceTree = "<group>"; };
+		6A5535BF20BED950003B0C04 /* KRAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRAudioTool.h; sourceTree = "<group>"; };
+		6A5535C020BED950003B0C04 /* KRAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAudioTool.m; sourceTree = "<group>"; };
 		6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_personalInfoViewController.m; sourceTree = "<group>"; };
 		6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
 		6A6BACD820B85077008A428F /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
@@ -411,6 +417,8 @@
 		6AAF973C20B5B23A00A6C0E8 /* SPSZ_ChooseConnectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_ChooseConnectView.m; sourceTree = "<group>"; };
 		6AAF973E20B5B29300A6C0E8 /* SPSZ_DeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_DeviceModel.h; sourceTree = "<group>"; };
 		6AAF973F20B5B29300A6C0E8 /* SPSZ_DeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_DeviceModel.m; sourceTree = "<group>"; };
+		6ABE9B9520BED23000EFB505 /* KRScanBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRScanBaseController.h; sourceTree = "<group>"; };
+		6ABE9B9620BED23000EFB505 /* KRScanBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRScanBaseController.m; sourceTree = "<group>"; };
 		6ACB539D20AFFD4500528420 /* NanjingSPSZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanjingSPSZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACB53A020AFFD4500528420 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6ACB53A120AFFD4500528420 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -965,6 +973,8 @@
 		6A6BACF120B85A47008A428F /* Program */ = {
 			isa = PBXGroup;
 			children = (
+				6A5535BF20BED950003B0C04 /* KRAudioTool.h */,
+				6A5535C020BED950003B0C04 /* KRAudioTool.m */,
 				CC89F35520BA839E00FCEBD2 /* ProgramColor.h */,
 				CC89F35420BA839E00FCEBD2 /* ProgramColor.m */,
 				CC89F35220BA839E00FCEBD2 /* ProgramConfig.h */,
@@ -1112,6 +1122,8 @@
 		6ACB53DB20B00E6600528420 /* ViewContorllers */ = {
 			isa = PBXGroup;
 			children = (
+				6ABE9B9520BED23000EFB505 /* KRScanBaseController.h */,
+				6ABE9B9620BED23000EFB505 /* KRScanBaseController.m */,
 				6A6BACD320B85021008A428F /* SPSZ_personalInfoViewController.h */,
 				6A6BACD220B85021008A428F /* SPSZ_personalInfoViewController.m */,
 				6ACB554120B0136B00528420 /* Login */,
@@ -1169,6 +1181,7 @@
 		6ACB53DE20B00E9800528420 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6A5535BD20BED936003B0C04 /* QRCodeSound.wav */,
 				CC2DA38920BD52F2002F5256 /* city.json */,
 				CC2DA38A20BD52F2002F5256 /* CityView.h */,
 				CC2DA38B20BD52F3002F5256 /* CityView.m */,
@@ -1853,6 +1866,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A5535BE20BED937003B0C04 /* QRCodeSound.wav in Resources */,
 				CC2DA38C20BD52F3002F5256 /* city.json in Resources */,
 				6ACB53AD20AFFD4800528420 /* LaunchScreen.storyboard in Resources */,
 				6A143B8920BAE65C00D71959 /* PGDatePicker.bundle in Resources */,
@@ -1966,9 +1980,11 @@
 				CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */,
 				6A143B8320BAE65C00D71959 /* PGPickerColumnView.m in Sources */,
 				6ACB542E20B00F9A00528420 /* SDWebImageDownloader.m in Sources */,
+				6A5535C120BED950003B0C04 /* KRAudioTool.m in Sources */,
 				6ACB550220B011D500528420 /* AFURLResponseSerialization.m in Sources */,
 				6A143B8A20BAE65C00D71959 /* PGDatePicker+TimeAndSecond.m in Sources */,
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
+				6ABE9B9720BED23000EFB505 /* KRScanBaseController.m in Sources */,
 				6A143BA920BB105100D71959 /* SPSZ_SelectedTableViewCell.m in Sources */,
 				6A6BAD0720BA51BB008A428F /* UIView+HYBImageCliped.m in Sources */,
 				CC2DA39020BD841E002F5256 /* SPSZ_FMDBTool.m in Sources */,
@@ -2274,7 +2290,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PY4TVE6987;
+				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2287,7 +2303,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2300,7 +2316,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PY4TVE6987;
+				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2313,7 +2329,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

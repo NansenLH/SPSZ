@@ -15,6 +15,9 @@
 
 #import "LUNetHelp.h"
 
+#import "KRScanBaseController.h"
+
+
 @interface SPSZ_saoMa_ViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong)UIImageView *mainImageView;
@@ -59,6 +62,18 @@
 
 - (void)saoMa{
     
+    KRScanBaseController *vc = [[KRScanBaseController alloc] init];
+    vc.hasNavigationBar = YES;
+    KRWeakSelf;
+    [vc setGetQRStringBlock:^(NSString *qrString) {
+        [weakSelf getQRString:qrString];
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (void)getQRString:(NSString *)qrString
+{
     SPSZ_ShowTicketView *showView = [[SPSZ_ShowTicketView alloc]init];
     showView.hasHuabian = NO;
     [self.mainImageView addSubview:showView];
@@ -68,15 +83,16 @@
         make.right.equalTo(0);
         make.bottom.equalTo(20);
     }];
-    [SPSZ_suo_orderNetTool getDaYinDataWithPrintcode:@"10012949758109081600" successBlock:^(SPSZ_suo_shouDongRecordModel *model) {
+    [SPSZ_suo_orderNetTool getDaYinDataWithPrintcode:qrString successBlock:^(SPSZ_suo_shouDongRecordModel *model) {
         showView.model = model;
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         
     } failureBlock:^(NSString *failure) {
         
     }];
-    
 }
+
+
 
 - (void)reSaoMa{
     _mainImageView.image = [UIImage imageNamed:@"retailer_scan"];
