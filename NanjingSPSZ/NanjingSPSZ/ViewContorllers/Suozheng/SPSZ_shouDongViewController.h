@@ -15,4 +15,5 @@
 
 - (void)reloadNewData;
 
+- (void)huishoujianpan;
 @end

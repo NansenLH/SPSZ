@@ -257,6 +257,7 @@
 		CCF0596A20BE9F9B0061E7BC /* SPSZ_shiBieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF0596920BE9F9B0061E7BC /* SPSZ_shiBieViewController.m */; };
 		E222151120BC4119006D4C5A /* MBProgressHUD+JDragon.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */; };
 		E222151220BC4119006D4C5A /* NSObject+TNAHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */; };
+		E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -786,6 +787,8 @@
 		E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TNAHUD.m"; sourceTree = "<group>"; };
 		E222150F20BC4118006D4C5A /* MBProgressHUD+JDragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+JDragon.h"; sourceTree = "<group>"; };
 		E222151020BC4119006D4C5A /* NSObject+TNAHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TNAHUD.h"; sourceTree = "<group>"; };
+		E222151320BDBCBE006D4C5A /* SPSZ_Help_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_Help_ViewController.h; sourceTree = "<group>"; };
+		E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_Help_ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1131,6 +1134,8 @@
 				6ACB553F20B0132C00528420 /* Suozheng */,
 				CC89F34520B6E06500FCEBD2 /* SPSZ_personalInfoViewController.h */,
 				CC89F34620B6E06500FCEBD2 /* SPSZ_personalInfoViewController.m */,
+				E222151320BDBCBE006D4C5A /* SPSZ_Help_ViewController.h */,
+				E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */,
 			);
 			path = ViewContorllers;
 			sourceTree = "<group>";
@@ -1902,6 +1907,7 @@
 				6A494E8020BDB4BC00D13159 /* SEPrinterManager.m in Sources */,
 				6A143BA220BAE7F400D71959 /* ChuzhengNetworkTool.m in Sources */,
 				6A6BACD020B85013008A428F /* (null) in Sources */,
+				E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */,
 				6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */,
 				CCF0596A20BE9F9B0061E7BC /* SPSZ_shiBieViewController.m in Sources */,
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
@@ -2305,6 +2311,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2331,6 +2338,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

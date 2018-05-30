@@ -93,11 +93,11 @@
 - (UIButton *)recordsButton{
     if (!_recordsButton) {
         _recordsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _recordsButton.frame = CGRectMake(20, 0, 80, 60);
-        [_recordsButton setImageEdgeInsets:UIEdgeInsetsMake(5, 20, 16, 20)];
-        [_recordsButton setTitleEdgeInsets:UIEdgeInsetsMake(48, -35, 0, 0)];
+        _recordsButton.frame = CGRectMake(20, 0, 80, 60);//25 25
+        [_recordsButton setImageEdgeInsets:UIEdgeInsetsMake(15, 27.5, 20, 27.5)];
+        [_recordsButton setTitleEdgeInsets:UIEdgeInsetsMake(48, -45, 0, 0)];
         [_recordsButton setImage:[UIImage imageNamed:@"record_gray"] forState:UIControlStateNormal];
-        [_recordsButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [_recordsButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [_recordsButton setTitle:@"进货记录" forState:UIControlStateNormal];
         [_recordsButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [_recordsButton addTarget:self action:@selector(recordButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -110,9 +110,9 @@
         _personButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _personButton.frame = CGRectMake(MainScreenWidth - 80 -20, 0, 80, 60);
         [_personButton setImage:[UIImage imageNamed:@"user_gray"] forState:UIControlStateNormal];
-        [_personButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        [_personButton setImageEdgeInsets:UIEdgeInsetsMake(5, 20, 16, 20)];
-        [_personButton setTitleEdgeInsets:UIEdgeInsetsMake(48, -35, 0, 0)];
+        [_personButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        [_personButton setImageEdgeInsets:UIEdgeInsetsMake(15, 27.5, 20, 27.5)];
+        [_personButton setTitleEdgeInsets:UIEdgeInsetsMake(48, -45, 0, 0)];
         [_personButton setTitle:@"个人中心" forState:UIControlStateNormal];
         [_personButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
 
@@ -279,6 +279,11 @@
 }
 
 - (void)changeCenterButtonTitleWith:(NSInteger)index{
+    if (index == 0 || index == 1) {
+        SPSZ_shouDongViewController *vc = self.vcArray[2];
+        [vc huishoujianpan];
+    }
+    
     if (index == 0) {
         [_centerButton setImage:[UIImage imageNamed:@"scan_qr_white"] forState:UIControlStateNormal];
         [_centerButton setTitle:@"扫码上传" forState:UIControlStateNormal];            self.centerButtonImageName = @"scan_qr_white";
@@ -287,7 +292,7 @@
         [_centerButton setTitle:@"拍照上传" forState:UIControlStateNormal];
         self.centerButtonImageName = @"scan_qr_white";
     }else if (index == 2){
-        [_centerButton setImage:[UIImage imageNamed:@"upload_white"] forState:UIControlStateNormal];
+        [_centerButton setImage:[UIImage imageNamed:@"sd_upload_white"] forState:UIControlStateNormal];
         [_centerButton setTitle:@"手动上传" forState:UIControlStateNormal];
     }
 }
