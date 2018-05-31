@@ -86,18 +86,19 @@ saoMaSuccessDelegate
 
 - (UIView *)bottomView{
     if (!_bottomView) {
-        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0,MainScreenHeight -100 - 64 - [ProgramSize bottomHeight], MainScreenWidth, 100 + [ProgramSize bottomHeight])];
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 30)];
+        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0,MainScreenHeight -120 - [ProgramSize statusBarAndNavigationBarHeight] - [ProgramSize bottomHeight], MainScreenWidth, 120 + [ProgramSize bottomHeight])];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 20, MainScreenWidth, 30)];
         imageView.image = [UIImage imageNamed:@"bg_white_radius"];
-        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, 70)];
+        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 50, MainScreenWidth, 70 +[ProgramSize bottomHeight])];
         whiteView.backgroundColor = [UIColor whiteColor];
+        imageView.userInteractionEnabled = YES;
         
         [_bottomView addSubview:imageView];
         [_bottomView addSubview:whiteView];
 
         [whiteView addSubview:self.recordsButton];
         [whiteView addSubview:self.personButton];
-        [whiteView addSubview:self.centerButton];
+        [_bottomView addSubview:self.centerButton];
     }
     return _bottomView;
 }
@@ -136,7 +137,7 @@ saoMaSuccessDelegate
 - (UIButton *)centerButton{
     if (!_centerButton){
         _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _centerButton.frame = CGRectMake((MainScreenWidth - 100)/2, -50, 100, 100);
+        _centerButton.frame = CGRectMake((MainScreenWidth - 100)/2, 0, 100, 100);
         _centerButton.layer.masksToBounds = YES;
         _centerButton.layer.cornerRadius = 50;
         [_centerButton.titleLabel setFont:[UIFont systemFontOfSize:14]];

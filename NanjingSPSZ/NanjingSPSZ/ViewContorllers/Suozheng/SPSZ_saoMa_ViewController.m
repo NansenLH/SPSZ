@@ -34,7 +34,7 @@
 - (UIImageView *)mainImageView{
     if (!_mainImageView) {
         _mainImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"retailer_scan"]];
-        _mainImageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264-[ProgramSize bottomHeight]);
+        _mainImageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight - 220 -[ProgramSize bottomHeight] - [ProgramSize statusBarAndNavigationBarHeight]);
         _mainImageView.contentMode = UIViewContentModeScaleAspectFill;
         _mainImageView.clipsToBounds = YES;
         _mainImageView.userInteractionEnabled = YES;

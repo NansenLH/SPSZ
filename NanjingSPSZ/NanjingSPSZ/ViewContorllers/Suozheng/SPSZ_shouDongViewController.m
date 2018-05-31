@@ -225,7 +225,7 @@
 
 - (UIView *)mainView{
     if (!_mainView) {
-        _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight - 200 -[ProgramSize bottomHeight] - [ProgramSize statusBarAndNavigationBarHeight])];
+        _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight - 220 -[ProgramSize bottomHeight] - [ProgramSize statusBarAndNavigationBarHeight])];
         _mainView.backgroundColor = [UIColor whiteColor];
     }
     return _mainView;
@@ -236,7 +236,7 @@
     // Do any additional setup after loading the view.
     self.amount = @"0";
     self.unit = @"公斤";
-    self.height = (MainScreenHeight - 200 -[ProgramSize bottomHeight] - [ProgramSize statusBarAndNavigationBarHeight])/8;
+    self.height = (MainScreenHeight - 220 -[ProgramSize bottomHeight] - [ProgramSize statusBarAndNavigationBarHeight])/8;
     self.width = MainScreenWidth - 60;
     
     [self.view addSubview:self.mainView];
