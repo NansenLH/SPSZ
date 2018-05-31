@@ -40,6 +40,9 @@
         
         _mainImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"retailer_take_phote"]];
         _mainImageView.frame = CGRectMake(30, 0, MainScreenWidth - 60, MainScreenHeight -264-[ProgramSize bottomHeight]);
+        _mainImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _mainImageView.clipsToBounds = YES;
+        _mainImageView.userInteractionEnabled = YES;
     }
     return _mainImageView;
 }

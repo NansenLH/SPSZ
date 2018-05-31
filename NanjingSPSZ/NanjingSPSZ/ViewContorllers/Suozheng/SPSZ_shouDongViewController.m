@@ -113,7 +113,8 @@
         _productNameTextField.textAlignment = NSTextAlignmentRight;
         _productNameTextField.placeholder = @"请输入";
         _productNameTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
-
+        _productNameTextField.font = [UIFont systemFontOfSize:14];
+        _productNameTextField.tag = 555 + 0;
     }
     return _productNameTextField;
 }
@@ -127,6 +128,8 @@
         _detailLocationTextField.textAlignment = NSTextAlignmentRight;
         _detailLocationTextField.placeholder = @"请输入";
         _detailLocationTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
+        _detailLocationTextField.font = [UIFont systemFontOfSize:14];
+        _productNameTextField.tag = 555 + 1;
     }
     return _detailLocationTextField;
 }
@@ -137,7 +140,7 @@
         _numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _numberButton.frame = CGRectMake(140, 0, _width - 150, _height);
         [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
-        _numberButton.titleLabel.font = [UIFont systemFontOfSize:17];
+        _numberButton.titleLabel.font = [UIFont systemFontOfSize:14];
         _numberButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         _numberButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
         [_numberButton addTarget:self action:@selector(editNumber:) forControlEvents:UIControlEventTouchUpInside];
@@ -154,7 +157,8 @@
         _companyTextField.textAlignment = NSTextAlignmentRight;
         _companyTextField.placeholder = @"请输入";
         _companyTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
-
+        _companyTextField.font = [UIFont systemFontOfSize:14];
+        _companyTextField.tag = 555 + 4;
     }
     return _companyTextField;
 }
@@ -166,7 +170,8 @@
         _nameTextField.textAlignment = NSTextAlignmentRight;
         _nameTextField.placeholder = @"请输入";
         _nameTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
-
+        _nameTextField.font = [UIFont systemFontOfSize:14];
+        _nameTextField.tag = 555 + 5;
     }
     return _nameTextField;
 }
@@ -180,7 +185,8 @@
         _phoneTextField.textAlignment = NSTextAlignmentRight;
         _phoneTextField.placeholder = @"请输入";
         _phoneTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
-
+        _phoneTextField.font = [UIFont systemFontOfSize:14];
+        _phoneTextField.tag = 555 + 6;
     }
     return _phoneTextField;
 }
@@ -189,7 +195,7 @@
     if (!_timeButton) {
         _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _timeButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
-        _timeButton.titleLabel.font = [UIFont systemFontOfSize:17];
+        _timeButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
         _timeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         _timeButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
@@ -207,7 +213,7 @@
         _productLocationButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
         [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
         [_productLocationButton setTitleColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59] forState:UIControlStateNormal];
-        _productLocationButton.titleLabel.font = [UIFont systemFontOfSize:17];
+        _productLocationButton.titleLabel.font = [UIFont systemFontOfSize:14];
 
         [_productLocationButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
         _productLocationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -219,7 +225,7 @@
 
 - (UIView *)mainView{
     if (!_mainView) {
-        _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight -264-[ProgramSize bottomHeight])];
+        _mainView = [[UIView alloc]initWithFrame:CGRectMake(30, 30, MainScreenWidth - 60, MainScreenHeight - 200 -[ProgramSize bottomHeight] - [ProgramSize statusBarAndNavigationBarHeight])];
         _mainView.backgroundColor = [UIColor whiteColor];
     }
     return _mainView;
@@ -230,12 +236,24 @@
     // Do any additional setup after loading the view.
     self.amount = @"0";
     self.unit = @"公斤";
-    self.height = (MainScreenHeight -264 - [ProgramSize bottomHeight])/8;
+    self.height = (MainScreenHeight - 200 -[ProgramSize bottomHeight] - [ProgramSize statusBarAndNavigationBarHeight])/8;
     self.width = MainScreenWidth - 60;
     
     [self.view addSubview:self.mainView];
 
     [self setUpView];
+    
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     //注册键盘出现的通知
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -247,9 +265,11 @@
                                                  name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setUpView{
@@ -275,6 +295,7 @@
         }
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
         label.textColor = [UIColor redColor];
+        label.font = [UIFont systemFontOfSize:14];
         [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] string:@"    " string2:self.titleArray[number]]];
         [view addSubview:label];
         [view addSubview:button];
@@ -284,6 +305,7 @@
         }
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
         label.textColor = [UIColor redColor];
+        label.font = [UIFont systemFontOfSize:14];
         [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] string:@"*  " string2:self.titleArray[number]]];
         [view addSubview:label];
         [view addSubview:textfield];
@@ -430,6 +452,7 @@
 
 - (void)editNumber:(UIButton *)button
 {
+    [self.view endEditing:YES];
     [self.editWeightView show];
 }
 
@@ -443,7 +466,6 @@
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
     [self huishoujianpan];
 
     [self.view endEditing:YES];
@@ -466,6 +488,17 @@
     int val;
     return [scan scanInt:&val] && [scan isAtEnd];
 }
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([textField isEqual:self.productNameTextField]) {
+        if (textField.text.length > 6) {
+            textField.text = [textField.text substringWithRange:NSMakeRange(0, 6)];
+        }
+    }
+}
+
+
 
 
 
@@ -503,16 +536,35 @@
     //获取键盘高度，在不同设备上，以及中英文下是不同的
     CGFloat kbHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     
-    //计算出键盘顶端到inputTextView panel底端的距离(加上自定义的缓冲距离INTERVAL_KEYBOARD)
-    CGFloat offset = (self.nowEditTF.frame.origin.y+self.nowEditTF.frame.size.height+50) - (self.view.frame.size.height - kbHeight) - 20;
+    //
+    CGFloat keyTop = [ProgramSize mainScreenHeight] - kbHeight;
     
-    // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
-    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGFloat editBottom = (self.nowEditTF.tag - 554) * self.height + 70 + [ProgramSize statusBarAndNavigationBarHeight];
+    CGFloat offset = keyTop - editBottom - 20;
+    if (offset < 0) {
+        // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
+        double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        //将视图上移计算好的偏移
+        [UIView animateWithDuration:duration animations:^{
+            
+            self.mainView.y += offset;
+            
+//            self.view.frame = CGRectMake(2 * self.view.frame.size.width, offset, self.view.frame.size.width, self.view.frame.size.height);
+        }];
+    }
     
-    //将视图上移计算好的偏移
-    [UIView animateWithDuration:duration animations:^{
-        self.view.frame = CGRectMake(2 * self.view.frame.size.width, offset, self.view.frame.size.width, self.view.frame.size.height);
-    }];
+//    //计算出键盘顶端到inputTextView panel底端的距离(加上自定义的缓冲距离INTERVAL_KEYBOARD)
+//    CGFloat offset = (self.nowEditTF.frame.origin.y+self.nowEditTF.frame.size.height+50) - (self.view.frame.size.height - kbHeight) - 20;
+//
+//    // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
+//    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+//
+//    NSLog(@"kbH = %0.0lf, offset = %0.0lf", kbHeight, offset);
+//
+//    //将视图上移计算好的偏移
+//    [UIView animateWithDuration:duration animations:^{
+//        self.view.frame = CGRectMake(2 * self.view.frame.size.width, offset, self.view.frame.size.width, self.view.frame.size.height);
+//    }];
 }
 
 ///键盘消失事件
@@ -521,9 +573,15 @@
     double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     //视图下沉恢复原状
-    [UIView animateWithDuration:duration animations:^{
-        self.view.frame = CGRectMake(2*self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
-    }];
+    if (self.mainView.y != 30) {
+        [UIView animateWithDuration:duration animations:^{
+            self.mainView.y = 30;
+        }];
+    }
+//    [UIView animateWithDuration:duration animations:^{
+//
+////        self.view.frame = CGRectMake(2*self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+//    }];
 }
 
 @end
