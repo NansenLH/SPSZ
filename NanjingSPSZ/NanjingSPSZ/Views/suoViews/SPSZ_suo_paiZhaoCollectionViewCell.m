@@ -44,7 +44,7 @@
     "mobile": ""
     */
     _timelabel.text = model.uploaddate;
-    [self.picImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseImagePath,model.imgurl]]];
+    [self.picImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseImagePath,model.imgurl]] placeholderImage:[UIImage imageNamed:@"scan_mask"]];
 
 }
 

@@ -41,7 +41,7 @@
 - (NSMutableArray *)numberArray
 {
     if (!_numberArray) {
-        _numberArray = [NSMutableArray arrayWithObjects:@"1",@"3",@"6", nil];
+        _numberArray = [NSMutableArray arrayWithObjects:@"1",@"3",@"5", nil];
     }
     return _numberArray;
 }
@@ -49,7 +49,7 @@
 - (NSMutableArray *)titleArray
 {
     if (!_titleArray) {
-        _titleArray = [NSMutableArray arrayWithObjects:@"个人信息",@"版本号",@"检查版本",@"帮助",@"注销登录", nil];
+        _titleArray = [NSMutableArray arrayWithObjects:@"个人信息",@"版本号",@"帮助",@"注销登录", nil];
     }
     return _titleArray;
 }
@@ -57,7 +57,7 @@
 - (NSMutableArray *)titleNumArray
 {
     if (!_titleNumArray) {
-        _titleNumArray = [NSMutableArray arrayWithObjects:@"2",@"4",@"5",@"7",@"8", nil];
+        _titleNumArray = [NSMutableArray arrayWithObjects:@"2",@"4",@"6",@"7", nil];
     }
     return _titleNumArray;
 }
@@ -82,11 +82,11 @@
     
     self.view.backgroundColor = [ProgramColor huiseColor];
     
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<self.itemArray.count; i++) {
         [self setUpViewWith:i];
     }
     
-    for (int i=0; i<5; i++) {
+    for (int i=0; i<self.titleArray.count; i++) {
         [self setTitleViewWith:i];
     }
     
@@ -121,9 +121,9 @@
         self.numLabel.textAlignment = NSTextAlignmentRight;
         [view addSubview:self.numLabel];
         
-        UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, 49, MainScreenWidth - 20, 1)];
-        lineView.backgroundColor = [ProgramColor huiseColor];
-        [view addSubview:lineView];
+//        UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, 49, MainScreenWidth - 20, 1)];
+//        lineView.backgroundColor = [ProgramColor huiseColor];
+//        [view addSubview:lineView];
     }else
     {
         UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"goto_textgray"]];
@@ -135,7 +135,7 @@
         [view addGestureRecognizer:tap];
     }
     
-    if (num == 7) {
+    if (num == 6) {
         UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, 49, MainScreenWidth - 20, 1)];
         lineView.backgroundColor = [ProgramColor huiseColor];
         [view addSubview:lineView];
@@ -160,12 +160,10 @@
         SPSZ_personalInfoViewController *vc = [[SPSZ_personalInfoViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
 
-    }else if ([tap view].tag == 10005){
-        NSLog(@"检查版本");
-    }else if ([tap view].tag == 10007){
+    }else if ([tap view].tag == 10006){
         SPSZ_Help_ViewController *vc = [[SPSZ_Help_ViewController alloc] init];
         [self.navigationController pushViewController:vc animated:true];
-    }else if ([tap view].tag == 10008){
+    }else if ([tap view].tag == 10007){
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

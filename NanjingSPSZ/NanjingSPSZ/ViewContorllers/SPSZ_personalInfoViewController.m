@@ -178,7 +178,7 @@
     label.textColor = [UIColor redColor];
     if (number == 0 || number == 8) {
         mainLabel.textAlignment = NSTextAlignmentLeft;
-        mainLabel.frame = CGRectMake(100, 0, MainScreenWidth -160, _height);
+        mainLabel.frame = CGRectMake(100, 0, MainScreenWidth -110, _height);
         mainLabel.font = [UIFont systemFontOfSize:11];
         if (number == 0) {
             [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:54 green:136 blue:225] string:@"      " string2:self.titleArray[number]]];
@@ -198,7 +198,7 @@
             [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor blackColor] string:@"  *  " string2:self.titleArray[number]]];
         }
         [view addSubview:label];
-        mainLabel.frame = CGRectMake(150, 0, MainScreenWidth -160, _height);
+        mainLabel.frame = CGRectMake(w, 0, MainScreenWidth -w -10, _height);
     }
     if (number != 8) {
         UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, _height- 1, MainScreenWidth - 20, 1)];

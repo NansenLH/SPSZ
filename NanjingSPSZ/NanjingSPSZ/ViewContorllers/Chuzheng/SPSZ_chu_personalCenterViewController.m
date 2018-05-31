@@ -40,7 +40,7 @@
 - (NSMutableArray *)numberArray
 {
     if (!_numberArray) {
-        _numberArray = [NSMutableArray arrayWithObjects:@"1",@"5",@"8", nil];
+        _numberArray = [NSMutableArray arrayWithObjects:@"1",@"5",@"7", nil];
     }
     return _numberArray;
 }
@@ -48,7 +48,7 @@
 - (NSMutableArray *)titleArray
 {
     if (!_titleArray) {
-        _titleArray = [NSMutableArray arrayWithObjects:@"个人信息",@"进货记录",@"出货记录",@"版本号",@"检查版本",@"帮助",@"注销登录", nil];
+        _titleArray = [NSMutableArray arrayWithObjects:@"个人信息",@"进货记录",@"出货记录",@"版本号",@"帮助",@"注销登录", nil];
     }
     return _titleArray;
 }
@@ -56,7 +56,7 @@
 - (NSMutableArray *)titleNumArray
 {
     if (!_titleNumArray) {
-        _titleNumArray = [NSMutableArray arrayWithObjects:@"2",@"3",@"4",@"6",@"7",@"9",@"10", nil];
+        _titleNumArray = [NSMutableArray arrayWithObjects:@"2",@"3",@"4",@"6",@"8",@"9", nil];
     }
     return _titleNumArray;
 }
@@ -112,10 +112,6 @@
         self.numLabel.text = [NSString stringWithFormat:@"v%@",app_Version];
         self.numLabel.textAlignment = NSTextAlignmentRight;
         [view addSubview:self.numLabel];
-        
-        UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, 49, MainScreenWidth - 20, 1)];
-        lineView.backgroundColor = [ProgramColor huiseColor];
-        [view addSubview:lineView];
     }else
     {
         UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"goto_textgray"]];
@@ -127,7 +123,7 @@
         [view addGestureRecognizer:tap];
     }
     
-    if (num == 9 || num == 2 || num ==3) {
+    if (num == 8 || num == 2 || num ==3) {
         UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, 49, MainScreenWidth - 20, 1)];
         lineView.backgroundColor = [ProgramColor huiseColor];
         [view addSubview:lineView];
@@ -159,14 +155,10 @@
     }else if ([tap view].tag == 20004){
         SPSZ_chu_chuZhengRecordsViewController *vc = [[SPSZ_chu_chuZhengRecordsViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
-    }else if ([tap view].tag == 20007){
-        NSLog(@"检查版本");
-    }else if ([tap view].tag == 20009){
+    }else if ([tap view].tag == 20008){
         SPSZ_Help_ViewController *vc = [[SPSZ_Help_ViewController alloc] init];
         [self.navigationController pushViewController:vc animated:true];
-    }else if ([tap view].tag == 20010){
-        
-        
+    }else if ([tap view].tag == 20009){
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

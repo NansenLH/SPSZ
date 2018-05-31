@@ -60,13 +60,25 @@
     [bgView addSubview:whiteView];
     
     _productNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 10 , (width - 20)/2, 26)];
+    [_productNameLabel adjustsFontSizeToFitWidth];
+    _productNameLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     [whiteView addSubview:self.productNameLabel];
     
     _weightLabel = [[UILabel alloc]initWithFrame:CGRectMake(width / 2, 10, (width - 20)/2, 26)];
+    [_weightLabel adjustsFontSizeToFitWidth];
+    _weightLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     [whiteView addSubview:self.weightLabel];
     
     _laiYuanChanDiLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, (10 + 26)*1+ 10,width - 10, 26)];
+    [_laiYuanChanDiLabel adjustsFontSizeToFitWidth];
+    _laiYuanChanDiLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     [whiteView addSubview:self.laiYuanChanDiLabel];
+    if (MainScreenWidth < 375) {
+        _productNameLabel.font = [UIFont systemFontOfSize:14];
+        _weightLabel.font = [UIFont systemFontOfSize:14];
+        _laiYuanChanDiLabel.font = [UIFont systemFontOfSize:14];
+
+    }
 }
 
 
