@@ -320,7 +320,7 @@ UIGestureRecognizerDelegate
         UILabel *mainLabel = [[UILabel alloc]initWithFrame:CGRectMake(110, 0, MainScreenWidth - 120, _height)];
         mainLabel.textColor = [UIColor lightGrayColor];
         mainLabel.textAlignment = NSTextAlignmentLeft;
-        mainLabel.frame = CGRectMake(100, 0, MainScreenWidth -160, _height);
+        mainLabel.frame = CGRectMake(100, 0, MainScreenWidth -110, _height);
         mainLabel.font = [UIFont systemFontOfSize:11];
         if (number == 0) {
             [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:54 green:136 blue:225] string:@"      " string2:self.titleArray[number]]];
@@ -334,8 +334,7 @@ UIGestureRecognizerDelegate
         if (number == 1) {
             [view addSubview:self.productNameLabel];
         }else if (number == 2){
-//            [view addSubview:self.numberLabel];
-            [view addSubview:self.numberButton];
+             [view addSubview:self.numberButton];
             w = 140;
         }else if (number == 3){
             [view addSubview:self.carLabel];
