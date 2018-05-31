@@ -8,7 +8,7 @@
 
 #import "SPSZ_EditWightView.h"
 
-@interface SPSZ_EditWightView ()
+@interface SPSZ_EditWightView ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *textField;
 
@@ -67,6 +67,7 @@
     self.textField.layer.borderColor = [UIColor grayColor].CGColor;
     self.textField.layer.borderWidth = 1;
     self.textField.keyboardType = UIKeyboardTypeNumberPad;
+    self.textField.delegate = self;
     
     
     CGFloat btnW = 40;
@@ -161,7 +162,9 @@
     NSDictionary *dic = [[ProgramConfig unitArray] objectAtIndex:(button.tag - 235)];
     self.unit = [dic objectForKey:@"unit"];
     
-    self.weight = self.textField.text.length > 0 ? self.textField.text : @"0";
+    NSInteger weight = [self.textField.text integerValue];
+    
+    self.weight = [@(weight) stringValue];
     if (self.chooseWeightBlock) {
         self.chooseWeightBlock(self.weight, self.unit);
     }
@@ -186,5 +189,21 @@
     self.weight = @"0";
     self.textField.text = nil;
 }
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *sub = [NSString stringWithFormat:@"%@%@", textField.text, string];
+    if ([sub integerValue] > 9999) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.textField.text = [@([textField.text integerValue]) stringValue];
+}
+
 
 @end

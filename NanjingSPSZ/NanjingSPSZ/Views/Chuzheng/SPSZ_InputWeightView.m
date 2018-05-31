@@ -87,8 +87,6 @@
         self.unitLabel.text = @"公斤";
         _unit = @"公斤";
     }
-    
-    
 }
 
 
