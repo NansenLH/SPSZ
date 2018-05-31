@@ -8,12 +8,29 @@
 
 #import "BaseViewController.h"
 
+@protocol saoMaSuccessDelegate <NSObject>
+
+@optional
+
+- (void)saoMabuttonImageType:(BOOL)type;
+
+@end
+
 @interface SPSZ_saoMa_ViewController : BaseViewController
+
+@property(nonatomic, weak) id<saoMaSuccessDelegate>delegate;
+
 
 - (void)reSaoMa;
 
 - (void)sureUpload;
 
 - (void)saoMa;
+
+/**
+  * yes 确认上传
+  * no 扫码上传
+ */
+@property (nonatomic, assign)BOOL buttonImageType;
 
 @end

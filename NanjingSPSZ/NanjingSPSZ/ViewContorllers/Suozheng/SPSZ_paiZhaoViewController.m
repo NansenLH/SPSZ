@@ -48,6 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor   = [ UIColor clearColor];
+    self.buttonImageType = NO;
     
     UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236-[ProgramSize bottomHeight])];
     [yy addSubview:self.mainImageView];
@@ -58,6 +59,7 @@
 // 重新录入
 - (void)reEnterAction
 {
+    self.buttonImageType = NO;
     _mainImageView.image = [UIImage imageNamed:@"retailer_take_phote"];
     [self.imageArray removeAllObjects];
 }
@@ -93,12 +95,20 @@
         SPSZ_suo_shouDongRecordModel *shouDongModel = [[SPSZ_suo_shouDongRecordModel alloc]init];
         shouDongModel.imgurl = self.imageArray.firstObject;
         
+        KRWeakSelf;
         [SPSZ_suo_orderNetTool shangChuanWith:@"1" model:shouDongModel successBlock:^(NSString *string) {
+            UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"上传成功!" preferredStyle:UIAlertControllerStyleAlert];
             
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [weakSelf reEnterAction];
+            }];
+            [actionSheetController addAction:okAction];
+            
+            [weakSelf presentViewController:actionSheetController animated:YES completion:nil];
         } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-            
+            [KRAlertTool alertString:errorMessage];
         } failureBlock:^(NSString *failure) {
-            
+            [KRAlertTool alertString:failure];
         }];
     }
    
@@ -142,17 +152,25 @@
 
 - (void)uploadImage:(UIImage *)image
 {
+    KRWeakSelf;
     [LUNetHelp uploadImage:image successBlock:^(NSString *imageURL) {
         
-        [self.imageArray addObject:imageURL];
+        [weakSelf.imageArray addObject:imageURL];
         
-        self.mainImageView.image = image;
+        weakSelf.mainImageView.image = image;
+        weakSelf.buttonImageType = YES;
+        
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(buttonImageType:)]) {
+            [weakSelf.delegate buttonImageType:YES];
+        }
+                
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
         [KRAlertTool alertString:failure];
     }];
 }
+
 
 
 

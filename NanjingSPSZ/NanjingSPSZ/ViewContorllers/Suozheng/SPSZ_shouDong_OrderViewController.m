@@ -104,9 +104,6 @@
 }
 
 
-
-
-
 - (void)loadDataWith:(NSString *)date newDate:(NSString *)newDate
 {
     SPSZ_suoLoginModel *model = [KRAccountTool getSuoUserInfo];
@@ -123,9 +120,9 @@
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
 
         [self.tableView reloadData];
-
+        [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
-        
+        [KRAlertTool alertString:failure];
     }];
 }
 

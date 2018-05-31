@@ -132,9 +132,9 @@
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
 
         [self.collectionView reloadData];
-
+        [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
-        
+        [KRAlertTool alertString:failure];
     }];
 }
 

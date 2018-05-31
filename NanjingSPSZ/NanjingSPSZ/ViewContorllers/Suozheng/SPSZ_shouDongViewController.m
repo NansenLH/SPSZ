@@ -407,11 +407,23 @@
     [array addObject:detailModel];
     shouDongModel.dishes = array;
     
+    KRWeakSelf;
     [SPSZ_suo_orderNetTool shangChuanWith:@"2" model:shouDongModel successBlock:^(NSString *string) {
+        UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"上传成功!" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            weakSelf.productNameTextField.text = @"";
+            [weakSelf.numberButton setTitle:@"请输入" forState:UIControlStateNormal];
+            [weakSelf.numberButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+        }];
+        [actionSheetController addAction:okAction];
+        
+        [weakSelf presentViewController:actionSheetController animated:YES completion:nil];
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
+        [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
+        [KRAlertTool alertString:failure];
         
     }];
 }

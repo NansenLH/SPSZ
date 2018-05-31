@@ -24,8 +24,18 @@
 #import "UIButton+Gradient.h"
 
 
-@interface SPSZ_suo_MainViewController ()<KRTagBarDelegate,UIScrollViewDelegate>
-
+@interface SPSZ_suo_MainViewController ()
+<
+KRTagBarDelegate,
+UIScrollViewDelegate,
+paiZhaoSuccessDelegate,
+saoMaSuccessDelegate
+>
+{
+    SPSZ_saoMa_ViewController *vc1;
+    SPSZ_paiZhaoViewController *vc2;
+    SPSZ_shouDongViewController *vc3;
+}
 @property (nonatomic, strong) KRTagBar          *tagBar;
 
 @property (nonatomic, strong) UIView          *containerView;
@@ -48,6 +58,9 @@
 
 @property (nonatomic, strong) NSMutableArray   *vcArray;
 
+@property (nonatomic, assign) BOOL  paiZhaoVcType;
+
+@property (nonatomic, assign) BOOL  saoMaVcType;
 
 
 
@@ -160,6 +173,8 @@
     [super viewDidLoad];
 //    self.view.backgroundColor = [UIColor blueColor];
     self.navigationController.navigationBar.hidden = NO;
+    self.paiZhaoVcType = NO;
+    self.saoMaVcType = NO;
     
     UIImage *naviBackImage = [[UIImage alloc] createImageWithSize:CGSizeMake([ProgramSize mainScreenWidth], [ProgramSize mainScreenHeight])
                                                    gradientColors:[ProgramColor blueGradientColors]
@@ -285,17 +300,49 @@
     }
     
     if (index == 0) {
-        [_centerButton setImage:[UIImage imageNamed:@"scan_qr_white"] forState:UIControlStateNormal];
-        [_centerButton setTitle:@"扫码上传" forState:UIControlStateNormal];            self.centerButtonImageName = @"scan_qr_white";
+        [self setSaoMaVcButton];
+        self.centerButtonImageName = @"scan_qr_white";
     }else if (index == 1){
-        [_centerButton setImage:[UIImage imageNamed:@"take_photo_white"] forState:UIControlStateNormal];
-        [_centerButton setTitle:@"拍照上传" forState:UIControlStateNormal];
+        [self setPaiZhaoVcCenterButton];
+
         self.centerButtonImageName = @"scan_qr_white";
     }else if (index == 2){
         [_centerButton setImage:[UIImage imageNamed:@"Image"] forState:UIControlStateNormal];
         [_centerButton setTitle:@"确认上传" forState:UIControlStateNormal];
     }
 }
+
+// paizhao vc
+- (void)buttonImageType:(BOOL)type
+{
+    self.paiZhaoVcType = type;
+    
+    [self setPaiZhaoVcCenterButton];
+}
+
+- (void)setPaiZhaoVcCenterButton
+{
+    if (self.paiZhaoVcType) { // 上传
+        [_centerButton setImage:[UIImage imageNamed:@"Image"] forState:UIControlStateNormal];
+        [_centerButton setTitle:@"确认上传" forState:UIControlStateNormal];
+    }else{
+        [_centerButton setImage:[UIImage imageNamed:@"take_photo_white"] forState:UIControlStateNormal];
+        [_centerButton setTitle:@"拍照上传" forState:UIControlStateNormal];
+    }
+}
+
+// sao ma vc
+- (void)setSaoMaVcButton
+{
+    if (self.saoMaVcType) {
+        [_centerButton setImage:[UIImage imageNamed:@"Image"] forState:UIControlStateNormal];
+        [_centerButton setTitle:@"确认上传" forState:UIControlStateNormal];
+    }else{
+        [_centerButton setImage:[UIImage imageNamed:@"scan_qr_white"] forState:UIControlStateNormal];
+        [_centerButton setTitle:@"扫码上传" forState:UIControlStateNormal];
+    }
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if ([scrollView isEqual:self.detailScrollView]) {

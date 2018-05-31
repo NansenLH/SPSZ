@@ -44,7 +44,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor   = [ UIColor clearColor];
-
+    self.buttonImageType = NO;
+    
     UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236-[ProgramSize bottomHeight])];
     [yy addSubview:self.mainImageView];
     
@@ -77,127 +78,70 @@
 
 - (void)getQRString:(NSString *)qrString
 {
-    SPSZ_ShowTicketView *showView = [[SPSZ_ShowTicketView alloc]init];
-    showView.hasHuabian = NO;
-    [self.mainImageView addSubview:showView];
-    [showView mas_makeConstraints:^(MASConstraintMaker *make) {
+    KRWeakSelf;
+    weakSelf.showView = [[SPSZ_ShowTicketView alloc]init];
+    weakSelf.showView.hasHuabian = NO;
+    [weakSelf.mainImageView addSubview:weakSelf.showView];
+    [weakSelf.showView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(0);
         make.left.equalTo(0);
         make.right.equalTo(0);
         make.bottom.equalTo(20);
     }];
     [SPSZ_suo_orderNetTool getDaYinDataWithPrintcode:qrString successBlock:^(SPSZ_suo_shouDongRecordModel *model) {
-        showView.model = model;
-        self.model = model;
-        [self sureUpload];
+        weakSelf.showView.model = model;
+        weakSelf.model = model;
+        
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(saoMabuttonImageType:)]) {
+            [weakSelf.delegate saoMabuttonImageType:YES];
+        }
+        
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
+        [weakSelf reSaoMa];
+        [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
-        
+        [weakSelf reSaoMa];
+        [KRAlertTool alertString:failure];
     }];
 }
 
 
 
 - (void)reSaoMa{
+    self.buttonImageType = NO;
+    [self.showView removeFromSuperview];
     _mainImageView.image = [UIImage imageNamed:@"retailer_scan"];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(saoMabuttonImageType:)]) {
+        [self.delegate saoMabuttonImageType:NO];
+    }
 }
-
 
 
 - (void)sureUpload
 {
-    [SPSZ_suo_orderNetTool shangChuanWith:@"0" model:self.model successBlock:^(NSString *string) {
-        
-    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
-    } failureBlock:^(NSString *failure) {
-        
-    }];
-}
-
-- (void)takePhoto
-{
-    UIImagePickerController *ctrl = [[UIImagePickerController alloc] init];
-    ctrl.delegate = self;
-    ctrl.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:ctrl animated:YES completion:nil];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
-{
-    [picker dismissViewControllerAnimated:YES completion:nil];
-//    if (self.imageArray.count == 0) {
-//        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-//            // 处理
-//            UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-//            if (image) {
-//                [self uploadImage:image];
-//            }
-//            else {
-//                NSLog(@"拍照出错");
-//            }
-//        }
-//    }
-    
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)uploadImage:(UIImage *)image
-{
-//    [LUNetHelp uploadImage:image successBlock:^(NSString *imageURL) {
-//        
-//        [self.imageArray addObject:imageURL];
-//        
-//        self.mainImageView.image = image;
-//        //        [self.collectionView reloadData];
-//    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-//        [KRAlertTool alertString:errorMessage];
-//    } failureBlock:^(NSString *failure) {
-//        [KRAlertTool alertString:failure];
-//    }];
-}
-
-
-
-
-- (void)alertSettingCameraAuth
-{
-    NSDictionary *mainInfoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *appName = [mainInfoDictionary objectForKey:@"CFBundleDisplayName"];
-    if (!appName) {
-        appName = [mainInfoDictionary objectForKey:(NSString *)kCFBundleNameKey];
+    if (!self.model) {
+        [KRAlertTool alertString:@"请先扫码!"];
+        return;
     }
-    NSString * tipTitle = [NSString stringWithFormat:@"请允许\"%@\"使用您的相机", appName];
-    NSString * tipMessage = [NSString stringWithFormat:@"您可点击\"去设置\"按钮后将\"相机\"权限打开!"];
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:tipTitle message:tipMessage preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSURL *settingURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        if ([[UIApplication sharedApplication] canOpenURL:settingURL]) {
-            [[UIApplication sharedApplication] openURL:settingURL options:@{} completionHandler:nil];
-        }
+    KRWeakSelf;
+    [SPSZ_suo_orderNetTool shangChuanWith:@"0" model:self.model successBlock:^(NSString *string) {
+        UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"上传成功!" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [weakSelf reSaoMa];
+            weakSelf.model = nil;
+        }];
+        [actionSheetController addAction:okAction];
+        
+        [weakSelf presentViewController:actionSheetController animated:YES completion:nil];
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [KRAlertTool alertString:errorMessage];
+    } failureBlock:^(NSString *failure) {
+        [KRAlertTool alertString:failure];
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"稍后设置" style:UIAlertActionStyleCancel handler:nil];
-    
-    [alertController addAction:confirmAction];
-    [alertController addAction:cancelAction];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
