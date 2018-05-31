@@ -17,6 +17,8 @@
 #import "SPSZ_ChuIndexViewController.h"
 #import "NetworkReachabilityTool.h"
 
+#import "SPSZ_EditWightView.h"
+
 @interface AppDelegate ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
 @end
@@ -85,7 +87,9 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     for (UIView *tmp in self.window.subviews) {
-        if ([tmp isKindOfClass:[MBProgressHUD class]]) {
+        if ([tmp isKindOfClass:[MBProgressHUD class]] ||
+            [tmp isKindOfClass:[SPSZ_EditWightView class]]
+            ) {
             [tmp removeFromSuperview];
         }
         

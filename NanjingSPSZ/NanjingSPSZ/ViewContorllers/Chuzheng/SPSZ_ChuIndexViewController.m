@@ -97,8 +97,6 @@
     [self configSubViews];
 
     [self configTabbar];
-    
-//    self.isConnect = YES;
 }
 
 
@@ -357,7 +355,64 @@
     }
 
     [self uploadTicket];
+    
+//    [self testPrint];
 }
+
+- (void)testPrint
+{
+    HLPrinter *printer = [[HLPrinter alloc] init];
+    
+//    [printer setTitle];
+//    [printer appendLine];
+//    [printer setleft:@"111" center:@"222" right:@"333"];
+//    [printer setleft:@"111" right:@"333"];
+//    [printer setSmallCenter:[self getTime]];
+//    [printer setQR:@"1231231232131231"];
+    for (int i = 0; i < 39; i++) {
+        [printer setleft:@"111" center:@"222" right:@"333"];
+    }
+    
+    
+    NSData *mainData = [printer getFinalData];
+    NSLog(@"mainData length = %ld", mainData.length);
+    
+    NSInteger limitLength = 146;
+    
+    
+    
+//    if ([self.peripheral respondsToSelector:@selector(maximumWriteValueLengthForType:)]) {
+//        limitLength = [self.peripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
+//    }
+    
+    
+    if (limitLength <= 0 || mainData.length <= limitLength) {
+        [self.peripheral writeValue:mainData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
+    }
+    else {
+        
+        NSInteger index = 0;
+        for (index = 0; index < mainData.length - limitLength; index += limitLength) {
+            
+            NSData *subData = [mainData subdataWithRange:NSMakeRange(index, limitLength)];
+            
+            NSLog(@"write subData : %ld", subData.length);
+            [self.peripheral writeValue:subData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
+            
+        }
+        
+        NSData *leftData = [mainData subdataWithRange:NSMakeRange(index, mainData.length - index)];
+        NSLog(@"write subData : %ld", leftData.length);
+        if (leftData) {
+            NSLog(@"write leftData");
+            [self.peripheral writeValue:leftData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
+        }
+        
+    }
+    
+}
+
+
 
 // 上传打印内容
 - (void)uploadTicket
@@ -371,9 +426,18 @@
     }];
 }
 
+
+
+
 // 打印小票
 - (void)startPrint:(NSString *)qrCodeString
 {
+    // 判断打印机的状态
+    if (self.peripheral.state != CBPeripheralStateConnected) {
+        return;
+    }
+    
+    
     HLPrinter *printer = [[HLPrinter alloc] init];
     
     // 标题
@@ -415,11 +479,10 @@
     
     NSData *mainData = [printer getFinalData];
 
-    NSInteger limitLength = 140;
-    if ([self.peripheral respondsToSelector:@selector(maximumWriteValueLengthForType:)]) {
-        limitLength = [self.peripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
-    }
-
+    NSInteger limitLength = 146;
+//    if ([self.peripheral respondsToSelector:@selector(maximumWriteValueLengthForType:)]) {
+//        limitLength = [self.peripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
+//    }
 
     if (limitLength <= 0 || mainData.length <= limitLength) {
         [self.peripheral writeValue:mainData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
@@ -428,6 +491,7 @@
 
         NSInteger index = 0;
         for (index = 0; index < mainData.length - limitLength; index += limitLength) {
+            
             NSData *subData = [mainData subdataWithRange:NSMakeRange(index, limitLength)];
             [self.peripheral writeValue:subData forCharacteristic:self.characteristic type:CBCharacteristicWriteWithResponse];
         }

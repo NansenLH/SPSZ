@@ -431,6 +431,7 @@
 
 - (void)setleft:(NSString *)left right:(NSString *)right
 {
+    
     // 左边文字
     [self setAlignment:HLTextAlignmentLeft];
     [self setFontSize:HLFontSizeTitleSmalle];
@@ -601,6 +602,7 @@
 
 - (void)appendLine
 {
+    
     // 1.文字对齐方式
     [self setAlignment:HLTextAlignmentCenter];
     // 2.设置字号
@@ -623,6 +625,7 @@
  */
 - (void)setTitle
 {
+    
     [self appendNewLine];
     [self appendNewLine];
     [self appendNewLine];
@@ -643,6 +646,7 @@
  */
 - (void)setSmallCenter:(NSString *)string
 {
+    
     // 1.文字对齐方式
     [self setAlignment:HLTextAlignmentCenter];
     // 2.设置字号
@@ -657,9 +661,10 @@
  */
 - (void)setQR:(NSString *)string
 {
+    
     [self appendNewLine];
     [self setAlignment:HLTextAlignmentCenter];
-    [self setQRCodeSize:13];
+    [self setQRCodeSize:10];
     [self setQRCodeErrorCorrection:48];
     [self setQRCodeInfo:string];
     [self printStoredQRData];
