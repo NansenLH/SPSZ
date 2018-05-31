@@ -659,7 +659,7 @@
 {
     [self appendNewLine];
     [self setAlignment:HLTextAlignmentCenter];
-    [self setQRCodeSize:12];
+    [self setQRCodeSize:13];
     [self setQRCodeErrorCorrection:48];
     [self setQRCodeInfo:string];
     [self printStoredQRData];

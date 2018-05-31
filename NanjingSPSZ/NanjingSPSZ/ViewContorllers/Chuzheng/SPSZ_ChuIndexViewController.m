@@ -85,6 +85,8 @@
     return _deviceArray;
 }
 
+
+#pragma mark - ======== life ========
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -95,6 +97,8 @@
     [self configSubViews];
 
     [self configTabbar];
+    
+//    self.isConnect = YES;
 }
 
 
@@ -411,7 +415,7 @@
     
     NSData *mainData = [printer getFinalData];
 
-    NSInteger limitLength = 146;
+    NSInteger limitLength = 140;
     if ([self.peripheral respondsToSelector:@selector(maximumWriteValueLengthForType:)]) {
         limitLength = [self.peripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
     }
@@ -548,13 +552,19 @@
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error
 {
     if (error) {
-        NSLog(@"写入失败:%@",error);
+        NSLog(@"写入失败:%@",error.localizedDescription);
     }
     else {
         NSLog(@"写入成功");
     }
 }
 
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
+{
+    if (error) {
+        NSLog(@"didUpdateValueForCharacteristic Error: %@", error.localizedDescription);
+    }
+}
 
 
 - (NSString *)getTime

@@ -2232,7 +2232,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PY4TVE6987;
+				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2245,7 +2245,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2260,7 +2260,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PY4TVE6987;
+				DEVELOPMENT_TEAM = 82LG5ZMTLQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2273,7 +2273,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

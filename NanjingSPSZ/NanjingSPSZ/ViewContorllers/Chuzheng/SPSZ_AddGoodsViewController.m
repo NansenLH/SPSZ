@@ -16,6 +16,7 @@
 #import "UIButton+Gradient.h"
 #import "MJRefresh.h"
 
+#import "SPSZ_EditWightView.h"
 
 @interface SPSZ_AddGoodsViewController ()<UITableViewDelegate, UITableViewDataSource, SPSZ_AddGoodsTableViewCellDelegate, UITextFieldDelegate>
 
@@ -28,9 +29,19 @@
 
 @property (nonatomic, assign) int pageNo;
 
+@property (nonatomic, strong) SPSZ_EditWightView *editWeightView;
+
 @end
 
 @implementation SPSZ_AddGoodsViewController
+
+- (SPSZ_EditWightView *)editWeightView
+{
+    if (!_editWeightView) {
+        _editWeightView = [[SPSZ_EditWightView alloc] init];
+    }
+    return _editWeightView;
+}
 
 - (NSMutableArray *)dataArray
 {
@@ -244,20 +255,40 @@
 #pragma mark - ======== SPSZ_AddGoodsTableViewCellDelegate ========
 - (void)editWeigthAction:(SPSZ_AddGoodsTableViewCell *)cell model:(SPSZ_GoodsModel *)model
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"货品重量" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = @"公斤";
-        textField.keyboardType = UIKeyboardTypeNumberPad;
-        textField.delegate = self;
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"货品重量" message:nil preferredStyle:UIAlertControllerStyleAlert];
+//    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+//        textField.placeholder = @"公斤";
+//        textField.keyboardType = UIKeyboardTypeNumberPad;
+//        textField.delegate = self;
+//    }];
+//    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+//        UITextField *textfield = alertController.textFields[0];
+//        NSInteger weight = [textfield.text integerValue];
+//        model.weight = [@(weight) stringValue];
+//        cell.dishModel = model;
+//    }];
+//    [alertController addAction:confirmAction];
+//    [self presentViewController:alertController animated:NO completion:nil];
+    
+    [self.editWeightView clear];
+    
+    if (model.unit && model.unit.length > 0) {
+        self.editWeightView.unit = model.unit;
+    }
+    
+    if (model.weight && model.weight.length > 0) {
+        self.editWeightView.weight = model.weight;
+    }
+    
+    __weak typeof(model) weakModel = model;
+    __weak typeof(cell) weakCell = cell;
+    [self.editWeightView setChooseWeightBlock:^(NSString *weight, NSString *unit) {
+        weakModel.weight = weight;
+        weakModel.unit = unit;
+        weakCell.dishModel = weakModel;
     }];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *textfield = alertController.textFields[0];
-        NSInteger weight = [textfield.text integerValue];
-        model.weight = [@(weight) stringValue];
-        cell.dishModel = model;
-    }];
-    [alertController addAction:confirmAction];    
-    [self presentViewController:alertController animated:NO completion:nil];
+    
+    [self.editWeightView show];
 }
 
 - (void)selectAction:(SPSZ_AddGoodsTableViewCell *)cell model:(SPSZ_GoodsModel *)model

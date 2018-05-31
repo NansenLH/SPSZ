@@ -38,7 +38,9 @@
 
 - (void)configSubviews
 {
-    self.unit = @"公斤";
+    CGFloat height = 0;
+    
+    _unit = @"公斤";
     self.weight = @"0";
     
     self.backgroundColor = [ProgramColor RGBColorWithRed:0 green:0 blue:0 alpha:0.2];
@@ -69,6 +71,7 @@
     self.textField.keyboardType = UIKeyboardTypeNumberPad;
     self.textField.delegate = self;
     
+    height = 50;
     
     CGFloat btnW = 40;
     CGFloat btnH = 30;
@@ -104,6 +107,29 @@
             }
         }
     }
+    
+    height = 50 + (10 + btnH) *liens + 10;
+    UIButton *confrimButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [confrimButton setTitle:@"确定" forState:UIControlStateNormal];
+    [confrimButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    confrimButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    confrimButton.backgroundColor = [ProgramColor RGBColorWithRed:67 green:130 blue:255];
+    [confrimButton addTarget:self action:@selector(confirmClick:) forControlEvents:UIControlEventTouchUpInside];
+    confrimButton.layer.cornerRadius = 4;
+    confrimButton.layer.masksToBounds = YES;
+    [bgView addSubview:confrimButton];
+    [confrimButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(25);
+        make.right.equalTo(-25);
+        make.top.equalTo(height);
+        make.height.equalTo(30);
+    }];
+    
+    height += 45;
+    
+    [bgView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(height);
+    }];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
     [self addGestureRecognizer:tap];
@@ -161,15 +187,21 @@
 {
     NSDictionary *dic = [[ProgramConfig unitArray] objectAtIndex:(button.tag - 235)];
     self.unit = [dic objectForKey:@"unit"];
-    
+}
+
+- (void)confirmClick:(UIButton *)button
+{
     NSInteger weight = [self.textField.text integerValue];
-    
     self.weight = [@(weight) stringValue];
+    
     if (self.chooseWeightBlock) {
         self.chooseWeightBlock(self.weight, self.unit);
     }
     [self hide];
 }
+
+
+
 
 - (void)tapClick:(UITapGestureRecognizer *)tap
 {
