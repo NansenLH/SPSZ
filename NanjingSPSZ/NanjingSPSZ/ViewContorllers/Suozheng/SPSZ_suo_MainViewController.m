@@ -14,8 +14,7 @@
 #import "SPSZ_suo_personalCenterViewController.h"
 #import "SPSZ_chu_personalCenterViewController.h"
 
-#import "SPSZ_chu_RecordViewController.h"
-
+ 
 #import "AppDelegate.h"
 #import "BaseNavigationController.h"
 
