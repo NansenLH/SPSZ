@@ -23,8 +23,6 @@
 
 - (void)reSaoMa;
 
-- (void)sureUpload;
-
 - (void)saoMa;
 
 /**

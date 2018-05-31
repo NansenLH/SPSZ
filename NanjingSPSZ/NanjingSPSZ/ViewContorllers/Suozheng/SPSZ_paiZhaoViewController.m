@@ -48,7 +48,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor   = [ UIColor clearColor];
-    self.buttonImageType = NO;
     
     UIView *yy = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MainScreenWidth, MainScreenHeight -236-[ProgramSize bottomHeight])];
     [yy addSubview:self.mainImageView];
@@ -59,9 +58,9 @@
 // 重新录入
 - (void)reEnterAction
 {
-    self.buttonImageType = NO;
     _mainImageView.image = [UIImage imageNamed:@"retailer_take_phote"];
     [self.imageArray removeAllObjects];
+    [self gobackImage:NO];
 }
 
 // 拍照
@@ -158,11 +157,8 @@
         [weakSelf.imageArray addObject:imageURL];
         
         weakSelf.mainImageView.image = image;
-        weakSelf.buttonImageType = YES;
         
-        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(buttonImageType:)]) {
-            [weakSelf.delegate buttonImageType:YES];
-        }
+        [weakSelf gobackImage:YES];
                 
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [KRAlertTool alertString:errorMessage];
@@ -172,6 +168,12 @@
 }
 
 
+- (void)gobackImage:(BOOL)type
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(buttonImageType:)]) {
+        [self.delegate buttonImageType:type];
+    }
+}
 
 
 

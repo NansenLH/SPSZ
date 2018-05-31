@@ -65,14 +65,20 @@
 
 
 - (void)saoMa{
+    if (!self.model) {
+        KRScanBaseController *vc = [[KRScanBaseController alloc] init];
+        vc.hasNavigationBar = YES;
+        KRWeakSelf;
+        [vc setGetQRStringBlock:^(NSString *qrString) {
+            [weakSelf getQRString:qrString];
+        }];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        [self sureUpload];
+    }
+
     
-    KRScanBaseController *vc = [[KRScanBaseController alloc] init];
-    vc.hasNavigationBar = YES;
-    KRWeakSelf;
-    [vc setGetQRStringBlock:^(NSString *qrString) {
-        [weakSelf getQRString:qrString];
-    }];
-    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
@@ -92,9 +98,7 @@
         weakSelf.showView.model = model;
         weakSelf.model = model;
         
-        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(saoMabuttonImageType:)]) {
-            [weakSelf.delegate saoMabuttonImageType:YES];
-        }
+        [weakSelf saoMaSetType:YES];
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [weakSelf reSaoMa];
@@ -112,9 +116,7 @@
     [self.showView removeFromSuperview];
     _mainImageView.image = [UIImage imageNamed:@"retailer_scan"];
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(saoMabuttonImageType:)]) {
-        [self.delegate saoMabuttonImageType:NO];
-    }
+    [self saoMaSetType:NO];
 }
 
 
@@ -131,6 +133,7 @@
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [weakSelf reSaoMa];
             weakSelf.model = nil;
+            [weakSelf saoMaSetType:NO];
         }];
         [actionSheetController addAction:okAction];
         
@@ -142,6 +145,13 @@
     }];
 }
 
+
+- (void)saoMaSetType:(BOOL)type
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(saoMabuttonImageType:)]) {
+        [self.delegate saoMabuttonImageType:type];
+    }
+}
 
 
 @end

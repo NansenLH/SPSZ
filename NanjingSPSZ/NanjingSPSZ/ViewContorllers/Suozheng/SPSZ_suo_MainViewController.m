@@ -234,9 +234,12 @@ saoMaSuccessDelegate
     
     
     
-    SPSZ_saoMa_ViewController *vc1 = [[SPSZ_saoMa_ViewController alloc]init];
-    SPSZ_paiZhaoViewController *vc2 = [[SPSZ_paiZhaoViewController alloc]init];
-    SPSZ_shouDongViewController *vc3 = [[SPSZ_shouDongViewController alloc]init];
+    vc1 = [[SPSZ_saoMa_ViewController alloc]init];
+    vc1.delegate = self;
+    vc2 = [[SPSZ_paiZhaoViewController alloc]init];
+    vc2.delegate = self;
+    vc3 = [[SPSZ_shouDongViewController alloc]init];
+    
 
     self.vcArray = [NSMutableArray arrayWithObjects:vc1,vc2,vc3, nil];
     
@@ -332,6 +335,12 @@ saoMaSuccessDelegate
 }
 
 // sao ma vc
+- (void)saoMabuttonImageType:(BOOL)type
+{
+    self.saoMaVcType = type;
+    [self setSaoMaVcButton];
+}
+
 - (void)setSaoMaVcButton
 {
     if (self.saoMaVcType) {
@@ -365,14 +374,11 @@ saoMaSuccessDelegate
 - (void)sureUpLoadAction:(UIButton *)button{
     
     if (self.tagBar.selectedIndex == 2) {
-        SPSZ_shouDongViewController *vc = self.vcArray[2];
-        [vc sureUpload];
+         [vc3 sureUpload];
     }else if (self.tagBar.selectedIndex == 1){
-        SPSZ_paiZhaoViewController *vc = self.vcArray[1];
-        [vc takePhotoAction];
+         [vc2 takePhotoAction];
     }else{
-        SPSZ_saoMa_ViewController *vc = self.vcArray[0];
-        [vc saoMa];
+         [vc1 saoMa];
     }
 }
 
@@ -382,14 +388,11 @@ saoMaSuccessDelegate
 - (void)rightButtonAction:(UIButton *)button
 {
     if (self.tagBar.selectedIndex == 2) {
-        SPSZ_shouDongViewController *vc = self.vcArray[2];
-        [vc reloadNewData];
+        [vc3 reloadNewData];
     }else if (self.tagBar.selectedIndex == 1){
-        SPSZ_paiZhaoViewController *vc = self.vcArray[1];
-        [vc reEnterAction];
+         [vc2 reEnterAction];
     }else{
-        SPSZ_saoMa_ViewController *vc = self.vcArray[0];
-        [vc reSaoMa];
+         [vc1 reSaoMa];
     }
 }
 

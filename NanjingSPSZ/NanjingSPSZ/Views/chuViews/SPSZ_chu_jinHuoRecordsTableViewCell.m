@@ -65,7 +65,7 @@
     _weightLabel = [[UILabel alloc]initWithFrame:CGRectMake(width / 2, 10, (width - 20)/2, 26)];
     [whiteView addSubview:self.weightLabel];
     
-    _laiYuanChanDiLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, (10 + 26)*1+ 10,width - 20, 26)];
+    _laiYuanChanDiLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, (10 + 26)*1+ 10,width - 10, 26)];
     [whiteView addSubview:self.laiYuanChanDiLabel];
 }
 
@@ -78,8 +78,10 @@
      
  
      [self.productNameLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"产品名称:" string2:model.dishname]];
- 
-     [self.weightLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"数量/重量:" string2:[NSString stringWithFormat:@"%@公斤",model.dishamount]]];
+     if (!model.unit) {
+         model.unit = @"公斤";
+     }
+     [self.weightLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"数量/重量:" string2:[NSString stringWithFormat:@"%@%@",model.dishamount,model.unit]]];
  
      [self.laiYuanChanDiLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"产品产地:" string2:model.cityname]];
  }

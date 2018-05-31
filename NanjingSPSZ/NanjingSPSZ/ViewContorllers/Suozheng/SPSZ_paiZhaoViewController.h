@@ -19,7 +19,6 @@
 
 @interface SPSZ_paiZhaoViewController : BaseViewController
 
-@property(nonatomic, weak) id<paiZhaoSuccessDelegate>delegate;
 
 // 重新录入
 - (void)reEnterAction;
@@ -30,10 +29,7 @@
 // 确认上传
 - (void)paiZhaoUpload;
 
-/**
- * yes 确认上传
- * no 扫码上传
- */
-@property (nonatomic, assign)BOOL buttonImageType;
+@property(nonatomic, weak) id<paiZhaoSuccessDelegate>delegate;
+
 
 @end

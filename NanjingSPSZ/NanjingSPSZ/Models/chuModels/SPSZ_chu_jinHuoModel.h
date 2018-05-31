@@ -24,6 +24,7 @@
  "cityname": "宁夏银川市市辖区",
  "dishamount": "1600",
  "dishimg5": null
+ unit
  */
 
 @property (nonatomic, strong) NSString *addresssource;
@@ -52,5 +53,5 @@
 
 @property (nonatomic, strong) NSString *dishimg5;
 
-
+@property (nonatomic, strong) NSString *unit;
 @end
