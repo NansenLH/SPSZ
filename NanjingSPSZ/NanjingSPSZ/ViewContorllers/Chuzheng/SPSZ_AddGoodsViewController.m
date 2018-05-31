@@ -17,7 +17,7 @@
 #import "MJRefresh.h"
 
 
-@interface SPSZ_AddGoodsViewController ()<UITableViewDelegate, UITableViewDataSource, SPSZ_AddGoodsTableViewCellDelegate>
+@interface SPSZ_AddGoodsViewController ()<UITableViewDelegate, UITableViewDataSource, SPSZ_AddGoodsTableViewCellDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *allSelectButton;
@@ -248,10 +248,12 @@
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = @"公斤";
         textField.keyboardType = UIKeyboardTypeNumberPad;
+        textField.delegate = self;
     }];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         UITextField *textfield = alertController.textFields[0];
-        model.weight = textfield.text;
+        NSInteger weight = [textfield.text integerValue];
+        model.weight = [@(weight) stringValue];
         cell.dishModel = model;
     }];
     [alertController addAction:confirmAction];    
@@ -362,6 +364,19 @@
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *sub = [NSString stringWithFormat:@"%@%@", textField.text, string];
+    if ([sub integerValue] > 9999) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    textField.text = [@([textField.text integerValue]) stringValue];
+}
 
 
 @end

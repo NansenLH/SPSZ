@@ -589,4 +589,15 @@ UIGestureRecognizerDelegate
 }
 
 
+#pragma mark - ======== UITextFieldDelegate ========
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([textField isEqual:self.productNameLabel]) {
+        if (textField.text.length > 6) {
+            textField.text = [textField.text substringWithRange:NSMakeRange(0, 6)];
+        }
+    }
+}
+
+
 @end
