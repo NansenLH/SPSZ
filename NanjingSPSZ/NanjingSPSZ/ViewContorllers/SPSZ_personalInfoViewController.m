@@ -12,11 +12,9 @@
 #import "SPSZ_suoLoginModel.h"
 #import "SPSZ_chuLoginModel.h"
 #import "UIButton+WebCache.h"
-<<<<<<< HEAD
-#import "SYPhotoBrowser.h"
-=======
-#import "KRAccountTool.h"
->>>>>>> a1864504743e8940d6a59e8f34c7e70c6f1bc3cf
+ #import "SYPhotoBrowser.h"
+ #import "KRAccountTool.h"
+
 @interface SPSZ_personalInfoViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;

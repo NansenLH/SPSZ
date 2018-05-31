@@ -248,13 +248,13 @@
 		CC930C4B20B56B1B00B99756 /* SPSZ_suo_RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4820B56B1A00B99756 /* SPSZ_suo_RecordTableViewCell.m */; };
 		CC930C4E20B56B7300B99756 /* KRTagBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C4D20B56B7300B99756 /* KRTagBar.m */; };
 		CC930C6220B5998200B99756 /* SPSZ_suo_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */; };
+		CCF0597720BF81D50061E7BC /* SYPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF0596F20BF81D50061E7BC /* SYPhotoViewController.m */; };
+		CCF0597820BF81D50061E7BC /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF0597020BF81D50061E7BC /* DALabeledCircularProgressView.m */; };
+		CCF0597920BF81D50061E7BC /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF0597220BF81D50061E7BC /* DACircularProgressView.m */; };
+		CCF0597A20BF81D50061E7BC /* SYPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF0597520BF81D50061E7BC /* SYPhotoBrowser.m */; };
 		E222151120BC4119006D4C5A /* MBProgressHUD+JDragon.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */; };
 		E222151220BC4119006D4C5A /* NSObject+TNAHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */; };
 		E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */; };
-		E288200520BEEB85002EE5E5 /* SYPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */; };
-		E288200620BEEB85002EE5E5 /* SYPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */; };
-		E288200B20BEEBD2002EE5E5 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */; };
-		E288200C20BEEBD2002EE5E5 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -766,20 +766,20 @@
 		CC930C4D20B56B7300B99756 /* KRTagBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRTagBar.m; sourceTree = "<group>"; };
 		CC930C6020B5998200B99756 /* SPSZ_suo_personalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_personalCenterViewController.h; sourceTree = "<group>"; };
 		CC930C6120B5998200B99756 /* SPSZ_suo_personalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_personalCenterViewController.m; sourceTree = "<group>"; };
+		CCF0596F20BF81D50061E7BC /* SYPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoViewController.m; sourceTree = "<group>"; };
+		CCF0597020BF81D50061E7BC /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
+		CCF0597120BF81D50061E7BC /* SYPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoBrowser.h; sourceTree = "<group>"; };
+		CCF0597220BF81D50061E7BC /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		CCF0597320BF81D50061E7BC /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
+		CCF0597420BF81D50061E7BC /* SYPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoViewController.h; sourceTree = "<group>"; };
+		CCF0597520BF81D50061E7BC /* SYPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoBrowser.m; sourceTree = "<group>"; };
+		CCF0597620BF81D50061E7BC /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		E222150D20BC4118006D4C5A /* MBProgressHUD+JDragon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+JDragon.m"; sourceTree = "<group>"; };
 		E222150E20BC4118006D4C5A /* NSObject+TNAHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TNAHUD.m"; sourceTree = "<group>"; };
 		E222150F20BC4118006D4C5A /* MBProgressHUD+JDragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+JDragon.h"; sourceTree = "<group>"; };
 		E222151020BC4119006D4C5A /* NSObject+TNAHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TNAHUD.h"; sourceTree = "<group>"; };
 		E222151320BDBCBE006D4C5A /* SPSZ_Help_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_Help_ViewController.h; sourceTree = "<group>"; };
 		E222151420BDBCBE006D4C5A /* SPSZ_Help_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_Help_ViewController.m; sourceTree = "<group>"; };
-		E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoViewController.m; sourceTree = "<group>"; };
-		E288200220BEEB85002EE5E5 /* SYPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoBrowser.h; sourceTree = "<group>"; };
-		E288200320BEEB85002EE5E5 /* SYPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoViewController.h; sourceTree = "<group>"; };
-		E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoBrowser.m; sourceTree = "<group>"; };
-		E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
-		E288200820BEEBD2002EE5E5 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
-		E288200920BEEBD2002EE5E5 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
-		E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1135,7 +1135,7 @@
 		6ACB53DD20B00E9800528420 /* ThirdParts */ = {
 			isa = PBXGroup;
 			children = (
-				E288200020BEEB85002EE5E5 /* SYPhotoBrowser */,
+				CCF0596E20BF81D50061E7BC /* SYPhotoBrowser */,
 				6A494E7420BDB4BC00D13159 /* BLEPrinter */,
 				6A143B9520BAE73300D71959 /* AddressPickerView */,
 				6A143B9120BAE66D00D71959 /* 时间选择器 */,
@@ -1736,20 +1736,19 @@
 			path = suoViews;
 			sourceTree = "<group>";
 		};
-		E288200020BEEB85002EE5E5 /* SYPhotoBrowser */ = {
+		CCF0596E20BF81D50061E7BC /* SYPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				E288200920BEEBD2002EE5E5 /* DACircularProgressView.h */,
-				E288200A20BEEBD2002EE5E5 /* DACircularProgressView.m */,
-				E288200820BEEBD2002EE5E5 /* DALabeledCircularProgressView.h */,
-				E288200720BEEBD2002EE5E5 /* DALabeledCircularProgressView.m */,
-				E288200120BEEB85002EE5E5 /* SYPhotoViewController.m */,
-				E288200220BEEB85002EE5E5 /* SYPhotoBrowser.h */,
-				E288200320BEEB85002EE5E5 /* SYPhotoViewController.h */,
-				E288200420BEEB85002EE5E5 /* SYPhotoBrowser.m */,
+				CCF0596F20BF81D50061E7BC /* SYPhotoViewController.m */,
+				CCF0597020BF81D50061E7BC /* DALabeledCircularProgressView.m */,
+				CCF0597120BF81D50061E7BC /* SYPhotoBrowser.h */,
+				CCF0597220BF81D50061E7BC /* DACircularProgressView.m */,
+				CCF0597320BF81D50061E7BC /* DALabeledCircularProgressView.h */,
+				CCF0597420BF81D50061E7BC /* SYPhotoViewController.h */,
+				CCF0597520BF81D50061E7BC /* SYPhotoBrowser.m */,
+				CCF0597620BF81D50061E7BC /* DACircularProgressView.h */,
 			);
-			name = SYPhotoBrowser;
-			path = ../../../../../../Downloads/SYPhotoBrowser/SYPhotoBrowser/SYPhotoBrowser;
+			path = SYPhotoBrowser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1938,7 +1937,6 @@
 				6A143B8720BAE65C00D71959 /* NSDate+PGCategory.m in Sources */,
 				CC89F35920BA839F00FCEBD2 /* ProgramSize.m in Sources */,
 				6ACB54FF20B011D500528420 /* UIWebView+AFNetworking.m in Sources */,
-				E288200620BEEB85002EE5E5 /* SYPhotoBrowser.m in Sources */,
 				6A143BA120BAE73300D71959 /* UIButton+CZHExtension.m in Sources */,
 				6ACB547F20B00FA500528420 /* YYTextRunDelegate.m in Sources */,
 				6ACB543520B00F9A00528420 /* NSData+ImageContentType.m in Sources */,
@@ -1989,7 +1987,7 @@
 				CC930C4220B56B0800B99756 /* SPSZ_shouDong_OrderViewController.m in Sources */,
 				CC930C3F20B56B0800B99756 /* SPSZ_saoMa_ViewController.m in Sources */,
 				6ACB548D20B00FA500528420 /* YYClassInfo.m in Sources */,
-				E288200C20BEEBD2002EE5E5 /* DACircularProgressView.m in Sources */,
+				CCF0597920BF81D50061E7BC /* DACircularProgressView.m in Sources */,
 				6ACB554B20B016B400528420 /* LUAlertTool.m in Sources */,
 				6ACB54FC20B011D500528420 /* UIImageView+AFNetworking.m in Sources */,
 				CC89F3C820BADC7C00FCEBD2 /* SPSZ_chuLoginModel.m in Sources */,
@@ -2034,9 +2032,8 @@
 				6A143B9420BAE66D00D71959 /* THDatePickerView.m in Sources */,
 				6ACB54D420B0118900528420 /* UIView+Extension.m in Sources */,
 				6ADD761720B5C8E600975F5F /* SPSZ_DeviceTableViewCell.m in Sources */,
+				CCF0597820BF81D50061E7BC /* DALabeledCircularProgressView.m in Sources */,
 				6A6BAD0620BA51BB008A428F /* UIButton+HYBImageCliped.m in Sources */,
-				E288200B20BEEBD2002EE5E5 /* DALabeledCircularProgressView.m in Sources */,
-				E288200520BEEB85002EE5E5 /* SYPhotoViewController.m in Sources */,
 				6ACB542F20B00F9A00528420 /* UIImage+GIF.m in Sources */,
 				6ACB54C120B0110000528420 /* NSBundle+MJRefresh.m in Sources */,
 				6ACB548420B00FA500528420 /* YYTextUtilities.m in Sources */,
@@ -2049,6 +2046,7 @@
 				6AAF973720B5589600A6C0E8 /* UIButton+Gradient.m in Sources */,
 				6ACB559E20B3289500528420 /* SPSZ_IndexView.m in Sources */,
 				6ACB543620B00F9A00528420 /* UIImageView+WebCache.m in Sources */,
+				CCF0597A20BF81D50061E7BC /* SYPhotoBrowser.m in Sources */,
 				6A494E7320BD985900D13159 /* UIImage+LXDCreateBarcode.m in Sources */,
 				6ACB558920B2F64100528420 /* SPSZ_ChuIndexViewController.m in Sources */,
 				CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */,
@@ -2085,6 +2083,7 @@
 				6ACB543120B00F9A00528420 /* SDWebImageCompat.m in Sources */,
 				6ACB540120B00F8C00528420 /* MASLayoutConstraint.m in Sources */,
 				CC930C2A20B56AE600B99756 /* SPSZ_EnterPasswordViewController.m in Sources */,
+				CCF0597720BF81D50061E7BC /* SYPhotoViewController.m in Sources */,
 				6ACB553E20B012F600528420 /* BaseNavigationController.m in Sources */,
 				6ACB542C20B00F9A00528420 /* SDWebImageDecoder.m in Sources */,
 				6ACB548920B00FA500528420 /* UIView+YYText.m in Sources */,
@@ -2282,7 +2281,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2310,7 +2309,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.NanjingSPSZtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

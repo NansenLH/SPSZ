@@ -61,6 +61,8 @@
 @property (nonatomic, strong)NSString *locationString;
 
 @property (nonatomic, strong)NSString *amount;
+
+@property (nonatomic, strong)NSString *unit;
 @end
 
 @implementation SPSZ_shouDongViewController
@@ -72,11 +74,10 @@
         _editWeightView = [[SPSZ_EditWightView alloc] init];
         KRWeakSelf;
         [_editWeightView setChooseWeightBlock:^(NSString *weight, NSString *unit) {
-//            weakSelf.addGoods.dishamount = weight;
-//            weakSelf.addGoods.unit = unit;
-            weakSelf.amount = [NSString stringWithFormat:@"%@%@",weight,unit];
+            weakSelf.amount = weight;
+            weakSelf.unit = unit;
             [weakSelf.numberButton setTitle:[NSString stringWithFormat:@"%@%@", weight, unit] forState:UIControlStateNormal];
-            [weakSelf.numberButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [weakSelf.numberButton setTitleColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59] forState:UIControlStateNormal];
         }];
     }
     return _editWeightView;
@@ -98,6 +99,8 @@
         _cityView.getSelectCityBlock = ^(NSDictionary *dic) {
              weakSelf.locationString = dic[@"name"];
              [weakSelf.productLocationButton setTitle:weakSelf.locationString forState:UIControlStateNormal];
+            [weakSelf.productLocationButton setTitleColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59] forState:UIControlStateNormal];
+
         };
     }
     return _cityView;
@@ -109,6 +112,8 @@
         _productNameTextField.tintColor = [UIColor redColor];
         _productNameTextField.textAlignment = NSTextAlignmentRight;
         _productNameTextField.placeholder = @"请输入";
+        _productNameTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
+
     }
     return _productNameTextField;
 }
@@ -121,33 +126,23 @@
         _detailLocationTextField.tintColor = [UIColor redColor];
         _detailLocationTextField.textAlignment = NSTextAlignmentRight;
         _detailLocationTextField.placeholder = @"请输入";
+        _detailLocationTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
     }
     return _detailLocationTextField;
 }
 
-//- (UITextField *)numberTextField{
-//    if (!_numberTextField) {
-//        _numberTextField = [[UITextField alloc]initWithFrame:CGRectMake(140, 0, _width - 140 -10, _height)];
-//        _numberTextField.delegate = self;
-//        _numberTextField.keyboardType = UIKeyboardTypePhonePad;
-//        _numberTextField.tintColor = [UIColor redColor];
-//        _numberTextField.textAlignment = NSTextAlignmentRight;
-//        _numberTextField.placeholder = @"请输入";
-//    }
-//    return _numberTextField;
-//}
 - (UIButton *)numberButton
 {
     if (!_numberButton) {
         _numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _numberButton.frame = CGRectMake(140, 0, _width - 150, _height);
-        _numberButton.backgroundColor = [UIColor redColor];
         [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
-        [_numberButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        _numberButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _numberButton.titleLabel.font = [UIFont systemFontOfSize:17];
         _numberButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         _numberButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
         [_numberButton addTarget:self action:@selector(editNumber:) forControlEvents:UIControlEventTouchUpInside];
+        [_numberButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+
     }
     return _numberButton;
 }
@@ -158,6 +153,8 @@
         _companyTextField.tintColor = [UIColor redColor];
         _companyTextField.textAlignment = NSTextAlignmentRight;
         _companyTextField.placeholder = @"请输入";
+        _companyTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
+
     }
     return _companyTextField;
 }
@@ -168,6 +165,8 @@
         _nameTextField.delegate = self;
         _nameTextField.textAlignment = NSTextAlignmentRight;
         _nameTextField.placeholder = @"请输入";
+        _nameTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
+
     }
     return _nameTextField;
 }
@@ -180,6 +179,8 @@
         _phoneTextField.keyboardType = UIKeyboardTypePhonePad;
         _phoneTextField.textAlignment = NSTextAlignmentRight;
         _phoneTextField.placeholder = @"请输入";
+        _phoneTextField.textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
+
     }
     return _phoneTextField;
 }
@@ -188,10 +189,13 @@
     if (!_timeButton) {
         _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _timeButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
+        _timeButton.titleLabel.font = [UIFont systemFontOfSize:17];
         [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
-        [_timeButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
         _timeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         _timeButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
+        [_timeButton setTitleColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59] forState:UIControlStateNormal];
+        [_timeButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+
         [_timeButton addTarget:self action:@selector(timeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _timeButton;
@@ -202,6 +206,9 @@
         _productLocationButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _productLocationButton.frame = CGRectMake(110, 0, _width - 110 -10, _height);
         [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
+        [_productLocationButton setTitleColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59] forState:UIControlStateNormal];
+        _productLocationButton.titleLabel.font = [UIFont systemFontOfSize:17];
+
         [_productLocationButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
         _productLocationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         _productLocationButton.contentEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
@@ -221,7 +228,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.amount = @"0";
+    self.unit = @"公斤";
     self.height = (MainScreenHeight -264 - [ProgramSize bottomHeight])/8;
     self.width = MainScreenWidth - 60;
     
@@ -267,7 +275,7 @@
         }
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
         label.textColor = [UIColor redColor];
-        [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"    " string2:self.titleArray[number]]];
+        [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] string:@"    " string2:self.titleArray[number]]];
         [view addSubview:label];
         [view addSubview:button];
     }else{
@@ -276,7 +284,7 @@
         }
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
         label.textColor = [UIColor redColor];
-        [label setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"*  " string2:self.titleArray[number]]];
+        [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] string:@"*  " string2:self.titleArray[number]]];
         [view addSubview:label];
         [view addSubview:textfield];
     }
@@ -313,6 +321,8 @@
 
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
     [self.timeButton setTitle:[NSString stringWithFormat:@"%ld-%ld-%ld",dateComponents.year,dateComponents.month,dateComponents.day] forState:UIControlStateNormal];
+    [self.timeButton setTitleColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59] forState:UIControlStateNormal];
+
 }
 
 
@@ -338,12 +348,14 @@
     [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
     [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
     [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
+    [_numberButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+    [_timeButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+    [_productLocationButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
 
 }
 
 - (void)sureUpload{
     
-
     if (!_productNameTextField.text.length) {
         [KRAlertTool alertString:@"请填写产品名称!"];
         return;
@@ -384,6 +396,7 @@
     
     SPSZ_suo_saoMaDetailModel *detailModel = [[SPSZ_suo_saoMaDetailModel alloc]init];
     detailModel.amount = self.amount;
+    detailModel.unit = self.unit;
     detailModel.addresssource = self.detailLocationTextField.text;
     detailModel.cityname = self.locationString;
     detailModel.dishid = @" ";
