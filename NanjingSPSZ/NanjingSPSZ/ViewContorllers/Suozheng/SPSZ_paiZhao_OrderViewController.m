@@ -42,7 +42,7 @@
     if (!_collectionView) {
 
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64-[ProgramSize bottomHeight]) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64 - [ProgramSize bottomHeight] - 30) collectionViewLayout:flowLayout];
         // 设置代理
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -177,20 +177,10 @@
     // 第二个参数: 左
     // 第三个参数: 下
     // 第四个参数: 右
-    return UIEdgeInsetsMake(15, 15, 10, 10);
+    return UIEdgeInsetsMake(15, 10 , 10, 10);
 }
 
 
-#pragma mark --- 控制集合视图的行边距 ---
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 20;
-}
-#pragma mark --- 控制集合视图的列边距 ---
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 15;
-}
 
 
 
