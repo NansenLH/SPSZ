@@ -138,7 +138,7 @@
 {
     if (!_numberButton) {
         _numberButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _numberButton.frame = CGRectMake(140, 0, _width - 150, _height);
+        _numberButton.frame = CGRectMake(170, 0, _width - 180, _height);
         [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
         _numberButton.titleLabel.font = [UIFont systemFontOfSize:14];
         _numberButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -288,28 +288,36 @@
 - (void)setUpViewWith:(NSInteger)number textfield:(UITextField *)textfield button:(UIButton *)button{
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, _height*number, _width, _height)];
     CGFloat w = 100;
-
-    if (number == 1 || number == 7 || number == 3) {
-        if (number == 3) {
-            w = 140;
-        }
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
-        label.textColor = [UIColor redColor];
-        label.font = [UIFont systemFontOfSize:14];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
+    label.textColor = [UIColor redColor];
+    label.font = [UIFont systemFontOfSize:14];
+    if (number == 2 || number == 7) {
+       
         [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] string:@"    " string2:self.titleArray[number]]];
-        [view addSubview:label];
-        [view addSubview:button];
+       
     }else{
-        if (number == 5) {
+        if (number == 5 ) {
             w = 140;
+            label.frame = CGRectMake(0, 0, w, _height);
+
         }
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
-        label.textColor = [UIColor redColor];
-        label.font = [UIFont systemFontOfSize:14];
+        if (number == 3 ) {
+            w = 170;
+            label.frame = CGRectMake(0, 0, w, _height);
+        }
+
         [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] string:@"*  " string2:self.titleArray[number]]];
-        [view addSubview:label];
+    }
+    [view addSubview:label];
+
+    if (button) {
+        [view addSubview:button];
+    }else
+    {
         [view addSubview:textfield];
     }
+    
+    
     if (number != 7) {
         UIView *lineView =[[UIView alloc]initWithFrame:CGRectMake(10, _height- 1, _width - 20, 1)];
         lineView.backgroundColor = [ProgramColor huiseColor];
@@ -323,8 +331,6 @@
     [self huishoujianpan];
     [self.cityView showCityListViewInView:self.navigationController.view];
 }
-
-
 
 
 - (void)timeButtonAction:(UIButton *)button{
@@ -434,9 +440,7 @@
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"上传成功!" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            weakSelf.productNameTextField.text = @"";
-            [weakSelf.numberButton setTitle:@"请输入" forState:UIControlStateNormal];
-            [weakSelf.numberButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+            [weakSelf reloadNewData];
         }];
         [actionSheetController addAction:okAction];
         
@@ -473,6 +477,22 @@
 
 //时时获取输入框输入的新内容   return NO：输入内容清空   return YES：输入内容不清空， string 输入内容 ，range输入的范围
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if ([textField isEqual:self.productNameTextField]) {
+        if (textField.text.length > 9) {
+            [KRAlertTool alertString:@"超出字数限制！"];
+            textField.text = [textField.text substringWithRange:NSMakeRange(0, 9)];
+
+        }
+    }
+    if ([textField isEqual:self.detailLocationTextField]) {
+        if (textField.text.length > 19) {
+            [KRAlertTool alertString:@"超出字数限制！"];
+            textField.text = [textField.text substringWithRange:NSMakeRange(0, 19)];
+            
+        }
+    }
+    
     if ([textField isEqual:self.phoneTextField]) {
         if ([string isEqualToString:@""]) {
             return YES;
@@ -489,14 +509,6 @@
     return [scan scanInt:&val] && [scan isAtEnd];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if ([textField isEqual:self.productNameTextField]) {
-        if (textField.text.length > 6) {
-            textField.text = [textField.text substringWithRange:NSMakeRange(0, 6)];
-        }
-    }
-}
 
 
 
@@ -583,5 +595,7 @@
 ////        self.view.frame = CGRectMake(2*self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
 //    }];
 }
+
+
 
 @end

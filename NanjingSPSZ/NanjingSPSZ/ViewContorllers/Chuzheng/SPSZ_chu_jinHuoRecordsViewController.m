@@ -88,7 +88,7 @@
     [formatter setDateFormat:@"dd"];
     NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
     
-    NSString *dateString = [NSString stringWithFormat:@"%ld-%02ld-%ld",currentYear,currentMonth,currentDay];
+    NSString *dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
     [self loadDataWith:dateString];
 }
 
@@ -102,9 +102,9 @@
         self.dataArray = modelArray;
         [self.tableView reloadData];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        
+        [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
-        
+        [KRAlertTool alertString:failure];
     }];
 }
 
@@ -154,7 +154,7 @@
 
 
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
-    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%ld",dateComponents.year,dateComponents.month,dateComponents.day];
+    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%02ld",dateComponents.year,dateComponents.month,dateComponents.day];
     [self loadDataWith:date];
 }
 

@@ -207,7 +207,7 @@
 
 
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
-    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%ld",dateComponents.year,dateComponents.month,dateComponents.day];
+    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%02ld",dateComponents.year,dateComponents.month,dateComponents.day];
     NSString *newDate = [NSString stringWithFormat:@"%ld月%ld日",dateComponents.month,dateComponents.day];
     if (self.tagBar.selectedIndex == 2) {
         vc3.timeString = date;

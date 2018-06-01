@@ -133,6 +133,7 @@
     }
     [SPSZ_LoginNetTool sedMessageWithTel:self.phoneNumberTextField.text successBlock:^(NSString *message) {
         self.saveYanZhengMa = message;
+        [KRAlertTool alertString:@"验证码发送成功,请注意查收!"];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [MBProgressHUD showWarnMessage:errorMessage];
     } failureBlock:^(NSString *failure) {
@@ -157,8 +158,25 @@
         [MBProgressHUD showWarnMessage:@"请输入新密码"];
         return;
     }
+    if (self.passwordTextField.text.length < 6) {
+        [MBProgressHUD showWarnMessage:@"新密码不能少于六位"];
+        return;
+    }
+    if (self.passwordTextField.text.length > 10) {
+        [MBProgressHUD showWarnMessage:@"新密码不能大于十位"];
+        return;
+    }
     
+    NSString *str = self.passwordTextField.text;
     
+    if (str.length > 0) {
+        unichar c = [str characterAtIndex:(str.length-1)];
+        int a = isalnum(c);//0表示不是字母或者数字
+        if (a == 0) {
+            [MBProgressHUD showWarnMessage:@"新密码只能是字母或者数字"];
+            return;
+        }
+    }
     if (![self.saveYanZhengMa isEqualToString:self.securityTextField.text]) {
         [KRAlertTool alertString:@"验证码输入不正确!"];
         return;
@@ -203,6 +221,15 @@
     
     [self.view endEditing:YES];
 }
+
+
+- (BOOL)inputShouldLetterOrNum:(NSString *)inputString {
+    if (inputString.length == 0) return NO;
+    NSString *regex =@"[a-zA-Z0-9]*";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    return [pred evaluateWithObject:inputString];
+}
+
 
 
 - (void)didReceiveMemoryWarning {

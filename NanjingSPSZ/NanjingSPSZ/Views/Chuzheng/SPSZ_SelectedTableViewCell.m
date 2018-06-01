@@ -51,10 +51,9 @@
     self.goodsNameLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:14] text:nil textColor:[ProgramColor RGBColorWithRed:0 green:0 blue:0 alpha:0.86] textAlignment:NSTextAlignmentLeft];
     [self.contentView addSubview:self.goodsNameLabel];
     [self.goodsNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(8);
+        make.top.mas_equalTo(self.showImageView.mas_top);
         make.left.equalTo(90);
         make.right.equalTo(-60);
-        make.height.equalTo(25);
     }];
     
     self.timeLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:11] text:nil textColor:[ProgramColor RGBColorWithRed:169 green:169 blue:169] textAlignment:NSTextAlignmentLeft];
@@ -66,11 +65,12 @@
     }];
     
     self.addressLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:11] text:nil textColor:[ProgramColor RGBColorWithRed:169 green:169 blue:169] textAlignment:NSTextAlignmentLeft];
-    self.addressLabel.numberOfLines = 2;
+    self.addressLabel.numberOfLines = 1;
     [self.contentView addSubview:self.addressLabel];
     [self.addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.goodsNameLabel.mas_left);
-        make.top.mas_equalTo(self.timeLabel.mas_bottom).offset(1);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom).offset(-4);
+        make.top.mas_equalTo(self.showImageView.mas_centerY).offset(4);
         make.right.equalTo(-60);
     }];
     
@@ -95,7 +95,7 @@
     
     self.goodsNameLabel.text = [NSString stringWithFormat:@"%@    %@%@", model.dishname, model.weight, model.unit];
     self.timeLabel.text = model.dishdate;
-    self.addressLabel.text = [NSString stringWithFormat:@"%@%@", model.cityname, model.addresssource];
+    self.addressLabel.text = [NSString stringWithFormat:@"%@", model.cityname];
 }
 
 - (void)rightClick:(UIButton *)button

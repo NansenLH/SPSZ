@@ -150,7 +150,7 @@
     self.tableView.tableFooterView = tableFooterView;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, -20);
-    self.tableView.rowHeight = 66;
+    self.tableView.rowHeight = 76;
     
     [self.tableView registerClass:[SPSZ_SelectedTableViewCell class] forCellReuseIdentifier:@"SPSZ_SelectedTableViewCell"];
     
@@ -198,7 +198,7 @@
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     if (self.selectedArray.count == 0) {
-        self.hidden = YES;
+        [self.clearButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
 }
 

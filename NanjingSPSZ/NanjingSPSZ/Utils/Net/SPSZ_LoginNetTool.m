@@ -147,16 +147,15 @@
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"doLoginForNanjing"];
     [requestDic setObject:newPwd forKey:@"newpwd"];
     [requestDic setObject:tel forKey:@"tel"];
+    [requestDic setObject:code forKey:@"code"];
     
     [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
         
         if (success) {
             if ([result[@"respCode"] integerValue] == 1000000) {
-                 // NSDictionary *dic = result[@"result"];
-//                SPSZ_suoLoginModel *model = [SPSZ_suoLoginModel yy_modelWithDictionary:dic];
-                
+  
                 if (successBlcok) {
-                    successBlcok(@"haole");
+                    successBlcok(@"修改成功");
                 }
             }
             else {
@@ -188,16 +187,14 @@
     NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"doLoginForStallman"];
     [requestDic setObject:newPwd forKey:@"newpwd"];
     [requestDic setObject:tel forKey:@"tel"];
-    
+    [requestDic setObject:code forKey:@"code"];
     [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
         
         if (success) {
             if ([result[@"respCode"] integerValue] == 1000000) {
-                NSDictionary *dic = result[@"result"];
-                //                SPSZ_suoLoginModel *model = [SPSZ_suoLoginModel yy_modelWithDictionary:dic];
-                
+ 
                 if (successBlcok) {
-                    successBlcok(@"haole");
+                    successBlcok(@"修改成功");
                 }
             }
             else {

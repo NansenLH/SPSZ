@@ -50,9 +50,14 @@ static NSInteger LUScanWidth = 260;
 @end
 
 @implementation KRScanBaseController
-
+- (void)backToUpView
+{
+    [self.navigationController popViewControllerAnimated:true];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
+    self.navigationItem.leftBarButtonItem = item;
     
     self.edgesForExtendedLayout =  UIRectEdgeNone;
     

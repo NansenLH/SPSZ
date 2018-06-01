@@ -103,8 +103,8 @@
     [formatter setDateFormat:@"dd"];
     NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
     
-    self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%ld",currentYear,currentMonth,currentDay];
-    
+    self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
+
     [self.view addSubview:self.collectionView];
     [self.view addSubview:self.topView];
     [self loadDataWith:self.todayString newDate:nil];

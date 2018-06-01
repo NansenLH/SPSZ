@@ -29,9 +29,6 @@
 #import "ChuzhengNetworkTool.h"
 #import "SPSZ_EditWightView.h"
 
-// TODO: 限制字符个数
-
-
 @interface SPSZ_chu_jinHuoLuRuViewController ()
 <
 UICollectionViewDataSource,
@@ -596,6 +593,14 @@ UIGestureRecognizerDelegate
             textField.text = [textField.text substringWithRange:NSMakeRange(0, 6)];
         }
     }
+    
+    
+    if ([textField isEqual:self.detailLocationLabel]) {
+        if (textField.text.length > 20) {
+            textField.text = [textField.text substringWithRange:NSMakeRange(0, 20)];
+        }
+    }
+    
 }
 
 
