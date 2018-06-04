@@ -170,7 +170,7 @@
     NSString *str = self.passwordTextField.text;
     
     if ([self illegalCharacterAlert:str]) {
-        [MBProgressHUD showWarnMessage:@"昵称不能包含非法字符"];
+        [MBProgressHUD showWarnMessage:@"密码不能包含非法字符"];
         self.passwordTextField.text = nil;
         return;
     }
