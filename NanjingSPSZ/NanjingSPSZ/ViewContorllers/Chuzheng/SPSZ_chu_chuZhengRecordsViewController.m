@@ -114,7 +114,6 @@
         [weakSelf.dataArray addObjectsFromArray:modelArray];
         
         [weakSelf.tableView reloadData];
-        
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [weakSelf.tableView.mj_header endRefreshing];
         

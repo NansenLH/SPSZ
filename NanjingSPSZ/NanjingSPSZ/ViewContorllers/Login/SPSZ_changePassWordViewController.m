@@ -143,6 +143,7 @@
 
 - (void)sureButtonAction:(UIButton *)button
 {
+    
     // suo zheng
     if (self.phoneNumberTextField.text.length == 0) {
         [MBProgressHUD showWarnMessage:@"请输入手机号码"];
@@ -166,17 +167,27 @@
         [MBProgressHUD showWarnMessage:@"新密码不能大于十位"];
         return;
     }
-    
     NSString *str = self.passwordTextField.text;
     
+    if ([self illegalCharacterAlert:str]) {
+        [MBProgressHUD showWarnMessage:@"昵称不能包含非法字符"];
+        self.passwordTextField.text = nil;
+        return;
+    }
+    
+    
     if (str.length > 0) {
-        unichar c = [str characterAtIndex:(str.length-1)];
-        int a = isalnum(c);//0表示不是字母或者数字
-        if (a == 0) {
-            [MBProgressHUD showWarnMessage:@"新密码只能是字母或者数字"];
-            return;
+        for (int i = 0; i<str.length; i++) {
+            unichar c = [str characterAtIndex:i];
+            int a = isalnum(c);//0表示不是字母或者数字
+            if (a == 0) {
+                [MBProgressHUD showWarnMessage:@"新密码只能是字母或者数字"];
+                self.passwordTextField.text = nil;
+                return;
+            }
         }
     }
+    
     if (![self.saveYanZhengMa isEqualToString:self.securityTextField.text]) {
         [KRAlertTool alertString:@"验证码输入不正确!"];
         return;
@@ -230,7 +241,17 @@
     return [pred evaluateWithObject:inputString];
 }
 
-
+- (BOOL)illegalCharacterAlert:(NSString *)string{
+    
+    NSCharacterSet *doNotWant = [NSCharacterSet characterSetWithCharactersInString:@"@／/;:：；！!?,，。.？（）¥「」＂、[]{}#%-*+=_\\|~…＜＞$€^•'@#$%^&*()_+'\""];
+    NSString * str  = [[string componentsSeparatedByCharactersInSet:doNotWant] componentsJoinedByString:@""];
+    
+    if (![str isEqualToString:string]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

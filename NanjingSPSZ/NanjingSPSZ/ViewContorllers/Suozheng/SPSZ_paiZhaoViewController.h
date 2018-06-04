@@ -26,8 +26,6 @@
 // 拍照
 - (void)takePhotoAction;
 
-// 确认上传
-- (void)paiZhaoUpload;
 
 @property(nonatomic, weak) id<paiZhaoSuccessDelegate>delegate;
 

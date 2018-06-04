@@ -88,13 +88,15 @@
 {
     KRWeakSelf;
     weakSelf.showView = [[SPSZ_ShowTicketView alloc]init];
-    weakSelf.showView.hasHuabian = NO;
+    weakSelf.showView.hasHuabian = YES;
+    weakSelf.mainImageView.image = nil;
+    weakSelf.mainImageView.backgroundColor = [UIColor clearColor];
     [weakSelf.mainImageView addSubview:weakSelf.showView];
     [weakSelf.showView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(0);
         make.left.equalTo(0);
         make.right.equalTo(0);
-        make.bottom.equalTo(20);
+        make.bottom.equalTo(0);
     }];
     [SPSZ_suo_orderNetTool getDaYinDataWithPrintcode:qrString successBlock:^(SPSZ_suo_shouDongRecordModel *model) {
         weakSelf.showView.model = model;
@@ -117,7 +119,7 @@
     self.buttonImageType = NO;
     [self.showView removeFromSuperview];
     _mainImageView.image = [UIImage imageNamed:@"retailer_scan"];
-    
+    self.model = nil;
     [self saoMaSetType:NO];
 }
 
