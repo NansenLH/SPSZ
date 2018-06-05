@@ -79,18 +79,18 @@
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
     
-    NSDate *date =[NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy"];
-    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
-    [formatter setDateFormat:@"MM"];
-    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
-    [formatter setDateFormat:@"dd"];
-    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
-    
-    NSString *dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
-    [self loadDataWith:dateString];
+//    NSDate *date =[NSDate date];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//
+//    [formatter setDateFormat:@"yyyy"];
+//    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+//    [formatter setDateFormat:@"MM"];
+//    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+//    [formatter setDateFormat:@"dd"];
+//    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+//
+//    NSString *dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
+    [self loadDataWith:@""];
 }
 
 
@@ -160,6 +160,9 @@
 
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
     NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%02ld",dateComponents.year,dateComponents.month,dateComponents.day];
+    
+    [self.dataArray removeAllObjects];
+    [self.tableView reloadData];
     [self loadDataWith:date];
 }
 

@@ -165,10 +165,13 @@
     if (index != self.selectIndex) {
         self.selectIndex = index;
         if (index == 0) {
+            vc1.timeString = nil;
             [vc1 loadDataWith:dateString newDate:nil];
         }else if (index == 1){
+            vc2.timeString = nil;
             [vc2 loadDataWith:dateString newDate:nil];
         }else if (index == 2){
+            vc3.timeString = nil;
             [vc3 loadDataWith:dateString newDate:nil];
         }
     }

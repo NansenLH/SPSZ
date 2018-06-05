@@ -78,30 +78,18 @@
     rightButton.frame = CGRectMake(0, 0, 80, 44);
     [rightButton setImageEdgeInsets:UIEdgeInsetsMake(12, 10, 12, 57)];
     rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
-    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [rightButton addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+ 
     self.index = 1;
     [self configNavigation];
     self.dateString = nil;
-    
-    NSDate *date =[NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy"];
-    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
-    [formatter setDateFormat:@"MM"];
-    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
-    [formatter setDateFormat:@"dd"];
-    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
-    
-    self.dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
-    
-    
+ 
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
@@ -125,6 +113,7 @@
 
 
 
+
 - (void)uploadDataWithDate:(NSString *)date
 {
     KRWeakSelf;
@@ -135,10 +124,6 @@
 
         weakSelf.index++;
         [weakSelf.dataArray addObjectsFromArray:modelArray];
-       
-        [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-        
-       
         [weakSelf.tableView reloadData];
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
