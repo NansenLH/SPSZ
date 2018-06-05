@@ -63,7 +63,7 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, MainScreenWidth,MainScreenHeight - 60 -64-[ProgramSize bottomHeight] - 40) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, MainScreenWidth,MainScreenHeight - 60 - [ProgramSize statusBarAndNavigationBarHeight] -[ProgramSize bottomHeight] - 40) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -102,7 +102,7 @@
     
     self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
 
-    [self loadDataWith:self.todayString newDate:nil];
+//    [self loadDataWith:self.todayString newDate:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated

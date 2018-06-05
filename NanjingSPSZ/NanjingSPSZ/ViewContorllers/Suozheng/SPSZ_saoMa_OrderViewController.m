@@ -35,6 +35,7 @@
 
 @property (nonatomic, strong)NSString *todayString;
 
+@property (nonatomic, strong) UIButton *countBtn;
 @end
 
 @implementation SPSZ_saoMa_OrderViewController
@@ -42,13 +43,18 @@
 -(UICollectionView *)collectionView
 {
     if (!_collectionView) {
+        self.countBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.countBtn.frame = CGRectMake((MainScreenWidth - 100) / 2, 62, 100, 30);
+        [self.countBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.countBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [self.view addSubview:self.countBtn];
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - 64-[ProgramSize bottomHeight]);
+        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  100 - [ProgramSize statusBarAndNavigationBarHeight] - [ProgramSize bottomHeight]);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         flowLayout.minimumLineSpacing = 20;
         
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64-[ProgramSize bottomHeight]) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 100, MainScreenWidth, MainScreenHeight - 100 - [ProgramSize statusBarAndNavigationBarHeight] - [ProgramSize bottomHeight]) collectionViewLayout:flowLayout];
         // 设置代理
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -61,22 +67,26 @@
 }
 - (UIView *)topView{
     if (!_topView) {
+        
         _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth, 60)];
         _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, (MainScreenWidth - 30)/2 +80,60)];
         _leftLabel.font = [UIFont systemFontOfSize:25];
  
-        _leftLabel.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
+        _leftLabel.textColor = [UIColor whiteColor];
+//        [ProgramColor RGBColorWithRed:32 green:107 blue:225];
  
         [_topView addSubview:self.leftLabel];
         
         _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(15 + (MainScreenWidth - 30)/2 +80, 0, (MainScreenWidth - 30)/2-80,60)];
         _rightLabel.font = [UIFont systemFontOfSize:25];
-        _rightLabel.textColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
+        _rightLabel.textColor = [UIColor whiteColor];
+//        [ProgramColor RGBColorWithRed:32 green:107 blue:225];
         _rightLabel.textAlignment = NSTextAlignmentRight;
         [_topView addSubview:self.rightLabel];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 59, MainScreenWidth - 30, 1)];
-        lineView.backgroundColor = [ProgramColor RGBColorWithRed:32 green:107 blue:225];
+        lineView.backgroundColor = [UIColor whiteColor];
+//        [ProgramColor RGBColorWithRed:32 green:107 blue:225];
         [_topView addSubview:lineView];
     }
     return _topView;
@@ -125,6 +135,7 @@
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
 
         [self.collectionView reloadData];
+        
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
     

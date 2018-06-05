@@ -12,7 +12,7 @@
 #import "KRAccountTool.h"
 #import "MJRefresh.h"
 
-
+#import "PGDatePickManager.h"
 #import "SPSZ_chu_chuZhengRecordsTableViewCell.h"
 
 #import "SPSZ_chu_recordsModel.h"
@@ -38,6 +38,7 @@
 {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth,MainScreenHeight -[ProgramSize statusBarHeight]) style:UITableViewStylePlain];
+
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -88,19 +89,48 @@
     [self configNavigation];
     self.dateString = nil;
     
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    [formatter setDateFormat:@"MM"];
+    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+    [formatter setDateFormat:@"dd"];
+    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+    
+    self.dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
+    
+    
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
     
-    [self uploadDataWithDate:self.dateString];
+     [self uploadDataWithDate:self.dateString];
+ 
 }
+
+- (void)rightButtonAction
+{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    datePickManager.isShadeBackgroud = true;
+    datePickManager.style = PGDatePickManagerStyle3;
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    datePicker.delegate = self;
+    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.isHiddenMiddleText = false;
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    [self presentViewController:datePickManager animated:false completion:nil];
+}
+
 
 
 - (void)uploadDataWithDate:(NSString *)date
 {
     KRWeakSelf;
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
-    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:date successBlock:^(NSMutableArray *modelArray) {
+ 
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:self.dateString successBlock:^(NSMutableArray *modelArray) {
         [weakSelf.tableView.mj_footer endRefreshing];
 
         weakSelf.index++;
@@ -124,8 +154,9 @@
 {
     KRWeakSelf;
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
-    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:date successBlock:^(NSMutableArray *modelArray) {
-        [weakSelf.tableView.mj_header endRefreshing];
+ 
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:self.dateString successBlock:^(NSMutableArray *modelArray) {
+         [weakSelf.tableView.mj_header endRefreshing];
         self.index++;
         [weakSelf.dataArray addObjectsFromArray:modelArray];
         
