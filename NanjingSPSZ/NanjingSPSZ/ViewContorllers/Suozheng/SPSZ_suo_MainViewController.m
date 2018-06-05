@@ -259,7 +259,7 @@ saoMaSuccessDelegate
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.delegate = self;
-    
+    scrollView.bounces = false;
     self.detailScrollView = scrollView;
     [self.tagBar selectIndex:0];
 }
