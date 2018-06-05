@@ -66,21 +66,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"出货记录";
+    self.title = @"出证记录";
     self.index = 1;
     
-    NSDate *date =[NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    
-    [formatter setDateFormat:@"yyyy"];
-    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
-    [formatter setDateFormat:@"MM"];
-    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
-    [formatter setDateFormat:@"dd"];
-    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
-    
-    self.dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
-    
+//    NSDate *date =[NSDate date];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//
+//    [formatter setDateFormat:@"yyyy"];
+//    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+//    [formatter setDateFormat:@"MM"];
+//    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+//    [formatter setDateFormat:@"dd"];
+//    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+//
+//    self.dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
+    self.dateString = @"";
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
@@ -115,6 +115,9 @@
 
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
     self.dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",dateComponents.year,dateComponents.month,dateComponents.day];
+    self.index = 1;
+    [self.dataArray removeAllObjects];
+    [self.tableView reloadData];
     [self uploadData];
 }
 

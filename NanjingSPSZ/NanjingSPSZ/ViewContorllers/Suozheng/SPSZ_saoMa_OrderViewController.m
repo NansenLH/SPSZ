@@ -35,7 +35,7 @@
 
 @property (nonatomic, strong)NSString *todayString;
 
-@property (nonatomic, strong) UIButton *countBtn;
+@property (nonatomic, strong) UIView *countView;
 @end
 
 @implementation SPSZ_saoMa_OrderViewController
@@ -43,11 +43,7 @@
 -(UICollectionView *)collectionView
 {
     if (!_collectionView) {
-        self.countBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.countBtn.frame = CGRectMake((MainScreenWidth - 100) / 2, 62, 100, 30);
-        [self.countBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.countBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-        [self.view addSubview:self.countBtn];
+        
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
         flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  100 - [ProgramSize statusBarAndNavigationBarHeight] - [ProgramSize bottomHeight]);
@@ -59,6 +55,7 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.backgroundColor = [UIColor clearColor];
+        _collectionView.pagingEnabled = true;
         // 注册cell
         [_collectionView registerClass:[SPSZ_suo_SaoMaOrderCollectionViewCell class] forCellWithReuseIdentifier:@"SPSZ_suo_SaoMaOrderCollectionViewCell"];
         
@@ -91,6 +88,7 @@
     }
     return _topView;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIImage *naviBackImage = [[UIImage alloc] createImageWithSize:CGSizeMake([ProgramSize mainScreenWidth], [ProgramSize mainScreenHeight])
@@ -115,6 +113,7 @@
     
     self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
 
+    
     [self.view addSubview:self.collectionView];
     [self.view addSubview:self.topView];
     [self loadDataWith:self.todayString newDate:nil];
@@ -135,18 +134,49 @@
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
 
         [self.collectionView reloadData];
-        
-        
+        [self.collectionView setContentOffset:CGPointMake(0, 0) animated:false];
+        [self.countView removeFromSuperview];
+        self.countView = nil;
+        self.countView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, MainScreenWidth, 30)];
+        [self.view addSubview:self.countView];
+        float btnWidth = MainScreenWidth / self.dataArray.count;
+        for (int i = 0; i < self.dataArray.count; i++) {
+            UIButton *countBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            countBtn.frame = CGRectMake(i * btnWidth, 0, btnWidth, 30);
+            [countBtn setTitle:[NSString stringWithFormat:@"%d",i+1] forState:UIControlStateNormal];
+            [countBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            countBtn.titleLabel.font = [UIFont systemFontOfSize:20];
+            countBtn.tag = 100 + i;
+            [countBtn addTarget:self action:@selector(selectIndex:) forControlEvents:UIControlEventTouchUpInside];
+            if (i == 0) {
+                [countBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            }
+            [self.countView addSubview:countBtn];
+        }
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-    
+    [self.countView removeFromSuperview];
         [self setDateLabelWith:newdate];
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
 
         [self.collectionView reloadData];
         [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
+        [self.countView removeFromSuperview];
         [KRAlertTool alertString:failure];
     }];
+}
+
+- (void)selectIndex:(UIButton *)sender
+{
+    [self.collectionView setContentOffset:CGPointMake((sender.tag - 100) * MainScreenWidth, 0) animated:true];
+    
+    for (int i = 0; i < self.dataArray.count; i++) {
+        UIButton *btn = (UIButton *)[self.countView viewWithTag:100 + i];
+        [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        if (i == sender.tag - 100) {
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+    }
 }
 
 - (void)setDateLabelWith:(NSString *)newDate
@@ -195,7 +225,21 @@
 }
 
 
-
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView == _collectionView) {
+        //获取滚动位置
+        int pageNo= scrollView.contentOffset.x/scrollView.frame.size.width;
+        for (int i = 0; i < self.dataArray.count; i++) {
+            UIButton *btn = (UIButton *)[self.countView viewWithTag:100 + i];
+            [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            if (i == pageNo) {
+                [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            }
+        }
+    }
+    
+}
 
 - (void)reloadDataWithDateWith:(NSString *)date{
     [self loadDataWith:self.timeString newDate:date];
