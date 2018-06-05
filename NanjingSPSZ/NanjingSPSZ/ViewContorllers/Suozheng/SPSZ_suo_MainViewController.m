@@ -107,12 +107,11 @@ saoMaSuccessDelegate
     if (!_recordsButton) {
         _recordsButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _recordsButton.frame = CGRectMake(20, 0, 80, 60);//25 25
-        [_recordsButton setImageEdgeInsets:UIEdgeInsetsMake(15, 27.5, 20, 27.5)];
-        [_recordsButton setTitleEdgeInsets:UIEdgeInsetsMake(48, -45, 0, 0)];
         [_recordsButton setImage:[UIImage imageNamed:@"record_gray"] forState:UIControlStateNormal];
         [_recordsButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [_recordsButton setTitle:@"进货记录" forState:UIControlStateNormal];
         [_recordsButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [_recordsButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:5];
         [_recordsButton addTarget:self action:@selector(recordButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _recordsButton;
@@ -124,10 +123,10 @@ saoMaSuccessDelegate
         _personButton.frame = CGRectMake(MainScreenWidth - 80 -20, 0, 80, 60);
         [_personButton setImage:[UIImage imageNamed:@"user_gray"] forState:UIControlStateNormal];
         [_personButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [_personButton setImageEdgeInsets:UIEdgeInsetsMake(15, 27.5, 20, 27.5)];
-        [_personButton setTitleEdgeInsets:UIEdgeInsetsMake(48, -45, 0, 0)];
+ 
         [_personButton setTitle:@"个人中心" forState:UIControlStateNormal];
         [_personButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [_personButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:5];
 
         [_personButton addTarget:self action:@selector(personButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -147,7 +146,6 @@ saoMaSuccessDelegate
         [_centerButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:10];
         [_centerButton addTarget:self action:@selector(sureUpLoadAction:) forControlEvents:UIControlEventTouchUpInside];
         [_centerButton gradientButtonWithSize:CGSizeMake(120, 120) colorArray:@[[ProgramColor RGBColorWithRed:33 green:211 blue:255 alpha:0.94],[ProgramColor RGBColorWithRed:67 green:130 blue:255 alpha:0.94]] percentageArray:@[@(1),@(0)] gradientType:GradientFromTopToBottom];
-        
     }
     return _centerButton;
 }
