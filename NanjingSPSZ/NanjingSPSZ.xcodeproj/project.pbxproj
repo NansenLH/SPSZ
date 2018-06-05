@@ -208,6 +208,7 @@
 		CC2DA38D20BD52F3002F5256 /* CityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA38B20BD52F3002F5256 /* CityView.m */; };
 		CC2DA39320BD99E2002F5256 /* KRAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39220BD99E1002F5256 /* KRAccountTool.m */; };
 		CC2DA39620BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA39520BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m */; };
+		CC6BE85020C67F6000F77727 /* SPSZ_chu_ChuZhengDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6BE84F20C67F6000F77727 /* SPSZ_chu_ChuZhengDetailViewController.m */; };
 		CC89F34420B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34320B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m */; };
 		CC89F34A20B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34920B9145300FCEBD2 /* SPSZ_suo_shouDongTableViewCell.m */; };
 		CC89F34E20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC89F34D20B9279100FCEBD2 /* SPSZ_suo_shouDongRecordModel.m */; };
@@ -678,6 +679,8 @@
 		CC2DA39220BD99E1002F5256 /* KRAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRAccountTool.m; sourceTree = "<group>"; };
 		CC2DA39420BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_suo_SaoMaOrderCollectionViewCell.h; sourceTree = "<group>"; };
 		CC2DA39520BDACCC002F5256 /* SPSZ_suo_SaoMaOrderCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_suo_SaoMaOrderCollectionViewCell.m; sourceTree = "<group>"; };
+		CC6BE84E20C67F6000F77727 /* SPSZ_chu_ChuZhengDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_ChuZhengDetailViewController.h; sourceTree = "<group>"; };
+		CC6BE84F20C67F6000F77727 /* SPSZ_chu_ChuZhengDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_ChuZhengDetailViewController.m; sourceTree = "<group>"; };
 		CC89F34220B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_chu_personalCenterViewController.h; sourceTree = "<group>"; };
 		CC89F34320B6669500FCEBD2 /* SPSZ_chu_personalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_chu_personalCenterViewController.m; sourceTree = "<group>"; };
 		CC89F34520B6E06500FCEBD2 /* SPSZ_personalInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_personalInfoViewController.h; sourceTree = "<group>"; };
@@ -1586,6 +1589,8 @@
 				CC89F3D020BBDDB600FCEBD2 /* SPSZ_chu_chuZhengRecordsViewController.m */,
 				CC89F3D820BBF12F00FCEBD2 /* SPSZ_chu_jinHuoLuRuViewController.h */,
 				CC89F3D920BBF12F00FCEBD2 /* SPSZ_chu_jinHuoLuRuViewController.m */,
+				CC6BE84E20C67F6000F77727 /* SPSZ_chu_ChuZhengDetailViewController.h */,
+				CC6BE84F20C67F6000F77727 /* SPSZ_chu_ChuZhengDetailViewController.m */,
 			);
 			path = Chuzheng;
 			sourceTree = "<group>";
@@ -1939,6 +1944,7 @@
 				6A5535C120BED950003B0C04 /* KRAudioTool.m in Sources */,
 				6ACB550220B011D500528420 /* AFURLResponseSerialization.m in Sources */,
 				6A143B8A20BAE65C00D71959 /* PGDatePicker+TimeAndSecond.m in Sources */,
+				CC6BE85020C67F6000F77727 /* SPSZ_chu_ChuZhengDetailViewController.m in Sources */,
 				6ACB543820B00F9A00528420 /* UIButton+WebCache.m in Sources */,
 				6ABE9B9720BED23000EFB505 /* KRScanBaseController.m in Sources */,
 				6A143BA920BB105100D71959 /* SPSZ_SelectedTableViewCell.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "SPSZ_chu_chuZhengRecordsViewController.h"
+#import "SPSZ_chu_ChuZhengDetailViewController.h"
 
 #import "ChuzhengNetworkTool.h"
 #import "KRAccountTool.h"
@@ -78,7 +79,7 @@
     rightButton.frame = CGRectMake(0, 0, 80, 44);
     [rightButton setImageEdgeInsets:UIEdgeInsetsMake(12, 10, 12, 57)];
     rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
-    [rightButton addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
 
@@ -97,21 +98,6 @@
      [self uploadDataWithDate:self.dateString];
  
 }
-
-- (void)rightButtonAction
-{
-    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
-    datePickManager.isShadeBackgroud = true;
-    datePickManager.style = PGDatePickManagerStyle3;
-    PGDatePicker *datePicker = datePickManager.datePicker;
-    datePicker.delegate = self;
-    datePicker.datePickerType = PGDatePickerType2;
-    datePicker.isHiddenMiddleText = false;
-    datePicker.datePickerMode = PGDatePickerModeDate;
-    [self presentViewController:datePickManager animated:false completion:nil];
-}
-
-
 
 
 - (void)uploadDataWithDate:(NSString *)date
@@ -175,6 +161,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 100;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPSZ_chu_recordsModel *model = self.dataArray[indexPath.row];
+    SPSZ_chu_ChuZhengDetailViewController *vc = [[SPSZ_chu_ChuZhengDetailViewController alloc]init];
+    vc.printcode = model.printcode;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
