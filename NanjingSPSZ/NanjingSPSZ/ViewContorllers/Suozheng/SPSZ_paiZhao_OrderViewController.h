@@ -17,5 +17,5 @@
 
 - (void)reloadDataWithDateWith:(NSString *)date;
 
-
+- (void)loadDataWith:(NSString *)date newDate:(NSString *)newdate;
 @end

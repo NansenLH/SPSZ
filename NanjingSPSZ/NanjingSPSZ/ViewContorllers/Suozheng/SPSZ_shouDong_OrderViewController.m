@@ -100,7 +100,7 @@
     
     self.todayString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
 
-    [self loadDataWith:self.todayString newDate:nil];
+//    [self loadDataWith:self.todayString newDate:nil];
 }
 
 

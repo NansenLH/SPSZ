@@ -33,6 +33,8 @@
 @property (nonatomic, strong) UIImageView     *imageView;
 
 @property (nonatomic, copy) NSString *stall_id;
+
+@property (assign) NSInteger selectIndex;
 @end
 
 @implementation SPSZ_jinHuo_RecordsViewController
@@ -150,6 +152,30 @@
 -(void)tagBarDidClickBtn:(UIButton *)btn atIndex:(NSInteger)index
 {
     self.detailScrollView.contentOffset = CGPointMake(index * MainScreenWidth, 0);
+    
+    
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    [formatter setDateFormat:@"MM"];
+    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+    [formatter setDateFormat:@"dd"];
+    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+    
+    NSString *dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
+    
+    if (index != self.selectIndex) {
+        self.selectIndex = index;
+        if (index == 0) {
+            [vc1 loadDataWith:dateString newDate:nil];
+        }else if (index == 1){
+            [vc2 loadDataWith:dateString newDate:nil];
+        }else if (index == 2){
+            [vc3 loadDataWith:dateString newDate:nil];
+        }
+    }
 }
 
 #pragma mark - ========== Delegate ==========

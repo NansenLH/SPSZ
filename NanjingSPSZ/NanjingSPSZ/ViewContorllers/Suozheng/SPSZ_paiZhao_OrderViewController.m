@@ -105,7 +105,7 @@
     
     [self.view addSubview:self.collectionView];
     
-    [self loadDataWith:self.todayString newDate:nil];
+//    [self loadDataWith:self.todayString newDate:nil];
 
 }
 
