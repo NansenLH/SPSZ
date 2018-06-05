@@ -48,7 +48,7 @@
     rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
     rightButton.frame = CGRectMake(0, 0, 80, 44);
     [rightButton setImageEdgeInsets:UIEdgeInsetsMake(12, 10, 12, 57)];
-    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
     [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
@@ -66,9 +66,6 @@
     [self setupTagBar];
     [self configNavigation];
     [self setupDetailScrollView];
-
-    
-//    [self getuploadprintinvoicedetaillist:0];
 }
 
 - (void)backToUpView
@@ -115,8 +112,6 @@
         make.width.equalTo(wid);
     }];
     
-    
-    
     vc1 = [[SPSZ_saoMa_OrderViewController alloc]init];
     vc2 = [[SPSZ_paiZhao_OrderViewController alloc]init];
     vc3 = [[SPSZ_shouDong_OrderViewController alloc]init];
@@ -156,7 +151,6 @@
 #pragma mark ---- UIScrollViewDelegate ----
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    
     if ([scrollView isEqual:self.detailScrollView]) {
         CGFloat pedding = scrollView.contentOffset.x;
         int index = (pedding / MainScreenWidth);
@@ -168,29 +162,16 @@
         {
             [self.tagBar updateContentOffSet:scrollView.contentOffset];
         }
-        
     }
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
-    
     if ([scrollView isEqual:self.detailScrollView]) {
         [self.tagBar updateContentOffSet:scrollView.contentOffset];
     }
-    
 }
 
 #pragma mark ---- action -----
-- (void)recordButtonAction:(UIButton *)button{
-
-}
-
-- (void)personButtonAction:(UIButton *)button{
-    
-}
-
-
 - (void)rightButtonAction:(UIButton *)button{
     
     PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
@@ -227,21 +208,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (void)getuploadprintinvoicedetaillist:(int)tag
-//{
-//    __weak typeof (self) weakSelf = self;
-//    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-//    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getuploadprintinvoicedetaillist"];
-//    [requestDic setObject:self.stall_id forKey:@"stall_id"];
-//    [requestDic setObject:[NSString stringWithFormat:@"%d",tag] forKey:@"type"];
-//    [requestDic setObject:@"" forKey:@"uploaddate"];
-//    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
-//        if ([result[@"respCode"] integerValue] == 1000000) {
-//            if (weakSelf.tagBar.selectedIndex == 0) {
-//                vc1.dataArray = result[@"resultList"];
-//            }
-//        }
-//    }];
-//}
 
 @end

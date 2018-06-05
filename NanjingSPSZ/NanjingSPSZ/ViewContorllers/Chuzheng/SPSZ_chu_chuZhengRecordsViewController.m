@@ -18,9 +18,10 @@
 #import "SPSZ_chu_recordsModel.h"
 #import "SPSZ_chuLoginModel.h"
 
+#import "PGDatePickManager.h"
 
 
-@interface SPSZ_chu_chuZhengRecordsViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface SPSZ_chu_chuZhengRecordsViewController ()<UITableViewDataSource,UITableViewDelegate,PGDatePickerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -28,13 +29,15 @@
 
 @property (nonatomic, assign) NSInteger index;
 
+@property (nonatomic, strong) NSString *dateString;
+
 @end
 
 @implementation SPSZ_chu_chuZhengRecordsViewController
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth,MainScreenHeight -64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth,MainScreenHeight -[ProgramSize statusBarHeight]) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -42,10 +45,10 @@
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self.dataArray removeAllObjects];
             self.index = 1;
-            [self downloadData];
+            [self downloadDataWithDate:self.dateString];
         }];
         _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            [self uploadData];
+            [self uploadDataWithDate:self.dateString];
         }];
     }
     return _tableView;
@@ -63,57 +66,71 @@
     [self.navigationController popViewControllerAnimated:true];
 }
 
+- (void)configNavigation
+{
+    self.navigationItem.title = @"出证记录";
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setImage:[UIImage imageNamed:@"calendar_white"] forState:UIControlStateNormal];
+    [rightButton setTitle:@"日期查询" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    rightButton.frame = CGRectMake(0, 0, 80, 44);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(12, 10, 12, 57)];
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+    [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"出货记录";
     self.index = 1;
+    [self configNavigation];
+    self.dateString = nil;
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
     
-    [self uploadData];
+    [self uploadDataWithDate:self.dateString];
 }
 
 
-- (void)uploadData
+- (void)uploadDataWithDate:(NSString *)date
 {
     KRWeakSelf;
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
-    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:nil successBlock:^(NSMutableArray *modelArray) {
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:date successBlock:^(NSMutableArray *modelArray) {
         [weakSelf.tableView.mj_footer endRefreshing];
 
-        if (modelArray.count >0) {
-            weakSelf.index++;
-            [weakSelf.dataArray addObjectsFromArray:modelArray];
-        }else
-        {
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
+        weakSelf.index++;
+        [weakSelf.dataArray addObjectsFromArray:modelArray];
+       
+        [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        
        
         [weakSelf.tableView reloadData];
         
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [weakSelf.tableView.mj_footer endRefreshing];
-        if ([errorMessage isEqualToString:@"无出证记录" ]) {
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
+        [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
 
     } failureBlock:^(NSString *failure) {
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
 }
 
-- (void)downloadData
+- (void)downloadDataWithDate:(NSString *)date
 {
     KRWeakSelf;
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
-    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:nil successBlock:^(NSMutableArray *modelArray) {
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:date successBlock:^(NSMutableArray *modelArray) {
         [weakSelf.tableView.mj_header endRefreshing];
         self.index++;
         [weakSelf.dataArray addObjectsFromArray:modelArray];
         
         [weakSelf.tableView reloadData];
+        [weakSelf.tableView.mj_footer  setState:MJRefreshStateIdle];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [weakSelf.tableView.mj_header endRefreshing];
         
@@ -144,10 +161,31 @@
     return 100;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (void)rightButtonAction:(UIButton *)button{
     
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    datePickManager.isShadeBackgroud = true;
+    datePickManager.style = PGDatePickManagerStyle3;
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    datePicker.delegate = self;
+    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.isHiddenMiddleText = false;
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
+
+
+
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%02ld",dateComponents.year,dateComponents.month,dateComponents.day];
+    self.dateString = date;
+    self.index = 1;
+    [self.dataArray removeAllObjects];
+    [self.tableView reloadData];
+    [self uploadDataWithDate:date];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

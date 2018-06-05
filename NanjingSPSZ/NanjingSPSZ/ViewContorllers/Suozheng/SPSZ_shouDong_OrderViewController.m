@@ -30,6 +30,8 @@
 
 @property (nonatomic, strong)UILabel *leftLabel;
 
+@property (nonatomic, assign)BOOL isFirst;
+
 @end
 
 @implementation SPSZ_shouDong_OrderViewController
@@ -83,7 +85,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-
+    self.isFirst = NO;
     [self.view addSubview:self.topView];
     
     [self.view addSubview:self.tableView];
@@ -103,6 +105,12 @@
     [self loadDataWith:self.todayString newDate:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+}
+
 
 - (void)loadDataWith:(NSString *)date newDate:(NSString *)newDate
 {
@@ -120,8 +128,11 @@
         self.rightLabel.text = [NSString stringWithFormat:@"%ld条",self.dataArray.count];
 
         [self.tableView reloadData];
-        [KRAlertTool alertString:errorMessage];
-    } failureBlock:^(NSString *failure) {
+        if (newDate) {
+            [KRAlertTool alertString:errorMessage];
+        }
+        
+     } failureBlock:^(NSString *failure) {
         [KRAlertTool alertString:failure];
     }];
 }

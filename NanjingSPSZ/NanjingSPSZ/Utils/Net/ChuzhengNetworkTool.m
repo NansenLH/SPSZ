@@ -133,7 +133,7 @@
     SPSZ_chuLoginModel *chuUser = [KRAccountTool getChuUserInfo];
     [requestDic setObject:chuUser.login_Id forKey:@"stall_id"];
 //    if (printdate) {
-        [requestDic setObject:printdate forKey:@"uploaddate"];
+    [requestDic setObject:printdate forKey:@"uploaddate"];
 //    }
     
     [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {

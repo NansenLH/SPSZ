@@ -59,7 +59,7 @@
     rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
     rightButton.frame = CGRectMake(0, 0, 80, 44);
     [rightButton setImageEdgeInsets:UIEdgeInsetsMake(12, 10, 12, 57)];
-    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
     [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
@@ -98,9 +98,13 @@
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
     
     [ChuzhengNetworkTool geChuZhengJinHuoRecordsStall_id:model.login_Id printdate:date successBlock:^(NSMutableArray *modelArray) {
+        
         [self.dataArray removeAllObjects];
         self.dataArray = modelArray;
         [self.tableView reloadData];
+        if (self.dataArray.count == 0) {
+            [KRAlertTool alertString:@"无进货记录"];
+        }
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
         [KRAlertTool alertString:errorMessage];
     } failureBlock:^(NSString *failure) {
