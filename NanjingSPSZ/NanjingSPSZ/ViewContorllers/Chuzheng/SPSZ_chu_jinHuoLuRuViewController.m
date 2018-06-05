@@ -156,7 +156,7 @@ UIGestureRecognizerDelegate
 - (UIButton *)saveButton{
     if (!_saveButton) {
         _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _saveButton.frame = CGRectMake(MainScreenWidth / 6, MainScreenHeight - 80 - 64, MainScreenWidth/3*2, 60);
+        _saveButton.frame = CGRectMake(MainScreenWidth / 6, MainScreenHeight - 80 - [ProgramSize statusBarAndNavigationBarHeight], MainScreenWidth/3*2, 60);
         _saveButton.layer.cornerRadius = 15;
         _saveButton.layer.masksToBounds = YES;
         [_saveButton addTarget:self action:@selector(saveButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -225,7 +225,7 @@ UIGestureRecognizerDelegate
 
 - (UIView *)mainView{
     if (!_mainView) {
-        _mainView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth,  MainScreenHeight  - 64 - 80)];
+        _mainView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MainScreenWidth,  MainScreenHeight  - [ProgramSize statusBarAndNavigationBarHeight] - 80)];
         _mainView.backgroundColor = [UIColor whiteColor];
         
         [self setUpViewWith:0 text:@"（请完善信息，以便更好的使用）"];

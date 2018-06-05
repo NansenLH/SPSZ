@@ -42,7 +42,7 @@
     if (!_collectionView) {
 
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 -64 - [ProgramSize bottomHeight] - 30) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 - [ProgramSize statusBarAndNavigationBarHeight] - [ProgramSize bottomHeight] - 30) collectionViewLayout:flowLayout];
         // 设置代理
         _collectionView.delegate = self;
         _collectionView.dataSource = self;

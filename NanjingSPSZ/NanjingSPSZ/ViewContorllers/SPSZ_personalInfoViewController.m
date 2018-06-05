@@ -95,7 +95,7 @@
 - (UIScrollView *)scrollView
 {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight - 64)];
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight - [ProgramSize statusBarAndNavigationBarHeight])];
                 _scrollView.delegate = self;
         _scrollView.contentSize = CGSizeMake(MainScreenWidth, _height *9+ 0.6* (MainScreenWidth - 20) *4 +50);
         _scrollView.showsHorizontalScrollIndicator = YES;

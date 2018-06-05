@@ -44,11 +44,11 @@
     if (!_collectionView) {
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - 64 - [ProgramSize bottomHeight]);
+        flowLayout.itemSize = CGSizeMake(MainScreenWidth, MainScreenHeight -  60 - [ProgramSize statusBarAndNavigationBarHeight] - [ProgramSize bottomHeight]);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         flowLayout.minimumLineSpacing = 20;
         
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 - 64 - [ProgramSize bottomHeight]) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, MainScreenWidth, MainScreenHeight - 60 - [ProgramSize statusBarAndNavigationBarHeight] - [ProgramSize bottomHeight]) collectionViewLayout:flowLayout];
         // 设置代理
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
