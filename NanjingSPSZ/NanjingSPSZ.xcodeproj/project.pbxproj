@@ -2236,9 +2236,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PY4TVE6987;
+				CODE_SIGN_IDENTITY = "iPhone Developer: chen yehui (7ELM4H3VCG)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2251,10 +2251,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kh.njspsz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.njspsz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e920184e-fd66-435e-afb7-07da7375cf2c";
+				PROVISIONING_PROFILE_SPECIFIER = spsz_develop;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2264,9 +2264,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PY4TVE6987;
+				CODE_SIGN_IDENTITY = "iPhone Developer: chen yehui (7ELM4H3VCG)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NanjingSPSZ/PrefixHeader.pch";
 				INFOPLIST_FILE = NanjingSPSZ/Info.plist;
@@ -2279,10 +2279,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NanjingSPSZ/ThirdParts/HLBluetooth",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kh.njspsz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.njspsz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e920184e-fd66-435e-afb7-07da7375cf2c";
+				PROVISIONING_PROFILE_SPECIFIER = spsz_develop;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
