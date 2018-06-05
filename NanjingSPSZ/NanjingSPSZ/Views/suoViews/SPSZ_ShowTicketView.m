@@ -94,7 +94,7 @@
         make.height.equalTo(325);
     }];
     
-    UILabel *titleLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:15] text:@"南京市农产品销售流通凭证" textColor:[UIColor blackColor] textAlignment:NSTextAlignmentCenter];
+    UILabel *titleLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:16] text:@"南京市农产品销售流通凭证" textColor:[UIColor blackColor] textAlignment:NSTextAlignmentCenter];
     [self.containerView addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(0);
@@ -143,14 +143,14 @@
             make.height.equalTo(height);
         }];
         
-        UILabel *leftLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:12] text:@"" textColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] textAlignment:NSTextAlignmentLeft];
+        UILabel *leftLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:13] text:@"" textColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] textAlignment:NSTextAlignmentLeft];
         [cellView addSubview:leftLabel];
         [leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(15);
             make.centerY.equalTo(0);
         }];
         
-        UILabel *rightLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:12] text:@"" textColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59] textAlignment:NSTextAlignmentRight];
+        UILabel *rightLabel = [UICreateTool labelWithFont:[UIFont systemFontOfSize:13] text:@"" textColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59] textAlignment:NSTextAlignmentRight];
         [cellView addSubview:rightLabel];
         [rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(-15);
@@ -226,7 +226,7 @@
         NSString *rightText = @"进货数量";
         if (i > 0) {
             SPSZ_suo_saoMaDetailModel *detailModel = model.dishes[(i-1)];
-            font = [UIFont systemFontOfSize:12];
+            font = [UIFont systemFontOfSize:13];
             textColor = [ProgramColor RGBColorWithRed:59 green:59 blue:59];
             leftText = detailModel.objectName;
             centerText = detailModel.cityname;

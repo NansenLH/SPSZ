@@ -48,7 +48,7 @@
 - (NSMutableArray *)titleArray
 {
     if (!_titleArray) {
-        _titleArray = [NSMutableArray arrayWithObjects:@"个人信息",@"进货记录",@"出货记录",@"版本号",@"帮助",@"注销登录", nil];
+        _titleArray = [NSMutableArray arrayWithObjects:@"个人信息",@"进货记录",@"出证记录",@"版本号",@"帮助",@"注销登录", nil];
     }
     return _titleArray;
 }

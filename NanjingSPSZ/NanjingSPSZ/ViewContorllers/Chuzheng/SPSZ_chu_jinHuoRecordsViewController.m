@@ -57,9 +57,9 @@
     [rightButton setTitle:@"日期查询" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
-    rightButton.frame = CGRectMake(0, 0, 80, 44);
-    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(12, 10, 12, 57)];
-    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    rightButton.frame = CGRectMake(0, 0, 90, 44);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(13, 10, 13, 62)];
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }

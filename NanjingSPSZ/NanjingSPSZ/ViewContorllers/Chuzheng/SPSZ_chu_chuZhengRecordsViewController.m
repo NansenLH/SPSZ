@@ -12,7 +12,7 @@
 #import "KRAccountTool.h"
 #import "MJRefresh.h"
 
-
+#import "PGDatePickManager.h"
 #import "SPSZ_chu_chuZhengRecordsTableViewCell.h"
 
 #import "SPSZ_chu_recordsModel.h"
@@ -20,7 +20,7 @@
 
 
 
-@interface SPSZ_chu_chuZhengRecordsViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface SPSZ_chu_chuZhengRecordsViewController ()<UITableViewDataSource,UITableViewDelegate,PGDatePickerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -28,6 +28,7 @@
 
 @property (nonatomic, assign) NSInteger index;
 
+@property (nonatomic, copy) NSString *dateString;
 @end
 
 @implementation SPSZ_chu_chuZhengRecordsViewController
@@ -68,19 +69,60 @@
     self.title = @"出货记录";
     self.index = 1;
     
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
+    [formatter setDateFormat:@"MM"];
+    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
+    [formatter setDateFormat:@"dd"];
+    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
+    
+    self.dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
+    
+    
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
     
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setImage:[UIImage imageNamed:@"calendar_white"] forState:UIControlStateNormal];
+    [rightButton setTitle:@"日期查询" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    rightButton.frame = CGRectMake(0, 0, 90, 44);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(13, 10, 13, 62)];
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    [rightButton addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    
     [self uploadData];
 }
 
+- (void)rightButtonAction
+{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    datePickManager.isShadeBackgroud = true;
+    datePickManager.style = PGDatePickManagerStyle3;
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    datePicker.delegate = self;
+    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.isHiddenMiddleText = false;
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    [self presentViewController:datePickManager animated:false completion:nil];
+}
+
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    self.dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",dateComponents.year,dateComponents.month,dateComponents.day];
+    [self uploadData];
+}
 
 - (void)uploadData
 {
     KRWeakSelf;
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
-    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:nil successBlock:^(NSMutableArray *modelArray) {
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:self.dateString successBlock:^(NSMutableArray *modelArray) {
         [weakSelf.tableView.mj_footer endRefreshing];
 
         if (modelArray.count >0) {
@@ -108,7 +150,7 @@
 {
     KRWeakSelf;
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
-    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:nil successBlock:^(NSMutableArray *modelArray) {
+    [ChuzhengNetworkTool geChuZhengRecordsPageSize:10 pageNo:self.index userId:model.login_Id printdate:self.dateString successBlock:^(NSMutableArray *modelArray) {
         [weakSelf.tableView.mj_header endRefreshing];
         self.index++;
         [weakSelf.dataArray addObjectsFromArray:modelArray];
