@@ -589,8 +589,8 @@ UIGestureRecognizerDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if ([textField isEqual:self.productNameLabel]) {
-        if (textField.text.length > 6) {
-            textField.text = [textField.text substringWithRange:NSMakeRange(0, 6)];
+        if (textField.text.length > 7) {
+            textField.text = [textField.text substringWithRange:NSMakeRange(0, 7)];
         }
     }
     

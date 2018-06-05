@@ -288,7 +288,7 @@
 - (void)setUpViewWith:(NSInteger)number textfield:(UITextField *)textfield button:(UIButton *)button{
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, _height*number, _width, _height)];
     CGFloat w = 100;
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, w, _height)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, w, _height)];
     label.textColor = [UIColor redColor];
     label.font = [UIFont systemFontOfSize:14];
     if (number == 2 || number == 7) {
@@ -298,12 +298,12 @@
     }else{
         if (number == 5 ) {
             w = 140;
-            label.frame = CGRectMake(0, 0, w, _height);
+            label.frame = CGRectMake(10, 0, w, _height);
 
         }
         if (number == 3 ) {
             w = 170;
-            label.frame = CGRectMake(0, 0, w, _height);
+            label.frame = CGRectMake(10, 0, w, _height);
         }
 
         [label setAttributedText:[self Color:[UIColor redColor] secondColor:[ProgramColor RGBColorWithRed:59 green:59 blue:59 alpha:0.58] string:@"*  " string2:self.titleArray[number]]];
@@ -479,9 +479,9 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     if ([textField isEqual:self.productNameTextField]) {
-        if (textField.text.length > 9) {
+        if (textField.text.length > 6) {
             [KRAlertTool alertString:@"超出字数限制！"];
-            textField.text = [textField.text substringWithRange:NSMakeRange(0, 9)];
+            textField.text = [textField.text substringWithRange:NSMakeRange(0, 6)];
 
         }
     }
