@@ -50,6 +50,10 @@
 @property (nonatomic, strong) UIButton *editGoodsButton;
 @property (nonatomic, strong) UIButton *personalCenterButton;
 
+@property (nonatomic, strong) UIButton *logoutButton;
+@property (nonatomic, strong) UIButton *clearButton;
+
+
 @property (nonatomic, assign) BOOL isConnect;
 
 @property (nonatomic, strong) NSMutableArray<SPSZ_GoodsModel *> *selectedArray;
@@ -66,6 +70,7 @@
 @property (nonatomic, strong) CBCharacteristic *characteristic;
 
 @end
+
 
 @implementation SPSZ_ChuIndexViewController
 
@@ -97,6 +102,8 @@
     [self configSubViews];
 
     [self configTabbar];
+    
+//    self.isConnect = YES;
 }
 
 
@@ -136,7 +143,15 @@
     logOutButton.frame = CGRectMake(0, 0, 80, 44);
     logOutButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
     [logOutButton addTarget:self action:@selector(logoutAction) forControlEvents:UIControlEventTouchUpInside];
+    self.logoutButton = logOutButton;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logOutButton];
+    
+    
+    self.clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.clearButton setTitle:@"清空列表" forState:UIControlStateNormal];
+    [self.clearButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.clearButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    [self.clearButton addTarget:self action:@selector(clearSelected:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)configSubViews
@@ -151,13 +166,20 @@
     
     self.selectedView = [[SPSZ_ChuSelectedView alloc] init];
     [self.view addSubview:self.selectedView];
-    [self.selectedView.clearButton addTarget:self action:@selector(clearSelected:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.selectedView.clearButton addTarget:self action:@selector(clearSelected:) forControlEvents:UIControlEventTouchUpInside];
     [self.selectedView.addMoreGoodsButton addTarget:self action:@selector(addGoodsClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.selectedView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(0);
-        make.bottom.equalTo(-66-[ProgramSize bottomHeight]);
+        make.bottom.equalTo(-124-[ProgramSize bottomHeight]);
     }];
     self.selectedView.hidden = YES;
+    
+    // 新设计
+    KRWeakSelf;
+    [self.selectedView setDeleteLastCellBlock:^{
+        [weakSelf clearSelected:nil];
+    }];
+    
     
     self.chooseConnectView = [[SPSZ_ChooseConnectView alloc] init];
     self.chooseConnectView.delegate = self;
@@ -299,6 +321,8 @@
     self.selectedView.selectedArray = self.selectedArray;
     self.indexView.hidden = YES;
     self.selectedView.hidden = NO;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.clearButton];
 }
 
 - (void)centerClick
@@ -330,6 +354,8 @@
     [self.selectedArray removeAllObjects];
     self.selectedView.hidden = YES;
     self.indexView.hidden = NO;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.logoutButton];
 }
 
 
@@ -519,18 +545,37 @@
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     // 蓝牙可用，开始扫描外设
-    if (central.state == CBManagerStatePoweredOn) {
-        if (!self.isConnect) {
-            [self.chooseConnectView showInView:self.navigationController.view];
-            [self.centralManager scanForPeripheralsWithServices:nil options:nil];
+    if (@available(iOS 10.0, *)) {
+        if (central.state == CBManagerStatePoweredOn) {
+            if (!self.isConnect) {
+                [self.chooseConnectView showInView:self.navigationController.view];
+                [self.centralManager scanForPeripheralsWithServices:nil options:nil];
+            }
+        }
+        if(central.state==CBManagerStateUnsupported) {
+            [[LUAlertTool defaultTool] Lu_alertInViewController:self title:@"提示" message:@"该设备不支持蓝牙" cancelButtonTitle:@"确认"];
+        }
+        if (central.state==CBManagerStatePoweredOff) {
+            NSLog(@"设置中未打开蓝牙");
         }
     }
-    if(central.state==CBManagerStateUnsupported) {
-        [[LUAlertTool defaultTool] Lu_alertInViewController:self title:@"提示" message:@"该设备不支持蓝牙" cancelButtonTitle:@"确认"];
+    else {
+        if (central.state == CBCentralManagerStatePoweredOn) {
+            if (!self.isConnect) {
+                [self.chooseConnectView showInView:self.navigationController.view];
+                [self.centralManager scanForPeripheralsWithServices:nil options:nil];
+            }
+        }
+        if(central.state==CBCentralManagerStateUnsupported) {
+            [[LUAlertTool defaultTool] Lu_alertInViewController:self title:@"提示" message:@"该设备不支持蓝牙" cancelButtonTitle:@"确认"];
+        }
+        if (central.state==CBCentralManagerStatePoweredOff) {
+            NSLog(@"设置中未打开蓝牙");
+        }
     }
-    if (central.state==CBManagerStatePoweredOff) {
-        NSLog(@"设置中未打开蓝牙");
-    }
+    
+    
+    
 }
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI

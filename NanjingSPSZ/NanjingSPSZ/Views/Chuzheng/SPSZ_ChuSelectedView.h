@@ -16,6 +16,15 @@
 
 @property (nonatomic, assign) BOOL isConnect;
 @property (nonatomic, strong) UIButton * addMoreGoodsButton;
-@property (nonatomic, strong) UIButton * clearButton;
+
+// 老设计公开,新设计无
+//@property (nonatomic, strong) UIButton * clearButton;
+
+
+/**
+ 删掉最后一个 cell
+ */
+@property (nonatomic, copy) void(^deleteLastCellBlock)(void);
+
 
 @end
