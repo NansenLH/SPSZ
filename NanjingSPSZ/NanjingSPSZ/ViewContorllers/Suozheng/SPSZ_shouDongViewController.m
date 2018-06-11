@@ -370,13 +370,14 @@
 - (void)reloadNewData{
     _productNameTextField.text = @"";
     _detailLocationTextField.text = @"";
+    [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
+    [_numberButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
     _companyTextField.text = @"";
     _nameTextField.text = @"";
     _phoneTextField.text = @"";
     [_timeButton setTitle:@"请选择" forState:UIControlStateNormal];
     [_productLocationButton setTitle:@"请选择" forState:UIControlStateNormal];
-    [_numberButton setTitle:@"请输入" forState:UIControlStateNormal];
-    [_numberButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
+
     [_timeButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
     [_productLocationButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
 
@@ -440,8 +441,11 @@
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"上传成功!" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            // 上传不清空  清空打开注释 
-//            [weakSelf reloadNewData];
+            // 清空相关的参数
+            weakSelf.productNameTextField.text = @"";
+            weakSelf.detailLocationTextField.text = @"";
+            [weakSelf.numberButton setTitle:@"请输入" forState:UIControlStateNormal];
+            [weakSelf.numberButton setTitleColor:[UIColor lightGrayColor]forState:UIControlStateNormal];
         }];
         [actionSheetController addAction:okAction];
         
