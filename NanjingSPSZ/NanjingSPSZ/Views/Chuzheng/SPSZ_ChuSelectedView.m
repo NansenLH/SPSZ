@@ -20,6 +20,9 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *titleView;
 
+// 新设计不再使用
+@property (nonatomic, strong) UIButton * clearButton;
+
 @end
 
 
@@ -41,30 +44,37 @@
     self.backgroundColor = [UIColor whiteColor];
     
     self.titleView = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.titleView setImage:[UIImage imageNamed:@"icon_error_2"] forState:UIControlStateNormal];
-    [self.titleView setImage:[UIImage imageNamed:@"icon_right_2"] forState:UIControlStateSelected];
-    [self.titleView setTitle:@"当前设备未连接" forState:UIControlStateNormal];
-    [self.titleView setTitle:@"当前设备连接正常" forState:UIControlStateSelected];
+    [self.titleView setImage:[UIImage imageNamed:@"icon_right_2"] forState:UIControlStateNormal];
+    [self.titleView setTitle:@"当前设备连接正常" forState:UIControlStateNormal];
     [self.titleView setTitleColor:[ProgramColor RGBColorWithRed:51 green:51 blue:51 alpha:0.66] forState:UIControlStateNormal];
     self.titleView.titleLabel.font = [UIFont systemFontOfSize:13];
     self.titleView.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
     [self addSubview:self.titleView];
-    self.titleView.selected = YES;
     [self.titleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(8);
         make.left.right.equalTo(0);
         make.height.equalTo(15);
     }];
     
+//    [self configAddMoreBtnOld];
+    [self configAddMoreBtnNew];
+    
+//    [self configTableViewOld];
+    [self configTableViewNew];
+   
+}
+
+- (void)configAddMoreBtnOld
+{
     self.addMoreGoodsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addMoreGoodsButton setTitle:@"继 续 添 加" forState:UIControlStateNormal];
     self.addMoreGoodsButton.layer.cornerRadius = 17;
     self.addMoreGoodsButton.layer.masksToBounds = YES;
     [self.addMoreGoodsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.addMoreGoodsButton gradientButtonWithSize:CGSizeMake(165, 36)
-                                     colorArray:[ProgramColor blueMoreGradientColors]
-                                percentageArray:@[@(0), @(1)]
-                                   gradientType:GradientFromTopToBottom];
+                                         colorArray:[ProgramColor blueMoreGradientColors]
+                                    percentageArray:@[@(0), @(1)]
+                                       gradientType:GradientFromTopToBottom];
     self.addMoreGoodsButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [self addSubview:self.addMoreGoodsButton];
     
@@ -76,7 +86,26 @@
         make.height.equalTo(36);
         make.bottom.equalTo(-marginBottom);
     }];
-    
+}
+
+- (void)configAddMoreBtnNew
+{
+    self.addMoreGoodsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.addMoreGoodsButton setTitle:@"继续添加" forState:UIControlStateNormal];
+    [self.addMoreGoodsButton setImage:[UIImage imageNamed:@"addMoreGoods"] forState:UIControlStateNormal];
+    [self.addMoreGoodsButton setTitleColor:[ProgramColor RGBColorWithRed:82 green:145 blue:242] forState:UIControlStateNormal];
+    self.addMoreGoodsButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [self addSubview:self.addMoreGoodsButton];
+    self.addMoreGoodsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
+    [self.addMoreGoodsButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.titleView.mas_bottom).offset(8);
+        make.height.equalTo(50);
+        make.left.right.equalTo(0);
+    }];
+}
+
+- (void)configTableViewOld
+{
     UIView *backShadowView = [[UIView alloc] init];
     [self addSubview:backShadowView];
     [backShadowView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -153,8 +182,29 @@
     self.tableView.rowHeight = 76;
     
     [self.tableView registerClass:[SPSZ_SelectedTableViewCell class] forCellReuseIdentifier:@"SPSZ_SelectedTableViewCell"];
-    
 }
+
+- (void)configTableViewNew
+{
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    [self addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(0);
+        make.top.mas_equalTo(self.addMoreGoodsButton.mas_bottom);
+    }];
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    UIView *tableFooterView = [[UIView alloc] init];
+    self.tableView.tableFooterView = tableFooterView;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, -20);
+    self.tableView.rowHeight = 76;
+    
+    [self.tableView registerClass:[SPSZ_SelectedTableViewCell class] forCellReuseIdentifier:@"SPSZ_SelectedTableViewCell"];
+}
+
+
 
 - (void)setIsConnect:(BOOL)isConnect
 {
@@ -198,7 +248,10 @@
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     if (self.selectedArray.count == 0) {
-        [self.clearButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+        if (self.deleteLastCellBlock) {
+            self.deleteLastCellBlock();
+        }
+//        [self.clearButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
 }
 
