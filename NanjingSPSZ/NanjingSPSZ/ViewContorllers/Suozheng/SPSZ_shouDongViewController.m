@@ -440,7 +440,8 @@
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"上传成功!" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [weakSelf reloadNewData];
+            // 上传不清空  清空打开注释 
+//            [weakSelf reloadNewData];
         }];
         [actionSheetController addAction:okAction];
         
