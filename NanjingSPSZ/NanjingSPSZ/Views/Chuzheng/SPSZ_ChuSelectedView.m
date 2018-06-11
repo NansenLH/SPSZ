@@ -45,7 +45,7 @@
     
     self.titleView = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleView setImage:[UIImage imageNamed:@"icon_right_2"] forState:UIControlStateNormal];
-    [self.titleView setTitle:@"当前设备连接正常" forState:UIControlStateNormal];
+    [self.titleView setTitle:@"打印机已连接" forState:UIControlStateNormal];
     [self.titleView setTitleColor:[ProgramColor RGBColorWithRed:51 green:51 blue:51 alpha:0.66] forState:UIControlStateNormal];
     self.titleView.titleLabel.font = [UIFont systemFontOfSize:13];
     self.titleView.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
@@ -53,7 +53,7 @@
     [self.titleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(8);
         make.left.right.equalTo(0);
-        make.height.equalTo(15);
+        make.height.equalTo(18);
     }];
     
 //    [self configAddMoreBtnOld];
@@ -96,7 +96,8 @@
     [self.addMoreGoodsButton setTitleColor:[ProgramColor RGBColorWithRed:82 green:145 blue:242] forState:UIControlStateNormal];
     self.addMoreGoodsButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [self addSubview:self.addMoreGoodsButton];
-    self.addMoreGoodsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
+//    self.addMoreGoodsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
+    self.addMoreGoodsButton.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10);
     [self.addMoreGoodsButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.titleView.mas_bottom).offset(8);
         make.height.equalTo(50);
