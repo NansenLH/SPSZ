@@ -32,6 +32,8 @@
  "companyname": "gongjin",
  "imgurl": "",
  "mobile": "186"
+ // 新增
+ printdate：
 */
 
 @property (nonatomic, strong) NSString *suo_shouDongId;
@@ -53,5 +55,8 @@
 @property (nonatomic, strong) NSString *imgurl;
 
 @property (nonatomic, strong) NSString *mobile;
+
+@property (nonatomic, strong) NSString *printdate;
+
 
 @end
