@@ -45,6 +45,7 @@
                 NSMutableArray *goodsArray = [NSMutableArray array];
                 for (NSDictionary *dish in resultList) {
                     SPSZ_GoodsModel *model = [SPSZ_GoodsModel yy_modelWithDictionary:dish];
+                    model.unit = @"公斤";
                     [goodsArray addObject:model];
                 }
                 if (successBlcok) {
