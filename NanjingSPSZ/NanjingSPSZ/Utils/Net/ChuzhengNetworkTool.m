@@ -163,6 +163,52 @@
 }
 
 
++ (void)geChuZhengJinHuoRecordsUserid:(NSString *)userid
+                             dishdate:(NSString *)dishdate
+                             pageSize:(NSInteger )pageSize
+                               pageNo:(NSInteger )pageNo
+                         successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
+                           errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                         failureBlock:(void (^)(NSString *failure))failureBlock
+{
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    NSMutableString *newPath = [NSMutableString stringWithFormat:@"%@%@", BasePath, @"getDishesByUserId"];
+    
+    SPSZ_chuLoginModel *chuUser = [KRAccountTool getChuUserInfo];
+    [requestDic setObject:chuUser.login_Id forKey:@"userid"];
+    [requestDic setObject:@(pageNo) forKey:@"pageNo"];
+    [requestDic setObject:@(pageSize) forKey:@"pageSize"];
+    if (dishdate) {
+        [requestDic setObject:dishdate forKey:@"dishdate"];
+    }
+    [LUNetHelp lu_postWithPath:newPath andParams:requestDic andProgress:nil andComplete:^(BOOL success, id result) {
+        if (success) {
+            if ([result[@"respCode"] integerValue] == 1000000) {
+                NSArray *resultList = result[@"resultList"];
+                NSMutableArray *array = [NSMutableArray array];
+                for (NSDictionary *dish in resultList) {
+                    SPSZ_chu_jinHuoModel *model = [SPSZ_chu_jinHuoModel yy_modelWithDictionary:dish];
+                    [array addObject:model];
+                }
+                if (successBlcok) {
+                    successBlcok(array);
+                }
+            }
+            else {
+                if (errorBlock) {
+                    errorBlock(result[@"respCode"], result[@"respMsg"]);
+                }
+            }
+        }
+        else {
+            if (failureBlock) {
+                failureBlock(result);
+            }
+        }
+    }];
+
+}
+
 /**
  出货录入
  */

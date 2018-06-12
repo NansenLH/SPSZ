@@ -90,9 +90,7 @@
      
  
      [self.productNameLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"货品名称:" string2:model.dishname]];
-     if (!model.unit) {
-         model.unit = @"公斤";
-     }
+
      [self.weightLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"数量/重量:" string2:[NSString stringWithFormat:@"%@%@",model.dishamount,model.unit]]];
  
      [self.laiYuanChanDiLabel setAttributedText:[self Color:[UIColor redColor] secondColor:[UIColor lightGrayColor] string:@"来源产地:" string2:model.cityname]];

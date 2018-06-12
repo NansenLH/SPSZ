@@ -27,9 +27,20 @@
  unit
  */
 
-@property (nonatomic, strong) NSString *addresssource;
+/**
+ "unit": "公斤",
+ "addresssource": "",
+ "dishdate": "2018-06-12 11:40:08",
+ "dishid": 704,
+ "dishname": "133",
+ "dishimg1": "var/ticketimg/20180612/1528774804iosspsz.jpg",
+ "dishamount": "5",
+ "cityname": "江苏南京市玄武区"
+ */
 
-@property (nonatomic, strong) NSString *carnumber;
+@property (nonatomic, strong) NSString *unit;
+
+@property (nonatomic, strong) NSString *addresssource;
 
 @property (nonatomic, strong) NSString *dishdate;
 
@@ -37,21 +48,10 @@
 
 @property (nonatomic, strong) NSString *dishname;
 
-@property (nonatomic, strong) NSString *dishimg3;
-
-@property (nonatomic, strong) NSString *salerid;
-
-@property (nonatomic, strong) NSString *dishimg4;
-
 @property (nonatomic, strong) NSString *dishimg1;
-
-@property (nonatomic, strong) NSString *dishimg2;
-
-@property (nonatomic, strong) NSString *cityname;
 
 @property (nonatomic, strong) NSString *dishamount;
 
-@property (nonatomic, strong) NSString *dishimg5;
+@property (nonatomic, strong) NSString *cityname;
 
-@property (nonatomic, strong) NSString *unit;
 @end

@@ -96,7 +96,6 @@
     [self.view addSubview:self.tableView];
     
      [self uploadDataWithDate:self.dateString];
- 
 }
 
 

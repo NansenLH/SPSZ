@@ -17,13 +17,17 @@
 #import "KRAccountTool.h"
 #import "SPSZ_chuLoginModel.h"
 #import "PGDatePickManager.h"
+#import "MJRefresh.h"
 
 @interface SPSZ_chu_jinHuoRecordsViewController ()<UITableViewDelegate,UITableViewDataSource,PGDatePickerDelegate>
 
-@property (nonatomic, strong)NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @property (nonatomic, strong) UITableView *tableView;
 
+@property (nonatomic, assign) NSInteger index;
+
+@property (nonatomic, strong) NSString *dateString;
 @end
 
 
@@ -44,6 +48,15 @@
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:[SPSZ_chu_jinHuoRecordsTableViewCell class] forCellReuseIdentifier:@"SPSZ_chu_jinHuoRecordsTableViewCell"];
+        KRWeakSelf;
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [weakSelf.dataArray removeAllObjects];
+            weakSelf.index = 1;
+            [weakSelf downLoadDataWith:self.dateString];
+         }];
+        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [weakSelf upLoadDataWith:self.dateString];
+        }];
     }
     return _tableView;
 }
@@ -72,44 +85,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.index = 1;
+    self.dateString = nil;
     [self configNavigation];
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToUpView)];
     self.navigationItem.leftBarButtonItem = item;
     [self.view addSubview:self.tableView];
     
-//    NSDate *date =[NSDate date];
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-//
-//    [formatter setDateFormat:@"yyyy"];
-//    NSInteger currentYear=[[formatter stringFromDate:date] integerValue];
-//    [formatter setDateFormat:@"MM"];
-//    NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
-//    [formatter setDateFormat:@"dd"];
-//    NSInteger currentDay=[[formatter stringFromDate:date] integerValue];
-//
-//    NSString *dateString = [NSString stringWithFormat:@"%ld-%02ld-%02ld",currentYear,currentMonth,currentDay];
-    [self loadDataWith:@""];
+    [self downLoadDataWith:self.dateString];
 }
 
 
-- (void)loadDataWith:(NSString *)date
+//下拉
+- (void)downLoadDataWith:(NSString *)date
 {
+    KRWeakSelf;
     SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
-    
-    [ChuzhengNetworkTool geChuZhengJinHuoRecordsStall_id:model.login_Id printdate:date successBlock:^(NSMutableArray *modelArray) {
-        
-        [self.dataArray removeAllObjects];
-        self.dataArray = modelArray;
-        [self.tableView reloadData];
-        if (self.dataArray.count == 0) {
-            [KRAlertTool alertString:@"无进货记录"];
-        }
+    [ChuzhengNetworkTool geChuZhengJinHuoRecordsUserid:model.login_Id dishdate:date pageSize:10 pageNo:self.index successBlock:^(NSMutableArray *modelArray) {
+        [weakSelf.tableView.mj_header endRefreshing];
+        weakSelf.index++;
+        [weakSelf.dataArray addObjectsFromArray:modelArray];
+        [weakSelf.tableView reloadData];
+        [weakSelf.tableView.mj_footer  setState:MJRefreshStateIdle];
     } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
-        [KRAlertTool alertString:errorMessage];
+        [weakSelf.tableView.mj_header endRefreshing];
     } failureBlock:^(NSString *failure) {
-        [KRAlertTool alertString:failure];
+        [weakSelf.tableView.mj_header endRefreshing];
+    }];
+}
+
+// 上拉
+- (void)upLoadDataWith:(NSString *)date
+{
+    KRWeakSelf;
+    SPSZ_chuLoginModel *model = [KRAccountTool getChuUserInfo];
+    [ChuzhengNetworkTool geChuZhengJinHuoRecordsUserid:model.login_Id dishdate:date pageSize:10 pageNo:self.index successBlock:^(NSMutableArray *modelArray) {
+        [weakSelf.tableView.mj_footer endRefreshing];
+        weakSelf.index++;
+        [weakSelf.dataArray addObjectsFromArray:modelArray];
+        [weakSelf.tableView reloadData];
+    } errorBlock:^(NSString *errorCode, NSString *errorMessage) {
+        [weakSelf.tableView.mj_footer endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+    } failureBlock:^(NSString *failure) {
+        [weakSelf.tableView.mj_footer endRefreshing];
     }];
 }
 
@@ -159,11 +180,13 @@
 
 
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
-    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%02ld",dateComponents.year,dateComponents.month,dateComponents.day];
-    
+    NSString *date = [NSString stringWithFormat:@"%ld-%02ld-%02ld",dateComponents.year,dateComponents.month,dateComponents.day];    
     [self.dataArray removeAllObjects];
     [self.tableView reloadData];
-    [self loadDataWith:date];
+    self.dateString = date;
+    self.index = 1;
+    [self downLoadDataWith:date];
+
 }
 
 /*

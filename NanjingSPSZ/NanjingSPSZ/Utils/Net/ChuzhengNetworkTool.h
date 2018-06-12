@@ -36,11 +36,18 @@
 /**
  *  获取批发商进货记录
  */
-+ (void)geChuZhengJinHuoRecordsStall_id:(NSString *)stall_id
-                        printdate:(NSString *)printdate
-                     successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
-                       errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
-                     failureBlock:(void (^)(NSString *failure))failureBlock;
+//+ (void)geChuZhengJinHuoRecordsStall_id:(NSString *)stall_id
+//                        printdate:(NSString *)printdate
+//                     successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
+//                       errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+//                     failureBlock:(void (^)(NSString *failure))failureBlock;
++ (void)geChuZhengJinHuoRecordsUserid:(NSString *)userid
+                             dishdate:(NSString *)dishdate
+                             pageSize:(NSInteger )pageSize
+                               pageNo:(NSInteger )pageNo
+                           successBlock:(void (^)(NSMutableArray *modelArray))successBlcok
+                             errorBlock:(void (^)(NSString *errorCode, NSString *errorMessage))errorBlock
+                           failureBlock:(void (^)(NSString *failure))failureBlock;
 
 
 /**
