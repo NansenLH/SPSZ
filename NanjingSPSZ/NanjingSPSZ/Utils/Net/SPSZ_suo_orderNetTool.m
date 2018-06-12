@@ -170,6 +170,7 @@
     [self setMyValueWith:jsonString key:@"dishes" dic:dic1];
     [self setMyValueWith:model.imgurl key:@"imgurl" dic:dic1];
     [self setMyValueWith:type key:@"type" dic:dic1];
+    [self setMyValueWith:model.printdate key:@"printdate" dic:dic1];
 
     SPSZ_suoLoginModel *loginModel = [KRAccountTool getSuoUserInfo];
 

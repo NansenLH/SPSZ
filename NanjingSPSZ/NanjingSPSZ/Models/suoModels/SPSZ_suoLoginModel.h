@@ -38,7 +38,7 @@
 @property (nonatomic, strong)NSString *stall_name;
 @property (nonatomic, strong)NSString *deptname;
 @property (nonatomic, strong)NSString *bus_img; //营业执照图片
-
+@property (nonatomic, copy) NSString *pronames;
 
 
 

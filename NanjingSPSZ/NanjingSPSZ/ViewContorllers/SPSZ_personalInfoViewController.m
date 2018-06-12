@@ -141,7 +141,7 @@
         self.detailLocationString = model.address;
         self.tanWeiString = model.stall_no;
         self.tanZhuString = model.stall_name;
-//        self.zhuYingXiangMuString =
+        self.zhuYingXiangMuString = model.pronames;
         self.xinYongMaString = model.bus_license;
         
         [self.imgArray addObject:model.bus_img];
@@ -157,6 +157,7 @@
 //        self.detailLocationString = model.address;
         self.tanWeiString = model.stall_no;
         self.tanZhuString = model.realname;
+        self.zhuYingXiangMuString = model.pronames;
         self.xinYongMaString = model.socialcode;
         
         [self.imgArray addObject:model.bus_img];

@@ -40,6 +40,6 @@
 @property (nonatomic, strong)NSString *cityname;
 @property (nonatomic, strong)NSString *realname;
 @property (nonatomic, strong)NSString *mobile;
-
+@property (nonatomic, copy) NSString *pronames;
 
 @end
