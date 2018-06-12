@@ -69,6 +69,7 @@
         make.height.equalTo(50);
         make.top.mas_equalTo(self.connectStateLabel.mas_bottom).offset(8);
     }];
+    self.addGoodsButton.hidden = !self.isConnect;
     
     self.printerImageView = [[UIImageView alloc] init];
     [self addSubview:self.printerImageView];
@@ -77,7 +78,7 @@
         make.width.equalTo([ProgramSize fitSize:190]);
         make.height.equalTo([ProgramSize fitSize:170]);
         make.centerX.equalTo(0);
-        make.top.mas_equalTo(self.addGoodsButton.mas_bottom).offset(20);
+        make.top.equalTo(104);
     }];
     
     NSString *desciptString = self.isConnect ? @"当前蓝牙连接正常，\n快去添加货物进行打印吧。" : @"抱歉，当前未连打单机，\n是否通过蓝牙进行连接？";
@@ -93,9 +94,6 @@
     }];
     
     
-
-//    self.addGoodsButton.hidden = !self.isConnect;
-    
 }
 
 
@@ -108,6 +106,8 @@
     self.selectImageView.image = self.isConnect ? [UIImage imageNamed:@"icon_right_2"] : [UIImage imageNamed:@"icon_error_2"];
     self.printerImageView.image = self.isConnect ? [UIImage imageNamed:@"printer_on"] : [UIImage imageNamed:@"printer_no"];
     self.descriptLabel.text = self.isConnect ? @"当前蓝牙连接正常，\n快去添加货物进行打印吧。" : @"抱歉，当前未连打单机,\n是否通过蓝牙进行连接?";
+    
+    self.addGoodsButton.hidden = !self.isConnect;
 }
 
 

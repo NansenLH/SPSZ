@@ -196,6 +196,7 @@
     [jsonDic setObject:model.cityname forKey:@"cityname"];
     [jsonDic setObject:model.dishamount forKey:@"dishamount"];
     [jsonDic setObject:model.dishname forKey:@"dishname"];
+    [jsonDic setObject:model.unit forKey:@"unit"];
     [jsonDic setObject:@"" forKey:@"dishid"];
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];

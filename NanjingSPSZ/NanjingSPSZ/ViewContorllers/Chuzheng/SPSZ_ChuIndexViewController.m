@@ -50,7 +50,7 @@
 @property (nonatomic, strong) UIButton *editGoodsButton;
 @property (nonatomic, strong) UIButton *personalCenterButton;
 
-@property (nonatomic, strong) UIButton *logoutButton;
+//@property (nonatomic, strong) UIButton *logoutButton;
 @property (nonatomic, strong) UIButton *clearButton;
 
 
@@ -135,16 +135,16 @@
 {
     self.navigationItem.title = @"出证打印";
     
-    UIButton *logOutButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [logOutButton setImage:[UIImage imageNamed:@"outlogin_white"] forState:UIControlStateNormal];
-    [logOutButton setTitle:@"注销登录" forState:UIControlStateNormal];
-    [logOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    logOutButton.titleLabel.font = [UIFont systemFontOfSize:13];
-    logOutButton.frame = CGRectMake(0, 0, 80, 44);
-    logOutButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
-    [logOutButton addTarget:self action:@selector(logoutAction) forControlEvents:UIControlEventTouchUpInside];
-    self.logoutButton = logOutButton;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logOutButton];
+//    UIButton *logOutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [logOutButton setImage:[UIImage imageNamed:@"outlogin_white"] forState:UIControlStateNormal];
+//    [logOutButton setTitle:@"注销登录" forState:UIControlStateNormal];
+//    [logOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    logOutButton.titleLabel.font = [UIFont systemFontOfSize:13];
+//    logOutButton.frame = CGRectMake(0, 0, 80, 44);
+//    logOutButton.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+//    [logOutButton addTarget:self action:@selector(logoutAction) forControlEvents:UIControlEventTouchUpInside];
+//    self.logoutButton = logOutButton;
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logOutButton];
     
     
     self.clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -277,30 +277,30 @@
 
 #pragma mark - ==== 点击事件 ====
 #pragma mark ---- 注销登录 ----
-- (void)logoutAction
-{
-
-    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSString *isLogin = @"login_out";
-        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        [user setObject:isLogin forKey:@"isLogin"];
-        [user synchronize];
-        
-        SPSZ_LoginViewController *login = [[SPSZ_LoginViewController alloc]init];
-        BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:login];
-        [[AppDelegate shareInstance].window setRootViewController:navi];
-    }];
-    
-    [actionSheetController addAction:cancelAction];
-    [actionSheetController addAction:okAction];
-    
-    [self presentViewController:actionSheetController animated:YES completion:nil];
-}
+//- (void)logoutAction
+//{
+//
+//    UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定要退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//    }];
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        NSString *isLogin = @"login_out";
+//        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+//        [user setObject:isLogin forKey:@"isLogin"];
+//        [user synchronize];
+//        
+//        SPSZ_LoginViewController *login = [[SPSZ_LoginViewController alloc]init];
+//        BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:login];
+//        [[AppDelegate shareInstance].window setRootViewController:navi];
+//    }];
+//    
+//    [actionSheetController addAction:cancelAction];
+//    [actionSheetController addAction:okAction];
+//    
+//    [self presentViewController:actionSheetController animated:YES completion:nil];
+//}
 
 #pragma mark ---- 添加货物 ----
 - (void)addGoodsClick:(UIButton *)addGoodsButton
@@ -355,7 +355,7 @@
     self.selectedView.hidden = YES;
     self.indexView.hidden = NO;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.logoutButton];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.logoutButton];
 }
 
 
