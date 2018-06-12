@@ -230,7 +230,7 @@
     [photoBtn addTarget:self action:@selector(showPhoto:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:photoBtn];
     
-    NSString *imageURL = [NSString stringWithFormat:@"%@%@", BaseImagePath, self.imgArray[number]];
+    NSString *imageURL = [NSString stringWithFormat:@"%@%@", userInfoImagePath, self.imgArray[number]];
     [photoBtn sd_setImageWithURL:[NSURL URLWithString:imageURL] forState:UIControlStateNormal];
 }
 
@@ -291,7 +291,7 @@
     NSString *imgPath = self.imgArray[sender.tag];
     if (imgPath) {
         if (imgPath.length != 0) {
-            NSString *imageURL = [NSString stringWithFormat:@"%@%@", BaseImagePath, self.imgArray[sender.tag]];
+            NSString *imageURL = [NSString stringWithFormat:@"%@%@", userInfoImagePath, self.imgArray[sender.tag]];
             SYPhotoBrowser *photoBrowser = [[SYPhotoBrowser alloc] initWithImageSourceArray:@[imageURL] delegate:self];
             [self presentViewController:photoBrowser animated:YES completion:nil];
         }

@@ -195,7 +195,7 @@
 {
     _model = model;
     
-    self.timeLabel.text = model.uploaddate;
+    self.timeLabel.text = model.printdate;
     self.qrcodeLabel.text = model.printcode;
     self.nameLabel.text = model.realname;
     self.companyLabel.text = model.companyname;
