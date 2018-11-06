@@ -14,7 +14,7 @@
 #import "UIButton+WebCache.h"
  #import "SYPhotoBrowser.h"
  #import "KRAccountTool.h"
-
+#import "CheckStringTool.h"
 @interface SPSZ_personalInfoViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong)UIScrollView *scrollView;
@@ -144,10 +144,26 @@
         self.zhuYingXiangMuString = model.pronames;
         self.xinYongMaString = model.bus_license;
         
-        [self.imgArray addObject:model.bus_img];
-        [self.imgArray addObject:model.img_qs];
-        [self.imgArray addObject:model.img_entry];
-        [self.imgArray addObject:model.img_save];
+        if ([CheckStringTool isCheckClass:model.bus_img]) {
+            [self.imgArray addObject:@""];
+        }else{
+            [self.imgArray addObject:model.bus_img];
+        }
+        if ([CheckStringTool isCheckClass:model.img_qs]) {
+            [self.imgArray addObject:@""];
+        }else{
+            [self.imgArray addObject:model.img_qs];
+        }
+        if ([CheckStringTool isCheckClass:model.img_entry]) {
+            [self.imgArray addObject:@""];
+        }else{
+            [self.imgArray addObject:model.img_entry];
+        }
+        if ([CheckStringTool isCheckClass:model.img_save]) {
+            [self.imgArray addObject:@""];
+        }else{
+            [self.imgArray addObject:model.img_save];
+        }
     }else{
 //        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
 //        SPSZ_chuLoginModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -160,10 +176,26 @@
         self.zhuYingXiangMuString = model.pronames;
         self.xinYongMaString = model.socialcode;
         
-        [self.imgArray addObject:model.bus_img];
-        [self.imgArray addObject:model.img_qs];
-        [self.imgArray addObject:model.img_entry];
-        [self.imgArray addObject:model.img_save];
+        if ([CheckStringTool isCheckClass:model.bus_img]) {
+            [self.imgArray addObject:@""];
+        }else{
+            [self.imgArray addObject:model.bus_img];
+        }
+        if ([CheckStringTool isCheckClass:model.img_qs]) {
+            [self.imgArray addObject:@""];
+        }else{
+            [self.imgArray addObject:model.img_qs];
+        }
+        if ([CheckStringTool isCheckClass:model.img_entry]) {
+            [self.imgArray addObject:@""];
+        }else{
+            [self.imgArray addObject:model.img_entry];
+        }
+        if ([CheckStringTool isCheckClass:model.img_save]) {
+            [self.imgArray addObject:@""];
+        }else{
+            [self.imgArray addObject:model.img_save];
+        }
     }
     
     [self.view addSubview:self.scrollView];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4751A91621143345005E2CCA /* CheckStringTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4751A91521143345005E2CCA /* CheckStringTool.m */; };
 		6A143B3620BAB36200D71959 /* SPSZ_InputWeightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */; };
 		6A143B7420BAE65C00D71959 /* PGDatePicker+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3920BAE65C00D71959 /* PGDatePicker+Date.m */; };
 		6A143B7520BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A143B3B20BAE65C00D71959 /* PGDatePicker+MinuteAndSecond.m */; };
@@ -270,6 +271,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4751A91421143345005E2CCA /* CheckStringTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckStringTool.h; sourceTree = "<group>"; };
+		4751A91521143345005E2CCA /* CheckStringTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckStringTool.m; sourceTree = "<group>"; };
 		6A143B3420BAB36200D71959 /* SPSZ_InputWeightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSZ_InputWeightView.h; sourceTree = "<group>"; };
 		6A143B3520BAB36200D71959 /* SPSZ_InputWeightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSZ_InputWeightView.m; sourceTree = "<group>"; };
 		6A143B3820BAE65C00D71959 /* PGDatePicker+MonthDayHourMinuteSecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGDatePicker+MonthDayHourMinuteSecond.h"; sourceTree = "<group>"; };
@@ -1105,6 +1108,8 @@
 				6ACB554C20B016E700528420 /* UICreateTool.m */,
 				CC2DA39120BD99E1002F5256 /* KRAccountTool.h */,
 				CC2DA39220BD99E1002F5256 /* KRAccountTool.m */,
+				4751A91421143345005E2CCA /* CheckStringTool.h */,
+				4751A91521143345005E2CCA /* CheckStringTool.m */,
 				6A6BACF220B85A63008A428F /* AlertTool */,
 				6A6BACF120B85A47008A428F /* Program */,
 				6A6BACE720B856B7008A428F /* Net */,
@@ -1865,6 +1870,7 @@
 				6A494E8020BDB4BC00D13159 /* SEPrinterManager.m in Sources */,
 				6A143BA220BAE7F400D71959 /* ChuzhengNetworkTool.m in Sources */,
 				6A6BACD020B85013008A428F /* (null) in Sources */,
+				4751A91621143345005E2CCA /* CheckStringTool.m in Sources */,
 				E222151520BDBCBE006D4C5A /* SPSZ_Help_ViewController.m in Sources */,
 				6A6BAD0520BA51BB008A428F /* UIImage+HYBImageCliped.m in Sources */,
 				6ACB54F920B011D500528420 /* UIProgressView+AFNetworking.m in Sources */,
@@ -2236,7 +2242,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: chen yehui (7ELM4H3VCG)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zrodo Instrument Technology (Nantong) Ltd. (99Y8W3RC7J)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
@@ -2254,8 +2260,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.njspsz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e920184e-fd66-435e-afb7-07da7375cf2c";
-				PROVISIONING_PROFILE_SPECIFIER = spsz_develop;
+				PROVISIONING_PROFILE = "713ab688-2c2c-45e9-8c31-5491038fe4f0";
+				PROVISIONING_PROFILE_SPECIFIER = SPSZ_distribution;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2265,7 +2271,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: chen yehui (7ELM4H3VCG)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zrodo Instrument Technology (Nantong) Ltd. (99Y8W3RC7J)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
@@ -2283,8 +2289,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nansen.njspsz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e920184e-fd66-435e-afb7-07da7375cf2c";
-				PROVISIONING_PROFILE_SPECIFIER = spsz_develop;
+				PROVISIONING_PROFILE = "713ab688-2c2c-45e9-8c31-5491038fe4f0";
+				PROVISIONING_PROFILE_SPECIFIER = SPSZ_distribution;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

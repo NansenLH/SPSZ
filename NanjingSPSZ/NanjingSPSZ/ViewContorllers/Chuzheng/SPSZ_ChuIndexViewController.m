@@ -557,6 +557,7 @@
         }
         if (central.state==CBManagerStatePoweredOff) {
             NSLog(@"设置中未打开蓝牙");
+            [[LUAlertTool defaultTool] Lu_alertInViewController:self title:@"提示" message:@"请开启手机蓝牙" cancelButtonTitle:@"确认"];
         }
     }
     else {
@@ -571,6 +572,7 @@
         }
         if (central.state==CBCentralManagerStatePoweredOff) {
             NSLog(@"设置中未打开蓝牙");
+            [[LUAlertTool defaultTool] Lu_alertInViewController:self title:@"提示" message:@"请开启手机蓝牙" cancelButtonTitle:@"确认"];
         }
     }
     
